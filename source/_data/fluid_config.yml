@@ -1,0 +1,12 @@
+#---------------------------
+# 页头
+# Header
+#---------------------------
+navbar:
+  blog_title:  # 导航栏左侧的标题，为空则按 hexo config.title 显示
+  menu:  # 可自行增减，若想减去某个入口，可以将值留空
+    主页: /
+    归档: /archives/
+    分类: /categories/
+    标签: /tags/
+    关于: /about/
