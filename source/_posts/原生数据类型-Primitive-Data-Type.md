@@ -2,7 +2,7 @@
 title: 原生数据类型(Primitive Data Type)
 date: 2019-11-22 13:59:24
 tags: Java
-categories: Java
+categories: [Java,Java SE]
 ---
 
 ## 轻量级编辑器

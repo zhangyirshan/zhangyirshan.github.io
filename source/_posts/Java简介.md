@@ -2,7 +2,7 @@
 title: Java简介
 date: 2019-11-21 22:11:03
 tags: Java
-categories: Java SE
+categories: [Java,Java SE]
 ---
 
 ## 1、Java的版本
