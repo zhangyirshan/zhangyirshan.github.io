@@ -30,17 +30,17 @@ fun_features: # 一些好玩的功能
   anchorjs: # 为文章内容中的标题添加锚图标
     enable: true
     element: h1,h2,h3,h4,h5,h6
-    placement: right # icon放置的位置： left | right
+    placement: left # icon放置的位置： left | right
     visible: false # true：一直可见，false：鼠标悬停时出现
     icon: "" # 例如：§ | # | ❡ 等，留空则为默认效果
 
 color:  # 主体颜色配置，可以从这里寻找启发： https://www.webdesignrankings.com/resources/lolcolors/
-  body_bg_color: "#eee"
+  body_bg_color: "#77919d"
   navbar_bg_color: "#2f4154"
-  navbar_text_color: "white"
+  navbar_text_color: "#dae9f4"
   text_color: "#3c4858"
   link_color: "#3c4858"
-  link_hover_color: "#1abc9c"
+  link_hover_color: "#3c4858"
 
 web_analytics:  # 网页访问统计
   enable: true
