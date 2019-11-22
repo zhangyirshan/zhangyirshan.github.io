@@ -1,4 +1,11 @@
-# 1、Java的版本
+---
+title: Java简介
+date: 2019-11-21 22:11:03
+tags: Java
+categories: Java SE
+---
+
+## 1、Java的版本
 
 Java SE：Java Standard Edition         基础版本
 
@@ -10,7 +17,7 @@ Java是由Sun公司推出的（后被Oracle公司收购）。
 收购价格：74亿美金
 J2SE、J2ME、J2EE
 
-# 2、[下载JDK](https://www.java.com/zh_CN/download/windows-64bit.jsp)
+## 2、[下载JDK](https://www.java.com/zh_CN/download/windows-64bit.jsp)
 
 JDK：Java Development Kit（Java开发包）(Java开发必备）
 
@@ -26,7 +33,7 @@ jdk1.6（6.0）：Mustang，野马
 
 最新免费版是1.8
 
-# 3、配置环境变量
+## 3、配置环境变量
 
 设定环境变量（可以是用户变量，也可以是系统变量)，指向JDK安装目录中的bin目录
 
@@ -36,7 +43,7 @@ Path：D:\Java\jdk1.8.0_191\bin
 
 通过运行，输入cmd或powershell打开窗口，输入java -version，显示出Java版本信息
 
-# 4、Java程序的执行过程
+## 4、Java程序的执行过程
 
 可以直接使用windows记事本来编写Java程序，也可以使用Editplus，UltraEdit等高级文本编辑工具编写Java程序，还可以使用专业的IDE（Integrated Devellopment Environment）编写。
 
@@ -53,6 +60,7 @@ Class文件是字节码文件，程序最终执行的就是这个字节（byteco
 JVM（Java Virtual Machine，Java虚拟机）
 Java是跨平台的，而JVM不是跨平台的（JVM是由C语言编写的）。
 Java之所以能做到跨平台，本质原因在于JVM不是跨平台的。**
+
 ```java
 public class Test{
     public static void main(String[] args){
@@ -61,4 +69,5 @@ public class Test{
 }
 
 ```
+
 ![HelloWorld](https://img-blog.csdnimg.cn/20190227113749540.png)
