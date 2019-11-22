@@ -3,10 +3,10 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 张议的博客
-subtitle: '欢迎参观我的博客，这里记录我的学习经历'
+title: 人生展馆
+subtitle: '欢迎参观我的知识站，这里记录着我的学习经历'
 description: '仅限学习参考，有兴趣可以互相交流'
-keywords: 张议,Matthew,Java,java,spring,SpringBoot
+keywords: 张议,Matthew,Java,java,spring,SpringBoot,zhangyi
 author: 张议
 language: zh-CN
 timezone: 'Asia/Shanghai'
