@@ -1,55 +1,10 @@
 ---
-title: 集合
-p: 后端/Java/集合
-date: 2019-11-25 10:40:17
-tags: Java
-categories: [Java,Java SE]
+title: List
+p: 后端/Java/List
+date: 2019-11-25 13:31:17
+tags:
+categories:
 ---
-## 集合Collection概念
-
-1. 对于 Java 中的常量的命名规则：所有单词的字母都是大写，如果有多个单词，
-    那么使用下划线连接即可。 比如说：
-    public static final int AGE_0F_PERSON = 20;
-2. **在 Java 中声明 final 常量时通常都会加上 static 关键字**，这样对象的每个实例
-    都会访问唯一一份常量值。
-
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20181220214709819.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkwNzMzMg==,size_16,color_FFFFFF,t_70)
-
-### Interface Collection\<E>
-
-public interface Collection\<E>extends Iterable\<E>
-**E**可以先当作Object类型具体后面学。
-
-#### Collection的Java API中的定义
-
-The root interface in the collection hierarchy.
-继承层次的根接口
- A collection represents a group of objects,known as its elements.
-一个集合代表一组对象 ，这些对象我们称为元素
-Some collections allow duplicate elements and others do not.
-某些集合允许重复的元素而其他的是不可以的。
-Some are ordered and others unordered.
-有些是排序的有些不是排序的
-The JDK does not provide any *direct implementations* of this interface:
-JDK不提供任何对这个接口的直接实现
- it provides implementations of more specific subinterfaces like Set and List.
-他提供了更加具体的子接口像Set和List来实现Collection这个父接口
-This interface is typically used to pass collections around and manipulate them where maximum generality is desired.
-这个接口通常被用作传递集合并且操纵集合。
-
-### Interface Set\<E>
-
-public interface Set\<E>extends Collection\<E>
-
-A collection that contains no duplicate elements. More formally, sets contain no pair of elements e1 and e2 such that e1.equals(e2), and at most one null element. As implied by its name, this interface models the mathematical set abstraction.
-
-### Interface List\<E>
-
-public interface List\<E>extends Collection\<E>
-
-An ordered collection (also known as a sequence).
-一个**有序**的集合（也称之为***序列***）
- The user of this interface has precise control over where in the list each element is inserted. The user can access elements by their integer index (position in the list), and search for elements in the list.
 
 ## 链表List
 
@@ -396,6 +351,20 @@ x=4,y=4
 4. 集合当中只能放置对象的引用，无法放置原生数据类型，我们需要使用原生数据类型的包装类才能加入到集合当中。
 5. 集合当中放置的都是 Object 类型，因此取出来的也是 Object 类型，那么必须要使用强制类型转换将其转换为真正的类型（放置进去的类型）。
 
+### ArrayList
+
+无参的构造方法我们已经了解了，接下来我们了解下有参的构造方法
+
+1. public ArrayList(int initialCapacity)
+Constructs an empty list with the specified initial capacity. （构造一个空的列表使用初始的容量）
+initialCapacity - the initial capacity of the list （列表最开始的容量）
+建立一个数组列表，该数组有指定的初始容量（capacity）。容量是用于存储元素的基本数组的大小。当元素被追加到数组列表上时，容量会自动增加。
+2. public ArrayList(Collection<? extends E> c)
+Constructs a list containing the elements of the specified collection, in the order they are returned by the collection's iterator. （构造一个列表包含指定集合的元素，顺序是在集合迭代的顺序返回）
+c - the collection whose elements are to be placed into this list
+建立一个数组列表，该数组列表由类集c中的元素初始化
+**但是LinkedList只有两个没有第三个，因为没必要**
+
 ### LinkedList（链表）（链接的列表）
 
 java.util
@@ -407,6 +376,30 @@ java.util.AbstractSequentialList\<E>
 java.util.LinkedList\<E>
 
 LinkedList和ArrayList都是实现的list接口但是LinkedList有一些特有的方法
+
+### LinkedList
+
+```java
+LinkedList list = new LinktedLIst();
+list.add("aaa");
+```
+
+1. 当向 ArrayList 添加一个对象时，实际上就是将该对象放置到了 ArrayList 底层所维护的数组当中；当向 LinkedList 中添加一个对象时，实际上 LinkedList 内部会生成一个Entry 对象，该 Entry 对象的结构为：
+
+```java
+Entry{
+    Entry previous;
+    Object element;
+    Entry next;
+}
+Entry entry = new Entry();
+entry.element = "aaa";
+entry
+lis.add(;
+```)
+
+其中的 Object 类型的元素 element 就是我们向 LinkedList 中所添加的元素，然后 Entry又构造好了向前与向后的引用 previous、 next，最后将生成的这个 Entry 对象加入到了表当中。 换句话说， **LinkedList 中所维护的是一个个的 Entry 对象**。
+
 
 #### addLast
 
@@ -459,7 +452,7 @@ public class LinkedListTest1 {
 变化之后的集合[A, A2, D, E, C, Z]
 最后的集合[A, A2, Dchanged, E, C, Z]
 
-### 链表的数据结构
+## 链表的数据结构
 
 1. 一般将数据结构分为两大类：**线型数据结构和非线性数据结构**。线型数据结构有线性表、栈、队列、串、数组和文件非线性数据结构有树和图（继承）
 2. 线性表的逻辑结构是n个数据元素的有限序列:(a1, a2 ,a3,…an)n为线性表的长度(n≥0)， n=0的表称为空表。2 数据元素呈线性关系。必存在唯一的称为“第一个” 的数据元素；必存在唯一的称为“最后一个”的数据元素；除第一个元素外，每个元素都有且只有一个前驱元素； 除最后一个素外，每个元素都有且只有一个后继元素。
@@ -468,9 +461,9 @@ public class LinkedListTest1 {
 用链式存储结构存储的线性表称为链表。
 5. 将线性表中的数据元素依次存放在某个存储区域中,所形成的表称为顺序表。 **一维数组就是用顺序方式存储的线性表**。
 
-#### 单向链表
+### 单向链表
 
-##### 创建
+#### 创建
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20181222211910174.png)
 
@@ -509,7 +502,7 @@ public class Node {
 结果是
 node3
 
-##### 插入
+#### 插入
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20181222212240254.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkwNzMzMg==,size_16,color_FFFFFF,t_70)
 
@@ -532,7 +525,7 @@ node3
 \---------------
 node3
 
-##### 删除
+#### 删除
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20181222212729606.png)
 
@@ -552,7 +545,7 @@ node3
 \---------------
 node3
 
-#### 循环链表
+### 循环链表
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/2018122221303666.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkwNzMzMg==,size_16,color_FFFFFF,t_70)
 
@@ -560,7 +553,7 @@ node3
 tNode.next = fNode;
 ```
 
-#### 双向循环链表
+### 双向循环链表
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20181222213105107.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkwNzMzMg==,size_16,color_FFFFFF,t_70)
 
@@ -617,7 +610,7 @@ public class Node2Test {
 
 `LinkedList实际上就是双向链表`
 
-### 关于 ArrayList 与 LinkedList 的比较分析
+## 关于 ArrayList 与 LinkedList 的比较分析
 
 1. ArrayList 底层采用数组实现， LinkedList 底层采用双向链表实现。
 2. 当执行插入或者删除操作时， 采用 LinkedList 比较好。
