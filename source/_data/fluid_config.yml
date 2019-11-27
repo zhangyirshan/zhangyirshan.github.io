@@ -11,9 +11,9 @@
 # 全局
 # Site
 #---------------------------
-favicon: /img/icon.png # 网站标签页的 icon
+favicon: /img/favicon.png # 网站标签页的 icon
 
-apple_touch_icon: /img/icon.png # 用于苹果设备的 icon
+apple-touch-icon: /img/apple-touch-icon.png # 用于苹果设备的 icon
 
 title_join_string: ' ~ '  # 浏览器标签页中的标题分隔符，效果： 文章名 ~ 站点名
 
@@ -253,7 +253,7 @@ about:  # 以下仅为页面顶部的基本信息，更多内容请在 ./pages/a
   md_path: ./pages/about.md  # 关于页文档的相对路径，可以按相对文档设置主题之外的路径，从而避免更新冲突
   banner_img: /img/index.jpg
   banner_img_height: 80  # available: 0 - 100
-  avatar: /img/avatar.png # 头像
+  avatar: /img/Avatar.gif # 头像
   name: 张议
   introduce: 96 / 沈阳 / 单身找对象(*^__^*) 嘻嘻 # 支持 HTML
   icons: # 更多图标可从 https://fontawesome.com/icons 查找，并以 "图标名: url" 的格式添加在下方
