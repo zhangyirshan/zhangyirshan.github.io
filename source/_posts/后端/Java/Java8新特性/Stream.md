@@ -5,12 +5,10 @@ date: 2019-12-10 10:09:16
 tags: Java
 categories: [Java,Java8新特性]
 ---
-##　强大的Stream API
+## 什么是 Stream
 
 Java8中有两大最为重要的改变。第一个是 Lambda 表达式；另外一个则是 **Stream API(java.util.stream.*)**。
 Stream 是 Java8 中处理集合的关键抽象概念，它可以指定你希望对集合进行的操作，可以执行非常复杂的查找、过滤和映射数据等操作。使用Stream API 对集合数据进行操作，就类似于使用 SQL 执行的数据库查询。也可以使用 Stream API 来并行执行操作。简而言之，Stream API 提供了一种高效且易于使用的处理数据的方式。
-
-### 什么是 Stream
 
 流(Stream) 到底是什么呢？
 是数据渠道，用于操作数据源（集合、数组等）所生成的元素序列。
@@ -20,7 +18,7 @@ Stream 是 Java8 中处理集合的关键抽象概念，它可以指定你希望
     2. Stream 不会改变源对象。相反，他们会返回一个持有结果的新Stream。
     3. Stream 操作是延迟执行的。这意味着他们会等到需要结果的时候才执行。
 
-### Stream 的操作三个步骤
+## Stream 的操作三个步骤
 
 - 创建 Stream
     一个数据源（如：集合、数组），获取一个流
@@ -31,7 +29,7 @@ Stream 是 Java8 中处理集合的关键抽象概念，它可以指定你希望
 
 {% asset_img Stream流.png Stream流%}
 
-### 创建tream
+## 创建tream
 
 Java8 中的 Collection 接口被扩展，提供了
 两个获取流的方法：
@@ -67,11 +65,11 @@ public void test1(){
 }
 ```
 
-### Stream 的中间操作
+## Stream 的中间操作
 
 多个**中间操作**可以连接起来形成一个**流水线**，除非流水线上触发终止操作，否则**中间操作不会执行任何的处理！而在终止操作时一次性全部处理，称为“惰性求值”。**
 
-#### 筛选与切片
+### 筛选与切片
 
 |方法|描述|
 |--|--|
@@ -145,7 +143,7 @@ public void test5(){
 }
 ```
 
-#### 映射
+### 映射
 
 |方法|描述|
 |--|--|
@@ -184,7 +182,7 @@ public static Stream<Character> filterCharacter(String string) {
 }
 ```
 
-#### 排序
+### 排序
 
 |方法|描述|
 |--|--|
@@ -202,11 +200,11 @@ public void test7(){
 }
 ```
 
-### 终止操作
+## 终止操作
 
 终端操作会从流的流水线生成结果。其结果可以是任何不是流的值，例如：List、Integer，甚至是 void 。
 
-#### 查找与匹配
+### 查找与匹配
 
 |方法|描述|
 |--|--|
@@ -219,3 +217,140 @@ public void test7(){
 |max(Comparator c) |返回流中最大值|
 |min(Comparator c)| 返回流中最小值|
 |forEach(Consumer c) |内部迭代(使用 Collection 接口需要用户去做迭代，称为外部迭代。相反，Stream API 使用内部迭代——它帮你把迭代做了)|
+
+```java
+import java.util.Objects;
+
+public class Employee {
+    private String name;
+    private int age;
+    private double salary;
+    private Status Status;
+
+
+    public Employee() {
+    }
+
+    public Employee(String name) {
+        this.name = name;
+    }
+
+    public Employee(String name, int age, double salary, Employee.Status status) {
+        this.name = name;
+        this.age = age;
+        this.salary = salary;
+        Status = status;
+    }
+
+    public Employee.Status getStatus() {
+        return Status;
+    }
+
+    public void setStatus(Employee.Status status) {
+        Status = status;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return age == employee.age &&
+                Double.compare(employee.salary, salary) == 0 &&
+                Objects.equals(name, employee.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, age, salary);
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", salary=" + salary +
+                ", Status=" + Status +
+                '}';
+    }
+
+    public Employee(String name, int age, double salary) {
+        this.name = name;
+        this.age = age;
+        this.salary = salary;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
+    public enum Status{
+        FREE,
+        BUSY,
+        VOCATION;
+    }
+}
+```
+
+```java
+
+List<Employee> emps = Arrays.asList(
+        new Employee("张三", 42, 9999.99, Employee.Status.BUSY),
+        new Employee("李四", 59, 6669.99, Employee.Status.FREE),
+        new Employee("王五", 18, 3333.99, Employee.Status.BUSY),
+        new Employee("赵六", 15, 2222.99, Employee.Status.VOCATION),
+        new Employee("田七", 12, 5555.99, Employee.Status.VOCATION),
+        new Employee("田七", 13, 5555.99, Employee.Status.VOCATION),
+        new Employee("田七", 18, 5555.99, Employee.Status.FREE),
+        new Employee("田七", 18, 5555.99, Employee.Status.BUSY),
+        new Employee("java", 21, 5555.99, Employee.Status.BUSY)
+);
+
+@Test
+public void test8(){
+    boolean b1 = emps.stream().allMatch(e -> e.getStatus().equals(Employee.Status.BUSY));
+    boolean b2 = emps.stream().anyMatch(e -> e.getStatus().equals(Employee.Status.BUSY));
+    boolean b3 = emps.stream().noneMatch(e -> e.getStatus().equals(Employee.Status.BUSY));
+    System.out.println(b1);
+    System.out.println(b2);
+    System.out.println(b3);
+
+    Optional<Employee> first = emps.stream().sorted((e1, e2) -> -Double.compare(e1.getSalary(), e2.getSalary())).findFirst();
+    System.out.println(first.get());
+
+    Optional<Employee> any = emps.parallelStream().filter(e -> e.getStatus().equals(Employee.Status.FREE)).findAny();
+    System.out.println(any.get());
+}
+
+@Test
+public void test9(){
+    long count = emps.stream().count();
+    System.out.println(count);
+
+    Optional<Employee> max = emps.stream().max(Comparator.comparingDouble(Employee::getSalary));
+    Optional<Double> min = emps.stream().map(Employee::getSalary).min(Double::compareTo);
+    System.out.println(max.get());
+    System.out.println("salary" + min);
+}
+```
