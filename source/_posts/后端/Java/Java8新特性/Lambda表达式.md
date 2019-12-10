@@ -78,3 +78,47 @@ categories: [Java,Java8新特性]
 |Supplier\<T>供给型接口|无|T|返回类型为T的对象，包含方法：T get();|
 |Function\<T, R>函数型接口|T|R|对类型为T的对象应用操作，并返回结果。结果是R类型的对象。包含方法：R apply(T t);|
 |Predicate\<T>断定型接口|T|boolean|确定类型为T的对象是否满足某约束，并返回boolean 值。包含方法boolean test(T t);|
+
+## 方法引用与构造器引用
+
+方法应用：若Lambda体重的内容有方法已经实现了，我们可以使用“方法引用”
+可以理解为方法引用时Lambda表达式的另外一种表现形式
+
+主要有三种语法格式：
+
+- 对象::实例方法名
+
+    ```java
+    //对象::实例方法名
+    @Test
+    public void test1(){
+        Consumer<String> consumer = (x) -> System.out.println(x);
+
+        PrintStream ps1 = System.out;
+        Consumer<String> consumer1 = (x) -> ps1.println(x);
+
+        PrintStream ps = System.out;
+        Consumer<String> consumer2 = ps::println;
+
+        Consumer<String> consumer3 = System.out::println;
+        consumer3.accept("aaaasdc");
+    }
+    ```
+
+- 类::静态方法名
+
+    ```java
+    @Test
+    public void test3(){
+        Comparator<Integer> com = (x, y) -> Integer.compare(x, y);
+
+        Comparator<Integer> com1 = Integer::compare;
+    }
+    ```
+
+- 类::实例方法名
+
+### 注意
+
+1. Lambda体中调用方法的参数列表与返回值类型，要与函数式接口中抽象方法的函数列表和返回值类型保持一致!
+
