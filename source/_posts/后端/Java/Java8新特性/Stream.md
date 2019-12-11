@@ -354,3 +354,329 @@ public void test9(){
     System.out.println("salary" + min);
 }
 ```
+
+### 归约
+
+|方法|描述|
+|--|--|
+|reduce(T iden, BinaryOperator b)|可以将流中元素反复结合起来，得到一个值。返回 T|
+|reduce(BinaryOperator b)|可以将流中元素反复结合起来，得到一个值。返回 Optional\<T>|
+
+> 备注：map 和 reduce 的连接通常称为 map-reduce 模式，因 Google 用它来进行网络搜索而出名。
+
+```java
+@Test
+public void test10(){
+    List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+    Integer sum = list.stream().reduce(0, Integer::sum);
+    System.out.println(sum);
+
+    System.out.println("-------------");
+
+    Optional<Double> reduce = emps.stream().map(Employee::getSalary).reduce(Double::sum);
+    System.out.println(reduce.get());
+}
+```
+
+### 收集
+
+|方法|描述|
+|--|--|
+|collect(Collector c) |将流转换为其他形式。接收一个 Collector接口的实现，用于给Stream中元素做汇总的方法|
+
+Collector 接口中方法的实现决定了如何对流执行收集操作(如收集到 List、Set、Map)。但是 Collectors 实用类提供了很多静态方法，可以方便地创建常见收集器实例，具体方法与实例如下表：
+
+|方法 |返回类型 |作用|举例|
+|-----|--------|---|----|
+|toList |List\<T> |把流中元素收集到List|List\<Employee> emps= list.stream().collect(Collectors.toList());|
+|toSet |Set\<T>| 把流中元素收集到Set|Set\<Employee> emps= list.stream().collect(Collectors.toSet());|
+|toCollection |Collection\<T>|把流中元素收集到创建的集合|Collection\<Employee>emps=list.stream().collect(Collectors.toCollection(ArrayList::new));|
+|counting  |Long|计算流中元素的个数|long count = list.stream().collect(Collectors.counting());|
+|summingInt|Integer|对流中元素的整数属性求和|inttotal=list.stream().collect(Collectors.summingInt(Employee::getSalary));|
+|averagingInt |Double|计算流中元素Integer属性的平均值|doubleavg= list.stream().collect(Collectors.averagingInt(Employee::getSalary));|
+|summarizingInt|IntSummaryStatistics|收集流中Integer属性的统计值。如：平均值|IntSummaryStatisticsiss= list.stream().collect(Collectors.summarizingInt(Employee::getSalary));|
+|joining|String|连接流中每个字符串|String str= list.stream().map(Employee::getName).collect(Collectors.joining());|
+|maxBy|Optional\<T>|根据比较器选择最大值|Optional<Emp>max= list.stream().collect(Collectors.maxBy(comparingInt(Employee::getSalary)));|
+|minBy|Optional\<T>|根据比较器选择最小值|Optional<Emp> min = list.stream().collect(Collectors.minBy(comparingInt(Employee::getSalary)));|
+|reducing|归约产生的类型|从一个作为累加器的初始值开始，利用BinaryOperator与流中元素逐个结合，从而归约成单个值|inttotal=list.stream().collect(Collectors.reducing(0, Employee::getSalar, Integer::sum));|
+|collectingAndThen |转换函数返回的类型|包裹另一个收集器，对其结果转换函数|inthow= list.stream().collect(Collectors.collectingAndThen(Collectors.toList(), List::size));|
+|groupingBy|Map\<K, List\<T>>|根据某属性值对流分组，属性为K，结果为V|Map<Emp.Status, List\<Emp>> map= list.stream().collect(Collectors.groupingBy(Employee::getStatus));|
+|partitioningBy |Map<Boolean, List\<T>>|根据true或false进行分区|Map<Boolean,List<Emp>>vd= list.stream().collect(Collectors.partitioningBy(Employee::getManage));|
+
+```java
+@Test
+public void test11(){
+    List<String> collect = emps.stream().map(Employee::getName).distinct().collect(Collectors.toList());
+    collect.forEach(System.out::println);
+    System.out.println("---------------");
+    Set<String> collect1 = emps.stream().map(Employee::getName).collect(Collectors.toSet());
+    collect1.forEach(System.out::println);
+    System.out.println("---------------");
+    HashSet<String> collect2 = emps.stream().map(Employee::getName).collect(Collectors.toCollection(HashSet::new));
+    collect2.forEach(System.out::println);
+    System.out.println("---------------");
+    Double collect3 = emps.stream().collect(Collectors.averagingDouble(Employee::getSalary));
+    System.out.println(collect3);
+    //分组
+    Map<Employee.Status, List<Employee>> collect4 = emps.stream().collect(Collectors.groupingBy(Employee::getStatus));
+    System.out.println(collect4);
+    //多级分组
+    System.out.println("--------------");
+    Map<Employee.Status, Map<String, List<Employee>>> collect5 = emps.stream().collect(Collectors.groupingBy(Employee::getStatus, Collectors.groupingBy(e -> {
+        if (e.getAge() <= 20) {
+            return "青年";
+        } else if (e.getAge() <= 40) {
+            return "中年";
+        } else {
+            return "老年";
+        }
+    })));
+    System.out.println(collect5);
+    //分区
+    System.out.println("--------------");
+    Map<Boolean, List<Employee>> collect6 = emps.stream().collect(Collectors.partitioningBy(e -> e.getSalary() > 7000));
+    System.out.println(collect6);
+    System.out.println("--------------");
+    DoubleSummaryStatistics collect7 = emps.stream().collect(Collectors.summarizingDouble(Employee::getSalary));
+    System.out.println(collect7.getMax());
+    System.out.println("--------------");
+    String collect8 = emps.stream().map(Employee::getName).collect(Collectors.joining(",","[","]"));
+    System.out.println(collect8);
+}
+
+结果为：
+张三
+李四
+王五
+赵六
+田七
+java
+---------------
+李四
+张三
+java
+王五
+赵六
+田七
+---------------
+李四
+张三
+java
+王五
+赵六
+田七
+---------------
+5556.323333333333
+{VOCATION=[Employee{name='赵六', age=15, salary=2222.99, Status=VOCATION}, Employee{name='田七', age=12, salary=5555.99, Status=VOCATION}, Employee{name='田七', age=13, salary=5555.99, Status=VOCATION}], BUSY=[Employee{name='张三', age=42, salary=9999.99, Status=BUSY}, Employee{name='王五', age=18, salary=3333.99, Status=BUSY}, Employee{name='田七', age=18, salary=5555.99, Status=BUSY}, Employee{name='java', age=21, salary=5555.99, Status=BUSY}], FREE=[Employee{name='李四', age=59, salary=6669.99, Status=FREE}, Employee{name='田七', age=18, salary=5555.99, Status=FREE}]}
+--------------
+{VOCATION={青年=[Employee{name='赵六', age=15, salary=2222.99, Status=VOCATION}, Employee{name='田七', age=12, salary=5555.99, Status=VOCATION}, Employee{name='田七', age=13, salary=5555.99, Status=VOCATION}]}, BUSY={青年=[Employee{name='王五', age=18, salary=3333.99, Status=BUSY}, Employee{name='田七', age=18, salary=5555.99, Status=BUSY}], 老年=[Employee{name='张三', age=42, salary=9999.99, Status=BUSY}], 中年=[Employee{name='java', age=21, salary=5555.99, Status=BUSY}]}, FREE={青年=[Employee{name='田七', age=18, salary=5555.99, Status=FREE}], 老年=[Employee{name='李四', age=59, salary=6669.99, Status=FREE}]}}
+--------------
+{false=[Employee{name='李四', age=59, salary=6669.99, Status=FREE}, Employee{name='王五', age=18, salary=3333.99, Status=BUSY}, Employee{name='赵六', age=15, salary=2222.99, Status=VOCATION}, Employee{name='田七', age=12, salary=5555.99, Status=VOCATION}, Employee{name='田七', age=13, salary=5555.99, Status=VOCATION}, Employee{name='田七', age=18, salary=5555.99, Status=FREE}, Employee{name='田七', age=18, salary=5555.99, Status=BUSY}, Employee{name='java', age=21, salary=5555.99, Status=BUSY}], true=[Employee{name='张三', age=42, salary=9999.99, Status=BUSY}]}
+--------------
+9999.99
+--------------
+[张三,李四,王五,赵六,田七,田七,田七,田七,java]
+```
+
+## Stream API练习
+
+```java
+//交易员类
+public class Trader {
+
+    private String name;
+    private String city;
+
+    public Trader() {
+    }
+
+    public Trader(String name, String city) {
+        this.name = name;
+        this.city = city;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    @Override
+    public String toString() {
+        return "Trader [name=" + name + ", city=" + city + "]";
+    }
+
+}
+```
+
+```java
+//交易类
+public class Transaction {
+
+    private Trader trader;
+    private int year;
+    private int value;
+
+    public Transaction() {
+    }
+
+    public Transaction(Trader trader, int year, int value) {
+        this.trader = trader;
+        this.year = year;
+        this.value = value;
+    }
+
+    public Trader getTrader() {
+        return trader;
+    }
+
+    public void setTrader(Trader trader) {
+        this.trader = trader;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
+    }
+
+    @Override
+    public String toString() {
+        return "Transaction [trader=" + trader + ", year=" + year + ", value="
+                + value + "]";
+    }
+
+}
+
+```
+
+```java
+public class TestTransaction {
+
+    List<Transaction> transactions = null;
+
+    @Before
+    public void before(){
+        Trader raoul = new Trader("Raoul", "Cambridge");
+        Trader mario = new Trader("Mario", "Milan");
+        Trader alan = new Trader("Alan", "Cambridge");
+        Trader brian = new Trader("Brian", "Cambridge");
+
+        transactions = Arrays.asList(
+                new Transaction(brian, 2011, 300),
+                new Transaction(raoul, 2012, 1000),
+                new Transaction(raoul, 2011, 400),
+                new Transaction(mario, 2012, 710),
+                new Transaction(mario, 2012, 700),
+                new Transaction(alan, 2012, 950)
+        );
+    }
+
+    //1. 找出2011年发生的所有交易， 并按交易额排序（从低到高）
+    @Test
+    public void test1(){
+        transactions.stream().filter(transaction -> transaction.getYear() == 2011)
+                .sorted(Comparator.comparingInt(Transaction::getValue))
+                //.sorted((v1,v2)->v2.getValue() - v1.getValue())   从高到低
+                .forEach(System.out::println);
+    }
+
+    //2. 交易员都在哪些不同的城市工作过？
+    @Test
+    public void test2(){
+        transactions.stream().map(transaction -> transaction.getTrader().getCity())
+                .distinct().forEach(System.out::println);
+    }
+
+    //3. 查找所有来自剑桥的交易员，并按姓名排序
+    @Test
+    public void test3(){
+        transactions.stream().map(Transaction::getTrader).filter(trader -> trader.getCity().equals("Cambridge"))
+                .sorted(Comparator.comparing(Trader::getName)).distinct()
+                .forEach(System.out::println);
+    }
+
+    //4. 返回所有交易员的姓名字符串，按字母顺序排序
+    @Test
+    public void test4(){
+        transactions.stream().map(transaction -> transaction.getTrader().getName())
+                .sorted().forEach(System.out::println);
+        System.out.println("----------------");
+        String collect = transactions.stream().map(transaction -> transaction.getTrader().getName())
+                .sorted().distinct().collect(Collectors.joining(",", "[", "]"));
+        System.out.println(collect);
+        System.out.println("----------------");
+        transactions.stream().map(transaction -> transaction.getTrader().getName()).flatMap(TestTransaction::filterCharacter)
+                .sorted(String::compareToIgnoreCase).forEach(System.out::print);
+    }
+
+    public static Stream<String> filterCharacter(String str){
+        List<String> list = new ArrayList<>();
+
+        for (Character ch : str.toCharArray()) {
+            list.add(ch.toString());
+        }
+
+        return list.stream();
+    }
+
+    //5. 有没有交易员是在米兰工作的？
+    @Test
+    public void test5(){
+        boolean milan = transactions.stream().anyMatch(transaction -> transaction.getTrader().getCity().equals("Milan"));
+        System.out.println(milan);
+    }
+
+
+    //6. 打印生活在剑桥的交易员的所有交易额
+    @Test
+    public void test6(){
+        Integer cambridge = transactions.stream().filter(transaction -> transaction.getTrader().getCity().equals("Cambridge"))
+                .map(Transaction::getValue).reduce(0, Integer::sum);
+        Integer cambridge1 = transactions.stream().filter(transaction -> transaction.getTrader().getCity().equals("Cambridge"))
+                .collect(Collectors.summingInt(Transaction::getValue));
+        Integer cambridge2 = transactions.stream().filter(transaction -> transaction.getTrader().getCity().equals("Cambridge"))
+                .mapToInt(Transaction::getValue).sum();
+
+        System.out.println(cambridge);
+        System.out.println(cambridge1);
+        System.out.println(cambridge2);
+    }
+
+
+    //7. 所有交易中，最高的交易额是多少
+    @Test
+    public void test7(){
+        Optional<Integer> max = transactions.stream().map(Transaction::getValue).max(Integer::compare);
+        System.out.println(max.orElse(0));
+    }
+
+    //8. 找到交易额最小的交易
+    @Test
+    public void test8(){
+        Optional<Transaction> min = transactions.stream().min(Comparator.comparingInt(Transaction::getValue));
+        System.out.println(min.get());
+    }
+}
+```
