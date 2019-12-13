@@ -51,3 +51,18 @@ of(id) : 用指定的时区信息获取 ZoneId 对象
 ## 与传统日期处理的转换
 
 {% asset_img 时间转换.png 时间转换%}
+
+```java
+//DateTimeFormatter:格式化时间/日期
+@Test
+public void test5() {
+    DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ISO_DATE;
+    LocalDateTime l = LocalDateTime.now();
+    String strDate = l.format(dateTimeFormatter);
+    System.out.println(strDate);
+    DateTimeFormatter dateTimeFormatter1 = DateTimeFormatter.ofPattern("yyyy年MM月dd日 HH:mm:ss");
+    System.out.println(l.format(dateTimeFormatter1));
+    LocalDateTime of = LocalDateTime.parse(l.format(dateTimeFormatter1), dateTimeFormatter1);
+    System.out.println(of);
+}
+```
