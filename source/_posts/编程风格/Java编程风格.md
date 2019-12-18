@@ -6,6 +6,8 @@ tags: 编程风格
 categories: [编程风格,Java编程风格]
 ---
 
+## 实体类编写规范
+
 ```java
 /**
  * 通过卷宗主键和创建人Id获得批注列表，以最后修改时间升序排列
@@ -23,3 +25,13 @@ public ResponseEntity<List<JzpzEntity>> getPzForPdf(@PathVariable(name = "caseId
 
 @ApiOperation是批注类，用在swagger上。
 @GetMapping不仅要设置value还要设置produces属性,并根据程序功能进行修改
+
+## 工具类编写规范
+
+```java
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public final class SortUtil
+```
+
+@NoArgsConstructor(access = AccessLevel.PRIVATE) lombok中用来生产私有构造方法的注解
+工具类不会被继承也不会被声明实例对象，因此要用final修饰，是为了防止其他程序员不小心声明对象浪费内存。

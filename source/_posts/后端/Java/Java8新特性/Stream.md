@@ -29,7 +29,7 @@ Stream 是 Java8 中处理集合的关键抽象概念，它可以指定你希望
 
 {% asset_img Stream流.png Stream流%}
 
-## 创建tream
+## 创建Stream
 
 Java8 中的 Collection 接口被扩展，提供了
 两个获取流的方法：
