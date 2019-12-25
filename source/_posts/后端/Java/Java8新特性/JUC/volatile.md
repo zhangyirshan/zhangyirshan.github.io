@@ -3,7 +3,7 @@ title: volatile
 p: 后端/Java/Java8新特性/JUC/volatile
 date: 2019-12-17 09:30:31
 tags: Java
-categories: [Java,JUC线程]
+categories: [Java,Java8新特性,JUC线程]
 ---
 ## Java JUC 简介
 

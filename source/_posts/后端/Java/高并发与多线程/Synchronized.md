@@ -69,3 +69,85 @@ count++，它看上去只是一个操作，实际上包含了三个动作：
 
 代码块形式：手动指定锁对象
 方发锁形式：synchronized修饰普通方法，锁对象默认为this
+
+```java
+// 代码块形式
+public class SynchronizedObjectCodeBlock2 implements Runnable {
+
+    static SynchronizedObjectCodeBlock2 instance = new SynchronizedObjectCodeBlock2();
+
+    Object lock1 = new Object();
+    Object lock2 = new Object();
+
+    @Override
+    public void run() {
+        synchronized (lock1) {
+            System.out.println("我叫lock1代码块形式。我叫" + Thread.currentThread().getName());
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println(Thread.currentThread().getName() + "lock1运行结束。");
+        }
+
+        synchronized (lock2) {
+            System.out.println("我收lock2代码块形式。我叫" + Thread.currentThread().getName());
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println(Thread.currentThread().getName() + "lock2运行结束。");
+        }
+    }
+
+    public static void main(String[] args) {
+        Thread t1 = new Thread(instance);
+        Thread t2 = new Thread(instance);
+        t1.start();
+        t2.start();
+        while (t1.isAlive() || t2.isAlive()) {
+
+        }
+        System.out.println("finished");
+    }
+}
+```
+
+```java
+//方发锁形式
+public class SynchronizedObjectMethod3 implements Runnable{
+
+    static SynchronizedObjectMethod3 instance = new SynchronizedObjectMethod3();
+
+    Object lock1 = new Object();
+    Object lock2 = new Object();
+
+    @Override
+    public void run() {
+        method();
+    }
+
+    public synchronized void method() {
+        System.out.println("我的对象锁 的方法修饰符形式 ，我叫" + Thread.currentThread().getName());
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println(Thread.currentThread().getName() + "运行结束。");
+    }
+
+    public static void main(String[] args) {
+        Thread t1 = new Thread(instance);
+        Thread t2 = new Thread(instance);
+        t1.start();
+        t2.start();
+        while (t1.isAlive() || t2.isAlive()) {
+
+        }
+        System.out.println("finished");
+    }
+}
+```
