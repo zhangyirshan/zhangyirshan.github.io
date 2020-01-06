@@ -35,3 +35,7 @@ public final class SortUtil
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE) lombok中用来生产私有构造方法的注解
 工具类不会被继承也不会被声明实例对象，因此要用final修饰，是为了防止其他程序员不小心声明对象浪费内存。
+
+## 判断语句
+
+如果只有两种情况，那就用if/else，就算else可以省略也不要省略，这样为了方便代码阅读者理清的思维逻辑，可以更加快速的读懂你的代码
