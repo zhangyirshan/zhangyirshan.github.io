@@ -22,10 +22,6 @@
             position: relative;
         }
 
-        .box:hover {
-            border-bottom-color: #ffffff;
-        }
-
         .box .detail{
             display: none;
             width: 500px;
@@ -41,21 +37,35 @@
             z-index: -1;
             cursor: pointer;
         }
-
-        .box:hover .detail{
-            display: block;
-        }
-
-        /* 如果是点击实现显示没不需要基于JS也可以，可以基于:target实现手风琴效果*/
     </style>
 </head>
 <body>
     <!-- 基于CSS实现，我们需要让详情区域是按钮的子元素 -->
-    <div class="box">
+    <div class="box" id = "box">
         <span>购物车</span>
-        <div class="detail">
+        <div class="detail" id="detail">
             购物车相关信息
         </div>
     </div>
+    <!-- 
+        传统基于操作DOM的方式实现业务需求
+        1. 想操作谁就先获取谁
+        2. 给某元素绑定某事件
+        3. 在事件触发的时候修改元素的样式等
+     -->
+     <!-- import js -->
+     <script>
+         // document.getElementById([ID])：在整个文档中，通过元素的ID获取到当前这个元素对象
+         let box = document.getElementById('box')
+         let detail = document.getElementById('detail')
+
+         // 元素对象.onxxx = function(){}: 事件绑定，xxx事件类型（click/mouseover/mousedown/keydown...）
+         box.onclick = function () {
+             // 元素对象.style.xxx = xxx 修改元素的某一个样式值
+            detail.style.display = 'block'
+            box.style.borderBottomColor = '#FFF'
+
+         }
+     </script>
 </body>
 </html>

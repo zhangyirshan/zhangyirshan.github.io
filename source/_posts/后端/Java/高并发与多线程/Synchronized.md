@@ -151,3 +151,114 @@ public class SynchronizedObjectMethod3 implements Runnable{
     }
 }
 ```
+
+### 第二个用法：类锁
+
+**只有一个Class对象**：Java类可能会有很多个对象，但是只有一个Class对象。
+**本质**：所以所谓的类所，不过是Class对象的锁而已。
+**用法和效果**：类锁只能在同一时刻被一个对象拥有。
+
+> 两种形式
+    1. 形式1：synchronized加static方法上
+    2. 形式2：synchronized（*.class）代码块
+
+```java
+// 形式1：synchronized加static方法上
+public class SynchronizedClassStatic4 implements Runnable{
+    static SynchronizedClassStatic4 instance1 = new SynchronizedClassStatic4();
+    static SynchronizedClassStatic4 instance2 = new SynchronizedClassStatic4();
+
+    @Override
+    public void run() {
+        method();
+    }
+
+    public static synchronized void method(){
+        System.out.println("我的类锁 的第一种形式 ，我叫" + Thread.currentThread().getName());
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println(Thread.currentThread().getName() + "运行结束。");
+    }
+
+
+    public static void main(String[] args) {
+        Thread t1 = new Thread(instance1);
+        Thread t2 = new Thread(instance2);
+        t1.start();
+        t2.start();
+        while (t1.isAlive() || t2.isAlive()) {
+
+        }
+        System.out.println("finished");
+    }
+}
+
+// 形式2：synchronized（*.class）代码块
+public class SynchronizedClassClass5 implements Runnable {
+    static SynchronizedClassClass5 instance1 = new SynchronizedClassClass5();
+    static SynchronizedClassClass5 instance2 = new SynchronizedClassClass5();
+    @Override
+    public void run() {
+        method();
+    }
+    public void method(){
+        synchronized (SynchronizedClassClass5.class) {
+            System.out.println("我是类锁的第二种形式：synchronized（*.class）。我叫" + Thread.currentThread());
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println(Thread.currentThread() + "运行结束");
+        }
+    }
+    public static void main(String[] args) {
+        Thread t1 = new Thread(instance1);
+        Thread t2 = new Thread(instance2);
+        t1.start();
+        t2.start();
+        while (t1.isAlive() || t2.isAlive()) {
+
+        }
+        System.out.println("finished");
+    }
+}
+
+```
+
+## 多线程访问同步方法的7中情况（面试常考）
+
+1. 两个线程同时访问一个对象的同步方法                    =>  串行
+2. 两个线程访问的使两个对象的同步方法                    =>  并行
+3. 两个线程访问的是synchronized的静态方法               =>  串行
+4. 同时访问同步方法与非同步方法                         =>  并行
+5. 访问同一个对象的不同的普通同步方法                   =>  串行
+6. 同时访问静态synchronized和非静态synchronized方法     =>  并行
+7. 方法抛异常后，会**释放锁**(lock不会释放)
+
+### 核心思想
+
+1. 一把锁只能同时被一个线程获取，没有拿到锁的线程必须等待（1，5）
+2. 每个实例都对应有自己的一把锁，不同势力之间互不影响；例外：锁对象是*.class以及synchronized修饰的是static方法的时候，所有对象公用同一把类锁（2，3，4，6）
+3. 无论是方法正常执行完毕或者方法抛出异常，都会释放锁（7）
+
+## 性质
+
+### 可重入
+
+> 什么是可重入：指的是同一线程的外层函数获得锁之后，内层函数可以直接再次获取该锁
+
++ 好处：避免死锁、提升封装性
++ 粒度：线程而非调用（用3种情况来说明和pthread的区别）
+  + 情况1：证明同一个方法是可重入的
+  + 情况2：证明可重入不要求是同一个方法
+  + 情况3：证明可重入不要求是同一个类种的
+
+### 不可中断
+
+一旦这个锁已经被别人获得了，如果我还想获得，我只能选择等待或者阻塞，知道别的线程**释放**这个锁。如果别人永远不释放锁，那么我只能永远地等下去。
+
+相比之下，未来会介绍的Lock类，可以拥有中断的能力，第一点，如果我觉得我等的时间太长了，有权中断现在已经获取到锁的线程的执行；第二点，如果我觉得我等待的时间太长了不想再等了，也可以退出。
