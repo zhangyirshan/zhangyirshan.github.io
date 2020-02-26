@@ -46,3 +46,26 @@ categories: [前端,JS]
 - for of循环（ES6新增）
 - while循环
 - do while循环
+
+#### for in
+
+for(var 变量(key) in 对象)
+对象中有多少组键值对，循环就执行几次（除非break结束）
+
+```js
+var obj = {
+    name: '春亮',
+    age: 52,
+    friends: '王鹏，志刚',
+    1: 223
+    2: 33
+    4: 231
+}
+for ( var key in obj){
+    // 每一次循环key变量存储的值: 当前对象的属性名
+    // 获取属性值：obj[属性名] => obj[key] obj.key/obj['key']
+    console.log('' + key + '' + obj[key])
+}
+```
+
+for in 在遍历的时候，优先循环数字属性名（从小到大）
