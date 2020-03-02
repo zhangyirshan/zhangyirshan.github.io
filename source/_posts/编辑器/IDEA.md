@@ -10,3 +10,11 @@ categories: [编辑器,IDEA]
 1. NetBeans <http://netbeans.org/>
 2. Intellij IDEA (公认最好的Java开发工具之一）
 3. Eclipse
+
+## 快捷键
+
+1. IDEA在当前类中查找方法快捷键
+例如在String类中查找contains方法。
+Ctrl + F12
+
+2. 格式化：Ctrl+Alt+L
