@@ -7,4 +7,5 @@ categories: [Java,Java SE]
 ---
 
 {% asset_img Java异常体系.png Java异常体系 %}
-
+Error和RuntimeException共同构成了非检查异常；
+IOException受检查异常，应该对其提前进行处理，提供程序的健壮性。
