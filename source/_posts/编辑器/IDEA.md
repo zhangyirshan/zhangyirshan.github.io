@@ -18,5 +18,5 @@ categories: [编辑器,IDEA]
 Ctrl + F12
 
 2. 格式化：Ctrl+Alt+L
-
 3. Alt + Ins 快速创建构造方法
+4. Ctrl + Alt + O 自动清楚无用包

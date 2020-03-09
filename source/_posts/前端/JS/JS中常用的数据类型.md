@@ -150,4 +150,3 @@ console.log(alert(1))
 结果是undefined，原因是alert函数没有返回值（默认返回值undefined）
 
 ```
-
