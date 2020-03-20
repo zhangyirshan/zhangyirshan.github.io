@@ -1,6 +1,5 @@
 ---
 title: List
-p: 后端/Java/List
 date: 2019-11-25 13:31:17
 tags: Java
 categories: [Java,Java SE]

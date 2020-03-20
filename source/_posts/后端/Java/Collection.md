@@ -1,6 +1,5 @@
 ---
 title: 集合
-p: 后端/Java/集合
 date: 2019-11-25 10:40:17
 tags: Java
 categories: [Java,Java SE]

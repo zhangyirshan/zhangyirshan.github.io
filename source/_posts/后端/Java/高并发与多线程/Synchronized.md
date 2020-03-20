@@ -155,7 +155,7 @@ public class SynchronizedObjectMethod3 implements Runnable{
 ### 第二个用法：类锁
 
 **只有一个Class对象**：Java类可能会有很多个对象，但是只有一个Class对象。
-**本质**：所以所谓的类所，不过是Class对象的锁而已。
+**本质**：所以所谓的类锁，不过是Class对象的锁而已。
 **用法和效果**：类锁只能在同一时刻被一个对象拥有。
 
 > 两种形式
