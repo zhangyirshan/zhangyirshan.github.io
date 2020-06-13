@@ -96,3 +96,101 @@ fopen函数的功能是打开文件，参数主要有两个：
 
 >fclose函数的功能是关闭资源。资源有打开就有关闭。
 
+## 写入文件
+
+### file_put_contents写入文件
+
+```php
+int file_put_contents ( string $文件路径, string $写入数据])
+```
+
+功能：向指定的文件当中写入一个字符串，如果文件不存在则创建文件。返回的是写入的字节长度
+
+### fwrite配合fopen进行写入操作
+
+```php
+int fwrite ( resource $文件资源变量, string $写入的字符串 [, int 长度])
+// 注：fwrite的别名函数是fputs
+```
+
+```php
+<?php
+   $filename = 'test.txt';
+   $fp= fopen($filename, "w");
+   $len = fwrite($fp, '我是一只来自北方的狼，却在南方冻成了狗');
+   fclose($fp);
+   print $len .'字节被写入了\n';
+```
+
+总结：
+
+1. 不论有没有新建都会打开文件重新写入
+2. 原有的文件内容会被覆盖掉
+3. 文件不存在会创建
+
+## 创建临时文件
+
+我们之前创建的文件都是永久文件。
+
+而创建临时文件在我们平时的项目开发中也非常有用。创建临时文件的几个好处：
+
+文完后即删除
+
+不需要去维护这个文件的删除状态
+
+例如：我需要把A的文件内容转存B里面，把B的文件内容转存到C里面。
+
+```php
+resource tmpfile ( )
+```
+
+功能：创建一个临时文件，返回资源类型。关闭文件即被删除。
+
+```php
+//创建了一个临时文件
+$handle = tmpfile();
+//向里面写入了数据
+$numbytes = fwrite($handle, '写入临时文件');
+//关闭临时文件，文件即被删除
+fclose($handle);
+echo  '向临时文件中写入了'.$numbytes . '个字节';
+
+向临时文件中写入了18个字节
+```
+
+## 移动、拷贝和删除文件
+
+### 重命名文件
+
+```php
+bool rename($旧名,$新名);
+这个函数返回一个bool值，将旧的名字改为新的名字。
+```
+
+```php
+//旧文件名
+$filename = 'test.txt';
+//新文件名
+$filename2 = $filename . '.old';
+//复制文件
+rename($filename, $filename2);
+```
+
+### 复制文件
+
+```php
+bool copy(源文件,目标文件)
+功能：将指定路径的源文件，复制一份到目标文件的位置。
+```
+
+```php
+//旧文件名
+$filename = 'copy.txt';
+//新文件名
+$filename2 = $filename . '_new';
+//修改名字。
+copy($filename, $filename2);
+```
+
+### 删除文件
+
