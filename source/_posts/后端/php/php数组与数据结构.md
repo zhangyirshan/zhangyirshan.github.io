@@ -138,3 +138,172 @@ var_dump($minren);
 
 echo '</pre>';
 ```
+
+## 遍历数组
+
+### ​foreach遍历关联数组
+
+```php
+foreach( 要循环的数组变量 as [键变量 =>] 值变量){
+//循环的结构体
+}
+```
+
+### list、each函数遍历数组
+
+list ( mixed $变量1 [, mixed $变量n ] )
+
+```php
+<?php
+list($one, $two, $three) = array(2 => '张三', '李四', '王五');
+echo '$one----' . $one . '<br />';
+echo '$two----' . $two . '<br />';
+echo '$three----' . $three . '<br />';
+?>
+$one----
+$two----
+$three----张三
+```
+
+1. 因为是一一对应原则，$one找不到下标为0的数组元素，$two找不到下标为1的数组元素，只有$three找到了下标为2的数组元素
+2. 在list($one, $two, $three)，我只写了三个变量。对应完成，无需再对应后面的变量了，丢弃李四和王五。
+
+array each ( array &$array )
+
+```php
+<?php
+
+//定义一个变量叫$kongjie(空姐)
+$kongjie=[
+   'gao'=>'穿黑衣服的',
+   'shou'=>'退特别长特别细',
+   'mei'=>'好白',
+   ];
+
+//第一次each
+$data = each($kongjie);
+
+echo '<pre>';
+var_dump($data);
+echo '</pre>';
+
+echo '-----华丽丽分割线------<br />';
+
+
+//第2次each
+$data = each($kongjie);
+
+echo '<pre>';
+var_dump($data);
+echo '</pre>';
+
+echo '-----华丽丽分割线------<br />';
+
+//第3次each【执行到了最后一个元素了】
+$data = each($kongjie);
+
+echo '<pre>';
+var_dump($data);
+echo '</pre>';
+
+echo '-----华丽丽分割线------<br />';
+
+//第4次【此时，后面已没有可操作的元素了，看返回什么】
+$data = each($kongjie);
+
+echo '<pre>';
+var_dump($data);
+echo '</pre>';
+
+echo '-----华丽丽分割线------<br />';
+
+?>
+
+array(4) {
+  [1]=>
+  string(15) "穿黑衣服的"
+  ["value"]=>
+  string(15) "穿黑衣服的"
+  [0]=>
+  string(3) "gao"
+  ["key"]=>
+  string(3) "gao"
+}
+
+-----华丽丽分割线------
+
+array(4) {
+  [1]=>
+  string(21) "退特别长特别细"
+  ["value"]=>
+  string(21) "退特别长特别细"
+  [0]=>
+  string(4) "shou"
+  ["key"]=>
+  string(4) "shou"
+}
+
+-----华丽丽分割线------
+
+array(4) {
+  [1]=>
+  string(6) "好白"
+  ["value"]=>
+  string(6) "好白"
+  [0]=>
+  string(3) "mei"
+  ["key"]=>
+  string(3) "mei"
+}
+
+-----华丽丽分割线------
+
+bool(false)
+
+-----华丽丽分割线------
+
+```
+
+1. 读一次向后移动一次【可以想象有一个记录的箭头在移动】，将其中的每个元素拆解成一个新数组。
+2. 读取到最后，没有可操作的元素了，所以返回了false。
+
+### list、each配合使用
+
+```php
+<?php
+
+//定义一个变量叫$kongjie(空姐)
+$kongjie=[
+   'gao'=>'穿黑衣服的',
+   'shou'=>'腿特别长特别细',
+   'mei'=>'好白',
+   ];
+
+list($key,$value) = each($kongjie);
+
+echo $key. '-----' .$value .'<br />';
+
+?>
+
+gao-----穿黑衣服的
+
+<?php
+
+//定义一个变量叫$kongjie(空姐)
+$kongjie=[
+   'gao'=>'穿黑衣服的',
+   'shou'=>'退特别长特别细',
+   'mei'=>'好白',
+   ];
+
+while(list($key,$value) = each($kongjie)){
+
+   echo $key. '-----' .$value .'<br />';
+
+}
+
+?>
+gao-----穿黑衣服的
+shou-----退特别长特别细
+mei-----好白
+```
