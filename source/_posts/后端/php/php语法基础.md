@@ -152,6 +152,8 @@ $dingjie = <<<ABC
    <i>距离的话</i>
    我想说：<h1>思想有多远，你就跟我滚多远</h1>
 ABC;
+
+$str1= "asb{$str}dwqd" // asb如果非要在滚犊子前面加上一个时间的话我愿意是马上。dwqd
 ```
 
 ##### 双引号和单引号有什么区别
@@ -164,6 +166,16 @@ ABC;
 6. 双号和单引号可以互插！！！双引号当中插入单引号，单引号当中插入变量，这个变量会被解析。
 7. 神奇的字符串拼接胶水——（.）点，用来拼接字符串。
 8. 我们将定界符声明字符串视为双引号一样的功能来看待。
+
+##### 字符串相关函数
+
+1. 转换函数：implode() , explode() , str_split()
+2. 截取函数：trim() , ltrim() , rtrim()
+3. 截取函数：substr(), strstr()
+4. 大小转换函数：strtltlower() , strtoupper() , ucfirst()
+5. 查找函数: strpos() , strrpos()
+6. 格式化函数：printf() , sprintf()
+7. 其他：str_repeat() , str_shuffle()
 
 #### 浮点型
 
