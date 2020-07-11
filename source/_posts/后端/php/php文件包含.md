@@ -32,3 +32,73 @@ use Sdbean\Service\GetHallBannerService;
 
 include_once("../tools/toolIndex.php");
 ```
+
+### 文件加载原理
+
+PHP代码的执行流程
+
+1. 读取代码（PHP程序）
+2. 编译：将PHP代码转换成字节码（生成opcode）
+3. zendengine来解析opcode，按照字节码去进行逻辑运算
+4. 转换成对应的HTML代码
+
+文件加载原理：
+
+1. 当文件加载（include或者require）的时候，系统会自动的将被包含文件中的代码相当于嵌入到当前文件中
+2. 加载位置：在哪加载，对应的文件中的代码嵌入的位置就是对应的include位置
+3. 在PHP中被包含的文件时单独进行编译的
+
+PHP文件在编译的过程中如果出现了语法错误，那么会失败（不会执行）；但是如果被包含文件有错误的时候，系统会在执行到包含include这条语句对的时候才会报错。
+
+### include和require区别
+
+include和include_once区别：
+include系统会碰到一次，执行一次；如果对同一个文件进行多次加载，那么系统会执行多次；
+include_once：系统碰到措辞，也只会执行一次
+
+```php
+include1.php
+
+$a = 1;
+define('PI',3.14);
+
+include2.php
+
+// 包含文件
+include 'include1.php'; // 包含当前文件include2.php所在文件夹下的include1.php
+echo $a,PI;
+// 再次包含
+include 'include1.php';
+
+13.14
+报错：PI常量已经存在
+```
+
+include的错误级别比较轻：不会阻止代码执行
+require要求较高：如果包含出错代码不再执行（require后面的代码）
+
+### 文件加载路径
+
+文件在加载的时候需要指定文件路径才能保证PHP正确的找到对应的文件。
+
+文件的加载路径包含两大类：
+
+1. 绝对路径：
+    从磁盘的根目录开始（本地绝对路径）
+    Windows：盘符C:/路径/PHP文件
+    Linux：/路径/PHP文件
+    从网站根目录开始（网络绝对路径）
+    /: 相对于网站主机名字对应的路径
+    localhost/index.php->E:/server/xampp/htdoc/index.php
+2. 相对路径：从当前文件所在目录开始的路径
+    .或者./ : 表示当前文件夹
+    ../ : 上级目录（当前文件夹的上一层文件夹）
+
+绝对路径和相对路径的加载区别：
+
+1. 绝对路径相对效率偏低，但是相对安全
+2. 相对路径相对效率高些，但是容易出错（相对路径会发生改变）
+
+### 文件嵌套包含
+
+文件嵌套包含：一个文件包含另外一个文件，同时被包含的文件又包含了另外一个文件。
