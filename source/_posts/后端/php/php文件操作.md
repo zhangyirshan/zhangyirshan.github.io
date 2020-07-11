@@ -1,5 +1,5 @@
 ---
-title: php语法基础
+title: php文件操作
 p: 后端/php/php文件操作
 date: 2020-06-11 22:15:09
 tags: php
