@@ -174,8 +174,14 @@ $str1= "asb{$str}dwqd" // asb如果非要在滚犊子前面加上一个时间的
 3. 截取函数：substr(), strstr()
 4. 大小转换函数：strtltlower() , strtoupper() , ucfirst()
 5. 查找函数: strpos() , strrpos()
-6. 格式化函数：printf() , sprintf()
-7. 其他：str_repeat() , str_shuffle()
+   Strops(): 判断字符在目标字符串中出现的位置（首次）。注意判断为null需要用全等
+   Strrpos(): 判断字符在目标字符串中最后出现的位置
+6. 替换函数：str_replace()
+   Str_replace(匹配目标，替换内容, 字符串本身): 将目标字符串中部分字符串进行替换
+7. 格式化函数：printf() , sprintf()
+8. 其他：str_repeat() , str_shuffle()
+   str_repeat(): 重复某个字符串N次
+   str_shuffle(): 随机打乱字符串
 
 #### 浮点型
 
