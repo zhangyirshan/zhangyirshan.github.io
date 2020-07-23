@@ -32,3 +32,4 @@ Codename:       n/a
 将数据源改为阿里的镜像数据源`deb [by-hash=force] https://mirrors.aliyun.com/deepin/ panda main contrib non-free`
 更新数据源：`sudo apt-get update`
 更新软件,就重新安装一遍
+纯净卸载：`sudo apt-get autoremove nano`,连带nano依赖一起删除
