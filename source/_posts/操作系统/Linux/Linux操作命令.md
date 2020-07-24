@@ -17,6 +17,15 @@ categories: Linux
 云服务器    一台超级计算机 1TB 硬盘 128G 内存，云服务器是没有交换空间的
                 开辟一个空间    20GB 1G
 
+### Linuxw文件操作命令
+
+```shell
+如果无法找到ls或其他命令
+export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin
+压缩文件
+# tar -xzvf test.tar.gz
+```
+
 ### 重启
 
 - reboot
