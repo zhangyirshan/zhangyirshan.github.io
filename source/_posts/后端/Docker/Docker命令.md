@@ -68,3 +68,27 @@ $ exit
 
 删除容器是`docker rmi 容器id`
 删除镜像是`docker rm 镜像id`
+
+## 定制镜像
+
+```shell
+cd /usr/local/
+mkdir docker
+cd docker
+mkdir tomcat
+cd tomcat
+vi Dockerfile
+
+FROM tomcat:8.5.32
+RUN echo "Hello Docker" > /usr/local/tomcat/webapps/ROOT/index.html
+
+
+FROM tomcat:8.5.32
+
+WORKDIR /usr/local/tomcat/webapps/ROOT/
+RUN rm -fr *
+RUN echo "Hello Docker" > /usr/local/tomcat/webapps/ROOT/index.html
+
+// 构建镜像
+docker build -t mytomcat .
+```
