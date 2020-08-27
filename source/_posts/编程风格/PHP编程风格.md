@@ -72,3 +72,22 @@ date("Y-m-d")
 | i          | 分钟格式，有前导0                            | i          | 分钟格式，有前导0                            |
 | s          | 秒格式，有前导0                               | s          | 秒格式，有前导0                               |
 | A          | 大写上下午，如AM，a为小写                 | A          | 大写上下午，如AM，a为小写                 |
+
+## CURL
+
+```php
+public function Curl(string $url, $param) {
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "POST");
+        curl_setopt($curl, CURLOPT_POSTFIELDS,json_encode($param));
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER,true);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, array(
+                'Content-Type: application/json',
+                'Content-Length: ' . strlen(json_encode($param)))
+        );
+        $data = curl_exec($curl);
+        curl_close($curl);
+        return $data;
+    }
+```
