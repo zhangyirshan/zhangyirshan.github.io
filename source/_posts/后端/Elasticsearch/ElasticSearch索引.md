@@ -8,6 +8,7 @@ categories: Elasticsearch
 
 {% asset_img index.png index.png%}
 
+[kibana](https://kibana.53site.com/app/kibana#/management/elasticsearch/index_management/indices?_g=())
 创建一个索引的基本流程：
 
 1. 确定索引名
