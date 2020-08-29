@@ -10,6 +10,8 @@ categories: Docker
 ```shell
 $ curl -fsSL get.docker.com -o get-docker.sh
 $ sh get-docker.sh --mirror Aliyun           # 从阿里云国内资源上下载
+$ curl -L "https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose # 安装docker compse
+$ chmod +x /usr/local/bin/docker-compose # 加可执行权限
 ```
 
 ## Ubuntu 16.04+、Debian8+、CentOS7
@@ -131,4 +133,34 @@ WORKDIR [工作目录]切换工作目录
 RUN 运行一个容器，后面可以接shell命令
 ADD [文件名] [粘贴的目标路径]复制文件，如果是压缩包并且格式为tar、gzip、bzip2、xz就会复制后解压缩
 EXPOSE <端口1> [<端口2> ...]暴露端口
+```
+
+## Docker-compose
+
+> Docker-Compose项目是Docker官方的开源项目，负责实现对Docker容器集群的快速编排。Docker-Compose将所管理的容器分为三层，分别是项目（project）->服务（service）->容器（container）。
+
+在`/usr/local/docker/tomcat/`下编写docker-compose.yml文件
+
+```yml
+version: '4' # docker-compose的版本号
+service: # 服务
+  tomcat: # 服务名（随便起名）
+    restart: always # 总是重启
+    image: tomcat:8.5.2   # 镜像名tomcat
+    container_name: tomcat:8.5.2 # 容器名
+    ports:
+      - 8080:8080
+
+  redis:
+    image: "redis"
+```
+
+如果没有tomcat：8.5.2会先下载然后再启动
+
+```shell
+# docker-compose命令必须在有docker-compose.yml文件所在的目录下，因为上下文
+docker-compose up # 运行配置文件
+docker-compose down # 删除容器
+docker-compose up -d # 运行配置文件中的服务，以守护态的形式
+docker-compose logs tomcat # 看tomcat容器日志
 ```
