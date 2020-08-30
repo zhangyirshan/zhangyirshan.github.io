@@ -176,11 +176,8 @@ public static void main(String[] args) {
 public class ESUtil {
     private static final String Content_Type = "application/json; charset=UTF-8";
     // 线上es
-    private static final String uri = "http://172.16.50.35:9200/";
-    private static final String Authorization = "Basic ZWxhc3RpYzpNYW5nb3N0ZWVuMCE=";
-    // 本地es
-//    private static final String uri = "http://192.168.2.72:9200/";
-//    private static final String Authorization = "Basic ZWxhc3RpYzpMQTE5NTRiIQ==";
+    private static final String uri = "http://123.254.33.254:8978/";
+    private static final String Authorization = "Basic asdasdwadsaxs-213xzd";
 
     public static String mergeIndex(String newIndex, List<String> source) throws IOException {
 
