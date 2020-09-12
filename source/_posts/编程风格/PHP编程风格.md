@@ -43,6 +43,12 @@ public function updateUserAnimationState($itemId, $userNo) {
 
 当需要判断数组不为空且长度大于0时
 使用`empty($arr)`
+如果希望对象等于NULL，`ISNULL($arr)`
+长度大于0, `sizeof($arr) > 0`
+
+## 对象是否相等
+
+`strcamp($a,$b) === 0`,会将变量a，b转为字符串进行比较
 
 ## 循环
 
