@@ -26,6 +26,11 @@ export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/b
 # tar -xzvf test.tar.gz
 ```
 
+tail 命令可用于查看文件的内容，有一个常用的参数 -f 常用于查阅正在改变的日志文件。
+tail -f filename 会把 filename 文件里的最尾部的内容显示在屏幕上，并且不断刷新，只要 filename 更新就可以看到最新的文件内容。
+显示文件 notes.log 的内容，从第 20 行至文件末尾:`tail +20 notes.log`
+显示文件 notes.log 的最后 10 个字符: `tail -c 10 notes.log`
+
 ### 重启
 
 - reboot
@@ -34,6 +39,57 @@ export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/b
 ### 关机
 
 - shutdown -h now
+
+### 查询正在运行的进程
+
+使用ps -ef查看所有进程
+使用ps axu，查看所有进程
+如果想查询特定进程，可以使用
+
+（1）ps -ef|grep 名称
+
+（2）ps aux|grep 名称
+
+### 停止进程
+
+通过kill 进程id的方式可以实现,
+首先需要知道进程id, 例如,想要杀死firefox的进程,通过 ps -ef|grep firefox,可以查到firefox的进程id:
+然后通过 kill 3781 就可以关闭进程了.
+补充: 1. kill -9 来强制终止退出, 例如: kill -9 3781
+
+### 查询程序内存或cpu的使用情况
+
+- htop常用功能键
+
+    F1 : 查看htop使用说明
+    F2 : 设置
+    F3 : 搜索进程
+    F4 : 过滤器，按关键字搜索
+    F5 : 显示树形结构
+    F6 : 选择排序方式
+    F7 : 减少nice值，这样就可以提高对应进程的优先级
+    F8 : 增加nice值，这样可以降低对应进程的优先级
+    F9 : 杀掉选中的进程
+    F10 : 退出htop
+
+    / : 搜索字符
+    h : 显示帮助
+    l ：显示进程打开的文件: 如果安装了lsof，按此键可以显示进程所打开的文件
+    u ：显示所有用户，并可以选择某一特定用户的进程
+    s : 将调用strace追踪进程的系统调用
+    t : 显示树形结构
+
+    H ：显示/隐藏用户线程
+    I ：倒转排序顺序
+    K ：显示/隐藏内核线程    
+    M ：按内存占用排序
+    P ：按CPU排序    
+    T ：按运行时间排序
+
+    上下键或PgUP, PgDn : 移动选中进程
+    左右键或Home, End : 移动列表    
+    Space(空格) : 标记/取消标记一个进程。命令可以作用于多个进程，
+例如 "kill"，将应用于所有已标记的进程
 
 ## Linux编辑器
 

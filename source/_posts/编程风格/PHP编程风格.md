@@ -48,7 +48,7 @@ public function updateUserAnimationState($itemId, $userNo) {
 
 ## 对象是否相等
 
-`strcamp($a,$b) === 0`,会将变量a，b转为字符串进行比较
+`strcmp($a,$b) === 0`,会将变量a，b转为字符串进行比较
 
 ## 循环
 
