@@ -8,6 +8,32 @@ categories: [编程风格,Java编程风格]
 
 ## 实体类编写规范
 
+一般都是使用@DateTimeFormat把传给后台的时间字符串转成Date，使用@JsonFormat把后台传出的Date转成时间字符串，但是@DateTimeFormat只会在类似@RequestParam的请求参数（url拼接的参数才生效，如果是放到RequestBody中的form-data也是无效的）上生效，如果@DateTimeFormat放到@RequestBody下是无效的。
+
+在@RequestBody中则可以使用@JsonFormat把传给后台的时间字符串转成Date，也就是说@JsonFormat其实既可以把传给后台的时间字符串转成Date也可以把后台传出的Date转成时间字符串。
+
+```java
+@Data
+@ApiModel("礼堂入参")
+public class WeddingAppointmentHallPagePO {
+    @ApiModelProperty("cpId")
+    @NotNull
+    private Integer cpId;
+
+    @ApiModelProperty("页码，20条为1页")
+    @NotNull
+    @Min(value = 2,message = "页码最小为2")
+    private Integer page;
+
+    @ApiModelProperty("日期")
+    @NotNull
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date date;
+}
+```
+
+## controller编写规范
+
 ```java
 /**
  * 通过卷宗主键和创建人Id获得批注列表，以最后修改时间升序排列
