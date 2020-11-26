@@ -25,18 +25,20 @@ telnet 127.0.0.1 7080
 
 ## 结构分析
 
-1. mina在应用程序中出于什么地位
-    主要屏蔽了网络通信的一些细节，对socket进行封装，并且是NIOde一个实现架构，可以帮助我们快速的开发网络通信。常常用于游戏的开发，中间件等服务端程序。
+1. mina在应用程序中处于什么地位
+    主要屏蔽了网络通信的一些细节，对socket进行封装，并且是NIO的一个实现架构，可以帮助我们快速的开发网络通信。常常用于游戏的开发，中间件等服务端程序。
 2. IOService接口
     用于描述我们的客户端和服务端接口，其子类是connector和Acceptor，分别用于描述我们的客户端和服务端。IOproceser多线程环境来处理我们的连接请求流程。IOFilter提供数据的过滤工作：包括编解码，日志等信息的过滤，Hanlder就是我们的业务对象，自定义的handler需要实现IOHandlerAcceptor
 3. 大致看看我的类图结构
+
                         IOService
     IOconnector                         IOAcceptor
     NIOSocketConnector                  NIOSocketAcceptor
 
 IOsession：描述的是客户端和服务端连接的描述。常常用于接受和发送数据。
 
-总结： IOconnector -> IOProcessor -> IOFilter -> Handler
+总结： 
+       IOconnector -> IOProcessor -> IOFilter -> Handler
        IOAcceptor -> IOProcessor -> IOFilter -> Handler
 
 ## 长短连接
