@@ -28,3 +28,4 @@ Ctrl + F12
 4. Ctrl + Alt + O 自动清楚无用包
 
 [IDEA](http://idea.medeming.com/jets/)
+[IDEA破解](https://zhile.io/2020/11/18/jetbrains-eval-reset.html)
