@@ -255,7 +255,7 @@ about:  # 以下仅为页面顶部的基本信息，更多内容请在 ./pages/a
   banner_img_height: 80  # available: 0 - 100
   avatar: /img/Avatar.gif # 头像
   name: 张议
-  introduce: 96 / 沈阳 / 单身找对象(*^__^*) 嘻嘻 # 支持 HTML
+  introduce: 96 / 沈阳 # 支持 HTML
   icons: # 更多图标可从 https://fontawesome.com/icons 查找，并以 "图标名: url" 的格式添加在下方
     "fab fa-github": https://github.com/JavaMatthew
     # "fab fa-twitter": https://twitter.com
