@@ -30,4 +30,7 @@ List<Audioconverttochn> audioConvertToCHNList = gameService.selectAudioConvertTo
 
 ## 解决办法
 
+
+在mybatis上添加flushCache="true"
+`<select id="getItemByItemDicId" resultType="com.mega.werewolf.cloud.jp.common.dto.ItemDTO" flushCache="true">`
 new ArrayList(creditDao.selectxxx());
