@@ -106,6 +106,7 @@ rdbchecksum yes                     # 是否对rdb文件进行校验和检验
 {% asset_img no.png no%}
 
 |命令|always|everysec|no|
+|--|--|--|--|
 |优点|不丢失数据|每秒一次fsync丢1秒数据|不用管|
 |缺点|IO开销较大，一般的sata盘只有几百TPS|丢1秒数据|不可控|
 
@@ -154,6 +155,7 @@ auto-aof-rewrite-min-size 64mb
 ## RDB与AOF对比
 
 |命令|RDB|AOF|
+|--|--|--|
 |启动优先级|低|高|
 |体积|小|大|
 |恢复速度|快|慢|
