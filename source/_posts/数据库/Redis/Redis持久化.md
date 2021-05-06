@@ -116,7 +116,6 @@ rdbchecksum yes                     # 是否对rdb文件进行校验和检验
 - 加速恢复速度
 
 ### AOF重写实现两种方式
-
 #### bgrewriteaof命令
 
 {% asset_img bgrewriteaof.png bgrewriteaof%}
