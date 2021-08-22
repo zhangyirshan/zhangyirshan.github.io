@@ -109,8 +109,9 @@ sheft + g 直达文件底部
 2. :wq 保存后退出vi，并可以新建文件
 3. :q! 强制退出
 4. :w file 将当前内容保存成某个文件
-5. :set number 在编辑文件显示行号
+5. :set nu/number 在编辑文件显示行号
 6. :set nonumber 在编辑文件不显示行号
+7. :set ic 查找不区分大小写配合`/`查找命令,:set noic 查找区分大小写
 
 ### nano
 
@@ -130,3 +131,63 @@ nano是一个字符中断的文本编辑器，有点像DOS下的editor程序。�
 9、curl ip.appspot.com
 10、curl -s checkip.dyndns.org | sed 's/.*IP Address: \([0-9\.]*\).*/\1/g'
 ```
+
+## 解压压缩包
+
+```
+gzip -d  压缩文件    // 不保留原来的压缩文件
+```
+
+## 常用命令
+
+### 文件处理命令
+#### touch
+
+命令名称： touch
+命令所在路径： /bin/touch
+执行权限：所有用户
+语法： touch [文件名]
+功能描述：创建空文件
+范例：`$ touch newfile`
+
+#### mkdir
+
+命令名称： mkdir
+命令所在路径： /bin/mkdir
+执行权限：所有用户
+语法： mkdir [目录名]
+功能描述：创建空文件夹
+范例：`$ mkdir newdir`
+
+#### mkdir
+
+命令名称： ln
+命令所在路径： /bin/ln
+执行权限：所有用户
+语法： ln -s [源文件] [目标文件]
+          -s 创建软连接
+功能描述：创建链接文件
+范例：`$ ln -s /etc/issue /issue.soft`
+      创建文件/etc/issue的软链接/issue.soft
+      `$ ln /etc/issue /issue.hard`
+      创建文件/etc/issue的硬链接/issue.soft，硬链接相当于复制+同步更新
+
+#### chmod
+
+改变文件或目录权限
+chmod [mode=421] [文件或目录]
+读r-4、写w-2、可执行x-1
+
+文件
+r-cat、more、head、tail
+w-echo、vi
+x-命令、脚本
+目录
+r-ls
+w-创建删除文件、touch、mkdir、rm
+x-cd
+
+### 系统常用快捷键
+
+ctrl+u 清空当前行
+ctrl+l 清空当前页面
