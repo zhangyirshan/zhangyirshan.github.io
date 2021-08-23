@@ -25,11 +25,11 @@ public List<Audioconverttochn> selectAudioConvertToCHN(List<UserCreditReport> li
 // 第二次返回的接口地址和第一次的相同，正常sql查询 会有3条记录，但是对象中只存在一条
 List<Audioconverttochn> audioConvertToCHNList = gameService.selectAudioConvertToCHN(hangUpList);
 ```
+
 传入一个参数
 如果你在service方法中传入相同的参数，会得到同一个对象
 
 ## 解决办法
-
 
 在mybatis上添加flushCache="true"
 `<select id="getItemByItemDicId" resultType="com.mega.werewolf.cloud.jp.common.dto.ItemDTO" flushCache="true">`
