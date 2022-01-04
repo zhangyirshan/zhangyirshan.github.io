@@ -377,3 +377,38 @@ export const exit721 = async (burnTxHash, from) => {
 }
 
 ```
+
+### gas费的另一种表达方式
+
+```js
+
+const gasLimit = sanitizeHex(convertStringToHex(_gasLimit))
+const gasPrice = sanitizeHex(convertStringToHex(convertAmountToRawNumber(_gasPrice, 9)))
+const tx = {
+    from,
+    to,
+    nonce,
+    maxFeePerGas: gasPrice,             // 最大gas费
+    maxPriorityFeePerGas: '0x59682F00', // gas倍数1.5倍
+    gasLimit,                           // gasLimit
+    value,
+    data: _data,
+}
+
+export function sanitizeHex(hex) {
+  hex = hex.substring(0, 2) === "0x" ? hex.substring(2) : hex;
+  if (hex === "") {
+    return "";
+  }
+  hex = hex.length % 2 !== 0 ? "0" + hex : hex;
+  return "0x" + hex;
+}
+export function convertStringToHex(value) {
+  return new BigNumber(`${value}`).toString(16);
+}
+export function convertAmountToRawNumber(value, decimals = 18) {
+  return new BigNumber(`${value}`)
+    .times(new BigNumber("10").pow(decimals))
+    .toString();
+}
+```
