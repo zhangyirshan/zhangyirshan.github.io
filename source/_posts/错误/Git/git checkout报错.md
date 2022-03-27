@@ -1,5 +1,5 @@
 ---
-title: git checkout 时出现 error: invalid path 
+title: git checkout 时出现 error invalid path 
 date: 2022-01-07 14:34:19
 tags: [错误,Git]
 categories: [错误,Git]

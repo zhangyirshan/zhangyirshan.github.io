@@ -61,3 +61,9 @@ services:
       - ./kibana.yml:/usr/share/kibana/config/kibana.yml
       - /etc/localtime:/etc/localtime
 ```
+
+```docker
+# 单独配置docker启动命令
+docker run -d -p 9001:9001 --name KafkaCenter -v ${PWD}/application.properties:/opt/app/kafka-center/config/application.properties xaecbd/kafka-center:2.1.0
+docker run --name elasticsearch -d -e ES_JAVA_OPTS="-Xms512m -Xmx512m" -e "discovery.type=single-node" -p 9200:9200 -p 9300:9300 elasticsearch:7.16.2
+```
