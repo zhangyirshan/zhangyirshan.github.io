@@ -37,7 +37,7 @@ telnet 127.0.0.1 7080
 
 IOsession：描述的是客户端和服务端连接的描述。常常用于接受和发送数据。
 
-总结： 
+总结：
        IOconnector -> IOProcessor -> IOFilter -> Handler
        IOAcceptor -> IOProcessor -> IOFilter -> Handler
 
