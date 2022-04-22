@@ -28,7 +28,6 @@ const createWindow = () => {
     webPreferences:{
       // html中有webview中打开
       webviewTag: true,
-      // 
       nodeIntegration: true,
       contextIsolation: false
     }
