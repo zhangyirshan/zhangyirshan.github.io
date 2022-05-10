@@ -21,3 +21,22 @@ categories: [前端,HTML]
 
 1. 声明<!DOCTYPE>
     HTML也有多个不同的版本，只有完全明白页面中只用的确切HTML版本，浏览器才能完全正确地显示出HTML页面。这就是<!DOCTYPE>的用处
+
+## WebStorage
+
+1. 存储内容大小一般支持5MB左右（不同浏览器可能还不一样）
+2. 浏览器端通过Window.sessionStorage和Window.localStorage属性来实现本地存储机制。
+3. 相关API：
+    1. xxxxStorage.setItem('key','value')
+        该方法接受哦一个键和值作为参数，会把键值对添加到存储中，如果键名存在，则更新其对应的值。
+    2. xxxxStorage.getItem('key')
+        该方法接受哦一个键名作为参数，返回键名对应的值。
+    3. xxxxStorage.removeItem('key')
+        该方法接受一个键名作为参数，并把该键名从存储中删除。
+    4. xxxxStorage.clear()
+        该方法会清空存储中的所有数据。
+4. 备注：
+    1. SessionStorage存储的内容会随着浏览器窗口关闭而消失。
+    2. LocalStorage存储的内容，需要手动清除才会消失
+    3. xxxxxStorage.getItem(xxx)如果xxx对应的calue获取不到，那么getItem的返回值是null。
+    4. Json.parse(null)的结果依然是null

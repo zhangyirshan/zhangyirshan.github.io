@@ -135,3 +135,28 @@ dialog.showOpenDialog({
   });
 ```
 
+### remote模块
+
+> 在渲染进程中使用主进程的BrowserWindow创建新的窗口
+
+### Menu模块
+
+> 菜单栏
+
+```js
+const {Menu} = require('electron')
+let temp = [
+  {
+    lable: "菜单栏",
+    submenu: [
+      {lable: '子菜单项',
+       click:()=>{
+
+       }
+      }
+    ] 
+  }
+]
+var m = Menu.buildFromtemplate(template)
+Menu.setApplicationMenu(m)
+```
