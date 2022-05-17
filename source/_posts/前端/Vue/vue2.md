@@ -37,3 +37,10 @@ mounted(){
 2. 提供数据：`this.$bus.$emit('xxxx',数据)`
 
 ***最好在beforeDestroy钩子中，用$off去解绑当前组件所用到的事件***
+
+## nextTick
+
+1. 语法：`this.$nextTick(回调函数)`
+2. 作用：在下一次DOM更新结束后执行其指定的回调。
+3. 应用场景：当改变数据后，要基于更新后的新DOM进行某些操作时，要在nextTick所指定的回调函数中执行。
+    例如：在v-show隐藏的input框中，需要显示后聚焦。
