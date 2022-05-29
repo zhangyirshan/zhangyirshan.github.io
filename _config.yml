@@ -96,6 +96,6 @@ theme: fluid
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: 'git'
-  repo: 'https://github.com/zhangyirshan/zhangyirshan.github.io.git'
+  repo: 'git@github.com:zhangyirshan/zhangyirshan.github.io.git'
   branch: master
   
