@@ -13,7 +13,7 @@ timezone: 'Asia/Shanghai'
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://zhangyir3.github.io
+url: http://zhangyirshan.github.io
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -96,6 +96,6 @@ theme: fluid
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: 'git'
-  repo: 'https://github.com/zhangyir3/zhangyir3.github.io.git'
+  repo: 'https://github.com/zhangyirshan/zhangyirshan.github.io.git'
   branch: master
   
