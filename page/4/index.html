@@ -136,6 +136,59 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/12/13/%E5%90%8E%E7%AB%AF/Java/JVM/%E6%96%B9%E6%B3%95%E5%8C%BA/">
+        <p class="h4 index-header">方法区</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">栈、堆、方法区的交互关系
+从线程共享与否的角度来看
+
+
+
+
+方法区的理解
+方法区和java堆一样，是各个线程共享的内存区域
+方法区在JVM启动的时候被创建，并且它的实际物理内存空间和Java堆区一样都可以是不连续的。
+方法区的大小，跟堆空间一样，可以选择固定大小或者可扩展。
+方法区的大小决定了系统可以保存多少个类，如果系统定义了太多的类，导致方法区溢出，虚拟机同样会抛出内存一处错误：java.lang.OutOfMemoryError:PermGen space 或者 java.lang.OutOfMemoryError: Metaspace
+关闭JVM就会释放这个区域的内存。
+
+设置方法区大小的参数
+jdk8以后  元数据区大小可以使用参数-XX:MetaspaceSize&#x3D;100m和-XX:MaxMetaspaceSize&#x3D;100m指定，替代上述原有的两个参数。  默认值依赖于平台。windows下，-XX:MetaspaceSize是21M，-XX:MaxMetaspaceSize的值是-1，即没有限制。  与永久代不同，如果不指定大小，默认情况下，虚拟机会耗</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-12-13&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Java">Java</a>&nbsp;
+          
+            <a href="/categories/JVM">JVM</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Java">Java</a>&nbsp;
+          
+            <a href="/tags/JVM">JVM</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/12/02/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%20Sentinel/">
         <p class="h4 index-header">Redis Sentinel</p>
         
@@ -754,60 +807,6 @@ slowlog-max-len不要设置过大，</div>
       <div>
         
           <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-14&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/redis">redis</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/redis">redis</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/13/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Jedis%E9%85%8D%E7%BD%AE%E4%BC%98%E5%8C%96/">
-        <p class="h4 index-header">Jedis配置优化</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Jedis配置优化初始化Jedis连接池，通常来讲JedisPool是单例的。
-GenericObjectPoolConfig poolConfig = new GenericObjectPoolConfig();
-JedisPool jedisPool = new JedisPool(poolConfig,&quot;127.0.0.1&quot;,6379);
-
-
-
-
-适合的maxTotal比较难确定的，举个例子：
-
-命令平均执行时间0.1ms&#x3D;0.001s
-业务需要5wQPS
-maxTotal理论值 &#x3D; 0.001 * 50000 &#x3D; 50个。实际值要偏大一些
-业务希望Redis并发量
-客户端执行命令时间
-Redis资源：例如nodes（例如应用个数） * maxTotal是不能超过redis的最大连接数。（config get maxclients）
-资源开销: 例如虽然希望控制空闲连接，但是不希望因为连接池的频繁释放创建连接造成不必要开销。
-
-适合的maxIdle和minIdle建议maxIdle &#x3D; maxTotal
-
-减少新连接的开</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-13&nbsp;&nbsp;
         
         
           <i class="iconfont icon-inbox"></i>

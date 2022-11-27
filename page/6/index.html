@@ -136,6 +136,45 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/09/25/%E5%90%8E%E7%AB%AF/Docker/%E5%B8%B8%E7%94%A8docker/">
+        <p class="h4 index-header">常用docker</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">redisdocker run -p 6379:6379 --name redis  -d redis redis-server --appendonly yes
+docker run -p 6379:6379 -v $PWD&#x2F;data:&#x2F;data  -d redis:3.2 redis-server –appendonly yes
+命令说明：-p 6379:6379 : 将容器的6379端口映射到主机的6379端口-v $PWD&#x2F;data:&#x2F;data : 将主机中当前目录下的data挂载到容器的&#x2F;dataredis-server –appendonly yes : 在容器执行redis-server启动命令，并打开redis持久化配置
+mysqldocker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -d mysql:5.7
+nacosdocker run -d --name=nacos -e MODE=standalone -p 8848:8848 -p 98</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-09-25&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Docker">Docker</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Docker">Docker</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/09/23/%E5%90%8E%E7%AB%AF/Spring/%E5%8D%95%E7%82%B9%E6%95%85%E9%9A%9C/">
         <p class="h4 index-header">单点故障</p>
         
@@ -591,61 +630,6 @@ docker run -p 3306:3306 --name mysql \
           <i class="iconfont icon-tag"></i>
           
             <a href="/tags/Docker">Docker</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/07/31/%E5%90%8E%E7%AB%AF/Java/%E4%BD%BF%E7%94%A8%E5%90%84%E7%A7%8D%E5%B5%8C%E5%A5%97%E7%B1%BB%E7%9A%84%E6%97%B6%E6%9C%BA/">
-        <p class="h4 index-header">使用各种嵌套类的时机</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">嵌套类（nested class）
-嵌套类是指被定义在另一个类内部的类
-
-嵌套类的分类：
-
-静态成员类（static member class）
-非静态成员类（nonstatic member class）
-匿名类（anonymous class）
-局部类（local class）
-
-除了第一种之外，其他三种被称为内部类（inner class）
-静态成员类用法
-常见的用法是作为公有的辅助类，仅当与它的外部类一起使用时才有意义。
-
-例如：考虑一个枚举类，它描述了计算机支持的各种操作。Operation枚举应该时Calculator类的公有静态成员类，然后，Calculator类的客户端就可以用诸如Calculator.Operation.PLUS和Calculator.Operation.MINUS这样的名称来引用 这些操作。
-非静态成员类用法
-常见的用法时定义一个Adapter，它允许外部类的实例被看作时另一个不相关的类的实例。
-
-例如：Map接口的是西安往往 使用非静态成员类来实现他们的集合试图（collection view），这些集合视图时由Map的keySet、entrySe</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-31&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Java">Java</a>&nbsp;
-          
-            <a href="/categories/Java%20SE">Java SE</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Java">Java</a>&nbsp;
           
         
       </div>

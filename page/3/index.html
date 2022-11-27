@@ -136,6 +136,60 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2021/08/02/%E5%90%8E%E7%AB%AF/Spring/%E7%AD%96%E7%95%A5+%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/">
+        <p class="h4 index-header">策略+工厂模式</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">实际应用场景工厂模式通过springboot实现，我们只需要实现不同的策略通过自动注入来实现策略模式，再通过一个枚举类将类名转换为数字方便与前端交互。
+// 通过自动注入，自动将所有的HangEventStrategy实现类注入到map中，
+// key是类名，value是HangEventStrategy具体的实现类
+private final Map&lt;String, HangEventStrategy&gt; hangEventMap;
+
+
+
+public enum HangEventEnum &#123;
+    // 好友事件
+    FRIEND(0, &quot;hangEventFriendStrategy&quot;),
+    // 答题事件
+    QUESTION(1, &quot;hangEventQuestionStrategy&quot;),
+    // 道具获取事件
+    ITEM(2, &quot;hangEventItemStrategy&quot;),
+    // 自定义事件
+    CUSTOM(3, &quot;hangEventCu</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2021-08-02&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F">设计模式</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Java">Java</a>&nbsp;
+          
+            <a href="/tags/Spring">Spring</a>&nbsp;
+          
+            <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F">设计模式</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2021/05/31/%E9%94%99%E8%AF%AF/Mysql/ifnull%E5%A4%B1%E6%95%88%E9%97%AE%E9%A2%98/">
         <p class="h4 index-header">ifnull失效问题</p>
         
@@ -545,59 +599,6 @@ redis-cli -h 127.0.0.1 -p 7002 cluster addslots &#123;10923...16383&#</div>
           <i class="iconfont icon-tag"></i>
           
             <a href="/tags/redis">redis</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/12/13/%E5%90%8E%E7%AB%AF/Java/JVM/%E6%96%B9%E6%B3%95%E5%8C%BA/">
-        <p class="h4 index-header">方法区</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">栈、堆、方法区的交互关系
-从线程共享与否的角度来看
-
-
-
-
-方法区的理解
-方法区和java堆一样，是各个线程共享的内存区域
-方法区在JVM启动的时候被创建，并且它的实际物理内存空间和Java堆区一样都可以是不连续的。
-方法区的大小，跟堆空间一样，可以选择固定大小或者可扩展。
-方法区的大小决定了系统可以保存多少个类，如果系统定义了太多的类，导致方法区溢出，虚拟机同样会抛出内存一处错误：java.lang.OutOfMemoryError:PermGen space 或者 java.lang.OutOfMemoryError: Metaspace
-关闭JVM就会释放这个区域的内存。
-
-设置方法区大小的参数
-jdk8以后  元数据区大小可以使用参数-XX:MetaspaceSize&#x3D;100m和-XX:MaxMetaspaceSize&#x3D;100m指定，替代上述原有的两个参数。  默认值依赖于平台。windows下，-XX:MetaspaceSize是21M，-XX:MaxMetaspaceSize的值是-1，即没有限制。  与永久代不同，如果不指定大小，默认情况下，虚拟机会耗</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-12-13&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Java">Java</a>&nbsp;
-          
-            <a href="/categories/JVM">JVM</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Java">Java</a>&nbsp;
-          
-            <a href="/tags/JVM">JVM</a>&nbsp;
           
         
       </div>

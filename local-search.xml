@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>JustAuth第三方登录</title>
+    <link href="undefined2022/11/23/%E5%90%8E%E7%AB%AF/JustAuth/JustAuth%E7%AC%AC%E4%B8%89%E6%96%B9%E7%99%BB%E5%BD%95/"/>
+    <url>2022/11/23/%E5%90%8E%E7%AB%AF/JustAuth/JustAuth%E7%AC%AC%E4%B8%89%E6%96%B9%E7%99%BB%E5%BD%95/</url>
+    
+    <content type="html"><![CDATA[<h2 id="登录网站"><a href="#登录网站" class="headerlink" title="登录网站"></a>登录网站</h2><p><a href="https://www.justauth.wiki/">https://www.justauth.wiki/</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>JustAuth</category>
+      
+      <category>第三方登录</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>JustAuth</tag>
+      
+      <tag>第三方登录</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>call和apply</title>
     <link href="undefined2022/11/06/%E5%89%8D%E7%AB%AF/JS/call%E5%92%8Capply/"/>
     <url>2022/11/06/%E5%89%8D%E7%AB%AF/JS/call%E5%92%8Capply/</url>
@@ -1275,7 +1304,7 @@
     <link href="undefined2020/09/25/%E5%90%8E%E7%AB%AF/Docker/%E5%B8%B8%E7%94%A8docker/"/>
     <url>2020/09/25/%E5%90%8E%E7%AB%AF/Docker/%E5%B8%B8%E7%94%A8docker/</url>
     
-    <content type="html"><![CDATA[<h2 id="redis"><a href="#redis" class="headerlink" title="redis"></a>redis</h2><p><code>docker run -p 6379:6379 --name redis  -d redis redis-server --appendonly yes</code></p><p>docker run -p 6379:6379 -v $PWD&#x2F;data:&#x2F;data  -d redis:3.2 redis-server –appendonly yes</p><p>命令说明：<br>-p 6379:6379 : 将容器的6379端口映射到主机的6379端口<br>-v $PWD&#x2F;data:&#x2F;data : 将主机中当前目录下的data挂载到容器的&#x2F;data<br>redis-server –appendonly yes : 在容器执行redis-server启动命令，并打开redis持久化配置</p><h2 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h2><p><code>docker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -d mysql:5.7.29</code></p>]]></content>
+    <content type="html"><![CDATA[<h2 id="redis"><a href="#redis" class="headerlink" title="redis"></a>redis</h2><p><code>docker run -p 6379:6379 --name redis  -d redis redis-server --appendonly yes</code></p><p>docker run -p 6379:6379 -v $PWD&#x2F;data:&#x2F;data  -d redis:3.2 redis-server –appendonly yes</p><p>命令说明：<br>-p 6379:6379 : 将容器的6379端口映射到主机的6379端口<br>-v $PWD&#x2F;data:&#x2F;data : 将主机中当前目录下的data挂载到容器的&#x2F;data<br>redis-server –appendonly yes : 在容器执行redis-server启动命令，并打开redis持久化配置</p><h2 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h2><p><code>docker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -d mysql:5.7</code></p><h2 id="nacos"><a href="#nacos" class="headerlink" title="nacos"></a>nacos</h2><p><code>docker run -d --name=nacos -e MODE=standalone -p 8848:8848 -p 9848:9848 -p 9849:9849 nacos</code></p><p>单点启动，暴露端口除了8848，还需要偏移1000和1001做备用,配置文件，也可以用默认的</p><pre><code class="java">COPY ./conf/application.properties /home/nacos/conf/application.propertiesapplication.propertiesspring.datasource.platform=mysqldb.num=1db.url.0=jdbc:mysql://ruoyi-mysql:3306/ry-config?characterEncoding=utf8&amp;connectTimeout=1000&amp;socketTimeout=3000&amp;autoReconnect=true&amp;useUnicode=true&amp;useSSL=false&amp;serverTimezone=UTCdb.user=rootdb.password=passwordnacos.naming.empty-service.auto-clean=truenacos.naming.empty-service.clean.initial-delay-ms=50000nacos.naming.empty-service.clean.period-time-ms=30000management.endpoints.web.exposure.include=*management.metrics.export.elastic.enabled=falsemanagement.metrics.export.influx.enabled=falseserver.tomcat.accesslog.enabled=trueserver.tomcat.accesslog.pattern=%h %l %u %t &quot;%r&quot; %s %b %D %&#123;User-Agent&#125;i %&#123;Request-Source&#125;iserver.tomcat.basedir=/home/ruoyi/nacos/tomcat/logsnacos.security.ignore.urls=/,/error,/**/*.css,/**/*.js,/**/*.html,/**/*.map,/**/*.svg,/**/*.png,/**/*.ico,/console-ui/public/**,/v1/auth/**,/v1/console/health/**,/actuator/**,/v1/console/server/**nacos.core.auth.system.type=nacosnacos.core.auth.enabled=falsenacos.core.auth.default.token.expire.seconds=18000nacos.core.auth.default.token.secret.key=SecretKey012345678901234567890123456789012345678901234567890123456789nacos.core.auth.caching.enabled=truenacos.core.auth.enable.userAgentAuthWhite=falsenacos.core.auth.server.identity.key=serverIdentitynacos.core.auth.server.identity.value=securitynacos.istio.mcp.server.enabled=false</code></pre>]]></content>
     
     
     <categories>

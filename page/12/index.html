@@ -136,6 +136,58 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/03/30/%E5%90%8E%E7%AB%AF/Java/%E9%AB%98%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E5%8E%9F%E5%AD%90%E7%B1%BB/">
+        <p class="h4 index-header">原子类</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">什么时原子类，有什么作用
+原子类的作用和锁类似，是为了保证并发情况下线程安全。不过原子类相比于锁，有一定的优势：
+粒度更细：原子变量可以把竞争范围缩小到比变量级别，这是我们可以获得的最细粒度的情况了，通常锁的粒度都要大于原子变量的粒度
+效率更高：通常，适用原子类的效率会比使用锁的效率更高，除了高度竞争的情况。
+
+6类原子类纵览
+
+AtomicInteger常用方法
+public final int get() &#x2F;&#x2F;获取当前的值
+public final int getAndSet(int newValue) &#x2F;&#x2F;获取当前的值，并设置新的值
+public final int getAndIncrement() &#x2F;&#x2F; 获取当前的值，并自增
+public final int getAndDecrement() &#x2F;&#x2F; 获取当前的值，并自减
+public final int getAndAdd(int delta) &#x2F;&#x2F; 获取当前的值，并加上预期的值
+boolean compareAndSet(i</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-30&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Java">Java</a>&nbsp;
+          
+            <a href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B">多线程</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Java">Java</a>&nbsp;
+          
+            <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B">多线程</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/03/27/%E5%90%8E%E7%AB%AF/Java/%E9%AB%98%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E9%94%81/">
         <p class="h4 index-header">锁</p>
         
@@ -653,77 +705,6 @@ public void run() &#123;
 什么是逸出
 方法返回一个private对象（private的本意是不让外部访问）
 还未完成初始化（构造函数没完全执行完毕）就把对象提供给外</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-05&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Java">Java</a>&nbsp;
-          
-            <a href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B">多线程</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Java">Java</a>&nbsp;
-          
-            <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B">多线程</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/03/05/%E5%90%8E%E7%AB%AF/Java/%E9%AB%98%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E7%BA%BF%E7%A8%8B%E5%BC%82%E5%B8%B8/">
-        <p class="h4 index-header">线程异常</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">线程异常
-线程的未捕获异常UncaughtException应该如何处理？
-
-为什么需要UncaughtException?
-
-主线程可用轻松发现异常，子线程却不行
-子线程异常无法用传统方法捕获
-不能直接捕获的后果、提高健壮性
-
-
-
-两个解决方案
-方案一（不推荐）：手动在每个run方法里面进行trycatch
-方案二（推荐）：利用UncaughtExceptionHandler
-UncaughtExceptionHandler接口
-void uncaughtException(Thread t, Throwable e);
-异常处理器的调用策略
-自己实现
-给程序统一设置
-给每个线程单独设置
-给线程池设置
-
-
-
-
-
-面试题
-Java异常体系
-如何全局处理异常？ 为什么要全局处理？ 不处理行不行？  设置一个自己的全局uncaughtException，不能不处理
-run方法是否可以抛出异常？如果抛出异常，线程的状态会怎么样？  不可以，如果抛出异常会离开终止执行
-线程中如何处理某个未处理异常？  使用全局处理器，对异常进行处理
-
-</div>
         </div>
       </a>
 

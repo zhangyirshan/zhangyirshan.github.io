@@ -122,7 +122,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    117 字
+                    382 字
                   </span>&nbsp;
                 
 
@@ -130,7 +130,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      1 分钟
+                      2 分钟
                   </span>&nbsp;
                 
 
@@ -166,7 +166,46 @@
             <h2 id="redis"><a href="#redis" class="headerlink" title="redis"></a>redis</h2><p><code>docker run -p 6379:6379 --name redis  -d redis redis-server --appendonly yes</code></p>
 <p>docker run -p 6379:6379 -v $PWD&#x2F;data:&#x2F;data  -d redis:3.2 redis-server –appendonly yes</p>
 <p>命令说明：<br>-p 6379:6379 : 将容器的6379端口映射到主机的6379端口<br>-v $PWD&#x2F;data:&#x2F;data : 将主机中当前目录下的data挂载到容器的&#x2F;data<br>redis-server –appendonly yes : 在容器执行redis-server启动命令，并打开redis持久化配置</p>
-<h2 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h2><p><code>docker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -d mysql:5.7.29</code></p>
+<h2 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h2><p><code>docker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -d mysql:5.7</code></p>
+<h2 id="nacos"><a href="#nacos" class="headerlink" title="nacos"></a>nacos</h2><p><code>docker run -d --name=nacos -e MODE=standalone -p 8848:8848 -p 9848:9848 -p 9849:9849 nacos</code></p>
+<p>单点启动，暴露端口除了8848，还需要偏移1000和1001做备用,配置文件，也可以用默认的</p>
+<pre><code class="java">COPY ./conf/application.properties /home/nacos/conf/application.properties
+
+application.properties
+
+spring.datasource.platform=mysql
+db.num=1
+db.url.0=jdbc:mysql://ruoyi-mysql:3306/ry-config?characterEncoding=utf8&amp;connectTimeout=1000&amp;socketTimeout=3000&amp;autoReconnect=true&amp;useUnicode=true&amp;useSSL=false&amp;serverTimezone=UTC
+db.user=root
+db.password=password
+
+nacos.naming.empty-service.auto-clean=true
+nacos.naming.empty-service.clean.initial-delay-ms=50000
+nacos.naming.empty-service.clean.period-time-ms=30000
+
+management.endpoints.web.exposure.include=*
+
+management.metrics.export.elastic.enabled=false
+management.metrics.export.influx.enabled=false
+
+server.tomcat.accesslog.enabled=true
+server.tomcat.accesslog.pattern=%h %l %u %t &quot;%r&quot; %s %b %D %&#123;User-Agent&#125;i %&#123;Request-Source&#125;i
+
+server.tomcat.basedir=/home/ruoyi/nacos/tomcat/logs
+
+nacos.security.ignore.urls=/,/error,/**/*.css,/**/*.js,/**/*.html,/**/*.map,/**/*.svg,/**/*.png,/**/*.ico,/console-ui/public/**,/v1/auth/**,/v1/console/health/**,/actuator/**,/v1/console/server/**
+
+nacos.core.auth.system.type=nacos
+nacos.core.auth.enabled=false
+nacos.core.auth.default.token.expire.seconds=18000
+nacos.core.auth.default.token.secret.key=SecretKey012345678901234567890123456789012345678901234567890123456789
+nacos.core.auth.caching.enabled=true
+nacos.core.auth.enable.userAgentAuthWhite=false
+nacos.core.auth.server.identity.key=serverIdentity
+nacos.core.auth.server.identity.value=security
+
+nacos.istio.mcp.server.enabled=false
+</code></pre>
 
             <hr>
           </div>

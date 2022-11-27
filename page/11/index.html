@@ -136,6 +136,67 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/04/20/%E5%90%8E%E7%AB%AF/Java/%E9%AB%98%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E9%AB%98%E6%80%A7%E8%83%BD%E7%BC%93%E5%AD%98/">
+        <p class="h4 index-header">高性能缓存</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">最简单缓存入手————HashMap并发安全要保证————用synchronized实现
+性能差
+代码复用能力差
+
+给HashMap加final关键字
+属性被声明为final后，该变量则只能被复制一次，且一旦被复制，final的百年来就不能再被改变。
+所以我们把它加上final关键字，增强安全性。
+
+代码有重构空间————用装饰者模式
+我们假设ExpensiveFunction类是耗时计算的实现类，实现了Computable接口，但是其本身不具备缓存功能，也不需要考虑缓存的事情
+缺点
+性能差
+当多个线程同时想计算的时候，需要慢慢等待，严重时，性能甚至比不用缓存更差
+
+
+
+性能待优化————引出锁性能优化经验：缩小锁的粒度
+虽然提高了并发效率，但是并不意味着就是线程安全的，还需要考虑到同时读写等情况
+但是起始没必要自己实现线程安全的HashMap，也不应该加synchronized，因为我们自己实现的性能远不如现有的并发集合
+我们来使用ConcurrentHashMap优化我们的缓存
+
+用并发集合————ConcurrentHashMap
+缺点：在计算完成前，另一个要求计算相同值得请求到</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-20&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Java">Java</a>&nbsp;
+          
+            <a href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B">多线程</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Java">Java</a>&nbsp;
+          
+            <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B">多线程</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/04/15/%E5%90%8E%E7%AB%AF/Java/%E9%AB%98%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/Future%E5%92%8CCallable/">
         <p class="h4 index-header">Future和Callable</p>
         
@@ -638,58 +699,6 @@ public class SimulatedCAS &#123;
       <div>
         
           <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-01&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Java">Java</a>&nbsp;
-          
-            <a href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B">多线程</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Java">Java</a>&nbsp;
-          
-            <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B">多线程</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/03/30/%E5%90%8E%E7%AB%AF/Java/%E9%AB%98%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E5%8E%9F%E5%AD%90%E7%B1%BB/">
-        <p class="h4 index-header">原子类</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">什么时原子类，有什么作用
-原子类的作用和锁类似，是为了保证并发情况下线程安全。不过原子类相比于锁，有一定的优势：
-粒度更细：原子变量可以把竞争范围缩小到比变量级别，这是我们可以获得的最细粒度的情况了，通常锁的粒度都要大于原子变量的粒度
-效率更高：通常，适用原子类的效率会比使用锁的效率更高，除了高度竞争的情况。
-
-6类原子类纵览
-
-AtomicInteger常用方法
-public final int get() &#x2F;&#x2F;获取当前的值
-public final int getAndSet(int newValue) &#x2F;&#x2F;获取当前的值，并设置新的值
-public final int getAndIncrement() &#x2F;&#x2F; 获取当前的值，并自增
-public final int getAndDecrement() &#x2F;&#x2F; 获取当前的值，并自减
-public final int getAndAdd(int delta) &#x2F;&#x2F; 获取当前的值，并加上预期的值
-boolean compareAndSet(i</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-30&nbsp;&nbsp;
         
         
           <i class="iconfont icon-inbox"></i>
