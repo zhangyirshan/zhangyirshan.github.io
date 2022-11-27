@@ -136,6 +136,65 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/04/21/%E5%90%8E%E7%AB%AF/Java/JVM/JVM%E4%B8%8EJava%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">
+        <p class="h4 index-header">JVM与Java体系结构</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">JVM的位置
+JVM是运行在操作系统之上的，它与硬件没有直接的交互。
+JVM的整体结构HotSpot VM是目前市面上高性能虚拟机的代表作之一
+
+它采用解释器与即时编译器并存的架构。在今天，Java程序的云心性能早已脱胎换骨，已经达到了可以和C&#x2F;C++程序一较高下的地步。
+JVM的架构模型Java编译器输入的指令流基本上是一种基于栈的指令集架构，另外一种指令集结构则是基于寄存器的指令集架构。
+具体来说：这两种架构之间的区别：
+
+基于栈式架构的特点
+设计和实现更简单，适用于资源受限的系统；
+避开了寄存器的分配难题，使用领地址指令方式分配。
+指令流中的指令大部分是零地址指令，其执行过程依赖于操作栈。指令集更小，编译器更容易实现。
+不需要硬件支持，可移植性更好，更好实现跨平台
+
+
+基于寄存器架构的特点
+典型的应用是x86的二进制指令集:比如传统的PC以及Android的Davlik虚拟机
+指令集架构则完全依赖硬件，可移植性差
+性能优秀和执行更高效；
+花费更少的指令去完成一项操作。
+在大部分情况下，基于寄存器架构的指令集往往都以一地址指令、二地址指令和三地址指令为主，而基于栈式架构的</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-21&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Java">Java</a>&nbsp;
+          
+            <a href="/categories/JVM">JVM</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Java">Java</a>&nbsp;
+          
+            <a href="/tags/JVM">JVM</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/04/20/%E5%90%8E%E7%AB%AF/Java/%E9%AB%98%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E9%AB%98%E6%80%A7%E8%83%BD%E7%BC%93%E5%AD%98/">
         <p class="h4 index-header">高性能缓存</p>
         
@@ -637,68 +696,6 @@ final static variable(类中</div>
       <div>
         
           <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-02&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Java">Java</a>&nbsp;
-          
-            <a href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B">多线程</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Java">Java</a>&nbsp;
-          
-            <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B">多线程</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/01/%E5%90%8E%E7%AB%AF/Java/%E9%AB%98%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/CAS/">
-        <p class="h4 index-header">CAS</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">什么是CAS
-并发
-我认为V的值应该是A，如果是的话那我就把它改成B，如果不是A（说明被别人修改过了），那我就不修改了，避免多人同时修改导致出错
-CAS有三个操作数：内存值V、预期值A、要修改的值B，当且仅当预期值A和内存之V相同时，才将内存值修改为B，否则什么都不做。最后返回现在的V值
-CPU的特殊指令
-CAS的等价代码（语义）
-
-public class SimulatedCAS &#123;
-    private volatile int value;
-
-    public synchronized int compareAndSwap(int expectedValue, int newValue) &#123;
-        int oldValue = value;
-        if (oldValue == expectedValue) &#123;
-            value = newValue;
-        &#125;
-        return oldValue;
-    &#125;
-&#125;
-
-应用场景
-乐观锁
-并发容器
-原子类
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-01&nbsp;&nbsp;
         
         
           <i class="iconfont icon-inbox"></i>

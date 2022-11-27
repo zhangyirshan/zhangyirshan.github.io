@@ -136,6 +136,46 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2022/11/27/%E5%90%8E%E7%AB%AF/Dubbo/Dubbo%E5%9F%BA%E7%A1%80/">
+        <p class="h4 index-header">Dubbo基础</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Dubbo为什么Dubbo说自己性能高高性能要从底层的远离说起，既然是一个RPC框架，主要干的就是远程过程（方法）调用，那么提升性能就要从最关键、最耗时的两个方面入手：序列化和网络通信。
+
+序列化：我们学习Java网络开发的时候知道，本地对象要在网络上传输，必须要事项Seralizable接口，也就是必须序列化。我们序列化的方案很多：xml、json、二进制流…其中效率最好的就是二进制流（因为计算机就是二进制的）。然而Dubbo采用的就是效率最好的二进制。
+网络通信：不同于HTTP需要进行7步（三次握手和四次挥手），Dubbo采用Socket通信机制，一步到位，提升了通信效率，并且可以建立长连接，不用反复连接，直接传输数据
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2022-11-27&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Dubbo">Dubbo</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Dubbo">Dubbo</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2022/11/23/%E5%90%8E%E7%AB%AF/JustAuth/JustAuth%E7%AC%AC%E4%B8%89%E6%96%B9%E7%99%BB%E5%BD%95/">
         <p class="h4 index-header">JustAuth第三方登录</p>
         
@@ -587,52 +627,6 @@ const createWindow = () =&gt; &#123;
           <i class="iconfont icon-tag"></i>
           
             <a href="/tags/Electron">Electron</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2022/03/23/%E5%90%8E%E7%AB%AF/Jenkins/Jenkins%E7%AE%80%E4%BB%8B/">
-        <p class="h4 index-header">Jenkins</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">使用脚本自动安装
-
-
-
-
-
-
-
-
-
-
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2022-03-23&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Jenkins">Jenkins</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Jenkins">Jenkins</a>&nbsp;
           
         
       </div>

@@ -136,6 +136,60 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/03/05/%E5%90%8E%E7%AB%AF/Java/%E9%AB%98%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%BC%9A%E5%AF%BC%E8%87%B4%E7%9A%84%E9%97%AE%E9%A2%98/">
+        <p class="h4 index-header">多线程会导致的问题</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">线程安全问题什么是线程安全？
+《Java Concurrency In Practice》的左子Brian Gortz对“线程安全”有一共比较恰当的定义：“当多个线程访问一个对象是，如果不用考虑这些线程在运行时环境下的调度和交替执行，也不需要进行额外的同步，或者在调用方进行任何其他的协调操作，调用这个对象的行为都可以获得正确的结果，那这个对象是线程安全的。
+自己的理解：不管业务中遇到怎样的多个线程访问某对象或某方法的情况，而在编程这个业务逻辑的时候，都不需要额外做任何额外的处理（也就是可以想单线程编程一样）程序也可以正常运行（不会因为多线程而出错），就可以称为线程安全。
+
+线程不安全：get同时set、额外同步
+全都线程安全？：运行速度、设计成本、trade off
+完全不用于多线程：不过度设计
+
+什么情况下会出现线程安全问题，怎么避免
+运行结果错误：a++多线程下出现消失的请求现象
+活跃性问题：死锁、活锁、饥饿
+对象发布和初始化的时候的安全问题
+
+什么是逸出
+方法返回一个private对象（private的本意是不让外部访问）
+还未完成初始化（构造函数没完全执行完毕）就把对象提供给外</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-05&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Java">Java</a>&nbsp;
+          
+            <a href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B">多线程</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Java">Java</a>&nbsp;
+          
+            <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B">多线程</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/03/05/%E5%90%8E%E7%AB%AF/Java/%E9%AB%98%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E7%BA%BF%E7%A8%8B%E5%BC%82%E5%B8%B8/">
         <p class="h4 index-header">线程异常</p>
         
@@ -590,49 +644,6 @@ DHCP客户端请求IP地址的过程DHCP服务器必须静态地址释放租约 
       <div>
         
           <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-27&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E4%BC%A0%E8%BE%93%E5%B1%82/">
-        <p class="h4 index-header">传输层</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">传输层传输层的功能传输层协议UDP和TCP网络安全TCP可靠传输的实现TCP的流量控制TCP的拥塞控制TCP的运输连接管理
-OSI和DoD模型
-需要记住！！！！
-数据包65535 -&gt; 分段46-1500TCP 需要将传输的文件分段 传输建立会话 可靠传输 流量控制    文件传输 邮件传输 ftp下载文件UDP 一个数据包就能够完成数据通信 不分段 不需要建立会话 不需要流量控制 不可靠传输    qq聊天 屏幕广播 多播 广播
-查看会话 netstat -n查看简历会话的进程 netstat -nb
-传输层协议和应用层协议之间的关系
-
-常见的应用层协议使用的端口http &#x3D; TCP + 80https &#x3D; TCP + 443RDP &#x3D; TCP + 3389ftp &#x3D; TCP + 21共享文件夹 &#x3D; TCP + 445SMTP &#x3D; TCP + 25POP3 &#x3D; TCP + 110telnet &#x3D; TCP + 23SQL &#x3D; TCP + 1433DNS &#x3D; UDP + 53
-传输层</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-22&nbsp;&nbsp;
         
         
           <i class="iconfont icon-inbox"></i>

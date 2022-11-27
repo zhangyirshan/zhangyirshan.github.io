@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>Dubbo基础</title>
+    <link href="undefined2022/11/27/%E5%90%8E%E7%AB%AF/Dubbo/Dubbo%E5%9F%BA%E7%A1%80/"/>
+    <url>2022/11/27/%E5%90%8E%E7%AB%AF/Dubbo/Dubbo%E5%9F%BA%E7%A1%80/</url>
+    
+    <content type="html"><![CDATA[<h2 id="Dubbo"><a href="#Dubbo" class="headerlink" title="Dubbo"></a>Dubbo</h2><h3 id="为什么Dubbo说自己性能高"><a href="#为什么Dubbo说自己性能高" class="headerlink" title="为什么Dubbo说自己性能高"></a>为什么Dubbo说自己性能高</h3><p>高性能要从底层的远离说起，既然是一个RPC框架，主要干的就是远程过程（方法）调用，那么提升性能就要从最关键、最耗时的两个方面入手：序列化和网络通信。</p><ul><li>序列化：我们学习Java网络开发的时候知道，本地对象要在网络上传输，必须要事项Seralizable接口，也就是必须序列化。我们序列化的方案很多：xml、json、二进制流…其中效率最好的就是二进制流（因为计算机就是二进制的）。然而Dubbo采用的就是效率最好的二进制。</li><li>网络通信：不同于HTTP需要进行7步（三次握手和四次挥手），Dubbo采用Socket通信机制，一步到位，提升了通信效率，并且可以建立长连接，不用反复连接，直接传输数据</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Dubbo</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Dubbo</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>JustAuth第三方登录</title>
     <link href="undefined2022/11/23/%E5%90%8E%E7%AB%AF/JustAuth/JustAuth%E7%AC%AC%E4%B8%89%E6%96%B9%E7%99%BB%E5%BD%95/"/>
     <url>2022/11/23/%E5%90%8E%E7%AB%AF/JustAuth/JustAuth%E7%AC%AC%E4%B8%89%E6%96%B9%E7%99%BB%E5%BD%95/</url>

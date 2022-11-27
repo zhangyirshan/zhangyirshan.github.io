@@ -136,6 +136,61 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/12/17/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%20Cluster/">
+        <p class="h4 index-header">Redis Cluster</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">呼唤集群为什么呼唤
+并发量
+数据量
+
+分区分布式数据库-数据分区
+
+顺序分区和哈希分区
+
+对比
+
+Redis Cluster架构
+节点     cluster有16384个节点 cluster-enabled:yes
+meet     节点通讯的基础
+指派槽    每个节点都有自己的指派槽，用于存储hash计算后的数据
+复制、高可用、分片
+
+meetcluster meet ip portredis-cli -h 127.0.0.1 -p 7000 cluster meet 127.0.0.1 7001
+分配槽cluster addslots slot[slot...]
+redis-cli -h 127.0.0.1 -p 7000 cluster addslots &#123;0...5461&#125;
+redis-cli -h 127.0.0.1 -p 7001 cluster addslots &#123;5462...10922&#125;
+redis-cli -h 127.0.0.1 -p 7002 cluster addslots &#123;10923...16383&#</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-12-17&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/redis">redis</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/redis">redis</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/12/13/%E5%90%8E%E7%AB%AF/Java/JVM/%E6%96%B9%E6%B3%95%E5%8C%BA/">
         <p class="h4 index-header">方法区</p>
         
@@ -734,79 +789,6 @@ M操作与pipeline区别
       <div>
         
           <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-17&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/redis">redis</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/redis">redis</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/14/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/%E6%85%A2%E6%9F%A5%E8%AF%A2/">
-        <p class="h4 index-header">慢查询</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">生命周期
-
-两点说明
-
-慢查询发生在第三阶段
-客户端超时不一定慢查询，但慢查询是客户端超时的一个可能因素
-
-两个配置slowlog-max-len
-先进先出队列
-固定长度
-保存在内存内
-
-
-
-slowlog-log-slower-than
-慢查询阈值（单位：微妙）
-slowlog-log-slower-than &#x3D; 0 , 记录所有命令
-slowlog-log-slower-than &lt; 0 , 不记录任何命令
-
-配置方法
-默认值
-
-config get slowlog-max-len = 128
-config get slowlog-log-slower-than = 10000
-
-
-修改配置文件重启
-动态配置
-
-config set slowlog-max-len 128
-config set slowlog-log-slower-than 10000
-
-慢查询命令
-slowlog get[n] : 获取慢查询队列
-slowlog len : 获取慢查询队列长度
-slowlog reset : 清空慢查询队列
-
-运维经验
-slowlog-max-len不要设置过大，</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-14&nbsp;&nbsp;
         
         
           <i class="iconfont icon-inbox"></i>
