@@ -136,41 +136,38 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/06/22/%E5%90%8E%E7%AB%AF/php/php%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/">
-        <p class="h4 index-header">php文件包含</p>
+      <a href="/2020/07/21/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/Linux%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4/">
+        <p class="h4 index-header">Linux操作命令</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">文件包含
-定义：文件包含，就是在一个要运行的PHP脚本中，去将另外一个PHP脚本中的代码拿过来，并且可以使用其被包含的文件里的内容，或者说将自己的内容能够在另外一个被包含的文件中使用。
+          <div class="index-text mb-1">系统管理命令参考手册
+交换空间内存 1GB 超过   内存溢出 会造成阻塞崩溃宕机磁盘 1TB swap 交换空间，虽然会防止内存溢出，但是会减慢速度拖垮系统云服务器    一台超级计算机 1TB 硬盘 128G 内存，云服务器是没有交换空间的                开辟一个空间    20GB 1G
+Linuxw文件操作命令如果无法找到ls或其他命令
+export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin
+压缩文件
+# tar -xzvf test.tar.gz
 
-
-文件包含基本语法：PHP中提供了四种文件包含的方法，分别是include和include_once，require和require_once，其中四种方式的用法完全一样 include/include_once/require/equire_once &#39;文件所在路径及文件名&#39;; include/include_once/require/equire_once(&#39;文件所在路径及文件名&#39;);
-文件包含的意义：文件包含的目的有两个
-向上包含：即先包含某个文件，目的为了使用某个文件中的代码或者数据（使用公共代码）
-向下包含：即先写好代码，后包含文件，目的是为了在被包含文件中使用当前的数据（使用已产生数据）
-
-
-文件包含的语法区别：四种包含方式都能够包含文件并使用 include和require的区别在于，如果包含的文件不存在的时候，include只是报警告错误，而不影响自身代</div>
+tail 命令可用于查看文件的内容，有一个常用的参数 -f 常用于查阅正在改变的日志文件。tail -f filename 会把 filename 文件里的最尾部的内容显示在屏幕上，并且不断刷新，只要 filename 更新就可以看到最新的文件内容。显示文件 notes.log 的内容，从第 20 行至文件末尾:tail +20 notes.log显示文件 notes.log 的最后 10 个字符: tai</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-22&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-21&nbsp;&nbsp;
         
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/php">php</a>&nbsp;
+            <a href="/categories/Linux">Linux</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/php">php</a>&nbsp;
+            <a href="/tags/Linux">Linux</a>&nbsp;
           
         
       </div>
@@ -181,436 +178,449 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/06/21/%E5%90%8E%E7%AB%AF/php/%E5%B8%B8%E7%94%A8%E7%B3%BB%E7%BB%9F%E5%87%BD%E6%95%B0/">
-        <p class="h4 index-header">常用系统函数</p>
+      <a href="/2020/07/21/%E9%94%99%E8%AF%AF/swagger/swagger%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/">
+        <p class="h4 index-header">swagger跨域问题</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">函数函数的基本概念函数：function,是一种语法结构，将实现某一个功能的代码块（多行代码）封装到一个结构中，从而实现代码的重复利用（复用）。
-函数定义语法函数有几个对应的关键点：function关键字、函数名、参数（形参和实参）、函数体和返回值
-基本语法如下：Function 函数名([参数]){    &#x2F;&#x2F; 函数体    &#x2F;&#x2F; 返回值：return 结果}
-定义函数的目的：是为了实现代码的重复利用，一个功能一个函数（简单明了）函数的使用：通过访问函数的名字+(); &#x2F;&#x2F; 如果函数在定义的过程中有参数，那么在调用的时候就必须传入对应的参数：函数是一种结构不会自动运行，必须通过调用才会执行。函数是在代码执行阶段，碰到函数名字的时候才会调用，不是在编译阶段。
-函数执行的内存分析：
+          <div class="index-text mb-1">Swagger的跨域问题
 
-读取代码进入到代码段（编译：将代码编程字节码存储带内存）
-根据代码逐行执行
+必须保证三处ip相同,访问页面的url和Server的访问地址，以及index的url
 
-以上原因：编译和执行时分开的（先编译后执行）
-参数函数的参数分为两种：形参和实参
-形参形参：形式参数，不具有实际意义的参数，是在函数定义时使用的参数
-实参实参：实际参数，</div>
+
+&lt;!-- HTML for static distribution bundle build --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Swagger UI&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;./swagger-ui.css&quot; &gt;
+    &lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; href=&quot;./favicon-32x32.png&quot; sizes=&quot;32x32&quot; /</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-21&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/php">php</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/php">php</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/06/12/%E5%90%8E%E7%AB%AF/Elasticsearch/Elasticsearch%20%E6%96%B0%E6%97%A7%E7%B4%A2%E5%BC%95%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB(_reindex)/">
-        <p class="h4 index-header">Elasticsearch 新旧索引数据迁移(_reindex)</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Elasticsearch 新旧索引数据迁移(_reindex)
-举个例子，在输入“1992-02-27”这样格式的数据，es会把他默认为是date数据类型，但是有时候我们希望它是text类型，在原索引中已经有数据的情况下该如何操作。
-
-创建原索引
-
-PUT /aaron_index/aaron_type/1
-&#123;
-  &quot;name&quot;:&quot;张辽&quot;,&quot;age&quot;:27,&quot;content&quot;:&quot;1992-02-27&quot;
-&#125;
-PUT /aaron_index/aaron_type/2
-&#123;
-  &quot;name&quot;:&quot;曹阿瞒&quot;,&quot;age&quot;:28,&quot;content&quot;:&quot;1991-02-19&quot;
-&#125;
-
-
-创建新索引
-
-PUT /aaron_index_new
-&#123;
-  &quot;mappings&quot;: &#123;
-    &quot;aaron_type&quot</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-12&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Elasticsearch">Elasticsearch</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Elasticsearch">Elasticsearch</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/06/11/%E5%90%8E%E7%AB%AF/php/php%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/">
-        <p class="h4 index-header">php文件操作</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">读取文件readfile读取文件
-传入一个文件路径，输出一个文件。
-
-int readfile ( string $文件名)
-
-
-//linux类的读了方式
-readfile(&quot;/home/paul/test.txt&quot;);
-//windows类的读取方式
-readfile(&quot;c:\\boot.ini&quot;);
-
-注意：上面的代码中windows的斜线是\斜线，可能会转义掉一些字符。因此，我们写的时候写上两个斜线。
-file_get_contents打开文件
-传入一个文件或文件路径，打开这个文件返回文件的内容。文件的内容是一个字符串。
-
-string file_get_contents ( string filename)
-
-
-//假设我们有一个多行的文件叫NoAlike.txt，没有的话你可以新建一个这个文件
-$filename = &#39;NoAlike.txt&#39;;
-
-
-//打开这个文件，将文件内容赋值给$filestring
-$filestring = file_get_contents($filename);
-
-//因为每一行有一个回</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-11&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/php">php</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/php">php</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/06/03/%E5%90%8E%E7%AB%AF/php/php%E6%95%B0%E7%BB%84%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-        <p class="h4 index-header">php数组与数据结构</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">数组数组声明
-数组可以存入多个不同类型的数据，是一个复合数据类型。
-数组的英文是array，学一了一下最简单的数组声明。
-
-$shu = array(1 , 1.5 , true ,&#39;天王盖地虎，小鸡炖蘑菇&#39;);
-
-echo &#39;&lt;pre&gt;&#39;;
-var_dump($shu);
-echo &#39;&lt;/pre&gt;&#39;;
-
-结果是：
-array(4) &#123;
-  [0]=&gt;
-  int(1)
-  [1]=&gt;
-  float(1.5)
-  [2]=&gt;
-  bool(true)
-  [3]=&gt;
-  string(33) &quot;天王盖地虎，小鸡炖蘑菇&quot;
-&#125;
-
-
-array(size &#x3D; 4) 说明里面有4个元素
-0 &#x3D;&gt; int 1 我们知道int是整型的意思，1是一个整型的数值。那前面的0,1,2,3和&#x3D;&gt;代表什么意思呢？
-最新前的0，1，2，3代表的是值的读取标识号，我们称之为下标或者键（英文：key）
-&#x3D;&gt; 是一个符号标</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-03&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/php">php</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/php">php</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/06/03/%E5%90%8E%E7%AB%AF/Java/%E5%B7%A5%E5%85%B7%E7%B1%BB/ResultSet/">
-        <p class="h4 index-header">ResultSet</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">继承Wrapper接口和AutoCloseable接口
-Wrapper是包装类，对原生的int、float。。。进行封装AutoCloseable是自动关闭资源
-ResultSet虽然继承了AutoCloseable可以自动关闭连接释放资源，但是还是要手动关闭，因为官方文档中说：通常，立即释放此Statement对象的数据库和JDBC资源，而不是等待它自动关闭时发生。 最好在资源使用完毕后立即释放资源，以避免占用数据库资源。
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-03&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Java">Java</a>&nbsp;
-          
-            <a href="/categories/Java%E5%B7%A5%E5%85%B7%E7%B1%BB">Java工具类</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Java">Java</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/06/03/%E5%90%8E%E7%AB%AF/Java/%E5%B7%A5%E5%85%B7%E7%B1%BB/ResourceBundle/">
-        <p class="h4 index-header">ResourceBundle</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">
-这个类主要用来解决国际化和本地化问题。国际化和本地化可不是两个概念，两者都是一起出现的。可以说，国际化的目的就是为了实现本地化。比如对于“取消”，中文中我们使用“取消”来表示，而英文中我们使用“cancel”。若我们的程序是面向国际的（这也是软件发展的一个趋势），那么使用的人群必然是多语言环境的，实现国际化就非常有必要。而ResourceBundle可以帮助我们轻松完成这个任务：当程序需要一个特定于语言环境的资源时（如 String），程序可以从适合当前用户语言环境的资源包（大多数情况下也就是.properties文件）中加载它。这样可以编写很大程度上独立于用户语言环境的程序代码，它将资源包中大部分（即便不是全部）特定于语言环境的信息隔离开来。
-
-这使编写的程序可以：    轻松地本地化或翻译成不同的语言    一次处理多个语言环境    以后可以轻松进行修改，以便支持更多的语言环境
-说的简单点，这个类的作用就是读取资源属性文件（properties），然后根据.properties文件的名称信息（本地化信息），匹配当前系统的国别语言信息（也可以程序指定），然后获取相应的proper</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-03&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Java">Java</a>&nbsp;
-          
-            <a href="/categories/Java%E5%B7%A5%E5%85%B7%E7%B1%BB">Java工具类</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Java">Java</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/06/03/%E5%90%8E%E7%AB%AF/Java/%E5%B7%A5%E5%85%B7%E7%B1%BB/PreparedStatement%E5%92%8CStatement/">
-        <p class="h4 index-header">PreparedStatement和Statement</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">网上有很多文章讨论PrepardStatement与Statement的区别，不过要完完全全的作出比较难度很大，因为每个数据库对底层的实现及应用场合不一样，Oracle对PrepardStatement的支持最好，Mysql对PrepardStatement支持最差。Statement执行单个sql语句速度较快而PrepardStatement执行批处理的效率较高。
-以Oracle为例
-
-Statement为每一条Sql语句生成执行计划， 如果要执行两条sql语句 select colume from table where colume&#x3D;1; select colume from table where colume&#x3D;2; 会生成两个执行计划，一千个查询就生成一千个执行计划。而生成计划是非常消耗资源的
-
-PreparedStatement用于使用绑定变量重用执行计划 select * from xxx.sometable t where t.id&#x3D;?; 通过set方法给sql语句按占位符”?”先后顺序赋值，只需要生成一个执行计划，可以重复使用。
-
-
-当处</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-03&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Java">Java</a>&nbsp;
-          
-            <a href="/categories/Java%E5%B7%A5%E5%85%B7%E7%B1%BB">Java工具类</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Java">Java</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/05/28/%E5%90%8E%E7%AB%AF/php/php%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/">
-        <p class="h4 index-header">php语法基础</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">PHP语法
-PHP是一种运行在服务器端的脚本语言，可以嵌入到HTML中
-
-ASP标记：&lt;% php代码 %&gt;短标记：  ，以上两种基本启用，如果要使用那么需要在配置文件中开启脚本标记: &lt; script script script language&#x3D;”php”&gt;php代码&lt; &#x2F; script&gt;标准标记（常用）：&lt;?php php代码 ?&gt;
-PHP注释行注释&#x2F;&#x2F;: 后面的所有内容都是注释#: 与&#x2F;&#x2F;一样
-块注释&#x2F;* *&#x2F;
-PHP语句分隔符语句分隔符：在PHP照片那个，代码是以行为单位，系统需要通过判断行的结束，该结束通常都是一个符号：分号
-特殊说明
-PHP中标记结束符?&gt;有自带语句结束符的效果，最后一行PHP代码可以没有语句结束符”;”
-PHP中起始很多代码的书写并不是嵌入到HTML中，而是单独存在，通常书写习惯中就不建议使用标记结束符?&gt;,PHP会自动从开始到最后全部认为是PHP代码，从而解析。
-
-变量PHP是一种动态网站开发的脚本语言，动态语言特</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-28&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/php">php</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/php">php</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/05/28/%E9%94%99%E8%AF%AF/GO/%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98/">
-        <p class="h4 index-header">安装问题</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">导包的问题安装GO需要配置的参数配置参数：
-
-GOROOT （GO的位置）
-GOPATH   （GO的工作空间位置）
-GOPROXY  （远程代理url）
-GO111MODULE &#x3D; on
-
-在配置正确，且项目路径正确的前提下输入go mod tudy下载mod，如果出现报错，就检查报错的文件所在位置是否正确正确的依赖位置应该在GOPATH里的pkg中，如果不是请删除该位置的包！！！！！
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-28&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-21&nbsp;&nbsp;
         
         
           <i class="iconfont icon-inbox"></i>
           
             <a href="/categories/%E9%94%99%E8%AF%AF">错误</a>&nbsp;
           
-            <a href="/categories/GO">GO</a>&nbsp;
+            <a href="/categories/swagger">swagger</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E9%94%99%E8%AF%AF,GO">错误,GO</a>&nbsp;
+            <a href="/tags/%E9%94%99%E8%AF%AF">错误</a>&nbsp;
+          
+            <a href="/tags/swagger">swagger</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/07/19/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/Linux%E7%AE%80%E4%BB%8B/">
+        <p class="h4 index-header">Linux简介</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Linux简介Linux 是内核，具备图灵完备。Ubuntu、CentOS、RedHat、深度。。。是Linux的操作系统Windows Nt 是Windows的内核
+Linux有超级管理员账户root
+Windows 一块硬盘 1TB        C 100 D 100 Movies        E 500 F 300Linux   一块硬盘 第0块硬盘        挂载            Movies sc0 20GB            Games sc0 100GBLVM技术 磁盘扩容技术        500GB   C        500GB   D
+服务器远程控制Open SSH
+连接    服务端        创建监听端口    客户端        请求服务端的监听端口免密登录    客户端创建一对密钥        公钥    私钥XShell
+查看端口
+ifconfig    inet是端口
+
+Linux目录结构
+
+
+一级目录
+功能（作用）
+
+
+
+&#x2F;bin&#x2F;
+存放系统命令，普通用户和 root 都可以执行。放在 &#x2F;bi</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-19&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Linux">Linux</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Linux">Linux</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/07/18/%E5%89%8D%E7%AB%AF/Antd/Antd%E6%A0%87%E7%AD%BE/">
+        <p class="h4 index-header">Antd标签</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">制作的页面代码里面有时间，下拉框（可清除），表单分页（子目录）
+/*
+ * @Description: 奖池分组
+ * @version: 1.0.0
+ * @Company: sdbean
+ * @Author: zhangyi
+ * @Date: 2020-7-18
+ */
+
+import &#123;IawardGroup, Igachats&#125; from &#39;./models/gacha&#39;;
+import React, &#123;Component&#125; from &#39;react&#39;;
+import * as styles from &#39;./CoinWeightManager.less&#39;;
+import PageHeaderWrapper from &#39;@/components/PageHeaderWrapper&#39;;
+import &#123;connect&#125; from &#39;dva&#39;;
+import &#123;ILogin&#125; from &#39;@/models/login</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-18&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF">前端</a>&nbsp;
+          
+            <a href="/categories/Antd">Antd</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E5%89%8D%E7%AB%AF">前端</a>&nbsp;
+          
+            <a href="/tags/Antd">Antd</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/07/13/%E7%BC%96%E7%A8%8B%E9%A3%8E%E6%A0%BC/PHP%E7%BC%96%E7%A8%8B%E9%A3%8E%E6%A0%BC/">
+        <p class="h4 index-header">PHP编程风格</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">方法调用普通的方法调用要使用对象-&gt;方法的防止来进行调用，静态方法使用类::静态方法的方式
+$wishService-&gt;crystal($userNo,$cpId);
+
+Controller::validatePostForm([
+    &quot;userNo&quot; =&gt; &quot;present&quot;,
+    &quot;cookie&quot; =&gt; &quot;present&quot;,
+    &quot;cpId&quot; =&gt; &quot;present&quot;,
+]);
+
+DAO编写规范用双引号包裹sql语句，因为php中双引号字符串里的内容可以翻译变量
+public function updateUserAnimationState($itemId, $userNo) &#123;
+    try &#123;
+        $pdo = $this-&gt;GetPdo();
+        $sql = &quot;INSERT INTO user_animation_state (user_id,role</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-13&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E7%BC%96%E7%A8%8B%E9%A3%8E%E6%A0%BC">编程风格</a>&nbsp;
+          
+            <a href="/categories/PHP%E7%BC%96%E7%A8%8B%E9%A3%8E%E6%A0%BC">PHP编程风格</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E7%BC%96%E7%A8%8B%E9%A3%8E%E6%A0%BC">编程风格</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/07/13/%E9%94%99%E8%AF%AF/Java/List%E8%BD%ACMap/">
+        <p class="h4 index-header">key问题</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">list转map的时候，忘记了map的key不能重复的问题；其实初衷就是想 利用map的key不能重复的问题.
+将list转为map，原以为是遍历list的方式，存map，然后map的key重复的话，直接覆盖,但是java8 中stream 确给我挖了个坑
+/**
+* List -&gt; Map
+* 需要注意的是：
+* toMap 如果集合对象有重复的key，会报错Duplicate key ....
+*  apple1,apple12的id都为1。
+*  可以用 (k1,k2)-&gt;k1 来设置，如果有重复的key,则保留key1,舍弃key2
+*/
+Map&lt;Integer, Apple&gt; appleMap = appleList.stream().collect(Collectors.toMap(Apple::getId, a -&gt; a, (k1, k2) -&gt; k1));
+
+List里面的对象元素，以某个属性来分组，例如，以id分组，将id相同的放在一起：
+//List 以ID分组 Map&lt;Integer,List&lt;Apple&gt;&g</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-13&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E9%94%99%E8%AF%AF">错误</a>&nbsp;
+          
+            <a href="/categories/Java">Java</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E9%94%99%E8%AF%AF">错误</a>&nbsp;
+          
+            <a href="/tags/Java">Java</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/07/13/%E5%90%8E%E7%AB%AF/Java/%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/Java%E7%9A%84Lambda%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/">
+        <p class="h4 index-header">Java的LLambda性能分析</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">for循环和lambda的性能比较代码public class main &#123;
+    public static void main(String[] args) &#123;
+        List&lt;User&gt; listUser = getListUsers();
+        //一般forEach
+        long startSimpleTime = System.currentTimeMillis();
+        for (User user : listUser) &#123;
+            user.toString();
+        &#125;
+        long endSimpleTime = System.currentTimeMillis();
+        System.out.println(&quot;Simple:&quot; + (endSimpleTime - startSimpleTime));
+
+        //java8中新的forEach
+        long startLa</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-13&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90">性能分析</a>&nbsp;
+          
+            <a href="/categories/Java">Java</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Java">Java</a>&nbsp;
+          
+            <a href="/tags/%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90">性能分析</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/07/10/%E9%94%99%E8%AF%AF/Mybatis/springboot%E5%92%8Cmybatis%E7%9A%84%E7%BB%84%E5%90%88%E9%97%AE%E9%A2%98/">
+        <p class="h4 index-header">SpringBoot和Mybatis的组合问题</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">问题状况List&lt;Audioconverttochn&gt; audioConvertToCHNList = gameService.selectAudioConvertToCHN(hangUpList);
+audioConvertToCHNList.removeIf(audioConvertToCHN -&gt; StringUtils.isNotBlank(audioConvertToCHN.getResult()));
+
+
+public List&lt;Audioconverttochn&gt; selectAudioConvertToCHN(List&lt;UserCreditReport&gt; list) &#123;
+    if (CollectionUtils.isEmpty(list)) &#123;
+        list = new ArrayList&lt;&gt;();
+        UserCreditReport userCreditReport = new UserCreditReport();
+        userCreditRepor</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-10&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E9%94%99%E8%AF%AF">错误</a>&nbsp;
+          
+            <a href="/categories/SpringBoot">SpringBoot</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E9%94%99%E8%AF%AF">错误</a>&nbsp;
+          
+            <a href="/tags/SpringBoot">SpringBoot</a>&nbsp;
+          
+            <a href="/tags/Mybatis">Mybatis</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/07/10/%E9%94%99%E8%AF%AF/PHP/PHP%E6%93%8D%E4%BD%9C%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">
+        <p class="h4 index-header">PHP操作数据库的注意事项</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">关于时间的sql语句一定要将与时间比较的变量用单引号包起来
+public function weekIn($cpId, $start, $end) &#123;
+    $pdo = $this-&gt;GetPdo();
+    $sql = &#39;SELECT SUM(intimacy_add) as weekIn FROM cp_intimacy_record 
+            WHERE delsign = 0 and cp_id = &#39; . $cpId . &#39; and createtime BETWEEN \&#39;&#39; . $start . &#39;\&#39; and \&#39;&#39; . $end . &#39;\&#39;&#39;;
+    $prepare = $pdo-&gt;prepare($sql);
+    $prepare-&gt;execute();
+    return $prepare-&gt;fetchAll(PDO::FETCH_ASSOC);
+&#125;
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-10&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E9%94%99%E8%AF%AF">错误</a>&nbsp;
+          
+            <a href="/categories/PHP">PHP</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E9%94%99%E8%AF%AF">错误</a>&nbsp;
+          
+            <a href="/tags/PHP">PHP</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/07/02/%E5%90%8E%E7%AB%AF/php/%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/">
+        <p class="h4 index-header">错误处理</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">错误处理
+指的是系统（或者用户）在对某些代码进行执行的时候，发现有错误，就会通过错误处理的形式告知程序员
+
+错误分类
+语法错误：用户书写的代码不符合PHP的语法规范，语法错误会导致代码在编译过程中不通过，所以代码不会执行（Parse error）
+运行时错误：代码编译通过，但是代码在执行的过程中会出现一些条件不满足导致的错误（runtime error）
+逻辑错误：程序员在写代码的时候不够规范，出现了一些逻辑性错误，导致代码正常执行，但是得不到想要的结果
+
+错误代号所有看到的错误代码在PHP中都被定义成了系统常量（可以直接使用）
+
+系统错误： E_PARSE: 编译错误，代码不会执行 E_ERROR: fatal error,致命错误，会导致代码不能正确继续执行（出错的位置断掉） E_WARING: warning,警告错误，不会影响代码执行，但是可能得到意想不到的结果 E_NOTICE: 通知错误，不会影响代码执行
+用户错误: E_USER_ERROR、E_USER_WARNING、E_USER_NOTCE 用户在使用自定义错误出发的时候，会使用到的错误代号（系统不会用到）
+其他: </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-02&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/php">php</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/php">php</a>&nbsp;
           
         
       </div>
@@ -621,7 +631,7 @@ GO111MODULE &#x3D; on
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/8/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/10/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/page/8/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/10/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

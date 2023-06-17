@@ -136,151 +136,51 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E4%BC%A0%E8%BE%93%E5%B1%82/">
-        <p class="h4 index-header">传输层</p>
+      <a href="/2020/03/07/%E5%90%8E%E7%AB%AF/Java/%E9%AB%98%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%85%AB%E5%A4%A7%E6%A0%B8%E5%BF%83%E9%9D%A2%E8%AF%95%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/">
+        <p class="h4 index-header">多线程八大核心面试问题总结</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">传输层传输层的功能传输层协议UDP和TCP网络安全TCP可靠传输的实现TCP的流量控制TCP的拥塞控制TCP的运输连接管理
-OSI和DoD模型
-需要记住！！！！
-数据包65535 -&gt; 分段46-1500TCP 需要将传输的文件分段 传输建立会话 可靠传输 流量控制    文件传输 邮件传输 ftp下载文件UDP 一个数据包就能够完成数据通信 不分段 不需要建立会话 不需要流量控制 不可靠传输    qq聊天 屏幕广播 多播 广播
-查看会话 netstat -n查看简历会话的进程 netstat -nb
-传输层协议和应用层协议之间的关系
+          <div class="index-text mb-1">常见面试问题总结有多少种实现线程的方法思路有5点
 
-常见的应用层协议使用的端口http &#x3D; TCP + 80https &#x3D; TCP + 443RDP &#x3D; TCP + 3389ftp &#x3D; TCP + 21共享文件夹 &#x3D; TCP + 445SMTP &#x3D; TCP + 25POP3 &#x3D; TCP + 110telnet &#x3D; TCP + 23SQL &#x3D; TCP + 1433DNS &#x3D; UDP + 53
-传输层</div>
-        </div>
-      </a>
+从不同的角度看，会有不同的答案。
 
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-22&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
+典型答案时两种，分别是实现Runnable接口和继承Thread类，然后具体展开说；
 
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/22/%E5%90%8E%E7%AB%AF/Java/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
-        <p class="h4 index-header">动态规划</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">动态规划
-Dynamic Programming, DP,动态规划是一种通过把原问题分解为相对简单的子问题的方式求解复杂问题的方法。  能用动态规划解决的问题，需要满足三个条件：最优子结构，无后效性和子问题重叠。
-
-最优子结构具有最优子结构也可能是适合用贪心的方法求解。
-注意要确保我们考察了最优解中用到的所有子问题。
-证明问题最优解的第一个组成部分是做出一个选择；
-对于一个给定问题，在其可能的第一步选择中，你界定已经知道哪种选择才会得到最优解。你现在并不关心这种选择具体是如何得到的，只是假定已经知道了这种选择；
-给定可获得的最优解的选择后，确定这次选择会产生哪些子问题，以及如何最好地刻画子问题空间；
-证明作为构成原问题最优解的组成部分，每个子问题的解就是它本身的最优解。方法是反证法，考虑加入某个子问题的解不是其自身的最优解，那么就可以从原问题的解中用该子问题的最优解替换掉当前的非最优解，从而得到原问题的一个更优的解，从而与原问题最优解的假设矛盾。
-
-要保持子问题空间尽量简单，只在必要时扩展。
-最优子结构的不同体现在两个方面：
-原问题的最优解中涉及多少个子问题；
-确定最优解使用哪些子问题</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-22&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
-          
-            <a href="/categories/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92">动态规划</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>&nbsp;
-          
-            <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92">动态规划</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/15/%E5%89%8D%E7%AB%AF/JS/this%E5%92%8C%E5%AF%B9%E8%B1%A1/">
-        <p class="h4 index-header">this和对象</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">this
-解析器在调用函数每次都会向函数内部传递进一共隐含的参数，
-这个隐含的额参数就是this，this指向的是一个对象，
-这个对象我们成为函数执行的上下文对象，
-根据函数的调用方式的不同，this会指向不同的对象。
-以函数的形式调用时，this永远都是window
-以方法的形式调用时，this就是调用方法的那个对象
-
-
-
-
-
-构造函数创建一共构造函数，专门用来创建Person对象的    构造函数就是一共普通函数，创建方式和普通函数没有区别，不同的时构造函数习惯上首字母大写构造函数和普通函数的区别就是调用方式的不同    普通函数时直接调用，而构造函数需要使用new关键字来调用
-function Person(name,age,gender) &#123;
-    this.name = name
-    this.age= age
-    this.gender = gender
-    this.sayName = function()&#123;
-        console.dir(obj)
+但是我们看原理，其实Thread类实现了Runnable接口，并且看Thread类的run方法，会发现其实那两种本质都是一样的，run方法的代码如下：
+@Override
+public void run() &#123;
+    if (target != null)&#123;
+        target.run();
     &#125;
 &#125;
-var per = new Person()</div>
+
+ 方法一和方法二，也就是“继承Thread类然后重写run()和实现Runnable接口并传入Thread类在实现多线程的本质上，并没有区别，都是最终调用了start()方法来新建线程。这两个方法的最主要区别在于run()方法的内容来源： 方法一：最终调用target.run() 方法二：run()整个都被重写
+
+然后具体展开说其他方式； 还有其他的实现线程的方法，例如线程池等，他们也能新建线程，但是细看源码，从没有逃出过本质，也就是实现Runnable接</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-15&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-07&nbsp;&nbsp;
         
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/%E5%89%8D%E7%AB%AF">前端</a>&nbsp;
+            <a href="/categories/Java">Java</a>&nbsp;
           
-            <a href="/categories/JS">JS</a>&nbsp;
+            <a href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B">多线程</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E5%89%8D%E7%AB%AF">前端</a>&nbsp;
+            <a href="/tags/Java">Java</a>&nbsp;
           
-            <a href="/tags/JS">JS</a>&nbsp;
+            <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B">多线程</a>&nbsp;
           
         
       </div>
@@ -291,53 +191,50 @@ var per = new Person()</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/14/%E5%89%8D%E7%AB%AF/JS/%E5%85%A8%E5%B1%80%E4%BD%9C%E7%94%A8%E5%9F%9F/">
-        <p class="h4 index-header">全局作用域</p>
+      <a href="/2020/03/05/%E5%90%8E%E7%AB%AF/Java/%E9%AB%98%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%BC%9A%E5%AF%BC%E8%87%B4%E7%9A%84%E9%97%AE%E9%A2%98/">
+        <p class="h4 index-header">多线程会导致的问题</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">作用域作用域指一个变量的作用的范围在js中一共有两种作用域
+          <div class="index-text mb-1">线程安全问题什么是线程安全？
+《Java Concurrency In Practice》的左子Brian Gortz对“线程安全”有一共比较恰当的定义：“当多个线程访问一个对象是，如果不用考虑这些线程在运行时环境下的调度和交替执行，也不需要进行额外的同步，或者在调用方进行任何其他的协调操作，调用这个对象的行为都可以获得正确的结果，那这个对象是线程安全的。
+自己的理解：不管业务中遇到怎样的多个线程访问某对象或某方法的情况，而在编程这个业务逻辑的时候，都不需要额外做任何额外的处理（也就是可以想单线程编程一样）程序也可以正常运行（不会因为多线程而出错），就可以称为线程安全。
 
-全局作用域
-直接编写在script标签中的JS代码，都在全局作用域中
-全局作用域在页面打开时创建，在页面关闭时销毁
-在全局作用域中有一个全局对象window，它代表的时一共浏览器的窗口，它由浏览器创建我们可以直接使用
-在全局作用域中：创建的变量都会作为window对象的属性保存,创建的函数都会作为window对象的方法保存
-全局作用域中的变量都是全局变量，在页面的任意的部分都可以访问的到
+线程不安全：get同时set、额外同步
+全都线程安全？：运行速度、设计成本、trade off
+完全不用于多线程：不过度设计
 
+什么情况下会出现线程安全问题，怎么避免
+运行结果错误：a++多线程下出现消失的请求现象
+活跃性问题：死锁、活锁、饥饿
+对象发布和初始化的时候的安全问题
 
-函数作用域
-调用函数时创建函数作用域，函数执行完毕以后，函数作用域销毁
-每调用一次函数就会创建一共新的函数作用域，他们之间时互相独立的
-在函数作用域中可以访问到全局作用域的变量，在全局作用域中无法访问到函数作用域的变量
-当在函数作用域操作一共变量时，它会先在自身作用域中寻找，如果有就直接使用  如果没有则向上一级作用域中寻找，知道找到全局作用域，  如果全局作用域中仍然没有找到，则会报错ReferenceError
-
-
-
-变量的声明提前变量的声明提前使用var关键字声明的变量，会在所有的代码执行之前被声明（但是不会赋值)但是如果声明变量</div>
+什么是逸出
+方法返回一个private对象（private的本意是不让外部访问）
+还未完成初始化（构造函数没完全执行完毕）就把对象提供给外</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-14&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-05&nbsp;&nbsp;
         
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/%E5%89%8D%E7%AB%AF">前端</a>&nbsp;
+            <a href="/categories/Java">Java</a>&nbsp;
           
-            <a href="/categories/JS">JS</a>&nbsp;
+            <a href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B">多线程</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E5%89%8D%E7%AB%AF">前端</a>&nbsp;
+            <a href="/tags/Java">Java</a>&nbsp;
           
-            <a href="/tags/JS">JS</a>&nbsp;
+            <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B">多线程</a>&nbsp;
           
         
       </div>
@@ -348,41 +245,67 @@ var per = new Person()</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/11/%E5%89%8D%E7%AB%AF/JS/script%E4%BD%8D%E7%BD%AE%E9%97%AE%E9%A2%98/">
-        <p class="h4 index-header">script位置问题</p>
+      <a href="/2020/03/05/%E5%90%8E%E7%AB%AF/Java/%E9%AB%98%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E7%BA%BF%E7%A8%8B%E5%BC%82%E5%B8%B8/">
+        <p class="h4 index-header">线程异常</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">页面自上而下加载如果你的script标签放在开头，将会无法加载body中的元素，但是你放在结尾就不会有问题，但是如果你非要放在开头可以按照下方的样子做
-window.onload = function () &#123;
-    ...
-&#125;
+          <div class="index-text mb-1">线程异常
+线程的未捕获异常UncaughtException应该如何处理？
 
-或者从外部引用js文件
+为什么需要UncaughtException?
+
+主线程可用轻松发现异常，子线程却不行
+子线程异常无法用传统方法捕获
+不能直接捕获的后果、提高健壮性
+
+
+
+两个解决方案
+方案一（不推荐）：手动在每个run方法里面进行trycatch
+方案二（推荐）：利用UncaughtExceptionHandler
+UncaughtExceptionHandler接口
+void uncaughtException(Thread t, Throwable e);
+异常处理器的调用策略
+自己实现
+给程序统一设置
+给每个线程单独设置
+给线程池设置
+
+
+
+
+
+面试题
+Java异常体系
+如何全局处理异常？ 为什么要全局处理？ 不处理行不行？  设置一个自己的全局uncaughtException，不能不处理
+run方法是否可以抛出异常？如果抛出异常，线程的状态会怎么样？  不可以，如果抛出异常会离开终止执行
+线程中如何处理某个未处理异常？  使用全局处理器，对异常进行处理
+
 </div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-11&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-05&nbsp;&nbsp;
         
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/%E5%89%8D%E7%AB%AF">前端</a>&nbsp;
+            <a href="/categories/Java">Java</a>&nbsp;
           
-            <a href="/categories/JS">JS</a>&nbsp;
+            <a href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B">多线程</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E5%89%8D%E7%AB%AF">前端</a>&nbsp;
+            <a href="/tags/Java">Java</a>&nbsp;
           
-            <a href="/tags/JS">JS</a>&nbsp;
+            <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B">多线程</a>&nbsp;
           
         
       </div>
@@ -393,21 +316,340 @@ window.onload = function () &#123;
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/">
-        <p class="h4 index-header">网络层</p>
+      <a href="/2020/03/05/%E5%90%8E%E7%AB%AF/Java/%E9%AB%98%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%90%84%E4%B8%AA%E5%B1%9E%E6%80%A7/">
+        <p class="h4 index-header">线程各个属性</p>
         
         
           
-          
         
-        <div class="index-excerpt" style="max-height: none;">
-          <div class="index-text mb-1">网络层提供的服务网络层协议网络层如何转发数据包网络设备IP协议    RIP    OSPFARP协议网际控制报文 ICMPInternet组播管理协议 IGMPIP数据包格式...</div>
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">线程各属性
+
+线程IdID从1开始，JVM运行起来后，我们自己创建的线程的ID早已不是2.
+线程名字
+默认线程名字源码分析
+修改线程的名字（setName）
+
+守护线程
+作用：给用户线程提供服务
+
+特性：
+
+线程类型默认继承自父线程
+被谁启动,(由JVM自动启动)
+不影响JVM退出
+
+
+守护线程和普通线程的区别
+
+整体无区别
+唯一区别在于JVM的离开
+
+
+
+线程优先级
+10个级别，默认5
+程序设计不应依赖于优先级
+不同操作系统不一样
+优先级会被操作系统改变
+
+
+
+面试题
+什么时候我们需要设置守护线程？ 通常情况下我们不需要设置
+我们如何应用线程优先级来帮助程序运行？有哪些禁忌？ 我们不应该用优先级，来作为程序设计的逻辑，因为不同的操作系统有不同的优先级映射
+不同的操作系统如何处理优先级问题？ 不用优先级作为程序的设计逻辑
+
+</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-03&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-05&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Java">Java</a>&nbsp;
+          
+            <a href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B">多线程</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Java">Java</a>&nbsp;
+          
+            <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B">多线程</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/03/04/%E5%90%8E%E7%AB%AF/Java/%E9%AB%98%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E7%BA%BF%E7%A8%8B%E7%9A%847%E4%B8%AA%E9%87%8D%E8%A6%81%E6%96%B9%E6%B3%95/">
+        <p class="h4 index-header">线程的7个重要方法</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Thread和Object类中的重要方法详解方法概览
+
+wait,notify,notifyAll方法详解
+用必须先拥有monitor
+notify只能唤醒其中一个
+属于Object类
+类似功能的Condition
+同时持有多个锁的情况，让一个线程wait必须让他释放所有的锁，否则会进入死锁因为如果程序不运行完，而单一的线程运行完并不会释放这个线程当前持有的锁
+
+notify唤醒的对象必须是调用wait的对象要不无法唤醒。
+public class WaitNotifyReleaseOwnMonitor &#123;
+    private static volatile Object resourceA = new Object();
+    private static volatile Object resourceB = new Object();
+
+    public static void main(String[] args) &#123;
+        Thread thread1 = new Thread(() -&gt; &#123;
+            s</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-04&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Java">Java</a>&nbsp;
+          
+            <a href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B">多线程</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Java">Java</a>&nbsp;
+          
+            <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B">多线程</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/03/03/%E5%90%8E%E7%AB%AF/Java/%E9%AB%98%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">
+        <p class="h4 index-header">线程的生命周期</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">线程的生命周期
+New
+Runnable
+Blocked
+Waiting
+Time Waiting
+Terminated
+
+
+
+阻塞状态一般习惯而言，把Blocked（被阻塞）、Waiting（等待）、Timed_waiting（计时等待）都称为阻塞状态不仅仅是Blocked。
+状态转化的特殊情况
+从Object.wait()状态刚被唤醒时，通常不能立刻抢到monitor锁，那就会从Waiting先进入Blocked状态，抢到锁后再转换到Runnable状态
+如果发生异常，可用直接跳到终止Terminated状态，不必再遵守路径，比如可用从Waiting直接到Terminated
+
+常见面试问题
+线程有哪几种状态？生命周期是什么？
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-03&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Java">Java</a>&nbsp;
+          
+            <a href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B">多线程</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Java">Java</a>&nbsp;
+          
+            <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B">多线程</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/03/03/%E5%90%8E%E7%AB%AF/Java/%E5%A6%82%E4%BD%95%E5%88%86%E6%9E%90native%E6%96%B9%E6%B3%95/">
+        <p class="h4 index-header">如何分析native方法</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">分析navative方法
+进入github（也可以进openJDK网站）
+点“搜索文件”，搜索对应的c代码类Thread.c
+找到native方法对应的方法名
+去src&#x2F;htspot&#x2F;share&#x2F;prims&#x2F;jvm.cpp里看cpp代码
+
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-03&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/03/02/%E5%90%8E%E7%AB%AF/Java/Java%E5%BC%82%E5%B8%B8%E4%BD%93%E7%B3%BB/">
+        <p class="h4 index-header">Java异常体系</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">
+Error和RuntimeException共同构成了非检查异常；IOException受检查异常，应该对其提前进行处理，提供程序的健壮性。
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-02&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Java">Java</a>&nbsp;
+          
+            <a href="/categories/Java%20SE">Java SE</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Java">Java</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/03/01/%E5%90%8E%E7%AB%AF/Java/%E9%AB%98%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E7%BA%BF%E7%A8%8B8%E5%A4%A7%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+        <p class="h4 index-header">线程8大核心基础知识</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">多线程全部脉络
+
+多线程8大基础
+
+实现多线程的方法时1种2种还是4种
+实现多线程的官方正确方法：2种
+
+Oracle官网文档：There are two ways to create a new thread of execution. One is to declare a class to be a subclass of Thread. This subclass should override the run method of class Thread. An instance of the subclass can then be allocated and started. The other way to create a thread is to declare a class that implements the Runnable interface.创建一个新的执行线程有两种方法：一个是将一个类声明为Thread的子类，这个子类应该重写run类的方法Thread，然后可以分配并启动子类的实例。另一种方法来创建一个线程是声明实现类Runnable接口。
+两种方法</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-01&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Java">Java</a>&nbsp;
+          
+            <a href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B">多线程</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Java">Java</a>&nbsp;
+          
+            <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B">多线程</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/28/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">
+        <p class="h4 index-header">网络安全</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">网络安全数据存储安全应用程序安全操作系统安全网络安全物理安全用户安全教育
+计算机网络上的通信面来以下的四种威胁：（1） 截获–从网络上窃听他人的通信内容。（2） 中断–有意中断他人在网络上的通信（3） 篡改–故意篡改网络上传送的报文（4） 伪造–伪造信息在网络上传送截获信息的攻击称为被动攻击，而更改信息和拒绝用户使用资源的攻击称为主动攻击。
+恶意程序（rogue program）
+计算机病毒————会传染其他程序的程序，传染是通过修改其他程序来吧自身或其变种赋值进去完成的。
+计算机蠕虫————通过网络的通信功能将自身从一个结点发送到另一个结点并启动运行的程序。
+特洛伊木马————一种程序，它执行的功能超出所声称的功能
+逻辑炸弹————一种当运行环境满足某种特定条件时执行其他特殊功能的程序。
+
+木马程序
+查看会话 netstat -n 是否有可以的会话
+运行msconfig 服务 隐藏微软服务
+安装杀毒软件
+
+加密技术对称加密 优点：效率高        缺点：密钥不适合在网上传输 密钥维护麻烦
+非对称加密 加密密钥和解密密钥是不同 密钥对 公钥和私钥            公钥加密私钥</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-28&nbsp;&nbsp;
         
         
           <i class="iconfont icon-inbox"></i>
@@ -419,220 +661,6 @@ window.onload = function () &#123;
           <i class="iconfont icon-tag"></i>
           
             <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/02/%E5%89%8D%E7%AB%AF/JS/%E5%87%BD%E6%95%B0/">
-        <p class="h4 index-header">函数</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">函数 function
-函数就是一个方法或者一个功能体，函数就是把实现某个功能的代码放到一起进行分装，以后想要操作实现这个功能，只需要把函数执行极客&#x3D;&gt;”封装”减少页面中的冗余代码，提高代码重复使用率（高内聚低耦合）
-
-洗衣机就是一个函数，生成洗衣机就是封装一个函数（把实现某些功能的代码封装进来），生产的时候，不知道用户洗衣服的时候放什么水、衣服、洗衣液，我们需要提供出入口（提供的入口在函数中叫形参，执行的时候放的具体东西函数中叫做实参）洗完衣服选哟能拿出来，洗衣机提供一个出口（在函数中叫做返回值：把函数处理后的结果能够返回给外面用）
-
-创建函数
-形参
-返回值
-
-
-执行函数
-实参
-
-
-arguments
-函数底层运行机制
-…
-
-创建函数//=&gt; ES5老方式
-function[函数名]([形参变量],...)&#123;
-    // 函数体：基于JS完成需要实现的功能
-    return [处理后的结果]
-&#125;
-
-[函数名]([实参1],...);
-
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-02&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E5%89%8D%E7%AB%AF">前端</a>&nbsp;
-          
-            <a href="/categories/JS">JS</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E5%89%8D%E7%AB%AF">前端</a>&nbsp;
-          
-            <a href="/tags/JS">JS</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/02/%E5%89%8D%E7%AB%AF/JS/%E5%85%83%E7%B4%A0%E5%AF%B9%E8%B1%A1/">
-        <p class="h4 index-header">元素对象</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">元素对象
-通过元素方法获取的元素使对象数据类型的值 let box = document.getElementById(&#39;box&#39;) console.dir(box)基于.dir可以看到一个对象的详细信息
-对象中的属性 id：操作元素的ID值 className：操作元素的CLASS样式类的值 innerHTML：操作的元素的内容（可以识别标签） innerText：和innerHTML的区别使不能识别标签 tagName：获取元素的标签名（一般大写） … style：操作元素的行内样式 属性值使一个新的对象（CSSStyleDeclaration）
-
-因此下面这种情况不可行
-let box = document.getElementId(&#39;box&#39;)
-let aa = box.style.backgroundColor
-aa = &#39;red&#39;
-
-因为backgroundColor是属性名，所以aa获得的是backgroundColor的值而box和style都是对象传递的是引用更改的是堆内存中的值（只要堆内存中值被修改，浏览器会基于DOM</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-02&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E5%89%8D%E7%AB%AF">前端</a>&nbsp;
-          
-            <a href="/categories/JS">JS</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E5%89%8D%E7%AB%AF">前端</a>&nbsp;
-          
-            <a href="/tags/JS">JS</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/01/06/%E5%89%8D%E7%AB%AF/CSS/CSS%E6%A0%B7%E4%BE%8B/">
-        <p class="h4 index-header">CSS样例</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">鼠标滑过显示详情&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
-    &lt;title&gt;鼠标滑过显示详情&lt;/title&gt;
-    &lt;!-- import css --&gt;
-    &lt;style&gt;
-        * &#123;
-            margin: 0;
-            padding: 0;
-        &#125;
-
-        .box &#123;
-            /* CSS3新盒子模型属性：控制WIDTH/HEIGHT是盒子最终的宽高*/
-            box-sizing: border-box;
-            margin: 20px auto;
-            width: 200px;
-            height: 40px;
-            line-heigh</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-01-06&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E5%89%8D%E7%AB%AF">前端</a>&nbsp;
-          
-            <a href="/categories/CSS">CSS</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E5%89%8D%E7%AB%AF">前端</a>&nbsp;
-          
-            <a href="/tags/CSS">CSS</a>&nbsp;
-          
-            <a href="/tags/%E6%A0%B7%E4%BE%8B">样例</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/01/06/%E5%89%8D%E7%AB%AF/JS/JS%E6%A0%B7%E4%BE%8B/">
-        <p class="h4 index-header">JS样例</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">鼠标滑过显示详情鼠标滑过显示详情
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-01-06&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E5%89%8D%E7%AB%AF">前端</a>&nbsp;
-          
-            <a href="/categories/JS">JS</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E5%89%8D%E7%AB%AF">前端</a>&nbsp;
-          
-            <a href="/tags/%E6%A0%B7%E4%BE%8B">样例</a>&nbsp;
-          
-            <a href="/tags/JS">JS</a>&nbsp;
           
         
       </div>
@@ -643,7 +671,7 @@ aa = &#39;red&#39;
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/13/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><a class="page-number" href="/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/15/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/page/13/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><a class="page-number" href="/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/15/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

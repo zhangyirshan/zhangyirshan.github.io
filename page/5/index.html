@@ -136,192 +136,29 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/14/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/%E6%85%A2%E6%9F%A5%E8%AF%A2/">
-        <p class="h4 index-header">慢查询</p>
+      <a href="/2021/01/03/%E5%90%8E%E7%AB%AF/Mybatis/%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90/">
+        <p class="h4 index-header">代码自动生成</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">生命周期
+          <div class="index-text mb-1">代码配置类package com.mega.werewolfmonitor.core.util;
 
-两点说明
-
-慢查询发生在第三阶段
-客户端超时不一定慢查询，但慢查询是客户端超时的一个可能因素
-
-两个配置slowlog-max-len
-先进先出队列
-固定长度
-保存在内存内
-
-
-
-slowlog-log-slower-than
-慢查询阈值（单位：微妙）
-slowlog-log-slower-than &#x3D; 0 , 记录所有命令
-slowlog-log-slower-than &lt; 0 , 不记录任何命令
-
-配置方法
-默认值
-
-config get slowlog-max-len = 128
-config get slowlog-log-slower-than = 10000
-
-
-修改配置文件重启
-动态配置
-
-config set slowlog-max-len 128
-config set slowlog-log-slower-than 10000
-
-慢查询命令
-slowlog get[n] : 获取慢查询队列
-slowlog len : 获取慢查询队列长度
-slowlog reset : 清空慢查询队列
-
-运维经验
-slowlog-max-len不要设置过大，</div>
+import com.baomidou.mybatisplus.annotation.DbType;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.core.toolkit.StringPool;
+import com.baomidou.mybatisplus.generator.AutoGenerator;
+import com.baomidou.mybatisplus.generator.InjectionConfig;
+import com.baomidou.mybatisplus.generator.config.*;
+import com.baomidou.mybatisplus.generator.config.po.TableInfo;
+import com.baomidou.mybatisplus.generator.config.rules.Namin</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-14&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/redis">redis</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/redis">redis</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/13/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Jedis%E9%85%8D%E7%BD%AE%E4%BC%98%E5%8C%96/">
-        <p class="h4 index-header">Jedis配置优化</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Jedis配置优化初始化Jedis连接池，通常来讲JedisPool是单例的。
-GenericObjectPoolConfig poolConfig = new GenericObjectPoolConfig();
-JedisPool jedisPool = new JedisPool(poolConfig,&quot;127.0.0.1&quot;,6379);
-
-
-
-
-适合的maxTotal比较难确定的，举个例子：
-
-命令平均执行时间0.1ms&#x3D;0.001s
-业务需要5wQPS
-maxTotal理论值 &#x3D; 0.001 * 50000 &#x3D; 50个。实际值要偏大一些
-业务希望Redis并发量
-客户端执行命令时间
-Redis资源：例如nodes（例如应用个数） * maxTotal是不能超过redis的最大连接数。（config get maxclients）
-资源开销: 例如虽然希望控制空闲连接，但是不希望因为连接池的频繁释放创建连接造成不必要开销。
-
-适合的maxIdle和minIdle建议maxIdle &#x3D; maxTotal
-
-减少新连接的开</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-13&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/redis">redis</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/redis">redis</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/13/%E5%90%8E%E7%AB%AF/Java/%E5%B0%8F%E6%95%B0%E7%9A%84%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5/">
-        <p class="h4 index-header">小数的四舍五入</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">四舍五入
-Math.round((float) reputation.get(i) / commentNum)
-四舍五入保留一位小数
-(float) Math.round(sum / commentNum * 10) / 10
-
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-13&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Java">Java</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Java">Java</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/13/%E5%90%8E%E7%AB%AF/Mybatis/%E6%90%9C%E7%B4%A2%E5%A4%8D%E6%9D%82%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
-        <p class="h4 index-header">搜索复杂数据类型</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Insert之后返回自增主键mapper.xml&lt;insert id=&quot;insertScript&quot; useGeneratedKeys=&quot;true&quot; keyProperty=&quot;script.id&quot; keyColumn=&quot;id&quot;&gt;
-INSERT INTO merchant_script(script_desc, tips, name, cover_oss_url, difficulty, role_num)
-VALUE (#&#123;script.desc&#125;, #&#123;script.tips&#125;, #&#123;script.name&#125;, #&#123;script.img&#125;, #&#123;script.difficulty&#125;,#&#123;script.roleNum&#125;);
-&lt;/insert&gt;
-
-dao.javaInteger insertScript(@Param(&quot;script&quot;) Script</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-13&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2021-01-03&nbsp;&nbsp;
         
         
           <i class="iconfont icon-inbox"></i>
@@ -343,84 +180,96 @@ dao.javaInteger insertScript(@Param(&quot;script&quot;) Script</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/13/%E9%94%99%E8%AF%AF/Java/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%88%AA%E5%8F%96/">
-        <p class="h4 index-header">字符串截取</p>
+      <a href="/2020/12/17/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%20Cluster/">
+        <p class="h4 index-header">Redis Cluster</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">
-出现场景：在mina，redis等传输的过程中，原本的名字中有表情，一个emoji有时候占2个或多个字符，使得字符串截取有问题显示报错，因此要使用java的offsetByCodePoints方法来截取字符。
+          <div class="index-text mb-1">呼唤集群为什么呼唤
+并发量
+数据量
 
-/**
-* 截取出包含emoji表情字符串的前四位
-*
-* @param source 包含emoji表情的源字符串
-* @return 截取前四位后的结果
-*/
-private String subStrIncludeEmojiFour(String source) &#123;
-    String result;
-    try &#123;
-        result = source.substring(source.offsetByCodePoints(0, 0),
-                source.offsetByCodePoints(0, 4));
-    &#125; catch (Exception e) &#123;
-        result = &quot;&quot;;
-    &#125;
-    return result;
-&</div>
+分区分布式数据库-数据分区
+
+顺序分区和哈希分区
+
+对比
+
+Redis Cluster架构
+节点     cluster有16384个节点 cluster-enabled:yes
+meet     节点通讯的基础
+指派槽    每个节点都有自己的指派槽，用于存储hash计算后的数据
+复制、高可用、分片
+
+meetcluster meet ip portredis-cli -h 127.0.0.1 -p 7000 cluster meet 127.0.0.1 7001
+分配槽cluster addslots slot[slot...]
+redis-cli -h 127.0.0.1 -p 7000 cluster addslots &#123;0...5461&#125;
+redis-cli -h 127.0.0.1 -p 7001 cluster addslots &#123;5462...10922&#125;
+redis-cli -h 127.0.0.1 -p 7002 cluster addslots &#123;10923...16383&#</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-13&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-12-17&nbsp;&nbsp;
         
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/%E9%94%99%E8%AF%AF">错误</a>&nbsp;
+            <a href="/categories/redis">redis</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/redis">redis</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/12/13/%E5%90%8E%E7%AB%AF/Java/JVM/%E6%96%B9%E6%B3%95%E5%8C%BA/">
+        <p class="h4 index-header">方法区</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">栈、堆、方法区的交互关系
+从线程共享与否的角度来看
+
+
+
+
+方法区的理解
+方法区和java堆一样，是各个线程共享的内存区域
+方法区在JVM启动的时候被创建，并且它的实际物理内存空间和Java堆区一样都可以是不连续的。
+方法区的大小，跟堆空间一样，可以选择固定大小或者可扩展。
+方法区的大小决定了系统可以保存多少个类，如果系统定义了太多的类，导致方法区溢出，虚拟机同样会抛出内存一处错误：java.lang.OutOfMemoryError:PermGen space 或者 java.lang.OutOfMemoryError: Metaspace
+关闭JVM就会释放这个区域的内存。
+
+设置方法区大小的参数
+jdk8以后  元数据区大小可以使用参数-XX:MetaspaceSize&#x3D;100m和-XX:MaxMetaspaceSize&#x3D;100m指定，替代上述原有的两个参数。  默认值依赖于平台。windows下，-XX:MetaspaceSize是21M，-XX:MaxMetaspaceSize的值是-1，即没有限制。  与永久代不同，如果不指定大小，默认情况下，虚拟机会耗</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-12-13&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
           
             <a href="/categories/Java">Java</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E9%94%99%E8%AF%AF">错误</a>&nbsp;
-          
-            <a href="/tags/Java">Java</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/10/23/%E5%90%8E%E7%AB%AF/Spring/%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/">
-        <p class="h4 index-header">项目搭建</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">https://blog.csdn.net/forezp/article/details/70148833
-https://gitee.com/huangxunhui/basic_project/tree/master/
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-10-23&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Spring">Spring</a>&nbsp;
+            <a href="/categories/JVM">JVM</a>&nbsp;
           &nbsp;
         
         
@@ -428,7 +277,7 @@ https://gitee.com/huangxunhui/basic_project/tree/master/
           
             <a href="/tags/Java">Java</a>&nbsp;
           
-            <a href="/tags/Spring">Spring</a>&nbsp;
+            <a href="/tags/JVM">JVM</a>&nbsp;
           
         
       </div>
@@ -439,60 +288,44 @@ https://gitee.com/huangxunhui/basic_project/tree/master/
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/10/21/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
-        <p class="h4 index-header">数据类型</p>
+      <a href="/2020/12/02/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%20Sentinel/">
+        <p class="h4 index-header">Redis Sentinel</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">字符串
+          <div class="index-text mb-1">主从复制高可用redis sentinel架构
 
-使用场景
-缓存
-计数器
-分布式锁
-。。。
+可以使用一套sentinel监控多套maseter，slave
 
-get、set、del# 获取key对应的value
-get key
 
-# 设置key-value
-set key value
+安装与配置Redis主节点启动redis-server redis-7000.conf
+配置
+port 7000
+daemonize yes
+pidfile /var/run/redis-7000.pid
+logfile &quot;7000.log&quot;
+dir &quot;/opt/soft/redis/data/&quot;
 
-# 删除key-value
-del key
+Redis从节点启动redis-server redis-7001.conf
+配置
+port 7001
+daemonize yes
+pidfile /var/run/redis-7001.pid
+logfile &quot;7001.log&quot;
+dir &quot;/opt/soft/redis/data/&quot;
+slaveof 127.0.0.1 7000
 
-incr、decr、incrby、decrby# key自增1，如果key不存在 ，自增后get(key) = 1
-incr key
-
-# key自减1，如果key不存在，自减后get(key) = -1
-decr key
-
-# key自增k，如果key不存在，自增后get(key)= k
-incrby key k
-
-# key自减k，如果key不存在，自减后get(key)= -k
-decrby key k
-
-实战
-记录网站每个用户个人主页的访问量？ incr userId:pageview (单线程：无竞争)
-缓存视频的基本信息（数据源在MySQL中）
-分布式id生成器 incr idset setnx setxx
-
-# 不管key是否存在，都设置
-set key value
-
-# key不存在，才设置
-     key value
-
-# key存在，才设</div>
+sentinel主要配置port $&#123;port&#125;
+dir &quot;/opt/soft/redis/data/&quot;
+logfile </div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-10-21&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-12-02&nbsp;&nbsp;
         
         
           <i class="iconfont icon-inbox"></i>
@@ -514,49 +347,303 @@ set key value
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/10/16/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%20API%20%E9%80%9A%E7%94%A8%E5%91%BD%E4%BB%A4/">
-        <p class="h4 index-header">Redis API 通用命令</p>
+      <a href="/2020/11/19/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6/">
+        <p class="h4 index-header">主从复制</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">通用命令# 遍历所有key
-keys
-# 计算key的总数
-dbsize
-# 检查key是否存在
-exists key
-# 删除指定key-value
-del key [key...]
-# key在seconds秒后过期
-expire key seconds
-# 查看key剩余的过期时间
-ttl key
-# 去掉key的国企时间
-persist key
-# 返回key的类型
-type key
+          <div class="index-text mb-1">作用
+数据副本
+扩展读性能
 
-例子127.0.0.1:6379&gt; keys *
-1) &quot;hello&quot;
-127.0.0.1:6379&gt; dbsize
+实现方式slaveof命令slaveof 复制（异步）
+slaveof no one 取消复制（不会清除历史数据，只是不再同步新的数据）
+
+配置slaveof ip port
+slave-read-only yes
+
+比较
+
+
+方式
+命令
+配置
+
+
+
+优点
+无需重启
+统一配置
+
+
+缺点
+不便于管理
+需要重启
+
+
+全量复制
+
+全量复制开销
+bgsave时间
+RDB文件网络传输时间
+从节点清空数据时间
+从节点加载RDB的时间
+可能的AOF重写时间
+
+部分复制
+
+故障转移
+故障发现
+故障恢复
+资格检查
+准备选举时间
+发起选举
+选举投票
+替换主节点
+
+
+
+开发与运维中的问题读写分离
+读写分离：读流量分摊到从节点。
+可能遇到问题：
+复制数据延迟
+读到过期数据
+从节点故障
+
+
+
+主从配置不一致
+例如maxmemory不一致：丢失数据
+例如数据结构优化参数（例如hash-max-ziplist-entries）:内存不一致
+
+规避全量复制
+第一次全量复制
+第一次不可避免
+小主节点、低峰
+
+
+节点运行ID不匹配
+主节点重起（运行ID变化）
+故障转移，例如哨兵或集群
+
+
+复</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-19&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/redis">redis</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/redis">redis</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/19/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/%E5%BC%80%E5%8F%91%E8%BF%90%E7%BB%B4%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">
+        <p class="h4 index-header">开发运维常见问题</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">fork操作
+同步操作
+内存量息息相关：内存越大，耗时越长（与机器类型有关）
+info：latest_fork_usec
+
+改善fork
+优先使用物理机或者高效支持fork操作的虚拟化技术
+控制Redis实例最大可用内存：maxmemory
+合理配置Linux内存分配策略：vm.overcommit_memory &#x3D; 1
+降低fork频率：例如放宽AOF重写自动触发时机，不必要的全量复制
+
+子进程开销和优化
+CPU：
+
+
+开销：RDB和AOF文件生成，属于CPU密集型
+优化：不做CPU绑定，不和CPU密集型部署
+
+
+内存：
+
+
+开销：fork内存开销，copy-on-wirte
+优化：echo never &gt; &#x2F;sys&#x2F;kernel&#x2F;mm&#x2F;transparent_hugepage&#x2F;enabled
+
+
+硬盘
+
+
+开销：AOF和RDB文件写入，可用结合iostat，iotop分析
+
+硬盘优化
+不要和高硬盘负载服务部署一起：存储服务、消息队列等
+no-appendfsync-on-rewrite &#x3D; yes
+根据写入</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-19&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/redis">redis</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/redis">redis</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/18/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%E6%8C%81%E4%B9%85%E5%8C%96/">
+        <p class="h4 index-header">Redis持久化</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">持久化的作用什么是持久化
+redis所有数据保存在内存中，对数据的更新将一部保存到磁盘上。
+
+
+
+持久化方式
+
+RDB什么是RDB
+
+触发机制-主要三种方式
+save（同步）
+bgsavve（异步）
+自动
+
+save命令
+
+因为是同步命令，并且redis是单线程，所以会阻塞其他命令
+bgsave命令
+一般fork命令执行比较快，所以不会阻塞redis文件策略和复杂度与save命令相同。
+自动生成RDB
+
+
+配置
+seconds
+changes
+
+
+
+save
+900
+1
+
+
+save
+300
+10
+
+
+save
+60
+10000
+
+
+配置save 900 1
+save 300 10
+save 60 10000                       # 可以做自己策略的修改
+dbfilename dump.rdb                 # 文件名字
+dir ./                              # 生成文件路径为当前路径
+stop-writes-on-bgsave-error yes     # 遇到错误停止生成
+rdbcompression y</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/redis">redis</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/redis">redis</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/18/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/GEO/">
+        <p class="h4 index-header">GEO</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">GEO
+GEO(地理信息定位)：存经纬度，计算两地距离，范围计算等
+
+例：
+北京：116.28，39.55天津：117.12，39.08
+应用场景
+
+APIgeoaddgeoadd key longitude latitude memeber
+[longitude latitude memeber]
+# 增加地理位置信息
+
+127.0.0.1:6379&gt; geoadd city:location 120.17759030553346 30.250102922876387 保佑桥西弄5号
 (integer) 1
-127.0.0.1:6379&gt; mset hel vo heh haha php gpo java his
-OK
-127.0.0.1:6379&gt; keys h*
-1) &quot;heh&quot;
-2) &quot;hel&quot;
-3) &quot;hello&quot;
-127.0.0.1:6379&gt; exists php
+127.0.0.1:6379&gt; geoadd city:location 120.17095719788504 30.262918390984563 延安路306号天阳明珠商业中心A座701
 (integer) 1
-127.0.0.1:6379&gt; del php</div>
+
+geoposgeopos key  memeber [memeber]
+# 获取地理位置信息
+
+127.0.0.1:6379&gt; geopos city:location 保佑桥西弄5号
+1) 1) &quot;120.177589952945709</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-10-16&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
         
         
           <i class="iconfont icon-inbox"></i>
@@ -578,37 +665,43 @@ OK
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/10/16/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/%E5%90%AF%E5%8A%A8/">
-        <p class="h4 index-header">启动</p>
+      <a href="/2020/11/18/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/BitMap/">
+        <p class="h4 index-header">Bitmap</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">Docker 安装docker pull redis
-docker run -p 6379:6379 -v $PWD/data:/data  -d redis:latest redis-server
+          <div class="index-text mb-1">位图
 
-Linux启动redisredis-server    # 默认配置启动
-redis-server --port 6380     # 动态参数启动
-redis-server config/redis-6382.conf   ## 通过配置文件启动
+APIsetbitsetbit key offset value
+# 给位图指定索引设置值
 
-redis 配置文件daemonize yes 
-port 6382
-dir &quot;/opt/soft/redis/data&quot;
-logfile &quot;6382.log&quot;
+127.0.0.1:6379&gt; setbit unique:users:2016-04-05 0 1
+(integer) 0
+127.0.0.1:6379&gt; setbit unique:users:2016-04-05 5 1
+(integer) 0
+127.0.0.1:6379&gt; setbit unique:users:2016-04-05 11 1
+(integer) 0
+127.0.0.1:6379&gt; setbit unique:users:2016-04-05 15 1
+(integer) 0
+127.0.0.1:6379&gt; setbit unique:users:2016-04-05 19 1
+(integer) 0
 
-连接redis-cli
-redis-cli -h 192.168.2.23 -p 6379
-docker exec -ti d0b86 redis-cli
-docker exec -it redis_s redis-cli -h 192.168.1.100 -p 6379 -a your_password //如果有密码 使用 -a参数
 
-</div>
+
+getbitgetbit keyy offset
+# 获取位图指定索引的值
+
+127.0.0.1:6379&gt; getbit unique:users:2016-04-05 8
+(integer) 0
+127.0.0.1:</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-10-16&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
         
         
           <i class="iconfont icon-inbox"></i>
@@ -630,87 +723,57 @@ docker exec -it redis_s redis-cli -h 192.168.1.100 -p 6379 -a your_password //�
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/10/16/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/%E4%BA%8B%E5%8A%A1/">
-        <p class="h4 index-header">事务</p>
+      <a href="/2020/11/18/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85/">
+        <p class="h4 index-header">发布订阅</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">事务有关的表
-information_schema.innodb_trx–当前运行的所有事务，
-information_schema.innodb_locks–当前出现的锁
-information_schema.innodb_lock_waits–锁等待的对应关系
+          <div class="index-text mb-1">角色
+发布者（publisher）
+订阅者（subscriber）
+频道（channel）
 
-information_schema.innodb_trx–当前运行的所有事务
+模型
 
+没有消息堆积的功能，无法查询历史发布消息
+APIpublish（发布命令）publish  channel message
 
-Field
-Type
-Null
-Key
-Default
-Extra
+127.0.0.1:6379&gt; publish sohu:tv &quot;hello world&quot;
+(integer) 0 # 订阅者个数
 
+subcribe（订阅）subscribe [channel] # 一个或多个
 
+127.0.0.1:6379&gt; subscribe sohu:tv
+Reading messages... (press Ctrl-C to quit)
+1) &quot;subscribe&quot;
+2) &quot;sohu:tv&quot;
+3) (integer) 1
 
-trx_id
-varchar(18)
-NO
+unsubcribe（取消订阅）unsubscribe [channel] # 一个或多个
 
-
-事务ID
-
-
-trx_state
-varchar(13)
-NO
-
-
-事务状态：
-
-
-trx_started
-datetime
-NO
-
-0000-00-00 00:00:00
-事务开始时间；
-
-
-trx_requested_lock_id
-varchar(81)
-YES
-
-NULL
-innodb_locks.lock_id
-
-
-trx_wait_started
-datetime
-YES
-
-NULL
-事务开始等待的时间
-
-
-trx_weight
-bigint(21) unsigned
-NO
-
-0
-事务权重
-
-
-trx_mys</div>
+127.0.0.1:6379&gt; unsubscribe sohu:tv
+1) &quot;unsubscribe&quot;
+2) &quot</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-10-16&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
         
         
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/redis">redis</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/redis">redis</a>&nbsp;
+          
         
       </div>
     </div>
@@ -720,7 +783,7 @@ trx_mys</div>
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/4/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/6/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/page/4/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/6/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

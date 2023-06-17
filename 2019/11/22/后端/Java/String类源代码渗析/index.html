@@ -364,6 +364,19 @@ false
 <h4 id="字符串的-法操作"><a href="#字符串的-法操作" class="headerlink" title="字符串的+法操作"></a>字符串的+法操作</h4><ol>
 <li>字符串之间的+代表拼接并不是加法运算，<strong>只要加法运算中有一项为字符串，系统会把所有的变量全部转换为字符串。</strong></li>
 </ol>
+<h2 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h2><h3 id="format"><a href="#format" class="headerlink" title="format"></a>format</h3><pre><code class="java">int count = 1;
+String num = String.format(&quot;%03d&quot;, count);
+// num =&gt; 001
+count = 10;
+// num =&gt; 010
+count = 100;
+// num =&gt; 100
+count = 10000;
+// num =&gt; 10000
+</code></pre>
+<blockquote>
+<p>将数字转成字符串，0代表默认补位字符，3代表位数，d整数。String.format(“%03d”, count)将count转成至少三位的整数，缺位补0.</p>
+</blockquote>
 
             <hr>
           </div>

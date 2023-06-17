@@ -136,23 +136,430 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2022/03/23/%E5%90%8E%E7%AB%AF/Jenkins/Jenkins%E7%AE%80%E4%BB%8B/">
-        <p class="h4 index-header">Jenkins</p>
+      <a href="/2022/11/27/%E5%90%8E%E7%AB%AF/Dubbo/Dubbo%E5%9F%BA%E7%A1%80/">
+        <p class="h4 index-header">Dubbo基础</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">使用脚本自动安装
+          <div class="index-text mb-1">Dubbo为什么Dubbo说自己性能高高性能要从底层的远离说起，既然是一个RPC框架，主要干的就是远程过程（方法）调用，那么提升性能就要从最关键、最耗时的两个方面入手：序列化和网络通信。
+
+序列化：我们学习Java网络开发的时候知道，本地对象要在网络上传输，必须要事项Seralizable接口，也就是必须序列化。我们序列化的方案很多：xml、json、二进制流…其中效率最好的就是二进制流（因为计算机就是二进制的）。然而Dubbo采用的就是效率最好的二进制。
+网络通信：不同于HTTP需要进行7步（三次握手和四次挥手），Dubbo采用Socket通信机制，一步到位，提升了通信效率，并且可以建立长连接，不用反复连接，直接传输数据
+
+Dubbo支持的协议Dubbo3 提供了 Triple(Dubbo3)、Dubbo2、gRPC、Thrift、JsonRPC、Hessian2、REST 等。dubbo协议默认端口20880.
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2022-11-27&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Dubbo">Dubbo</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Dubbo">Dubbo</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2022/11/23/%E5%90%8E%E7%AB%AF/JustAuth/JustAuth%E7%AC%AC%E4%B8%89%E6%96%B9%E7%99%BB%E5%BD%95/">
+        <p class="h4 index-header">JustAuth第三方登录</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">登录网站https://www.justauth.wiki/
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2022-11-23&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/JustAuth">JustAuth</a>&nbsp;
+          
+            <a href="/categories/%E7%AC%AC%E4%B8%89%E6%96%B9%E7%99%BB%E5%BD%95">第三方登录</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/JustAuth">JustAuth</a>&nbsp;
+          
+            <a href="/tags/%E7%AC%AC%E4%B8%89%E6%96%B9%E7%99%BB%E5%BD%95">第三方登录</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2022/11/06/%E5%89%8D%E7%AB%AF/JS/call%E5%92%8Capply/">
+        <p class="h4 index-header">call和apply</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">call
+call() 方法是预定义的 JavaScript 方法。它可以用来调用所有者对象作为参数的方法。通过 call()，您能够使用属于另一个对象的方法。
+
+var person = &#123;
+  fullName: function(city, country) &#123;
+    return this.firstName + &quot; &quot; + this.lastName + &quot;,&quot; + city + &quot;,&quot; + country;
+  &#125;
+&#125;
+var person1 = &#123;
+  firstName:&quot;Bill&quot;,
+  lastName: &quot;Gates&quot;
+&#125;
+console.log(person.fullName.call(person1, &quot;Seattle&quot;, &quot;USA&quot;));
+// 输出结果 Bill Gates,Seattle,USA
+
+call和apply的区别
+call的语法：函数名.cal</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2022-11-06&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF">前端</a>&nbsp;
+          
+            <a href="/categories/JS">JS</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E5%89%8D%E7%AB%AF">前端</a>&nbsp;
+          
+            <a href="/tags/JS">JS</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2022/11/04/%E5%89%8D%E7%AB%AF/React/React%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9/">
+        <p class="h4 index-header">React基础知识点</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">组件 &amp; Props函数式组件
+该函数是一个有效的 React 组件，因为它接收唯一带有数据的 “props”（代表属性）对象与并返回一个 React 元素。这类组件被称为“函数组件”，因为它本质上就是 JavaScript 函数。
+
+function Welcome(props) &#123;
+  return &lt;h1&gt;Hello, &#123;props.name&#125;&lt;/h1&gt;;
+&#125;
+
+注意： 组件名称必须以大写字母开头。
+React 会将以小写字母开头的组件视为原生 DOM 标签。例如，&lt;div /&gt; 代表 HTML 的 div 标签，而 &lt;Welcome /&gt; 则代表一个组件，并且需在作用域内使用 Welcome。
+class组件class Welcome extends React.Component &#123;
+  render() &#123;
+    return &lt;h1&gt;Hello, &#123;this.props.name&#125;&lt;/h1&gt;;
+  &#125;
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2022-11-04&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF">前端</a>&nbsp;
+          
+            <a href="/categories/React">React</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/React">React</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2022/08/22/%E5%90%8E%E7%AB%AF/KUbernetes/KUbernetes%E5%9F%BA%E7%A1%80%E4%BB%8B%E7%BB%8D/">
+        <p class="h4 index-header">KUbernetes基础介绍</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">信息介绍google开发，缩写k8s
+组件说明
+服务分类  有状态服务： DBMS  无状态服务： LVS APACHE
+
+高可用集群副本数据最好是 &gt;&#x3D; 3奇数个
+
+APISERVER: 所有服务访问同一入口
+
+CrontrollerManager： 维持副本期望数目
+
+Scheduler： 负责介绍任务，选择合适的节点进行分配任务
+
+ETCD：键值对数据库，存储K8S集群所有重要信息（持久化）
+
+Kubelet：直接跟容器引擎交互实现容器的生命周期管理
+
+Kube-proxy：负责写入规则至IPABLES、IPVS实现服务映射访问的
+
+COREDNS：可以为集群中的SVC创建一个域名IP的对应关系解析
+
+DASHBOARD： 给K8S集群提供一个B&#x2F;S结果访问体系
+
+INGRESS CONTROLLER： 官方只能实现四层代理，INGRESS可以实现七层代理
+
+FEDERATION：提供一个可以跨集群中心多K8S统一管理功能
+
+PROMETHEUS：提供K8S集群的监控能力
+
+ELK：提供K8S集群日志统一分析介入平台
 
 
+PodPod类型
+自主式Pod
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2022-08-22&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/KUbernetes">KUbernetes</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/KUbernetes">KUbernetes</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2022/05/19/%E5%89%8D%E7%AB%AF/Theia/Theia/">
+        <p class="h4 index-header">Theia</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">环境准备https://github.com/eclipse-theia/theia/blob/master/doc/Developing.md#prerequisites
+https://theia-ide.org/docs/composing_applications
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2022-05-19&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF">前端</a>&nbsp;
+          
+            <a href="/categories/Theia">Theia</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Theia">Theia</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2022/05/10/%E5%89%8D%E7%AB%AF/Vue/vue2/">
+        <p class="h4 index-header">vue2</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">全局事件总线
+一种组件间通信的方式，适用于任意组件间通信
+
+安装全局事件总线new Vue(&#123;...
+beforeCreate()&#123;
+    Vue.prototype.$bus = this // 安装全局事件总线，$bus就是当前应用的vm
+&#125;
+...
+&#125;)
+
+使用事件总线
+接收数据：A组件像接收数据，则在A组件中给$bus绑定自定义事件，事件的回调留在A组件自身
+
+method()&#123;
+    demo(data)&#123;......&#125;
+&#125;
+....
+mounted()&#123;
+    this.$bus.$on(&#39;xxxx&#39;,this.demo)
+&#125;
 
 
+提供数据：this.$bus.$emit(&#39;xxxx&#39;,数据)
 
+最好在beforeDestroy钩子中，用$off去解绑当前组件所用到的事件
+nextTick
+语法：this.$nextTick(回调函数)
+作用：在下一次DOM更新结束后执行其指定的回调。
+应用场景：当改变数据后，要基于更新后的新DOM进行某</div>
+        </div>
+      </a>
 
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2022-05-10&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF">前端</a>&nbsp;
+          
+            <a href="/categories/Vue">Vue</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Vue">Vue</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
 
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2022/04/28/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/Linux%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81/">
+        <p class="h4 index-header">Linux常用代码</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">获取当前文件绝对路径DIRNAME=$(realpath $(dirname $0))
 
+文件夹判断文件夹下if [ ! -d &quot;/data/&quot; ];then
+  mkdir /data
+  else
+  echo &quot;文件夹已经存在&quot;
+fi
 
+判断文件夹下是否存在文件# ./test是目录路径
+IF[[ $(ls -A ./test) ]]; then
+    # do something
+    echo hello
+fi
+
+可执行文件shell退出程序不关闭在可执行文件后面加$
+
+添加&amp;运行后，在当前终端可以继续执行其他的命令，也可以使用ctrl +c 命令，都不会对后台命令造成影响。
+
+adb -s $&#123;spec&#125; shell /test.shadb -s $&#123;spec&#125; shell /test.sh&amp;
+第一行命令执行后退出，显示程序还在执行第二行命令执行后退出，显示程序已经结束
+在添加了&amp;只是解放了当前终端，可以在当前终端执行其他命令
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2022-04-28&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Linux">Linux</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Linux">Linux</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2022/04/22/%E9%94%99%E8%AF%AF/Git/git%E4%BF%AE%E6%94%B9%E9%82%AE%E7%AE%B1%E5%92%8C%E5%90%8D%E5%AD%97%E5%90%8Ecommit%E6%8F%90%E4%BA%A4%E5%A4%B1%E8%B4%A5/">
+        <p class="h4 index-header">git修改邮箱和名字后commit提交失败</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">问题git的user.email和user.name配置错误，修改后git提交依旧失败
+原因因为上次的commit的email已经是错误的了，修改之后并未修改commit提交的email
+解决办法git commit --amend --reset-author --no-edit
 
 </div>
         </div>
@@ -160,151 +567,7 @@
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2022-03-23&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Jenkins">Jenkins</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Jenkins">Jenkins</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2022/03/16/%E5%90%8E%E7%AB%AF/Elasticsearch/Elasticsearch%E5%90%88%E5%B9%B6%E7%B4%A2%E5%BC%95/">
-        <p class="h4 index-header">ElasticSearch合并索引</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">public class MergeIndex &#123;
-
-    private static final Logger logger = Logger.getLogger(MergeIndex.class.getName());
-
-    public static void main(String[] args) &#123;
-
-        try &#123;
-            String newIndex = &quot;cn-plat-exchange-transaction-history-prod-000001&quot;;
-            List&lt;String&gt; indexList = new ArrayList&lt;&gt;();
-            indexList.add(&quot;cn-plat-exchange-transaction-prod*&quot;);
-            // 判断删除的索引名是否包含合并的新索引名，如果包含直接结束
-            for (String index :</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2022-03-16&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Elasticsearch">Elasticsearch</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Elasticsearch">Elasticsearch</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2022/01/10/%E5%90%8E%E7%AB%AF/Elasticsearch/%E5%AE%89%E8%A3%85Elasticsearch/">
-        <p class="h4 index-header">安装ElasticSearch</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">docker-compose使用docker-compose启动elasticsearch和kibanadocker-compose up -d -d 后台启动
-version: &#39;2.2&#39;
-services:
-  elasticsearch:
-    image: elasticsearch:7.16.2
-    container_name: elasticsearch
-    environment:
-      - node.name=elasticsearch
-      - cluster.name=es-docker-cluster
-      - discovery.type=single-node
-      - bootstrap.memory_lock=true
-      - &quot;ES_JAVA_OPTS=-Xms256m -Xmx256m&quot;
-      - TZ=Asia/Shanghaix
-      - http.cors.enabled=true
-      - http.cors.allow-origin=*
-    </div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2022-01-10&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Elasticsearch">Elasticsearch</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Elasticsearch">Elasticsearch</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2022/01/07/%E9%94%99%E8%AF%AF/Git/git%20checkout%E6%8A%A5%E9%94%99/">
-        <p class="h4 index-header">git checkout 时出现 error invalid path</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">问题在Windows本地使用git checkout指定的remote branch时，出现了这种错误：
-error: invalid path &#39;src/utils/Aux.ts&#39;
-解决办法
-关闭git对于NTFS文件系统的保护，随后再次git checkout即可。分析是因为原代码是Linux环境下编写的，导致文件系统出的锅。
-
-git config core.protectNTFS false
-
-修改出问题的文件名
-
-原因以aux命名的文件在Windows系统上都不能被创建，aux是Windows的预留文件名。
-其实除aux之外，Windows还有许多预留文件名不能用，无论后缀名是什么
-CON, PRN, AUX, NUL, COM1, COM2, COM3, COM4, COM5, COM6, COM7, COM8, COM9, LPT1, LPT2, LPT3, LPT4, LPT5, LPT6, LPT7, LPT8, and LPT9
-
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2022-01-07&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2022-04-22&nbsp;&nbsp;
         
         
           <i class="iconfont icon-inbox"></i>
@@ -330,264 +593,48 @@ CON, PRN, AUX, NUL, COM1, COM2, COM3, COM4, COM5, COM6, COM7, COM8, COM9, LPT1, 
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2022/01/04/%E5%90%8E%E7%AB%AF/php/php%E8%BF%9E%E6%8E%A5Redis%E4%B8%BB%E4%BB%8E/">
-        <p class="h4 index-header">php连接Redis主从</p>
+      <a href="/2022/04/02/%E5%89%8D%E7%AB%AF/Electron/Electron%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/">
+        <p class="h4 index-header">Electron简单使用</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">RedisMs.php是读取数据库代码，getByCommand中可按照自己需要配置命令
-下面是调用demo
-require_once &#39;./RedisMs.php&#39;;
-
-var_dump(&#39;begin&#39;);
-$handler = RedisMs::getInstance(true);
-
-$result1 = $handler-&gt;runCommand(&#39;set&#39;,[&#39;test&#39;,1]);
-echo($result1);
-$result2 = $handler-&gt;runCommand(&#39;get&#39;,[&#39;test&#39;]);
-var_dump($result2);
-
-</div>
+          <div class="index-text mb-1">Electron简介nodejs框架，用于开发跨平台桌面应用，可搭配Vue使用
+Electron官网
+创建项目使用yarn create electron-forge 项目名
+常用代码其他js页面使用require在html页面中引入其他js代码，并且代码中需要使用require(),需要配置两个参数nodeIntegration: true,contextIsolation: false
+const createWindow = () =&gt; &#123;
+  // Create the browser window.
+  const mainWindow = new BrowserWindow(&#123;
+    width: 800,
+    height: 600,
+    webPreferences:&#123;
+      // html中有webview中打开
+      webviewTag: true,
+      nodeIntegration: true,
+      contextIsolation: false
+    &#125;
+  &#125;)</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2022-01-04&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2022-04-02&nbsp;&nbsp;
         
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/php">php</a>&nbsp;
+            <a href="/categories/%E5%89%8D%E7%AB%AF">前端</a>&nbsp;
+          
+            <a href="/categories/Electron">Electron</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/php">php</a>&nbsp;
-          
-            <a href="/tags/redis">redis</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2021/11/12/%E5%8C%BA%E5%9D%97%E9%93%BE/metamask/">
-        <p class="h4 index-header">MetaMask</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">小狐狸钱包基本操作方法import MetaMaskOnboarding from &#39;@metamask/onboarding&#39;
-import ElLoading from &#39;element-plus/es/components/loading/index&#39;
-import &#39;element-plus/es/components/loading/style/index&#39;
-import BigNumber from &#39;bignumber.js&#39;
-import &#123; ethers &#125; from &#39;ethers&#39;
-
-const &#123; ethereum &#125; = window
-const web3 = new Web3(&#39;https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161&#39;)
-// const web3 = new Web3(import.meta.env.VITE_app_POLYGON_URL)</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2021-11-12&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE">区块链</a>&nbsp;
-          
-            <a href="/categories/%E9%92%B1%E5%8C%85">钱包</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E5%B0%8F%E7%8B%90%E7%8B%B8">小狐狸</a>&nbsp;
-          
-            <a href="/tags/MetaMask">MetaMask</a>&nbsp;
-          
-            <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE">区块链</a>&nbsp;
-          
-            <a href="/tags/%E9%92%B1%E5%8C%85">钱包</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2021/08/26/%E5%90%8E%E7%AB%AF/Java/JVM/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B%E4%B8%80%E5%8A%A0%E8%BD%BD%E9%98%B6%E6%AE%B5/">
-        <p class="h4 index-header">类的加载过程一加载阶段</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">过程一：Loading（加载）阶段1. 加载完成的操作
-加载的理解：所谓加载，就是将Java类的字节码文件加载到机器内存中，并在内存中构建出Java类的原型————类模板对象。
-
-类模板对象：Java类在JVM内存中的一个快照，JVM将从字节码文件中解析出的常量池、类字段、类方法等信息存储到类模板中，这样JVM在运行期便能通过类模板而获取Java类中的任意信息，能够对Java类的成员变量进行便利，也能进行Java方法的调用。反射的机制基于这一基础。如果JVM没有将Java类的声明信息存储起来，则JVM在运行期也无法反射。
-加载完成的操作
-加载阶段，简言之，查找并加载类的二进制数据，生成Class的实例。在加载类时，Java虚拟机必须完成以下3件事情：
-
-通过类的全名，获取类的二进制数据流。
-解析类的二进制数据流为方法区内的数据结构（Java类模型）
-创建java.lang.Class类的实例，表示该类型。作为方法区这个类的各种数据的访问入口
-
-2. 二进制流的获取方式对于类的二进制数据流，虚拟机可以通过多种途径产生或获得(只要所读取的字节码符合JVM规范即可)
-
-虚拟机可能通过文件系统</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2021-08-26&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Java">Java</a>&nbsp;
-          
-            <a href="/categories/JVM">JVM</a>&nbsp;
-          
-            <a href="/categories/%E7%B1%BB%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F">类的生命周期</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Java">Java</a>&nbsp;
-          
-            <a href="/tags/JVM">JVM</a>&nbsp;
-          
-            <a href="/tags/%E7%B1%BB%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F">类的生命周期</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2021/08/23/%E5%90%8E%E7%AB%AF/python/python%E7%88%AC%E8%99%AB/">
-        <p class="h4 index-header">python爬虫</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">http&amp;https协议http协议    - 概念：就是服务器和客户端进行苏剧交互的一种形式。常用请求头信息    - User-Agent: 请求载体的身份标识（例如：火狐浏览器Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko&#x2F;20100101 Firefox&#x2F;91.0）    - Connection：请求完毕后，是断开连接还是保持连接
-常用响应头信息    - Content-Type：服务器响应回客户端的数据类型
-https协议    - 安全的超文本传输协议
-加密方式    - 对称秘钥加密    - 非对称秘钥加密    - 证书秘钥加密
-requests模块
-python中原生的一款基于网络请求的模块,功能非常强大,简单便捷,效率极高.
-
-作用:模拟浏览器发请求.如何使用:(requests模块的编码流程)    - 指定url    - 发起请求    - 获取响应数据    - 持久化存储
-UA: User-Agent(请求载体的身份标识)UA检测:门户网站的服务器</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2021-08-23&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/python">python</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/python">python</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2021/08/18/%E5%90%8E%E7%AB%AF/Spring/%E6%94%AF%E4%BB%98%E5%AE%9D/">
-        <p class="h4 index-header">支付宝</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">https://mp.weixin.qq.com/s/Kj9ds4TnuhG75jKV3IoXlQ
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2021-08-18&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2021/08/05/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/lua/lua%E8%BF%9B%E9%98%B6/">
-        <p class="h4 index-header">lua进阶</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Lua 元表(Metatable)
- 在 Lua table 中我们可以访问对应的key来得到value值，但是却无法对两个 table 进行操作。因此 Lua 提供了元表(Metatable)，允许我们改变table的行为，每个行为关联了对应的元方法。例如，使用元表我们可以定义Lua如何计算两个table的相加操作a+b。当Lua试图对两个表进行相加时，先检查两者之一是否有元表，之后检查是否有一个叫”__add”的字段，若找到，则调用对应的值。”__add”等即时字段，其对应的值（往往是一个函数或是table）就是”元方法”。有两个很重要的函数来处理元表：
-
-
-setmetatable(table,metatable): 对指定 table 设置元表(metatable)，如果元表(metatable)中存在 __metatable 键值，setmetatable 会失败。
-getmetatable(table): 返回对象的元表(metatable)。
-
-mytable = &#123;&#125;                          -- 普通表
-mymetatab</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2021-08-05&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/lua">lua</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/lua">lua</a>&nbsp;
+            <a href="/tags/Electron">Electron</a>&nbsp;
           
         
       </div>
@@ -598,7 +645,7 @@ mymetatab</div>
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/3/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/3/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

@@ -136,212 +136,21 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2019/11/22/%E5%90%8E%E7%AB%AF/Java/%E7%90%86%E8%A7%A3%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">
-        <p class="h4 index-header">理解面向对象程序设计</p>
+      <a href="/2019/11/25/%E7%BC%96%E8%BE%91%E5%99%A8/Eclipse/">
+        <p class="h4 index-header">Eclipse</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">面向对象程序设计（Object Oriented Programming， OOP； Object Oriented Design, OOD）什么是面向对象？ 在面向对象程序设计中有两个重要的概念：类（class）与对象（object）。
-
-类： 类是一种抽象的概念， 类中包含了数据（通常使用名词来表示） 与对数据的操纵（通常使用动词来表示）。 比如说人就是一种抽象的概念，人具有姓名、年龄、身高等数据，还有吃饭、跑步等操纵数据的动作。
-
-对象：对象是一种具体的概念，是类的一种具体表示方式。比如说人是一个类，而张三、李四、王五等具体的人就是对象。
-
-类所包含的内容，类一共包含两部分内容：
-
-
-a) 数据，数据在类中称作属性（Property 或者 Attribute） 或者叫成员变量（Member variable）。
-b) 对数据的操纵，这种操纵在类中称作方法（method）。
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-22&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Java">Java</a>&nbsp;
-          
-            <a href="/categories/Java%E8%AE%BE%E8%AE%A1%E6%80%9D%E6%83%B3">Java设计思想</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Java">Java</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2019/11/22/%E5%90%8E%E7%AB%AF/Java/Java%E5%9F%BA%E6%9C%AC%E8%AF%AD%E5%8F%A5/">
-        <p class="h4 index-header">Java基本语句</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">1、流程控制语句if的用法
-第一种形式：
-if(布尔表达式)&#123;
-//待执行的代码
-&#125;
-
- 第二种形式：
-if(布尔表达式)&#123;
-//待执行的代码
-&#125;
-else&#123;
-//待执行的代码
-&#125;
-
- 第三种形式：
-if(布尔表达式)&#123;
-//待执行的代码
-&#125; else if(布尔表达式)&#123;
-//待执行的代码
-&#125; else if(布尔表达式)&#123;
-//待执行的代码
-&#125; else&#123;
-//待执行的代码
-&#125;
-
-
-switch 语句，使用形式为：
-switch(变量) //此处的变量类型就目前所学内容来看，只能为 4 种类型： byte, short, int,char。
-&#123;
-case 常量 1:
-//待执行的代码
-break;
-case 常量 2:
-//待执行的代码
-break;
-case 常量 3:
-//待执行的代码
-break;
-default：
-//待执行的代码
-&#125;
-
- 虽然 case 语句中的 break 是可选的，但在绝大多数情况下，如果没有 </div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-22&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Java">Java</a>&nbsp;
-          
-            <a href="/categories/Java%20SE">Java SE</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Java">Java</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2019/11/22/%E5%90%8E%E7%AB%AF/Java/%E8%BF%90%E7%AE%97%E7%AC%A6-Operator/">
-        <p class="h4 index-header">运算符 Operator</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">1、运算精度等级
-当有若干个变量参与运算时， 结果类型取决于这些变量中表示范围最大的那个变量类型。比如，参与运算的变量中，有整型 int，有双精度浮点型 double，有短整型 short，那么最后的结果类型就是 double。
-
- int a = 1;
- int b = 2;
- double c = (double)a / b;```
- 上面的代码中， a 与 b 都是整型，但是通过(double)a 这种转换将 a 转换为一个匿名的变量，该变量的类型是 double，但是要注意： a 本身依旧是 int 类型，而不是 double 类型，这样， (double)a / b 就是 double 类型除以 int 类型，结果自然是 double 类型。
-
-
-取模运算符：使用%表示。
-int a = 5;
-int b = 3;
-int c = a % b;
-
- 上面代码的运行结果是 2，因为 5 除以 3 结果是 1 余 2。 取模的规律：取模的结果符号永远与被除 数的符号相同
-int a = 5;
-int b = -3;
-int c = a % b;
-
- 被除数是 5，那么取模的结果是</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-22&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Java">Java</a>&nbsp;
-          
-            <a href="/categories/Java%20SE">Java SE</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Java">Java</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2019/11/22/%E5%90%8E%E7%AB%AF/Java/%E6%B3%A8%E9%87%8A/">
-        <p class="h4 index-header">注释</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">注释注释是给人看的，不是给计算机看的。 Java 中共有 3 种类型的注释：
-
-单行注释： 以&#x2F;&#x2F;开头， &#x2F;&#x2F;后面的所有内容均被当作注释处理。
-
-多行注释： 以&#x2F;* 开头，以 * &#x2F;结束，中间的所有内容均被当作注释处理。 多行注释来源于C&#x2F;C++。 关于多行注释，需要注意的是，多行注释不能嵌套。
-
-另一种多行注释。 用于产生 Java Doc 帮助文档。 暂且不介绍
-
-
-//
-
-/*
-*/
-
-/**
-*/
+          <div class="index-text mb-1">Eclipse
+设置字体Window  》 Preferences 》 General 》 Appearance 》 Colors and Fonts 》 Java 》 Java Editor Text Font 》 Edit 来设置
+Ctrl+Shift+F格式化快捷键
+Ctrl+Shirt+O自动导入包
+自动生成hashCode和equals方法：source》生成hashCode（）和equals
+自动生成get，set方法source 》 生成Getter和Setter
+Ctrl+t，自动找到接口实习类
+选中要提取的代码，右键&#x3D;》Refactor&#x3D;》Extract Method （快捷键是：Ctrl+Shift+M）然后就可以提取代码到一个新的方法中（用在servlet）
 
 </div>
         </div>
@@ -349,20 +158,20 @@ int c = a % b;
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-22&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-25&nbsp;&nbsp;
         
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/Java">Java</a>&nbsp;
+            <a href="/categories/%E7%BC%96%E8%BE%91%E5%99%A8">编辑器</a>&nbsp;
           
-            <a href="/categories/Java%20SE">Java SE</a>&nbsp;
+            <a href="/categories/Eclipse">Eclipse</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/Java">Java</a>&nbsp;
+            <a href="/tags/Eclipse">Eclipse</a>&nbsp;
           
         
       </div>
@@ -373,152 +182,393 @@ int c = a % b;
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2019/11/22/%E5%90%8E%E7%AB%AF/Java/%E5%8E%9F%E7%94%9F%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-Primitive-Data-Type/">
-        <p class="h4 index-header">原生数据类型(Primitive Data Type)</p>
+      <a href="/2019/11/25/%E7%BC%96%E8%BE%91%E5%99%A8/IDEA/">
+        <p class="h4 index-header">IDEA</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">轻量级编辑器Windows：notepad、editplus、ultraedit、gvim
-Linux：vi、vim、gedit
-1、Java 中的数据类型分为两大类1） 原生数据类型 （Primitive Data Type）
-2） 引用类型（对象类型） （Reference Type）
-2、变量与常量所谓常量，就是值不会变化的量；所谓变量，就是值可以变化的量。
-（1）如何定义变量变量类型 变量名;
-int a;
+          <div class="index-text mb-1">IDE（Integrated Development Environment）集成开发环境
+NetBeans http://netbeans.org/
+Intellij IDEA (公认最好的Java开发工具之一）
+Eclipse
 
-（2）如何为变量赋值变量名 &#x3D; 变量值;
-a = 2;
+修改IDEA的快捷提示按键，使它只能按回车才使用提示eclipse的快捷提示无论你按空格按回车都会强迫你使用它的提示，但是当我们不想使用它的提示的时候就显得非常难受了，所以IDEA的这个设置，能够给我们更强的自主性。
 
-&#x3D; 表示赋值，将等号右边的值赋给了左边的变量。
-Java 中使用&#x3D;&#x3D;表示相等，等价于数学中的&#x3D;。
-（3）综合变量定义与赋值变量类型 变量名;
-变量名 &#x3D; 变量值;
-int a;
-a = 1;
 
-可以将上面两个步骤合二为一：变量类型 变量名 &#x3D; 变量值;
-int a = 1;
+快捷键
+IDEA在当前类中查找方法快捷键例如在String类中查找contains方法。Ctrl + F12
 
-package JavaBase.PrimitiveDataType;
+格式化：Ctrl+Alt+L
 
-public class Vairable &#123;
-    public static vo</div>
-        </div>
-      </a>
+Alt + Ins 快速创建构造方法
 
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-22&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Java">Java</a>&nbsp;
-          
-            <a href="/categories/Java%20SE">Java SE</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Java">Java</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
+Ctrl + Alt + O 自动清楚无用包
 
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2019/11/21/%E5%90%8E%E7%AB%AF/Java/Java%E7%AE%80%E4%BB%8B/">
-        <p class="h4 index-header">Java简介</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">1、Java的版本Java SE：Java Standard Edition         基础版本
-Java ME：Java Micro Edition           手机开发
-Java EE:：Java Enterprise Edition       企业开发
-Java是由Sun公司推出的（后被Oracle公司收购）。收购价格：74亿美金J2SE、J2ME、J2EE
-2、下载JDKJDK：Java Development Kit（Java开发包）(Java开发必备）
-JRE：Java Runtime Environment（java执行环境）
-JDK包含了JRE
-jdk 1.4 ，jdk1.5（5.0），jdk1.6（6.0）
-jdk1.5（5.0）：Tiger，老虎
-jdk1.6（6.0）：Mustang，野马
-最新免费版是1.8
-3、配置环境变量设定环境变量（可以是用户变量，也可以是系统变量)，指向JDK安装目录中的bin目录
-CLASSPATH：D:\Java\jdk1.8.0_191\lib
-Path：D:\Java\jdk1.8.0_191\bin
-通过运行，输</div>
-        </div>
-      </a>
 
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-21&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Java">Java</a>&nbsp;
-          
-            <a href="/categories/Java%20SE">Java SE</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Java">Java</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2019/11/21/%E5%8D%9A%E5%AE%A2/hello-world/">
-        <p class="h4 index-header">Hello World</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick StartCreate a new post$ hexo new &quot;My New Post&quot;
-
-More info: Writing
-Run server$ hexo server
-
-More info: Server
-Generate static files$ hexo generate
-
-More info: Generating
-Deploy to remote sites$ hexo deploy
-
-More info: Deployment
+IDEAIDEA破解
 </div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-21&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-25&nbsp;&nbsp;
         
         
           <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E7%BC%96%E8%BE%91%E5%99%A8">编辑器</a>&nbsp;
+          
+            <a href="/categories/IDEA">IDEA</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/IDEA">IDEA</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/11/25/%E5%90%8E%E7%AB%AF/Java/Collection/">
+        <p class="h4 index-header">集合</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">集合Collection概念
+对于 Java 中的常量的命名规则：所有单词的字母都是大写，如果有多个单词， 那么使用下划线连接即可。 比如说： public static final int AGE_0F_PERSON &#x3D; 20;
+在 Java 中声明 final 常量时通常都会加上 static 关键字，这样对象的每个实例 都会访问唯一一份常量值。
+
+
+Interface Collection&lt;E&gt;public interface Collection&lt;E&gt;extends Iterable&lt;E&gt;E可以先当作Object类型具体后面学。
+Collection的Java API中的定义The root interface in the collection hierarchy.继承层次的根接口 A collection represents a group of objects,known as its elements.一个集合代表一组对象 ，这些对象我们称为元素Some collections allow duplicate elemen</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-25&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Java">Java</a>&nbsp;
+          
+            <a href="/categories/Java%20SE">Java SE</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Java">Java</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/11/25/%E7%AE%97%E6%B3%95/%E6%9F%A5%E6%89%BE/">
+        <p class="h4 index-header">查找</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">二分查找（Binary Search）待查找的数组要有序。
+public class ArraySearchTest &#123;
+
+    public static int search(int[] array, int value) &#123;
+        int low = 0;
+        int high = array.length - 1;
+        int middle;
+        while(low &lt;= high) &#123;
+            middle = (low + high) / 2;
+            if(array[middle] == value) &#123;
+                return middle;
+            &#125;
+            if(value &lt; array[middle]) &#123;
+                high = middle - 1;
+            &#125;
+            if(value </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-25&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E7%AE%97%E6%B3%95">算法</a>&nbsp;
+          
+            <a href="/categories/%E6%9F%A5%E6%89%BE">查找</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E7%AE%97%E6%B3%95">算法</a>&nbsp;
+          
+            <a href="/tags/%E6%9F%A5%E6%89%BE">查找</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/11/25/%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F/">
+        <p class="h4 index-header">排序</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">冒泡排序。（掌握交换排序，快速排序的原理与实现方式）arraycopy方法这个方法是JDK提供的API，这个方法在java.lang.System。public static void arraycopy(Object src,int srcPos,Object dest,int destPos,int length)
+Parameters:src - the source array（原数组）.srcPos - starting position in the source array（原数组中的起始位置，从此位置开始拷贝）.dest - the destination array（目标数组）.destPos - starting position in the destination data（目标数组的起始位置，从此位置开始接收）.length - the number of array elements to be copied（待拷贝的的数组的个数）.
+public class ArrayCopy &#123;
+
+    public static void main(Str</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-25&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E7%AE%97%E6%B3%95">算法</a>&nbsp;
+          
+            <a href="/categories/%E6%8E%92%E5%BA%8F">排序</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E7%AE%97%E6%B3%95">算法</a>&nbsp;
+          
+            <a href="/tags/%E6%8E%92%E5%BA%8F">排序</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/11/25/%E5%90%8E%E7%AB%AF/Java/%E6%95%B0%E7%BB%84%E5%89%96%E6%9E%90/">
+        <p class="h4 index-header">数组剖析</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">包装类（Wrapper Class）
+针对于原生数据类型的包装，所有的包装类（8 个）都位于java.lang 包下。 例如：Integer把原生数据类型int包装在对象中，类型Integer的对象包含了一个单独的一个int类型的值。
+public class IntegerTest &#123;
+    public static void main(String[] args) &#123;
+        int a = 10;
+        Integer integer = new Integer(a);
+        int b = integer.intValue();
+        System.out.println(a == b);
+    &#125;
+&#125;
+
+ 结果是：true 其他的类型同理
+
+Java 中的 8 个包装类分别是：Byte,Short,Integer,Long,Float,Double,Character, Boolean。 他们的使用方式都是一样的，可以实现原生数据类型与包装类型的双向转换。
+
+
+数组（Array）
+相同类型数据</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-25&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Java">Java</a>&nbsp;
+          
+            <a href="/categories/Java%20SE">Java SE</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Java">Java</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/11/24/%E5%89%8D%E7%AB%AF/Vue/v-router/">
+        <p class="h4 index-header">v-router</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">vue-router使用详情SPA(single page application):单一页面应用程序，只有一个完整的页面；它在加载页面时，不会加载整个页面，而是只更新某个指定的容器中内容。单页面应用(SPA)的核心之一是:更新视图而不重新请求页面;vue-router在实现单页面前端路由时，提供了两种方式：Hash模式和History模式。
+1、hash模式随着 ajax 的流行，异步数据请求交互运行在不刷新浏览器的情况下进行。而异步交互体验的更高级版本就是 SPA —— 单页应用。单页应用不仅仅是在页面交互是无刷新的，连页面跳转都是无刷新的，为了实现单页应用，所以就有了前端路由。类似于服务端路由，前端路由实现起来其实也很简单，就是匹配不同的 url 路径，进行解析，然后动态的渲染出区域 html 内容。但是这样存在一个问题，就是 url 每次变化的时候，都会造成页面的刷新。那解决问题的思路便是在改变url的情况下，保证页面的不刷新。在 2014 年之前，大家是通过 hash 来实现路由，url hash 就是类似于：
+    http://www.xxx.com/#/login
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF">前端</a>&nbsp;
+          
+            <a href="/categories/Vue">Vue</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Vue">Vue</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/11/24/%E5%89%8D%E7%AB%AF/JS/%E8%B5%8B%E5%80%BC%E3%80%81%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%8C%BA%E5%88%AB/">
+        <p class="h4 index-header">赋值、浅拷贝和深拷贝的区别</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">赋值（Copy）赋值是将某一数值或对象赋给某个变量的过程，分为：
+
+基本数据类型：赋值，赋值之后两个变量互不影响
+
+引用数据类型：赋址，两个变量具有相同的引用，指向同一个对象，相互之间有影响对基本类型进行赋值操作，两个变量互不影响。
+// saucxs
+let a = &quot;saucxs&quot;;
+let b = a;
+console.log(b);  // saucxs
+
+a = &quot;change&quot;;
+console.log(a);   // change
+
+console.log(b);    // saucxs
+
+ 对引用类型进行赋址操作，两个变量指向同一个对象，改变变量 a 之后会影响变量 b，哪怕改变的只是对象 a 中的基本类型数据。
+// saucxs
+let a = &#123;
+    name: &quot;saucxs&quot;,
+    book: &#123;
+        title: &quot;You Don&#39;t Know JS&quot;,
+        price: &quot;45&quot;
+    &#1</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF">前端</a>&nbsp;
+          
+            <a href="/categories/JS">JS</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/JS">JS</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/11/23/%E9%94%99%E8%AF%AF/HEXO%E7%9A%84%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E9%97%AE%E9%A2%98/">
+        <p class="h4 index-header">HEXO的图片上传问题</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">问题状况
+如果你的hexo安装了img插件但是还是不显示，后台输出地址404。
+解决办法
+首先找到你的node_modules\&#x68;&#x65;&#120;&#x6f;&#45;&#97;&#x73;&#115;&#101;&#x74;&#45;&#x69;&#109;&#x61;&#x67;&#101;&#64;&#x30;&#46;&#48;&#46;&#x35;@hexo-asset-image和node_modules\hexo-asset-image这两个文件包，删除。
+
+接下来
+npm install https://github.com/CodeFalling/hexo-asset-image --save
+
+ 执行这条指令。
+
+打开&#x2F;node_modules&#x2F;hexo-asset-image&#x2F;index.js，将内容更换为下面的代码
+&#39;use strict&#39;;
+var cheerio = require(&#39;cheerio&#39;);
+
+// http://stackoverflow.com/question</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-23&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E9%94%99%E8%AF%AF">错误</a>&nbsp;
           
             <a href="/categories/%E5%8D%9A%E5%AE%A2">博客</a>&nbsp;
           
-            <a href="/categories/HEXO">HEXO</a>&nbsp;
+            <a href="/categories/%E5%9B%BE%E7%89%87">图片</a>&nbsp;
           &nbsp;
         
         
@@ -526,7 +576,7 @@ More info: Deployment
           
             <a href="/tags/%E5%8D%9A%E5%AE%A2">博客</a>&nbsp;
           
-            <a href="/tags/HEXO">HEXO</a>&nbsp;
+            <a href="/tags/%E9%94%99%E8%AF%AF">错误</a>&nbsp;
           
         
       </div>
@@ -537,33 +587,46 @@ More info: Deployment
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2019/11/21/%E5%8D%9A%E5%AE%A2/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">
-        <p class="h4 index-header">我的第一篇博客</p>
+      <a href="/2019/11/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0/">
+        <p class="h4 index-header">计算机网络</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">我的第一篇博客这是我的第一个博客，会记录一些我的学习经历，激励并警醒以后的自己
-主题参考指南Hevo网址一定要好好学习!!!!
-</div>
+          <div class="index-text mb-1">计算机网络概述
+局域网 覆盖范围小 自己花钱购买设备 带宽固定 自己维护 100米 带宽 10M 100M 1000M 设计的时候应该分层设计，一个交换机作为汇聚层（作为中心，接入其他接入层交换机），其余的交换机作为接入层（接入每台电脑，要求接口多）； 接入层的交换机都连接到汇聚层交换机上，并且汇聚层每条线的带宽应该等于接入层带宽总和，这样既不会浪费，也不会限制。
+
+广域网 距离远 花钱租带宽
+
+Internet ISP 自己的机房 对网民提供访问Internet连接
+
+
+规划IP地址介绍MAC地址IP地址IP地址分为网络部分和主机部分，具体如何分辨看子网掩码例如：
+IP        13.0.0.0子网掩码  255.0.0.0
+那么13就是网络部分0.0.0是主机部分，加入子网掩码是255.255那么13.0就是网络部分，0.0就是主机部分。
+互联网连接的路由器的地址往往是这个网段的第一个地址。如果你这个电脑想要给其他网段传输信息，需要配置网关，这个网关就是路由器的IP地址
+
+
+如图，ip地址的网络部分就是前三个部分，主机就是最后一个部分。
+MAC地址在计算机出厂的时候就布置到芯</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-21&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-23&nbsp;&nbsp;
         
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/%E5%8D%9A%E5%AE%A2">博客</a>&nbsp;
+            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E5%8D%9A%E5%AE%A2">博客</a>&nbsp;
+            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>&nbsp;
           
         
       </div>
@@ -574,7 +637,7 @@ More info: Deployment
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/19/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="page-number" href="/page/19/">19</a><span class="page-number current">20</span>
+      <a class="extend prev" rel="prev" href="/page/19/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="page-number" href="/page/19/">19</a><span class="page-number current">20</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/21/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

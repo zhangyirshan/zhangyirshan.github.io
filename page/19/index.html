@@ -136,440 +136,39 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2019/11/25/%E7%BC%96%E8%BE%91%E5%99%A8/IDEA/">
-        <p class="h4 index-header">IDEA</p>
+      <a href="/2019/12/01/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/OSI/">
+        <p class="h4 index-header">OSI</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">IDE（Integrated Development Environment）集成开发环境
-NetBeans http://netbeans.org/
-Intellij IDEA (公认最好的Java开发工具之一）
-Eclipse
+          <div class="index-text mb-1">OSI参考模型
+应用层 所有能产生网络流量的程序
+表示层 在传输之前是否进行加密或压缩处理 二进制 ASCII（编码和解码一致才不会乱码）
+会话层 查木马 neststat -n查看所有会话，netstat -nb查看会话是由谁建立的
+传输层 可靠传输（发送后需要确认） 流量控制 不可靠传输（发送数据包，不管结果，如果丢包，再次请求）
+网络层 负责选择最佳路径 规划IP地址
+数据链路层 帧的开始和结束 透明传输 差错校验
+物理层 接口标准 电器标准 如何在物理链路上传输更快的速度
 
-修改IDEA的快捷提示按键，使它只能按回车才使用提示eclipse的快捷提示无论你按空格按回车都会强迫你使用它的提示，但是当我们不想使用它的提示的时候就显得非常难受了，所以IDEA的这个设置，能够给我们更强的自主性。
+网络排错指导
+物理层故障 查看连接状态，查看发送和接受的数据包 
+数据链路层故障 MAC地址冲突，ADSL欠费，网速没办法协商，计算机连接到错误的VLAN 
+网络层故障 配置错误的IP地址，子网掩码，配置错误的网关，路由器没有配置到达目标网络的路由
+应用层故障 应用程序配置错误
 
-
-快捷键
-IDEA在当前类中查找方法快捷键例如在String类中查找contains方法。Ctrl + F12
-
-格式化：Ctrl+Alt+L
-
-Alt + Ins 快速创建构造方法
-
-Ctrl + Alt + O 自动清楚无用包
-
-
-IDEAIDEA破解
-</div>
+网络安全
+物理层安全 把不用的网线拔掉或者把这个口通过命令shut down
+数据链路层安全 ADSL，账户密码，VLAN交换机端口绑定MAC地址
+网络层安全 在路由器上使用ACL控制数据包流量，网络防火墙
+应用层安全 开发的应用</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-25&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E7%BC%96%E8%BE%91%E5%99%A8">编辑器</a>&nbsp;
-          
-            <a href="/categories/IDEA">IDEA</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/IDEA">IDEA</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2019/11/25/%E5%90%8E%E7%AB%AF/Java/Collection/">
-        <p class="h4 index-header">集合</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">集合Collection概念
-对于 Java 中的常量的命名规则：所有单词的字母都是大写，如果有多个单词， 那么使用下划线连接即可。 比如说： public static final int AGE_0F_PERSON &#x3D; 20;
-在 Java 中声明 final 常量时通常都会加上 static 关键字，这样对象的每个实例 都会访问唯一一份常量值。
-
-
-Interface Collection&lt;E&gt;public interface Collection&lt;E&gt;extends Iterable&lt;E&gt;E可以先当作Object类型具体后面学。
-Collection的Java API中的定义The root interface in the collection hierarchy.继承层次的根接口 A collection represents a group of objects,known as its elements.一个集合代表一组对象 ，这些对象我们称为元素Some collections allow duplicate elemen</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-25&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Java">Java</a>&nbsp;
-          
-            <a href="/categories/Java%20SE">Java SE</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Java">Java</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2019/11/25/%E7%AE%97%E6%B3%95/%E6%9F%A5%E6%89%BE/">
-        <p class="h4 index-header">查找</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">二分查找（Binary Search）待查找的数组要有序。
-public class ArraySearchTest &#123;
-
-    public static int search(int[] array, int value) &#123;
-        int low = 0;
-        int high = array.length - 1;
-        int middle;
-        while(low &lt;= high) &#123;
-            middle = (low + high) / 2;
-            if(array[middle] == value) &#123;
-                return middle;
-            &#125;
-            if(value &lt; array[middle]) &#123;
-                high = middle - 1;
-            &#125;
-            if(value </div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-25&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E7%AE%97%E6%B3%95">算法</a>&nbsp;
-          
-            <a href="/categories/%E6%9F%A5%E6%89%BE">查找</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%AE%97%E6%B3%95">算法</a>&nbsp;
-          
-            <a href="/tags/%E6%9F%A5%E6%89%BE">查找</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2019/11/25/%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F/">
-        <p class="h4 index-header">排序</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">冒泡排序。（掌握交换排序，快速排序的原理与实现方式）arraycopy方法这个方法是JDK提供的API，这个方法在java.lang.System。public static void arraycopy(Object src,int srcPos,Object dest,int destPos,int length)
-Parameters:src - the source array（原数组）.srcPos - starting position in the source array（原数组中的起始位置，从此位置开始拷贝）.dest - the destination array（目标数组）.destPos - starting position in the destination data（目标数组的起始位置，从此位置开始接收）.length - the number of array elements to be copied（待拷贝的的数组的个数）.
-public class ArrayCopy &#123;
-
-    public static void main(Str</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-25&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E7%AE%97%E6%B3%95">算法</a>&nbsp;
-          
-            <a href="/categories/%E6%8E%92%E5%BA%8F">排序</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%AE%97%E6%B3%95">算法</a>&nbsp;
-          
-            <a href="/tags/%E6%8E%92%E5%BA%8F">排序</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2019/11/25/%E5%90%8E%E7%AB%AF/Java/%E6%95%B0%E7%BB%84%E5%89%96%E6%9E%90/">
-        <p class="h4 index-header">数组剖析</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">包装类（Wrapper Class）
-针对于原生数据类型的包装，所有的包装类（8 个）都位于java.lang 包下。 例如：Integer把原生数据类型int包装在对象中，类型Integer的对象包含了一个单独的一个int类型的值。
-public class IntegerTest &#123;
-    public static void main(String[] args) &#123;
-        int a = 10;
-        Integer integer = new Integer(a);
-        int b = integer.intValue();
-        System.out.println(a == b);
-    &#125;
-&#125;
-
- 结果是：true 其他的类型同理
-
-Java 中的 8 个包装类分别是：Byte,Short,Integer,Long,Float,Double,Character, Boolean。 他们的使用方式都是一样的，可以实现原生数据类型与包装类型的双向转换。
-
-
-数组（Array）
-相同类型数据</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-25&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Java">Java</a>&nbsp;
-          
-            <a href="/categories/Java%20SE">Java SE</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Java">Java</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2019/11/24/%E5%89%8D%E7%AB%AF/Vue/v-router/">
-        <p class="h4 index-header">v-router</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">vue-router使用详情SPA(single page application):单一页面应用程序，只有一个完整的页面；它在加载页面时，不会加载整个页面，而是只更新某个指定的容器中内容。单页面应用(SPA)的核心之一是:更新视图而不重新请求页面;vue-router在实现单页面前端路由时，提供了两种方式：Hash模式和History模式。
-1、hash模式随着 ajax 的流行，异步数据请求交互运行在不刷新浏览器的情况下进行。而异步交互体验的更高级版本就是 SPA —— 单页应用。单页应用不仅仅是在页面交互是无刷新的，连页面跳转都是无刷新的，为了实现单页应用，所以就有了前端路由。类似于服务端路由，前端路由实现起来其实也很简单，就是匹配不同的 url 路径，进行解析，然后动态的渲染出区域 html 内容。但是这样存在一个问题，就是 url 每次变化的时候，都会造成页面的刷新。那解决问题的思路便是在改变url的情况下，保证页面的不刷新。在 2014 年之前，大家是通过 hash 来实现路由，url hash 就是类似于：
-    http://www.xxx.com/#/login
-
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E5%89%8D%E7%AB%AF">前端</a>&nbsp;
-          
-            <a href="/categories/Vue">Vue</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Vue">Vue</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2019/11/24/%E5%89%8D%E7%AB%AF/JS/%E8%B5%8B%E5%80%BC%E3%80%81%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%8C%BA%E5%88%AB/">
-        <p class="h4 index-header">赋值、浅拷贝和深拷贝的区别</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">赋值（Copy）赋值是将某一数值或对象赋给某个变量的过程，分为：
-
-基本数据类型：赋值，赋值之后两个变量互不影响
-
-引用数据类型：赋址，两个变量具有相同的引用，指向同一个对象，相互之间有影响对基本类型进行赋值操作，两个变量互不影响。
-// saucxs
-let a = &quot;saucxs&quot;;
-let b = a;
-console.log(b);  // saucxs
-
-a = &quot;change&quot;;
-console.log(a);   // change
-
-console.log(b);    // saucxs
-
- 对引用类型进行赋址操作，两个变量指向同一个对象，改变变量 a 之后会影响变量 b，哪怕改变的只是对象 a 中的基本类型数据。
-// saucxs
-let a = &#123;
-    name: &quot;saucxs&quot;,
-    book: &#123;
-        title: &quot;You Don&#39;t Know JS&quot;,
-        price: &quot;45&quot;
-    &#1</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E5%89%8D%E7%AB%AF">前端</a>&nbsp;
-          
-            <a href="/categories/JS">JS</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/JS">JS</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2019/11/23/%E9%94%99%E8%AF%AF/HEXO%E7%9A%84%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E9%97%AE%E9%A2%98/">
-        <p class="h4 index-header">HEXO的图片上传问题</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">问题状况
-如果你的hexo安装了img插件但是还是不显示，后台输出地址404。
-解决办法
-首先找到你的node_modules\&#x68;&#x65;&#120;&#x6f;&#45;&#97;&#x73;&#115;&#101;&#x74;&#45;&#x69;&#109;&#x61;&#x67;&#101;&#64;&#x30;&#46;&#48;&#46;&#x35;@hexo-asset-image和node_modules\hexo-asset-image这两个文件包，删除。
-
-接下来
-npm install https://github.com/CodeFalling/hexo-asset-image --save
-
- 执行这条指令。
-
-打开&#x2F;node_modules&#x2F;hexo-asset-image&#x2F;index.js，将内容更换为下面的代码
-&#39;use strict&#39;;
-var cheerio = require(&#39;cheerio&#39;);
-
-// http://stackoverflow.com/question</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-23&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E9%94%99%E8%AF%AF">错误</a>&nbsp;
-          
-            <a href="/categories/%E5%8D%9A%E5%AE%A2">博客</a>&nbsp;
-          
-            <a href="/categories/%E5%9B%BE%E7%89%87">图片</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E5%8D%9A%E5%AE%A2">博客</a>&nbsp;
-          
-            <a href="/tags/%E9%94%99%E8%AF%AF">错误</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2019/11/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0/">
-        <p class="h4 index-header">计算机网络</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">计算机网络概述
-局域网 覆盖范围小 自己花钱购买设备 带宽固定 自己维护 100米 带宽 10M 100M 1000M 设计的时候应该分层设计，一个交换机作为汇聚层（作为中心，接入其他接入层交换机），其余的交换机作为接入层（接入每台电脑，要求接口多）； 接入层的交换机都连接到汇聚层交换机上，并且汇聚层每条线的带宽应该等于接入层带宽总和，这样既不会浪费，也不会限制。
-
-广域网 距离远 花钱租带宽
-
-Internet ISP 自己的机房 对网民提供访问Internet连接
-
-
-规划IP地址介绍MAC地址IP地址IP地址分为网络部分和主机部分，具体如何分辨看子网掩码例如：
-IP        13.0.0.0子网掩码  255.0.0.0
-那么13就是网络部分0.0.0是主机部分，加入子网掩码是255.255那么13.0就是网络部分，0.0就是主机部分。
-互联网连接的路由器的地址往往是这个网段的第一个地址。如果你这个电脑想要给其他网段传输信息，需要配置网关，这个网关就是路由器的IP地址
-
-
-如图，ip地址的网络部分就是前三个部分，主机就是最后一个部分。
-MAC地址在计算机出厂的时候就布置到芯</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-23&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-12-01&nbsp;&nbsp;
         
         
           <i class="iconfont icon-inbox"></i>
@@ -591,28 +190,437 @@ MAC地址在计算机出厂的时候就布置到芯</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2019/11/22/%E5%90%8E%E7%AB%AF/Java/String%E7%B1%BB%E6%BA%90%E4%BB%A3%E7%A0%81%E6%B8%97%E6%9E%90/">
-        <p class="h4 index-header">String类源代码渗析</p>
+      <a href="/2019/11/30/%E5%89%8D%E7%AB%AF/HTML/HTML5%E6%A6%82%E8%BF%B0/">
+        <p class="h4 index-header">HTML5概述</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">相等性的比较（&#x3D;&#x3D;）
-对于原生数据类型来说，比较的是左右两边的值是否相等。
-对于引用类型来说，比较左右两边的引用是否指向同一个对象，或者说左右两边的引用地址是否相同。
-java.lang.Object 类。 java.lang 包在使用的时候无需显式导入，编译时由编译器自动帮助我们导入。
-API （Application Programming Interface），应用编程接口。
-当打印引用时，实际上会打印出引用所指对象的 toString()方法的返回值，因为每个类都直接或间接地继承自 Object，而 Object 类中定义了 toString()，因此每个类都有toString()这个方法。
+          <div class="index-text mb-1">HTML5新特性
+用于绘画的canvas标签
+用于媒介回访放的video和audio元素
+对本地离线存储的更好支持
+新的特殊内容元素 如：article、footer、header、nav、section
+新的表单控件 如：calendar、date、time、email、url、search
+浏览器的支持 Safai、Chrome、Firefox以及Opera包括IE9基本支持了HTML5
 
-equals方法该方法定义在 Object 类当中，因此 Java 中的每个类都具有该方法，对于 Object 类的 equals()方法来说，它是判断调用 equals()方法的引用与传进来的引用是否一致，即这两个引用是否指向的是同一个对象。对于 Object 类的 equals()方法来说，它等价于&#x3D;&#x3D;。
-public class String</div>
+HTML基础讲解
+声明&lt;!DOCTYPE&gt; HTML也有多个不同的版本，只有完全明白页面中只用的确切HTML版本，浏览器才能完全正确地显示出HTML页面。这就是&lt;!DOCTYPE&gt;的用处
+
+WebStorage
+存储内容大小一般支持5MB左右（不同浏览器可能还不一样）
+浏览器端通过Window.sessionStorage和Window.localStorage属性来实现本地存储机制。
+相关API：
+xxxxStorage.setItem(‘key’,’value’) 该方法接受哦一个键和值作为参数，会把键值对添加到存储中，如果键名存在，则更新其对应的值。
+xxxxSto</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-22&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-30&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF">前端</a>&nbsp;
+          
+            <a href="/categories/HTML">HTML</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E5%89%8D%E7%AB%AF">前端</a>&nbsp;
+          
+            <a href="/tags/HTML">HTML</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/11/27/%E4%B8%AD%E9%97%B4%E4%BB%B6/Ajax/%E4%BD%BF%E7%94%A8jQuery%E5%AE%9E%E7%8E%B0Ajax/">
+        <p class="h4 index-header">使用jQuery实现Ajax</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">jQuery中的AjaxjQuery对Ajax操作进行了封装，在jQuery中最底层的方法时$.ajax(),第二层使load(),$.get()和$.post(),第三层使$.getScript()和$.getJSON()
+
+什么是Ajax？不用刷新页面，但可以和服务器进行通信的方式，使用Ajax的主要方式时XMLHttpRequest对象
+
+使用XMLHttpRequest对象实现Ajax【了解】
+
+Ajax传输数据的三种方式 XML：笨重，解析困难，但XML是通用的数据交换格式。 HTML：不需要解析可以直接放到文档中，若仅更新一部分区域，但传输的数据不是很方便，且HTML代码需要拼装完成。 JSON：小巧，有面向对象的特征，且有很多第三方的jar包可以把Java对象或集合转为JSON字符串。
+
+使用jQuery完成Ajax操作 1). load方法：可以用于HTML文档的元素更新，把结果直接加为对应节点的子元素，通常而言，load方法加载后的数据时一个HTML片段。
+ var $obj &#x3D; … var url &#x3D; … var args &#x3D; {key</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-27&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Ajax">Ajax</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Ajax">Ajax</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/11/27/%E4%B8%AD%E9%97%B4%E4%BB%B6/Ajax/Ajax-%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/">
+        <p class="h4 index-header">Ajax_数据格式</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">数据格式提要
+在服务器端AJAX是一门与语言无关的技术。再业务逻辑层使用何种服务器端语言都可以。
+从服务器端接受数据的时候，那些数据必须以浏览器能够理解的格式来发送。服务器端的编程语言只能以如下3中格式返回数据：
+XML
+JSON
+HTML
+
+
+
+解析HTML
+HTML由一些普通文本组成。如果服务器通过XMLHttpRequest发送HTML，文本将存储在responseText属性中。
+不必从responseText属性中读取数据。它已经是希望的格式，可以直接将他插入到页面中。
+插入HTML代码最简单的方法是更新这个元素的innerHTML属性
+
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+
+        window.onload = function () &#123;
+            var</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-27&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Ajax">Ajax</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Ajax">Ajax</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/11/27/%E4%B8%AD%E9%97%B4%E4%BB%B6/Ajax/%E4%BD%BF%E7%94%A8XMLHttpRequest%E5%AE%9E%E7%8E%B0Ajax/">
+        <p class="h4 index-header">使用XMLHttpRequest实现Ajax</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">XMLHttpRequest的概述
+XMLHttpRequest最早是在IE5中以ActiveX组件的形式实现的。非W3C标准。
+创建XMLHttpRequest对象（由于非标准所有实现方法不统一）
+Internet Explor把XMLHttpRequest实现为一个ActiveX对象
+其他浏览器（Firefox、Safari、Opera。。。）把它实现为一个本地的JavaScript
+XMLHttpRequest在不同浏览器上的实现是兼容的。所有可以用同样的方式访问XMLHttpRequest实例的属性和方法，而不论这个实例创建的方法是什么。
+
+
+
+创建XMLHttpRequest对象为了每次下Ajax的时候都节省一点时间，可以把对象检查的内容打包成一个可服用的函数；
+function getHTTPObject()&#123;
+    var xhr = false;
+    if(window.XMLHttpRequest)&#123;
+        xhr = new XMLHttpRequest();
+    &#125; else if(window.ActiveXOb</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-27&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Ajax">Ajax</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Ajax">Ajax</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/11/27/%E4%B8%AD%E9%97%B4%E4%BB%B6/Ajax/Ajax%E6%A6%82%E8%BF%B0/">
+        <p class="h4 index-header">Ajax概述</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">什么是Ajax
+Ajax的技术的产生
+
+Ajax被认为是（Asynchronous【异步】 JavaScript and XML的缩写）。现在，允许浏览器与服务器通信无须刷新当前页面的技术都被叫做Ajax。
+“Ajax”这个名字是在2005年2月，Adaptive Path的Jesse James Garrett再他的文章Ajax：A New Approach to Web Application中创造。
+而Ajax这项技术，是Google再Google Labs发布Google Maps和GoogleSuggest后真正为人所认识。  图1 Web的传统模型，客户端向服务器发送一个请求，服务器返回整个页面，如此反复。  图2 在Ajax模型中，数据在客户端与服务器之间独立传输。服务器不再返回整个页面。
+
+
+不用刷新整个页面便可与服务器通讯的方法：
+
+Flash
+Java applet
+框架:如果使用一组框架构造了一个网页，可以只更新其中一个框架，而不必惊动整个页面
+隐藏的iframe
+XMLHttpRequest：该对象是对JavaScript的一个扩展，可使网页与服务器进行通信。是</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-27&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Ajax">Ajax</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Ajax">Ajax</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/11/25/%E5%90%8E%E7%AB%AF/Java/Stack%E4%B8%8EQueue/">
+        <p class="h4 index-header">Stack与Queue</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Stack(栈)栈(Stack)也是一种特殊的线性表，是一种后进先出(LIFO)的结构。
+
+栈是限定仅在表尾进行插入和删除运算的线性表，表尾称为栈顶(top)，表头称为栈底(bottom)。
+栈的物理存储可以用顺序存储结构，也可以用链式存储结构。
+
+Queue(队列)队列(Queue)是限定所有的插入只能在表的一端进行，而所有的删除都在表的另一端进行的线性表。
+
+表中允许插入的一端称为队尾(Rear)，允许删除的一端称为队头(Front)。
+队列的操作是按先进先出(FIFO)的原则进行的。
+队列的物理存储可以用顺序存储结构，也可以用链式存储结构。
+
+package fourtyFourth;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class MyQueue&#123;
+    private LinkedList list = new LinkedList();
+
+    public void add(Object o)&#123;
+        list.addLast(o);
+    &#12</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-25&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Java">Java</a>&nbsp;
+          
+            <a href="/categories/Java%20SE">Java SE</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Java">Java</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/11/25/%E5%90%8E%E7%AB%AF/Java/List/">
+        <p class="h4 index-header">List</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">链表ListArrayList（数组列表）
+java.utilClass ArrayList&lt;E&gt;java.lang.Object  extended by java.util.AbstractCollection&lt;E&gt;   extended by java.util.AbstractList&lt;E&gt;   extended by java.util.ArrayList&lt;E&gt;
+
+
+
+
+构造方法（Constructor Summary）
+具体含义
+
+
+
+ArrayList()
+Constructs an empty list with an initial capacity of ten. 他是一个集合，通过add（E e） 添加
+
+
+
+
+
+Method Summary
+具体含义
+
+
+
+public boolean add(E e)
+Appends the specified element to the end of this list.
+
+
+public int size()
+Returns the number of elements i</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-25&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Java">Java</a>&nbsp;
+          
+            <a href="/categories/Java%20SE">Java SE</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Java">Java</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/11/25/%E5%90%8E%E7%AB%AF/Java/Iterator/">
+        <p class="h4 index-header">Iterator</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">iterator通常希望循环通过类集中的元素。例如，可能会希望显示每一个元素。到目前为止，处理这个问题的最简单方法是使用iterator，iterator是一个或者实现Iterator或者实现ListIterator接口的对象。 Iterator可以完成循环通过类集，从而获得或删除元素。 ListIterator扩展Iterator，允许双向遍历列表，并可以修改单元。
+对于执行List的类集，也可以通过调用ListIterator来获得迭代函数。正如上面解释的那样，列表迭代函数提供了前向或后向访问类集的能力，并可让你修改元素。否则， ListIterator如同Iterator功能一样
+public Iterator&lt;E&gt; iterator()Returns an iterator over the elements in this set. The elements are returned in no particular order.（返回一个迭代器针对于集合中所有的元素，元素不以特定的顺序返回）
+Interface Iterator&lt;E&gt;public i</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-25&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Java">Java</a>&nbsp;
+          
+            <a href="/categories/Java%20SE">Java SE</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Java">Java</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/11/25/%E5%90%8E%E7%AB%AF/Java/Set/">
+        <p class="h4 index-header">Set</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Setpublic interface Set&lt;E&gt;extends Collection&lt;E&gt;（继承collection接口）A collection that contains no duplicate elements.（一个集合不能包含重复的元素）
+addpublic boolean add(E e)Adds the specified element to this set if it is not already present.（将指定的元素e加入如果集合中没有）More formally, adds the specified element e to this set if this set contains no element e2 such that (e&#x3D;&#x3D;null ? e2&#x3D;&#x3D;null : e.equals(e2)).（更重要的是，如果它不包含满足这个(e&#x3D;&#x3D;null ? e2&#x3D;&#x3D;null : e.equals(e2))条件的时候，它会将这个e加入这个集合中</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-25&nbsp;&nbsp;
         
         
           <i class="iconfont icon-inbox"></i>
@@ -636,7 +644,7 @@ public class String</div>
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/18/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/18/">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/20/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/page/18/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/18/">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/">20</a><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/20/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

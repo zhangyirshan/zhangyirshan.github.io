@@ -122,7 +122,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    15 字
+                    1.1k 字
                   </span>&nbsp;
                 
 
@@ -130,7 +130,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      1 分钟
+                      4 分钟
                   </span>&nbsp;
                 
 
@@ -163,8 +163,71 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/forezp/article/details/70148833">https://blog.csdn.net/forezp/article/details/70148833</a></p>
+            <h2 id="快速搭建"><a href="#快速搭建" class="headerlink" title="快速搭建"></a>快速搭建</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/forezp/article/details/70148833">https://blog.csdn.net/forezp/article/details/70148833</a></p>
 <p><a target="_blank" rel="noopener" href="https://gitee.com/huangxunhui/basic_project/tree/master/">https://gitee.com/huangxunhui/basic_project/tree/master/</a></p>
+<h2 id="项目版本选型"><a href="#项目版本选型" class="headerlink" title="项目版本选型"></a>项目版本选型</h2><p><a target="_blank" rel="noopener" href="https://start.spring.io/actuator/info">https://start.spring.io/actuator/info</a></p>
+<p><a target="_blank" rel="noopener" href="https://spring.io/projects/spring-cloud/#learn">https://spring.io/projects/spring-cloud/#learn</a></p>
+<h2 id="cloud搭建使用技术"><a href="#cloud搭建使用技术" class="headerlink" title="cloud搭建使用技术"></a>cloud搭建使用技术</h2><ol>
+<li>服务注册中心：Consul、Nacos</li>
+<li>服务调用：Ribbon、LoadBalancer</li>
+<li>服务调用2：openFeign、dubbo</li>
+<li>服务降级：resilience4j、sentienl</li>
+<li>服务网关：gateway</li>
+<li>服务配置：Nacos</li>
+<li>服务总线：Nacos</li>
+</ol>
+<h2 id="服务注册中心"><a href="#服务注册中心" class="headerlink" title="服务注册中心"></a>服务注册中心</h2><blockquote>
+<p>当对数据一致性要求没有那么高可以选择AP，例如淘宝双十一秒杀，视频点赞数</p>
+</blockquote>
+<ul>
+<li>AP(EureKa&#x2F;Nacos)</li>
+<li>CP(Zookeeper&#x2F;Consul)</li>
+</ul>
+<h3 id="Consul"><a href="#Consul" class="headerlink" title="Consul"></a>Consul</h3><p>CAP最多只能同时较好的满足两个。</p>
+<ul>
+<li>C: Consistency(强一致性)</li>
+<li>A: Availability(可用性)</li>
+<li>P: Parttition tolerance(分区容错性)</li>
+<li>CAP理论关注粒度是否是数据,而不是整体系统设计的策略</li>
+</ul>
+<p>CAP理论的核心是：一个分布式系统不可能同时很好的满足一致性，可用性和分区容错性这三个需求，因此根据CAP原理将NoSQL数据库分成了满足CA原则、满足CP原则和满足AP原则三大类：</p>
+<ul>
+<li>CA - 单点集群，满足一致性、可用性的系统，通常再可扩展性上不太强大。</li>
+<li>CP - 满足一致性、分区容忍性的系统，通常性能不是特别高。</li>
+<li>AP满足可用性，分区容忍性的系统，通常可能对一致性要求低一些。</li>
+</ul>
+<img src="/2020/10/23/%E5%90%8E%E7%AB%AF/Spring/%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/CAP.png" srcset="undefined" class="" title="CAP">
+
+<h2 id="服务调用"><a href="#服务调用" class="headerlink" title="服务调用"></a>服务调用</h2><h2 id="OpenFeign"><a href="#OpenFeign" class="headerlink" title="OpenFeign"></a>OpenFeign</h2><blockquote>
+<p>Feign是一个声明式的Web服务客户端,让编写Web服务客户端变得非常容易,只需创建一个接口并在接口上添加注解即可</p>
+</blockquote>
+<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>Feign目的在于使编写Java Http客户端变得更容易。</p>
+<p>在实际开发中，由于对服务依赖的调用可能不止一处，所以通常会针对每个微服务自行封装一些客户端类来包装这些依赖服务的调用。在Fegin的实现下，我们只需创建一个接口并使用注解的方式来配置它（以前是Dao接口上面标注Mapper，现在是一个微服务接口上面标注一个Feign注解即可），即可完成对服务提供方的接口绑定，简化了使用Spring cloud Ribbon时，自动封装服务调用客户端的开发量。</p>
+<img src="/2020/10/23/%E5%90%8E%E7%AB%AF/Spring/%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/Feign.png" srcset="undefined" class="" title="Feign">
+
+<h3 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h3><pre><code class="java">import com.zhangyi.cloud.dto.PaymentDTO;
+import com.zhangyi.cloud.dto.ResultDTO;
+import feign.Param;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+@Service
+@FeignClient(value = &quot;cloud-payment-service&quot;)
+public interface PaymentFeignService &#123;
+    @GetMapping(value = &quot;/payment/get/&#123;id&#125;&quot;)
+    ResultDTO&lt;PaymentDTO&gt; getPayment(@PathVariable(&quot;id&quot;) @Param(&quot;id&quot;) Long id);
+&#125;
+</code></pre>
+<h2 id="服务熔断与降级"><a href="#服务熔断与降级" class="headerlink" title="服务熔断与降级"></a>服务熔断与降级</h2><p>分布式系统面临的问题</p>
+<p>复杂分布式体系结构中的应用程序   有数10个依赖关系,每个依赖关系在某些时候将不可避免地失败</p>
+<h3 id="服务雪崩"><a href="#服务雪崩" class="headerlink" title="服务雪崩"></a>服务雪崩</h3><p>多个微服务之间调用的时候，假设微服务A调用微服务B和微服务C，微服务B和微服务C又调用其他的微服务，这就是所谓的 <strong>“扇出”</strong> 如果扇出的链路上某个微服务的调用响应时间过长或者不可用，对微服务A的调用就会占用越来越多的资源，进而近期系统崩溃，所谓的雪崩效应。</p>
+<p>对于高流量的应用来说，单一的后端依赖可能会导致所有服务器上的所有资源都在几秒钟内饱和。比失败更糟糕的是，这些应用还可能导致服务之间的延迟增加，备份队列，线程和其他系统资源紧张，导致整个系统发生更多的故障。这些都表示需要对故障和延迟进行隔离和管理，以便单个依赖关系的失败，不能取消整个应用程序或系统。</p>
+<p>所以通常当你发现一个模块下的某个实例失败后，这时候这个模块依然还会接收流量，然后这个有问题的模块还调用了其他的模块，这样就会发生级联故障，或叫雪崩。</p>
+<h3 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h3><blockquote>
+<p>服务降级: 服务器忙,请稍后再试,不让客户端等待并立刻返回一个友好提示,fallback<br>服务熔断: 类比保险丝达到最大服务访问后,直接拒绝访问,拉闸限电,然后调用服务降级的方法并返回友好提示<br>服务限流：秒杀高并发等操作,严禁一窝蜂的过来拥挤,大家排队,一秒钟N个,有序进行</p>
+</blockquote>
 
             <hr>
           </div>

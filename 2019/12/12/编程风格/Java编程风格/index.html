@@ -122,7 +122,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    612 字
+                    656 字
                   </span>&nbsp;
                 
 
@@ -203,6 +203,7 @@ public final class SortUtil
 <p>@NoArgsConstructor(access &#x3D; AccessLevel.PRIVATE) lombok中用来生产私有构造方法的注解<br>工具类不会被继承也不会被声明实例对象，因此要用final修饰，是为了防止其他程序员不小心声明对象浪费内存。</p>
 <h2 id="判断语句"><a href="#判断语句" class="headerlink" title="判断语句"></a>判断语句</h2><p>如果只有两种情况，那就用if&#x2F;else，就算else可以省略也不要省略，这样为了方便代码阅读者理清的思维逻辑，可以更加快速的读懂你的代码</p>
 <h2 id="循环编写"><a href="#循环编写" class="headerlink" title="循环编写"></a>循环编写</h2><p>如果集合中的数据量在1w以下，用普通的循环遍历即可，如果在1w以上，不考虑线程安全问题使用并行流parallelStream，考虑线程安全问题使用stream</p>
+<h2 id="判空习惯"><a href="#判空习惯" class="headerlink" title="判空习惯"></a>判空习惯</h2><p>在Map或者对象使用之前加上判空，特别是在业务逻辑不清晰的大型项目，有助于明显减少bug数量</p>
 
             <hr>
           </div>

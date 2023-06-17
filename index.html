@@ -136,36 +136,40 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2022/11/27/%E5%90%8E%E7%AB%AF/Dubbo/Dubbo%E5%9F%BA%E7%A1%80/">
-        <p class="h4 index-header">Dubbo基础</p>
+      <a href="/2023/04/20/%E5%90%8E%E7%AB%AF/%E9%93%BE%E8%B7%AF%E8%BF%BD%E8%B8%AA/Sleuth+Zipkin/Sleuth/">
+        <p class="h4 index-header">Sleuth+Zipkin</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">Dubbo为什么Dubbo说自己性能高高性能要从底层的远离说起，既然是一个RPC框架，主要干的就是远程过程（方法）调用，那么提升性能就要从最关键、最耗时的两个方面入手：序列化和网络通信。
-
-序列化：我们学习Java网络开发的时候知道，本地对象要在网络上传输，必须要事项Seralizable接口，也就是必须序列化。我们序列化的方案很多：xml、json、二进制流…其中效率最好的就是二进制流（因为计算机就是二进制的）。然而Dubbo采用的就是效率最好的二进制。
-网络通信：不同于HTTP需要进行7步（三次握手和四次挥手），Dubbo采用Socket通信机制，一步到位，提升了通信效率，并且可以建立长连接，不用反复连接，直接传输数据
-
-</div>
+          <div class="index-text mb-1">什么是链路追踪“链路追踪”一词是在 2010 年提出的，当时谷歌发布了一篇 Dapper 论文：Dapper，大规模分布式系统的跟踪系统，介绍了谷歌自研的分布式链路追踪的实现原理，还介绍了他们是怎么低成本实现对应用透明的。
+单纯的理解链路追踪，就是指一次任务的开始到结束，期间调用的所有系统及耗时（时间跨度）都可以完整记录下来。
+其实 Dapper 一开始只是一个独立的调用链路追踪系统，后来逐渐演化成了监控平台，并且基于监控平台孕育出了很多工具，比如实时预警、过载保护、指标数据查询等。
+除了谷歌的 Dapper，还有一些其他比较有名的产品，比如阿里的鹰眼、大众点评的 CAT、Twitter 的 Zipkin、Naver（著名社交软件LINE的母公司）的 PinPoint 以及国产开源的 SkyWalking（已贡献给 Apache） 等。
+Sleuth什么是 Sleuth
+Spring Cloud Sleuth 为 Spring Cloud 实现了分布式跟踪解决方案。兼容 Zipkin，HTrace 和其他基于日志的追踪系统，例如 ELK（Elasticsearch 、Logstash、</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2022-11-27&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2023-04-20&nbsp;&nbsp;
         
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/Dubbo">Dubbo</a>&nbsp;
+            <a href="/categories/Sleuth">Sleuth</a>&nbsp;
+          
+            <a href="/categories/Zipkin">Zipkin</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/Dubbo">Dubbo</a>&nbsp;
+            <a href="/tags/Sleuth">Sleuth</a>&nbsp;
+          
+            <a href="/tags/Zipkin">Zipkin</a>&nbsp;
           
         
       </div>
@@ -176,91 +180,48 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2022/11/23/%E5%90%8E%E7%AB%AF/JustAuth/JustAuth%E7%AC%AC%E4%B8%89%E6%96%B9%E7%99%BB%E5%BD%95/">
-        <p class="h4 index-header">JustAuth第三方登录</p>
+      <a href="/2023/02/28/%E5%90%8E%E7%AB%AF/Elasticsearch/ElasticSearch%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/">
+        <p class="h4 index-header">ElasticSearch增删改查</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">登录网站https://www.justauth.wiki/
-</div>
-        </div>
-      </a>
+          <div class="index-text mb-1">创建索引
+使用PUT请求创建索引，PUT操作有幂等性，重复请求会报错
 
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2022-11-23&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/JustAuth">JustAuth</a>&nbsp;
-          
-            <a href="/categories/%E7%AC%AC%E4%B8%89%E6%96%B9%E7%99%BB%E5%BD%95">第三方登录</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/JustAuth">JustAuth</a>&nbsp;
-          
-            <a href="/tags/%E7%AC%AC%E4%B8%89%E6%96%B9%E7%99%BB%E5%BD%95">第三方登录</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
+PUT http://127.0.0.1:9200/shopping
 
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2022/11/06/%E5%89%8D%E7%AB%AF/JS/call%E5%92%8Capply/">
-        <p class="h4 index-header">call和apply</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">call
-call() 方法是预定义的 JavaScript 方法。它可以用来调用所有者对象作为参数的方法。通过 call()，您能够使用属于另一个对象的方法。
-
-var person = &#123;
-  fullName: function(city, country) &#123;
-    return this.firstName + &quot; &quot; + this.lastName + &quot;,&quot; + city + &quot;,&quot; + country;
-  &#125;
+&#123;
+    &quot;acknowledged&quot;: true,
+    &quot;shards_acknowledged&quot;: true,
+    &quot;index&quot;: &quot;shopping&quot;
 &#125;
-var person1 = &#123;
-  firstName:&quot;Bill&quot;,
-  lastName: &quot;Gates&quot;
-&#125;
-console.log(person.fullName.call(person1, &quot;Seattle&quot;, &quot;USA&quot;));
-// 输出结果 Bill Gates,Seattle,USA
-
-call和apply的区别
-call的语法：函数名.cal</div>
+错误信息
+&#123;
+    &quot;error&quot;: &#123;
+        &quot;root_cause&quot;: [
+            &#123;
+                &quot;type&quot;: &quot;resource_already_exists_exception&quot;,
+                &quot;reason&quot;: &quot;index [shopping/GpXpMNC7Qjqn0eCKp2tbhw] already exists&quot;,
+           </div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2022-11-06&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2023-02-28&nbsp;&nbsp;
         
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/%E5%89%8D%E7%AB%AF">前端</a>&nbsp;
-          
-            <a href="/categories/JS">JS</a>&nbsp;
+            <a href="/categories/Elasticsearch">Elasticsearch</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E5%89%8D%E7%AB%AF">前端</a>&nbsp;
-          
-            <a href="/tags/JS">JS</a>&nbsp;
+            <a href="/tags/Elasticsearch">Elasticsearch</a>&nbsp;
           
         
       </div>
@@ -271,248 +232,16 @@ call的语法：函数名.cal</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2022/11/04/%E5%89%8D%E7%AB%AF/React/React%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9/">
-        <p class="h4 index-header">React基础知识点</p>
+      <a href="/2023/01/17/%E5%90%8E%E7%AB%AF/Mybatis/MyBatis%E8%AF%AD%E6%B3%95/">
+        <p class="h4 index-header">MyBatis语法</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">组件 &amp; Props函数式组件
-该函数是一个有效的 React 组件，因为它接收唯一带有数据的 “props”（代表属性）对象与并返回一个 React 元素。这类组件被称为“函数组件”，因为它本质上就是 JavaScript 函数。
-
-function Welcome(props) &#123;
-  return &lt;h1&gt;Hello, &#123;props.name&#125;&lt;/h1&gt;;
-&#125;
-
-注意： 组件名称必须以大写字母开头。
-React 会将以小写字母开头的组件视为原生 DOM 标签。例如，&lt;div /&gt; 代表 HTML 的 div 标签，而 &lt;Welcome /&gt; 则代表一个组件，并且需在作用域内使用 Welcome。
-class组件class Welcome extends React.Component &#123;
-  render() &#123;
-    return &lt;h1&gt;Hello, &#123;this.props.name&#125;&lt;/h1&gt;;
-  &#125;
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2022-11-04&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E5%89%8D%E7%AB%AF">前端</a>&nbsp;
-          
-            <a href="/categories/React">React</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/React">React</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2022/08/22/%E5%90%8E%E7%AB%AF/KUbernetes/KUbernetes%E5%9F%BA%E7%A1%80%E4%BB%8B%E7%BB%8D/">
-        <p class="h4 index-header">KUbernetes基础介绍</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">信息介绍google开发，缩写k8s
-组件说明
-服务分类  有状态服务： DBMS  无状态服务： LVS APACHE
-
-高可用集群副本数据最好是 &gt;&#x3D; 3奇数个
-
-APISERVER: 所有服务访问同一入口
-
-CrontrollerManager： 维持副本期望数目
-
-Scheduler： 负责介绍任务，选择合适的节点进行分配任务
-
-ETCD：键值对数据库，存储K8S集群所有重要信息（持久化）
-
-Kubelet：直接跟容器引擎交互实现容器的生命周期管理
-
-Kube-proxy：负责写入规则至IPABLES、IPVS实现服务映射访问的
-
-COREDNS：可以为集群中的SVC创建一个域名IP的对应关系解析
-
-DASHBOARD： 给K8S集群提供一个B&#x2F;S结果访问体系
-
-INGRESS CONTROLLER： 官方只能实现四层代理，INGRESS可以实现七层代理
-
-FEDERATION：提供一个可以跨集群中心多K8S统一管理功能
-
-PROMETHEUS：提供K8S集群的监控能力
-
-ELK：提供K8S集群日志统一分析介入平台
-
-
-PodPod类型
-自主式Pod
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2022-08-22&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/KUbernetes">KUbernetes</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/KUbernetes">KUbernetes</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2022/05/19/%E5%89%8D%E7%AB%AF/Theia/Theia/">
-        <p class="h4 index-header">Theia</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">环境准备https://github.com/eclipse-theia/theia/blob/master/doc/Developing.md#prerequisites
-https://theia-ide.org/docs/composing_applications
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2022-05-19&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E5%89%8D%E7%AB%AF">前端</a>&nbsp;
-          
-            <a href="/categories/Theia">Theia</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Theia">Theia</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2022/05/10/%E5%89%8D%E7%AB%AF/Vue/vue2/">
-        <p class="h4 index-header">vue2</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">全局事件总线
-一种组件间通信的方式，适用于任意组件间通信
-
-安装全局事件总线new Vue(&#123;...
-beforeCreate()&#123;
-    Vue.prototype.$bus = this // 安装全局事件总线，$bus就是当前应用的vm
-&#125;
-...
-&#125;)
-
-使用事件总线
-接收数据：A组件像接收数据，则在A组件中给$bus绑定自定义事件，事件的回调留在A组件自身
-
-method()&#123;
-    demo(data)&#123;......&#125;
-&#125;
-....
-mounted()&#123;
-    this.$bus.$on(&#39;xxxx&#39;,this.demo)
-&#125;
-
-
-提供数据：this.$bus.$emit(&#39;xxxx&#39;,数据)
-
-最好在beforeDestroy钩子中，用$off去解绑当前组件所用到的事件
-nextTick
-语法：this.$nextTick(回调函数)
-作用：在下一次DOM更新结束后执行其指定的回调。
-应用场景：当改变数据后，要基于更新后的新DOM进行某</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2022-05-10&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E5%89%8D%E7%AB%AF">前端</a>&nbsp;
-          
-            <a href="/categories/Vue">Vue</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Vue">Vue</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2022/04/28/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/Linux%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81/">
-        <p class="h4 index-header">Linux常用代码</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">获取当前文件绝对路径DIRNAME=$(realpath $(dirname $0))
-
-文件夹判断文件夹下if [ ! -d &quot;/data/&quot; ];then
-  mkdir /data
-  else
-  echo &quot;文件夹已经存在&quot;
-fi
-
-判断文件夹下是否存在文件# ./test是目录路径
-IF[[ $(ls -A ./test) ]]; then
-    # do something
-    echo hello
-fi
+          <div class="index-text mb-1">＜![CDATA[ ]]＞ 是什么，这是XML语法。在CDATA内部的所有内容都会被解析器忽略。如果文本包含了很多的”&lt;”字符 &lt;&#x3D;和”&amp;”字符——就象程序代码一样，那么最好把他们都放到CDATA部件中。因为这里有 “&gt;”  “&lt;&#x3D;” 特殊字符所以要使用  来注释，但是有 标签，所以把等 放外面
+&lt;![CDATA[ TO_NUMBER(sysdate - HANDOVER_TIME) * 24 &lt;= 24 ]]&gt;
+TO_NUMBER(sysdate - HANDOVER_TIME) * 24 &amp;lt;= 24 
 
 </div>
         </div>
@@ -520,18 +249,18 @@ fi
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2022-04-28&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2023-01-17&nbsp;&nbsp;
         
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/Linux">Linux</a>&nbsp;
+            <a href="/categories/Maybatis">Maybatis</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/Linux">Linux</a>&nbsp;
+            <a href="/tags/Maybatis">Maybatis</a>&nbsp;
           
         
       </div>
@@ -542,16 +271,19 @@ fi
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2022/04/22/%E9%94%99%E8%AF%AF/Git/git%E4%BF%AE%E6%94%B9%E9%82%AE%E7%AE%B1%E5%92%8C%E5%90%8D%E5%AD%97%E5%90%8Ecommit%E6%8F%90%E4%BA%A4%E5%A4%B1%E8%B4%A5/">
-        <p class="h4 index-header">git修改邮箱和名字后commit提交失败</p>
+      <a href="/2023/01/17/%E6%95%B0%E6%8D%AE%E5%BA%93/Oracle/Oracle%E7%A4%BA%E4%BE%8B/">
+        <p class="h4 index-header">Oracle语法</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">问题git的user.email和user.name配置错误，修改后git提交依旧失败
-原因因为上次的commit的email已经是错误的了，修改之后并未修改commit提交的email
-解决办法git commit --amend --reset-author --no-edit
+          <div class="index-text mb-1">&lt;!-- 去掉tab符号的 --&gt;
+update bd_prod_cate c set c.cate_name = replace(c.cate_name,chr(9),&#39;&#39;)
+&lt;!-- 去掉回车符号的 --&gt;
+update bd_prod_cate c set c.cate_name = replace(c.cate_name,chr(10),&#39;&#39;)
+&lt;!-- 去掉空格符号的 --&gt;
+update bd_prod_cate c set c.cate_name = trim(c.cate_name)
 
 </div>
         </div>
@@ -559,22 +291,145 @@ fi
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2022-04-22&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2023-01-17&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Oracle">Oracle</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Oracle">Oracle</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2023/01/17/%E6%95%B0%E6%8D%AE%E5%BA%93/Oracle/Oracle%E9%97%AA%E5%9B%9E/">
+        <p class="h4 index-header">Oracle语法</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">概述
+　闪回技术是Oracle强大数据库备份恢复机制的一部分，在数据库发生逻辑错误的时候，闪回技术能提供快速且最小损失的恢复（多数闪回功能都能在数据库联机状态下完成）。需要注意的是，闪回技术旨在快速恢复逻辑错误，对于物理损坏或是介质丢失的错误，闪回技术就回天乏术了，还是得借助于Oracle一些高级的备份恢复工具如RAMN去完成。
+
+撤销段（UNDO SEGMENT）
+在讲闪回技术前，需要先了解Oracle中一个逻辑结构–撤销段。因为大部分闪回技术都需要依赖撤销段中的撤销数据。撤销数据是反转DML语句结果所需的信息，只要某个事务修改了数据，那么更新前的原有数据就会被写入一个撤销段。（事务回滚也会用到撤销段中的数据）。事务启动时，Oracle 会为其分配一个撤销段，事务和撤销段存在多对一的关系，即一个事务只能对应一个撤销段，多个事务可以共享一个撤销段（不过在数据库正常运行时一般不会发生这种情况）。
+
+闪回技术
+Oracle提供了四种可供使用的闪回技术（闪回查询，闪回删除，闪回归档，闪回数据库），每种都有不同的底层体系结构支撑，但其实这四种不同的闪回技术部分功能是有重叠的，使用时也需要根据实</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2023-01-17&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Oracle">Oracle</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Oracle">Oracle</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2023/01/17/%E6%95%B0%E6%8D%AE%E5%BA%93/Oracle/Oracle%E8%AF%AD%E6%B3%95/">
+        <p class="h4 index-header">Oracle语法</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">LISTAGG 函数与 OVER PARTITION BY 函数LISTAGG(measure_expr[,&#39;delimiter&#39;]) WITHIN GROUP (ORDER BY column1) OVER (PARTITION BY column2 ORDER BY column3)   
+
+For a specified measure, LISTAGG orders data within each group specified in the ORDER BY clause and then concatenates the values of the measure column.  即在每个分组内，LISTAGG根据order by子句对列植进行排序，将排序后的结果拼接起来。,如果超过4000字符需要特殊处理   measure_expr：可以是任何基于列的表达式。  delimiter：分隔符，默认为NUL   column1：order by子句决定了列值被拼接的顺序   column2: 根据column2进行分组   column3: 根据分组结果</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2023-01-17&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Oracle">Oracle</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Oracle">Oracle</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2022/12/06/%E9%94%99%E8%AF%AF/Maven/%E9%94%99%E8%AF%AF%E6%97%A0%E6%B3%95%E6%89%BE%E5%88%B0%E5%90%AF%E5%8A%A8%E7%B1%BB/">
+        <p class="h4 index-header">错误无法找到启动类</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">问题状况启动springboot项目，build报错：错误：找不到或无法加载主类
+解决办法
+通过maven clean，maven install确定缺少的依赖包
+如果是项目外的重新import下载
+如果是其他子项目，需要先重新clean、install父项目，再构建依赖的子项目，再重新构建项目
+正常启动
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2022-12-06&nbsp;&nbsp;
         
         
           <i class="iconfont icon-inbox"></i>
           
             <a href="/categories/%E9%94%99%E8%AF%AF">错误</a>&nbsp;
           
-            <a href="/categories/Git">Git</a>&nbsp;
+            <a href="/categories/Maven">Maven</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
+            <a href="/tags/IDEA">IDEA</a>&nbsp;
+          
             <a href="/tags/%E9%94%99%E8%AF%AF">错误</a>&nbsp;
           
-            <a href="/tags/Git">Git</a>&nbsp;
+            <a href="/tags/Maven">Maven</a>&nbsp;
           
         
       </div>
@@ -585,48 +440,134 @@ fi
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2022/04/02/%E5%89%8D%E7%AB%AF/Electron/Electron%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/">
-        <p class="h4 index-header">Electron简单使用</p>
+      <a href="/2022/12/06/%E9%94%99%E8%AF%AF/Maven/idea%E9%80%89%E6%8B%A9maven%E5%90%8E%E6%97%A0%E6%B3%95%E6%9E%84%E5%BB%BA%E9%A1%B9%E7%9B%AE/">
+        <p class="h4 index-header">idea选择maven后无法构建项目</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">Electron简介nodejs框架，用于开发跨平台桌面应用，可搭配Vue使用
-Electron官网
-创建项目使用yarn create electron-forge 项目名
-常用代码其他js页面使用require在html页面中引入其他js代码，并且代码中需要使用require(),需要配置两个参数nodeIntegration: true,contextIsolation: false
-const createWindow = () =&gt; &#123;
-  // Create the browser window.
-  const mainWindow = new BrowserWindow(&#123;
-    width: 800,
-    height: 600,
-    webPreferences:&#123;
-      // html中有webview中打开
-      webviewTag: true,
-      nodeIntegration: true,
-      contextIsolation: false
-    &#125;
-  &#125;)</div>
+          <div class="index-text mb-1">问题状况java.lang.RuntimeException: java.lang.RuntimeException: org.codehaus.plexus.component.repository.exception.ComponentLookupException: com.google.inject.ProvisionException: Unable to provision, see the following errors:
+
+1) Error injecting constructor, java.lang.NoSuchMethodError: org.apache.maven.model.validation.DefaultModelValidator: method &#39;void &lt;init&gt;()&#39; not found
+  at org.jetbrains.idea.maven.server.embedder.CustomModelValidator.&lt;init&gt;(Unknown Source)
+  while locating</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2022-04-02&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2022-12-06&nbsp;&nbsp;
         
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/%E5%89%8D%E7%AB%AF">前端</a>&nbsp;
+            <a href="/categories/%E9%94%99%E8%AF%AF">错误</a>&nbsp;
           
-            <a href="/categories/Electron">Electron</a>&nbsp;
+            <a href="/categories/Maven">Maven</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/Electron">Electron</a>&nbsp;
+            <a href="/tags/IDEA">IDEA</a>&nbsp;
+          
+            <a href="/tags/%E9%94%99%E8%AF%AF">错误</a>&nbsp;
+          
+            <a href="/tags/Maven">Maven</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2022/12/01/%E5%90%8E%E7%AB%AF/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/CAS/">
+        <p class="h4 index-header">CAS</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">概念
+CAS操作：Compare &amp; Swap 或是 Compare &amp; Set，CAS+自旋的方式可以实现原子操作
+
+
+
+缺点
+只能支持一个变量的原子操作
+CAS频繁失败导致CPU开销过高
+ABA问题
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2022-12-01&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CAS">CAS</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CAS">CAS</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2022/11/30/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/window/win%E5%B8%B8%E7%94%A8%E7%9F%A5%E8%AF%86/">
+        <p class="h4 index-header">win常用知识</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">修改本机host别名
+C:\Windows\System32\drivers\etc\hosts,作用：本机的集群搭建，docker局域网互相访问
+
+# Copyright (c) 1993-2009 Microsoft Corp.
+#
+# This is a sample HOSTS file used by Microsoft TCP/IP for Windows.
+#
+# This file contains the mappings of IP addresses to host names. Each
+# entry should be kept on an individual line. The IP address should
+# be placed in the first column followed by the corresponding host name.
+# The IP address and the host name should be separated by at least one
+# space.
+#
+# Additionally, co</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2022-11-30&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/window">window</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/window">window</a>&nbsp;
           
         
       </div>
@@ -637,7 +578,7 @@ const createWindow = () =&gt; &#123;
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-double-right"></i></a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

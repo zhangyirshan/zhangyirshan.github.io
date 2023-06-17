@@ -136,23 +136,72 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/05/26/%E5%90%8E%E7%AB%AF/php/php%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
-        <p class="h4 index-header">php环境搭建</p>
+      <a href="/2020/06/22/%E9%94%99%E8%AF%AF/Java/JedisDataException/">
+        <p class="h4 index-header">Redis的查询异常</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">php执行流程
-
-下载xampp直接安装运行，在xamp-&gt;hits文件夹下放置项目,之后可本地访问
-</div>
+          <div class="index-text mb-1">[MG][ERROR][2020-06-19 09:08:58,904]|REDIS查询异常|[qtp1371957475-16]
+redis.clients.jedis.exceptions.JedisDataException: value sent to redis cannot be null
+    at redis.clients.util.SafeEncoder.encode(SafeEncoder.java:28) ~[werewolf-client-jp.jar:?]
+    at redis.clients.jedis.Client.hget(Client.java:211) ~[werewolf-client-jp.jar:?]
+    at redis.clients.jedis.Jedis.hget(Jedis.java:760) ~[werewolf-client-jp.jar:?]
+    at com.mega.server.jedis.MegaJedisUtil.getHashValue(MegaJedisUtil.java:24) ~[werewol</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-26&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-22&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E9%94%99%E8%AF%AF">错误</a>&nbsp;
+          
+            <a href="/categories/Java">Java</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E9%94%99%E8%AF%AF,Java">错误,Java</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/06/22/%E5%90%8E%E7%AB%AF/php/php%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/">
+        <p class="h4 index-header">php文件包含</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">文件包含
+定义：文件包含，就是在一个要运行的PHP脚本中，去将另外一个PHP脚本中的代码拿过来，并且可以使用其被包含的文件里的内容，或者说将自己的内容能够在另外一个被包含的文件中使用。
+
+
+文件包含基本语法：PHP中提供了四种文件包含的方法，分别是include和include_once，require和require_once，其中四种方式的用法完全一样 include/include_once/require/equire_once &#39;文件所在路径及文件名&#39;; include/include_once/require/equire_once(&#39;文件所在路径及文件名&#39;);
+文件包含的意义：文件包含的目的有两个
+向上包含：即先包含某个文件，目的为了使用某个文件中的代码或者数据（使用公共代码）
+向下包含：即先写好代码，后包含文件，目的是为了在被包含文件中使用当前的数据（使用已产生数据）
+
+
+文件包含的语法区别：四种包含方式都能够包含文件并使用 include和require的区别在于，如果包含的文件不存在的时候，include只是报警告错误，而不影响自身代</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-22&nbsp;&nbsp;
         
         
           <i class="iconfont icon-inbox"></i>
@@ -174,47 +223,43 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/05/24/%E5%90%8E%E7%AB%AF/python/python%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2/">
-        <p class="h4 index-header">python的字符串</p>
+      <a href="/2020/06/21/%E5%90%8E%E7%AB%AF/php/%E5%B8%B8%E7%94%A8%E7%B3%BB%E7%BB%9F%E5%87%BD%E6%95%B0/">
+        <p class="h4 index-header">常用系统函数</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">原始字符串原始字符串的使用非常简单，只需要在字符串前加一个字母r即可，注意，原始字符串不能在结尾放\会报错
-str1 = r&#39;C:\now&#39;
-str2 = r&#39;C:\now\fish\a\&#39;
-会报错
+          <div class="index-text mb-1">函数函数的基本概念函数：function,是一种语法结构，将实现某一个功能的代码块（多行代码）封装到一个结构中，从而实现代码的重复利用（复用）。
+函数定义语法函数有几个对应的关键点：function关键字、函数名、参数（形参和实参）、函数体和返回值
+基本语法如下：Function 函数名([参数]){    &#x2F;&#x2F; 函数体    &#x2F;&#x2F; 返回值：return 结果}
+定义函数的目的：是为了实现代码的重复利用，一个功能一个函数（简单明了）函数的使用：通过访问函数的名字+(); &#x2F;&#x2F; 如果函数在定义的过程中有参数，那么在调用的时候就必须传入对应的参数：函数是一种结构不会自动运行，必须通过调用才会执行。函数是在代码执行阶段，碰到函数名字的时候才会调用，不是在编译阶段。
+函数执行的内存分析：
 
-解决办法
-在后面拼接str = r&#39;C:\new\aaa\bbb&#39;+&#39;\\&#39;
-在后面加上[:-1] str = r&#39;C:\new\aaa\bbb\\&#39;[:-1]
+读取代码进入到代码段（编译：将代码编程字节码存储带内存）
+根据代码逐行执行
 
-长字符串如果想得到一个跨越多行的字符串，我们就需要使用三重引号&quot;&quot;&quot;dsdssdsds&quot;&quot;&quot;
-字符串的分片操作str1 = &quot;I love you&quot;
-str1[:6] =&gt; &#39;I love&#39;
-
-字符串的方法s = &#39;Wusirs22&#39;
-t1 = s.count(&#39;a&#39;) # 在字符串中查找指定字符有多少个
-t2 = s.upper() # 将字符串中的字符全部大写
-t3 = s.lower() # 将字符串中的字符全</div>
+以上原因：编译和执行时分开的（先编译后执行）
+参数函数的参数分为两种：形参和实参
+形参形参：形式参数，不具有实际意义的参数，是在函数定义时使用的参数
+实参实参：实际参数，</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-24&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-21&nbsp;&nbsp;
         
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/python">python</a>&nbsp;
+            <a href="/categories/php">php</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/python">python</a>&nbsp;
+            <a href="/tags/php">php</a>&nbsp;
           
         
       </div>
@@ -225,50 +270,51 @@ t3 = s.lower() # 将字符串中的字符全</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/05/19/%E5%90%8E%E7%AB%AF/python/python%E5%9F%BA%E7%A1%80/">
-        <p class="h4 index-header">python基础</p>
+      <a href="/2020/06/12/%E5%90%8E%E7%AB%AF/Elasticsearch/Elasticsearch%20%E6%96%B0%E6%97%A7%E7%B4%A2%E5%BC%95%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB(_reindex)/">
+        <p class="h4 index-header">Elasticsearch 新旧索引数据迁移(_reindex)</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">变量
-在使用变量之前，需要对其赋值
-变量名可以报考字母、数字、下划线，但变量名不能以数字开头
+          <div class="index-text mb-1">Elasticsearch 新旧索引数据迁移(_reindex)
+举个例子，在输入“1992-02-27”这样格式的数据，es会把他默认为是date数据类型，但是有时候我们希望它是text类型，在原索引中已经有数据的情况下该如何操作。
 
-字符串原始字符串原始字符串的使用非常简单，只需要在字符串前加一个字母r即可，注意，原始字符串不能在结尾放\会报错
-str1 = r&#39;C:\now&#39;
-str2 = r&#39;C:\now\fish\a\&#39;
-会报错
+创建原索引
 
-解决办法
-在后面拼接str = r&#39;C:\new\aaa\bbb&#39;+&#39;\\&#39;
-在后面加上[:-1] str = r&#39;C:\new\aaa\bbb\\&#39;[:-1]
+PUT /aaron_index/aaron_type/1
+&#123;
+  &quot;name&quot;:&quot;张辽&quot;,&quot;age&quot;:27,&quot;content&quot;:&quot;1992-02-27&quot;
+&#125;
+PUT /aaron_index/aaron_type/2
+&#123;
+  &quot;name&quot;:&quot;曹阿瞒&quot;,&quot;age&quot;:28,&quot;content&quot;:&quot;1991-02-19&quot;
+&#125;
 
-长字符串如果想得到一个跨越多行的字符串，我们就需要使用三重引号&quot;&quot;&quot;dsdssdsds&quot;&quot;&quot;
-字符串的分片操作str1 = &quot;I love you&quot;
-str1[:6] =&gt; &#39;I love&#39;
 
-字符串的方法s = &#39;Wusirs22&#39;
-t1 = s.count(&#39;a&#39;) # 在字符串中查找指定字符有多少个
-t2 = </div>
+创建新索引
+
+PUT /aaron_index_new
+&#123;
+  &quot;mappings&quot;: &#123;
+    &quot;aaron_type&quot</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-19&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-12&nbsp;&nbsp;
         
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/python">python</a>&nbsp;
+            <a href="/categories/Elasticsearch">Elasticsearch</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/python">python</a>&nbsp;
+            <a href="/tags/Elasticsearch">Elasticsearch</a>&nbsp;
           
         
       </div>
@@ -279,51 +325,56 @@ t2 = </div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/05/14/%E5%90%8E%E7%AB%AF/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/Socket%E5%A5%97%E6%8E%A5%E5%AD%97/TCP%E9%80%9A%E4%BF%A1%E7%A8%8B%E5%BA%8F/">
-        <p class="h4 index-header">TCP通信程序</p>
+      <a href="/2020/06/11/%E5%90%8E%E7%AB%AF/php/php%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/">
+        <p class="h4 index-header">php文件操作</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">概述TCP通信能实现两台计算机之间的数据交互，通信的两端，要严格区分为客户端（Client）与服务端（Server）。
-两端通信时步骤
-服务器端先启动
-服务器端不会主动的请求客户端
-必须使用客户端请求服务器端
-客户端和服务端就会建立一个逻辑连接
-而这个连接中包含一个对象
-这个对象就是IO对象
-客户端和服务器端就可以使用
-IO对象进行通信
-通信的数据不仅仅是字符
-所以IO对象是字节流对象
+          <div class="index-text mb-1">读取文件readfile读取文件
+传入一个文件路径，输出一个文件。
 
-服务端程序，需要事先启动，等待客户端的连接客户端主动连接服务器端，连接成功才能通信。服务端不可以主动连接客户端。
-服务端必须明确两件事情：
+int readfile ( string $文件名)
 
-多个客户端同时和服务器进行交互，服务器必须明确和哪个客户端进行的交互在服务器端有一个方法，叫accept客户端获取到请求的客户端对象
-多个客户端同时和服务器进行交互，就需要使用多个IO流对象 服务器是没有IO流的，服务器可以获取到请求的客户端对象Socket 使用每个客户单Socket中提供的IO流和客户端进行交互 服务器使用客户端的字节流读取客户端发送的数据 服务器使用客户端的字节流输出给客户端回写数据
 
-在Java中，提供了两个类用于事先TCP通信程序
-客户</div>
+//linux类的读了方式
+readfile(&quot;/home/paul/test.txt&quot;);
+//windows类的读取方式
+readfile(&quot;c:\\boot.ini&quot;);
+
+注意：上面的代码中windows的斜线是\斜线，可能会转义掉一些字符。因此，我们写的时候写上两个斜线。
+file_get_contents打开文件
+传入一个文件或文件路径，打开这个文件返回文件的内容。文件的内容是一个字符串。
+
+string file_get_contents ( string filename)
+
+
+//假设我们有一个多行的文件叫NoAlike.txt，没有的话你可以新建一个这个文件
+$filename = &#39;NoAlike.txt&#39;;
+
+
+//打开这个文件，将文件内容赋值给$filestring
+$filestring = file_get_contents($filename);
+
+//因为每一行有一个回</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-14&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-11&nbsp;&nbsp;
         
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/Socket">Socket</a>&nbsp;
+            <a href="/categories/php">php</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/Socket">Socket</a>&nbsp;
+            <a href="/tags/php">php</a>&nbsp;
           
         
       </div>
@@ -334,38 +385,57 @@ IO对象进行通信
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/05/14/%E5%90%8E%E7%AB%AF/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/Socket%E5%A5%97%E6%8E%A5%E5%AD%97/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/">
-        <p class="h4 index-header">网络编程入门</p>
+      <a href="/2020/06/03/%E5%90%8E%E7%AB%AF/php/php%E6%95%B0%E7%BB%84%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+        <p class="h4 index-header">php数组与数据结构</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">软件结构
-C&#x2F;S结构：全程为Client&#x2F;Server结构，是指客户端和服务器结构。常见程序有QQ、迅雷等软件。
-B&#x2F;S结构：全称为Browser&#x2F;Server结构，是指浏览器和服务器结构。常见浏览器有谷歌、火狐等。
+          <div class="index-text mb-1">数组数组声明
+数组可以存入多个不同类型的数据，是一个复合数据类型。
+数组的英文是array，学一了一下最简单的数组声明。
 
-两种架构各有优势，但是无论哪种架构，都离不开网络的支持。网络编程，就是在一定的协议下，实现两台计算机的通信的程序。
-网络通信协议
-网络通信协议：通过计算机网络可以使多台计算机实现连接，位于同一个网络中的计算机在进行连接和通信时需要遵守一定的规则，这就好比在道路中行驶的汽车一定要遵守交通规则一样。在计算机网络中，这些连接和通信的规则被称为网络通信协议，它对数据的传输格式、传输速率、传输步骤等做了统一规定，通信双方必须同时遵守才能完成数据交换。
-TCP&#x2F;IP协议：传输控制协议&#x2F;因特网互联协议（Transmission Control Protocol&#x2F;Internet Protocol）是Internet最基本、最广泛的协议。它定义了计算机如何连入因特网，以及数据如何在他们之间传输的标准。它的内部包含一系</div>
+$shu = array(1 , 1.5 , true ,&#39;天王盖地虎，小鸡炖蘑菇&#39;);
+
+echo &#39;&lt;pre&gt;&#39;;
+var_dump($shu);
+echo &#39;&lt;/pre&gt;&#39;;
+
+结果是：
+array(4) &#123;
+  [0]=&gt;
+  int(1)
+  [1]=&gt;
+  float(1.5)
+  [2]=&gt;
+  bool(true)
+  [3]=&gt;
+  string(33) &quot;天王盖地虎，小鸡炖蘑菇&quot;
+&#125;
+
+
+array(size &#x3D; 4) 说明里面有4个元素
+0 &#x3D;&gt; int 1 我们知道int是整型的意思，1是一个整型的数值。那前面的0,1,2,3和&#x3D;&gt;代表什么意思呢？
+最新前的0，1，2，3代表的是值的读取标识号，我们称之为下标或者键（英文：key）
+&#x3D;&gt; 是一个符号标</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-14&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-03&nbsp;&nbsp;
         
         
           <i class="iconfont icon-inbox"></i>
           
-            <a href="/categories/Socket">Socket</a>&nbsp;
+            <a href="/categories/php">php</a>&nbsp;
           &nbsp;
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/Socket">Socket</a>&nbsp;
+            <a href="/tags/php">php</a>&nbsp;
           
         
       </div>
@@ -376,221 +446,30 @@ TCP&#x2F;IP协议：传输控制协议&#x2F;因特网互联协议（Transmission
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/05/06/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/SQL%E8%AF%AD%E5%8F%A5/">
-        <p class="h4 index-header">SQL语句</p>
+      <a href="/2020/06/03/%E5%90%8E%E7%AB%AF/Java/%E5%B7%A5%E5%85%B7%E7%B1%BB/ResultSet/">
+        <p class="h4 index-header">ResultSet</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">SQL JOIN语法SELECT … FROM
-a,b
-WHERE a.x = b.x
-
-SELECT … FROM a
-INNER JOIN b
-on a.x = b.x
-
-SELECT … FROM a
-JOIN b
-on a.x = b.x
-
-Q：上述这些语法是否有区别？A：没有任何区别Q：哪个性能更好？A：没有任何区别A：好吧，如果要认真算的话，那么3最好，因为字节数最少Q：那为什么需要不同的语法？A：ANSI SQL 89、ANSI SQL 92语法标准A：ANSI 92标准开始支持OUTER JOINA：INNER JOIN可以省略INNER关键字
-算法• nested_loop join    • simple nested-loop join    • index nested-loop join    • block nested-loop join• classic hash join    • Only support in MariaDB• bached key access join    • from MySQL 5.6
-simple nested_loop</div>
+          <div class="index-text mb-1">继承Wrapper接口和AutoCloseable接口
+Wrapper是包装类，对原生的int、float。。。进行封装AutoCloseable是自动关闭资源
+ResultSet虽然继承了AutoCloseable可以自动关闭连接释放资源，但是还是要手动关闭，因为官方文档中说：通常，立即释放此Statement对象的数据库和JDBC资源，而不是等待它自动关闭时发生。 最好在资源使用完毕后立即释放资源，以避免占用数据库资源。
+</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-06&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/MySQL">MySQL</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/MySQL">MySQL</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/26/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/%E8%A1%A8%E7%9A%84%E5%88%9B%E5%BB%BA%E4%B8%8E%E7%BB%B4%E6%8A%A4/">
-        <p class="h4 index-header">表的创建与维护</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">表
-表是关系数据库的核心
-表&#x3D;关系
-表是记录的集合
-二维表格模型易于人类理解
-MySQL默认存储引擎都是基于行（记录）存储
-每行记录都是基于列进行组织的
-
-MySQL中数据库与表之间的关系
-
-CREATE TABLE语法CREATE [TEMPORARY] TABLE [IF NOT EXISTS] tbl_name
-(create_definition,...)
-[table_options]
-[partition_options]
-create_definition:
-col_name column_definition
-| [CONSTRAINT [symbol]] PRIMARY KEY [index_type] 
-(index_col_name,...)
-[index_option] ...
-| &#123;INDEX|KEY&#125; [index_name] [index_type] (index_col_name,...)
-[index_option] ...
-| [CONSTRAINT [symbol]] UNIQUE [INDEX|KEY]
-[index</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-26&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/MySQL">MySQL</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/MySQL">MySQL</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/25/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
-        <p class="h4 index-header">数据类型</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Int类型
-
-属性
-UNSIGNED&#x2F;SIGNED
-是否有符号
-
-
-ZEROFILL
-填充0（例如：0001）
-显式属性
-只不做任何修改
-
-
-AUTO_INCREMENT
-自增
-每张表一个
-必须是索引的一部分
-
-
-
-总结
-推荐不要使用UNSIGNED
-范围本质上没有大的改变
-UNSIGNED可能会有一处现象发生
-自增INT类型逐渐建议使用BIGINT
-
-数字类型• 单精度类型：FLOAT• 双精度类型：DOUBLE    单精度类型和双精度类型精度较低，M*G&#x2F;G不一定等于M• 高精度类型：DECIMAL
-
-财务系统必须用DECIMAL类型FLOAT(M,D)&#x2F;DOUBLE(M,D)&#x2F;DECIMAL(M,D) 表示显示M位整数，其中D位位于小数点后面
-字符串类型
-BLOB &#x3D;&gt; VARBINARYTEXT &#x3D;&gt; VARCHAR
-
-在BLOB和TEXT列上创建索引时，必须制定索引前缀的长度
-VARCHAR和VARBINARY前缀长度是可选的。
-BLOB和TEXT列不能有默认值
-BLOB和TEXT列排序时只使用该列的前</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-25&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/MySQL">MySQL</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/MySQL">MySQL</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/25/%E5%90%8E%E7%AB%AF/Java/JVM/%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA/">
-        <p class="h4 index-header">运行时数据区</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">运行时数据区
-
-Java虚拟机定义了若干种程序运行期间会使用到的运行时数据区,其中由一些会随着虚拟机启动而创建,随着虚拟机退出而销毁.另外一些则是与线程一一对应的,这些与线程对应的数据区域会随着线程开始和结束而创建和销毁.灰色的为单独线程私有的,红色的为多个线程共享的.即:
-
-每个线程:独立包括程序计数器、栈、本地栈线程间共享：堆、堆外内存（永久代或元空间、代码缓存）
-
-线程
-线程是一个程序里的运行单元。JVM允许一个应用有多个线程并行的执行。
-
-在Hotspot JVM里，每个线程都与操作系统的本地线程直接映射。
-
-当一个Java线程准备好执行以后，此时一个操作系统的本地线程也同事创建。Java线程执行终止后，本地线程也会回收。
-
-
-操作系统负责所有线程的安排调度到任何一个可用的CPU上。一旦本地线程初始化成功，它就会调用Java线程中的run()方法
-
-如果你是用jconsole或者是任何一个调试工具，都能看到在后台有许多线程在运行。这些后台线程不包括调用public static void main(String[])的main线程以及所有这个main线程自己创建的线程。
-
-这些</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-25&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-03&nbsp;&nbsp;
         
         
           <i class="iconfont icon-inbox"></i>
           
             <a href="/categories/Java">Java</a>&nbsp;
           
-            <a href="/categories/JVM">JVM</a>&nbsp;
+            <a href="/categories/Java%E5%B7%A5%E5%85%B7%E7%B1%BB">Java工具类</a>&nbsp;
           &nbsp;
         
         
@@ -598,7 +477,46 @@ Java虚拟机定义了若干种程序运行期间会使用到的运行时数据�
           
             <a href="/tags/Java">Java</a>&nbsp;
           
-            <a href="/tags/JVM">JVM</a>&nbsp;
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/06/03/%E5%90%8E%E7%AB%AF/Java/%E5%B7%A5%E5%85%B7%E7%B1%BB/ResourceBundle/">
+        <p class="h4 index-header">ResourceBundle</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">
+这个类主要用来解决国际化和本地化问题。国际化和本地化可不是两个概念，两者都是一起出现的。可以说，国际化的目的就是为了实现本地化。比如对于“取消”，中文中我们使用“取消”来表示，而英文中我们使用“cancel”。若我们的程序是面向国际的（这也是软件发展的一个趋势），那么使用的人群必然是多语言环境的，实现国际化就非常有必要。而ResourceBundle可以帮助我们轻松完成这个任务：当程序需要一个特定于语言环境的资源时（如 String），程序可以从适合当前用户语言环境的资源包（大多数情况下也就是.properties文件）中加载它。这样可以编写很大程度上独立于用户语言环境的程序代码，它将资源包中大部分（即便不是全部）特定于语言环境的信息隔离开来。
+
+这使编写的程序可以：    轻松地本地化或翻译成不同的语言    一次处理多个语言环境    以后可以轻松进行修改，以便支持更多的语言环境
+说的简单点，这个类的作用就是读取资源属性文件（properties），然后根据.properties文件的名称信息（本地化信息），匹配当前系统的国别语言信息（也可以程序指定），然后获取相应的proper</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-03&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Java">Java</a>&nbsp;
+          
+            <a href="/categories/Java%E5%B7%A5%E5%85%B7%E7%B1%BB">Java工具类</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Java">Java</a>&nbsp;
           
         
       </div>
@@ -609,49 +527,35 @@ Java虚拟机定义了若干种程序运行期间会使用到的运行时数据�
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/24/%E5%90%8E%E7%AB%AF/Java/JVM/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%AD%90%E7%B3%BB%E7%BB%9F/">
-        <p class="h4 index-header">类加载子系统</p>
+      <a href="/2020/06/03/%E5%90%8E%E7%AB%AF/Java/%E5%B7%A5%E5%85%B7%E7%B1%BB/PreparedStatement%E5%92%8CStatement/">
+        <p class="h4 index-header">PreparedStatement和Statement</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">内存结构概述
+          <div class="index-text mb-1">网上有很多文章讨论PrepardStatement与Statement的区别，不过要完完全全的作出比较难度很大，因为每个数据库对底层的实现及应用场合不一样，Oracle对PrepardStatement的支持最好，Mysql对PrepardStatement支持最差。Statement执行单个sql语句速度较快而PrepardStatement执行批处理的效率较高。
+以Oracle为例
 
-类加载子系统类加载子系统的作用
+Statement为每一条Sql语句生成执行计划， 如果要执行两条sql语句 select colume from table where colume&#x3D;1; select colume from table where colume&#x3D;2; 会生成两个执行计划，一千个查询就生成一千个执行计划。而生成计划是非常消耗资源的
+
+PreparedStatement用于使用绑定变量重用执行计划 select * from xxx.sometable t where t.id&#x3D;?; 通过set方法给sql语句按占位符”?”先后顺序赋值，只需要生成一个执行计划，可以重复使用。
 
 
-类加载子系统负责从文件系统或者网络中加载Class文件，class文件在文件开头有特定的文件表示
-ClassLoader治负责class文件的加载，至于它是否可以运行则由Execution Engine决定。
-加载的类信息存放于一块成为方法区的内存空间。除了类的信息外，方法区中还会存放运行时常量池信息，可能还包括字符串紫米那里和数字常量（这部分常量信息是Class文件中常量池部分的内存映射）
-
-类的加载过程加载
-通过一个类的全限定名获取定义此类的二进制字节流
-讲这个字节流所代表的静态存储结构转化为方法区的运行时数据结构
-在内存中生成一个代表这个类的java.lang.Class对象，作为方法区这个类的各种数据的访问入口
-
-链接验证（Verify）：
-
-目的在于确保Class文件的字节流中包含信息符合当前虚拟机的要求，保证加载类的正确性，不会危害虚拟机自身安全。
-主要包括四种验证：文件格式验证，元数据验证，字节码验证，符号引用验证
-
-准备（Prepare）：
-
-为类变了分配内存并且设置该类变了的默认初始值，即零值。
-这里不包含用fina</div>
+当处</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-24&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-03&nbsp;&nbsp;
         
         
           <i class="iconfont icon-inbox"></i>
           
             <a href="/categories/Java">Java</a>&nbsp;
           
-            <a href="/categories/JVM">JVM</a>&nbsp;
+            <a href="/categories/Java%E5%B7%A5%E5%85%B7%E7%B1%BB">Java工具类</a>&nbsp;
           &nbsp;
         
         
@@ -659,7 +563,51 @@ ClassLoader治负责class文件的加载，至于它是否可以运行则由Exec
           
             <a href="/tags/Java">Java</a>&nbsp;
           
-            <a href="/tags/JVM">JVM</a>&nbsp;
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/05/28/%E5%90%8E%E7%AB%AF/php/php%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/">
+        <p class="h4 index-header">php语法基础</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">PHP语法
+PHP是一种运行在服务器端的脚本语言，可以嵌入到HTML中
+
+ASP标记：&lt;% php代码 %&gt;短标记：  ，以上两种基本启用，如果要使用那么需要在配置文件中开启脚本标记: &lt; script script script language&#x3D;”php”&gt;php代码&lt; &#x2F; script&gt;标准标记（常用）：&lt;?php php代码 ?&gt;
+PHP注释行注释&#x2F;&#x2F;: 后面的所有内容都是注释#: 与&#x2F;&#x2F;一样
+块注释&#x2F;* *&#x2F;
+PHP语句分隔符语句分隔符：在PHP照片那个，代码是以行为单位，系统需要通过判断行的结束，该结束通常都是一个符号：分号
+特殊说明
+PHP中标记结束符?&gt;有自带语句结束符的效果，最后一行PHP代码可以没有语句结束符”;”
+PHP中起始很多代码的书写并不是嵌入到HTML中，而是单独存在，通常书写习惯中就不建议使用标记结束符?&gt;,PHP会自动从开始到最后全部认为是PHP代码，从而解析。
+
+变量PHP是一种动态网站开发的脚本语言，动态语言特</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-28&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/php">php</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/php">php</a>&nbsp;
           
         
       </div>
@@ -670,7 +618,7 @@ ClassLoader治负责class文件的加载，至于它是否可以运行则由Exec
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/9/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/11/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/page/9/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/11/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

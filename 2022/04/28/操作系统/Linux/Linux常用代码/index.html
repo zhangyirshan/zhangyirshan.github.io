@@ -122,7 +122,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    71 字
+                    215 字
                   </span>&nbsp;
                 
 
@@ -177,6 +177,13 @@ IF[[ $(ls -A ./test) ]]; then
     echo hello
 fi
 </code></pre>
+<h2 id="可执行文件"><a href="#可执行文件" class="headerlink" title="可执行文件"></a>可执行文件</h2><h3 id="shell退出程序不关闭"><a href="#shell退出程序不关闭" class="headerlink" title="shell退出程序不关闭"></a>shell退出程序不关闭</h3><p>在可执行文件后面加$</p>
+<blockquote>
+<p>添加&amp;运行后，在当前终端可以继续执行其他的命令，也可以使用ctrl +c 命令，都不会对后台命令造成影响。</p>
+</blockquote>
+<p><code>adb -s $&#123;spec&#125; shell /test.sh</code><br><code>adb -s $&#123;spec&#125; shell /test.sh&amp;</code></p>
+<p>第一行命令执行后退出，显示程序还在执行<br>第二行命令执行后退出，显示程序已经结束</p>
+<p>在添加了&amp;只是解放了当前终端，可以在当前终端执行其他命令</p>
 
             <hr>
           </div>
