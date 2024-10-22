@@ -19,7 +19,6 @@ qDebug() << QString::fromStdString(a2);
 
 ```
 
-
 ## 原因
 
-因为std的string是c++的qdebug是qt的需要使用同样的qstring类
+因为std的string是c++的qdebug是qt的需要使用同样的qstring类。
