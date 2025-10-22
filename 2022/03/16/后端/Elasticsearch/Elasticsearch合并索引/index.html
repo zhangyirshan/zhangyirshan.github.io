@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="仅限学习参考，有兴趣可以互相交流">
+  <meta name="author" content="张议">
+  <meta name="keywords" content="张议,Java,java,spring,SpringBoot,zhangyi">
+  <title>ElasticSearch合并索引 ~ 人生展馆</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>人生展馆</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">资料</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/index.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期三, 三月 16日 2022, 2:42 下午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    760 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      4 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <pre><code class="java">public class MergeIndex &#123;
+
+    private static final Logger logger = Logger.getLogger(MergeIndex.class.getName());
+
+    public static void main(String[] args) &#123;
+
+        try &#123;
+            String newIndex = &quot;cn-plat-exchange-transaction-history-prod-000001&quot;;
+            List&lt;String&gt; indexList = new ArrayList&lt;&gt;();
+            indexList.add(&quot;cn-plat-exchange-transaction-prod*&quot;);
+            // 判断删除的索引名是否包含合并的新索引名，如果包含直接结束
+            for (String index : indexList) &#123;
+                String deleteIndex = index.substring(0, index.length() - 1);
+                if (newIndex.contains(deleteIndex)) &#123;
+                    logger.debug(&quot;请检查删除索引数组是否包含新建索引&quot;);
+                    logger.debug(&quot;删除索引名：&quot; + index + &quot; 新建索引名：&quot; + newIndex);
+                    return;
+                &#125;
+            &#125;
+            // 合并索引
+            String result = ESUtil.mergeIndex(newIndex, indexList);
+            if (!result.contains(&quot;error&quot;)) &#123;
+                // 删除旧索引
+                List&lt;String&gt; response = ESUtil.deleteIndex(indexList);
+                logger.debug(response);
+                // 给新索引添加别名
+                String alias = &quot;test-cn-werewolf-game-client&quot;;
+                String responseAddAlias = ESUtil.addAlias(newIndex, alias);
+                logger.debug(responseAddAlias);
+            &#125;
+        &#125; catch (Exception e) &#123;
+            e.printStackTrace();
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">package com.mega.elasticsearch.dao;
+
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * @Description:
+ * @Author: ZYi
+ * @Date: 2020/6/12 13:28
+ * @Version 1.0
+ **/
+public class ESUtil &#123;
+    private static final String Content_Type = &quot;application/json; charset=UTF-8&quot;;
+    // 线上es
+    private static final String uri = &quot;http://172.16.50.35:9200/&quot;;
+    private static final String Authorization = &quot;Basic ZWxhc3RpYzpNYW5nb3N0ZWVuMCE=&quot;;
+    // 本地es
+//    private static final String uri = &quot;http://192.168.2.72:9200/&quot;;
+//    private static final String Authorization = &quot;Basic ZWxhc3RpYzpMQTE5NTRiIQ==&quot;;
+
+    public static String mergeIndex(String newIndex, List&lt;String&gt; source) throws IOException &#123;
+
+        URL url = new URL(uri + &quot;_reindex&quot;);
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+
+        connection.setDoInput(true); // 设置可输入
+        connection.setDoOutput(true); // 设置该连接是可以输出的
+        connection.setRequestMethod(&quot;POST&quot;); // 设置请求方式
+        connection.setRequestProperty(&quot;Content-Type&quot;, Content_Type);
+        connection.setRequestProperty(&quot;Authorization&quot;, Authorization);
+        connection.connect();
+
+        StringBuilder reIndex = new StringBuilder(&quot;&#123;\&quot;source\&quot;:&#123;\&quot;index\&quot;:[&quot;);
+
+        for (String index : source) &#123;
+            reIndex.append(&quot;\&quot;&quot;).append(index).append(&quot;\&quot;,&quot;);
+        &#125;
+        reIndex.deleteCharAt(reIndex.lastIndexOf(&quot;,&quot;));
+        reIndex.append(&quot;]&#125;,\&quot;dest\&quot;:&#123;\&quot;index\&quot;:&quot;);
+        reIndex.append(&quot;\&quot;&quot;).append(newIndex).append(&quot;\&quot;&quot;);
+        reIndex.append(&quot;&#125;&#125;&quot;);
+        PrintWriter pw = new PrintWriter(new BufferedOutputStream(connection.getOutputStream()));
+        pw.write(reIndex.toString());
+        pw.flush();
+        pw.close();
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8));
+        String line;
+        StringBuilder result = new StringBuilder();
+        while ((line = br.readLine()) != null) &#123; // 读取数据
+            result.append(line).append(&quot;\n&quot;);
+        &#125;
+        connection.disconnect();
+
+        return result.toString();
+    &#125;
+
+    public static List&lt;String&gt; deleteIndex(List&lt;String&gt; indexList) throws IOException &#123;
+        List&lt;String&gt; resultList = new ArrayList&lt;&gt;();
+        for (String index : indexList) &#123;
+            URL url = new URL(uri + index);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+
+            connection.setDoInput(true); // 设置可输入
+            connection.setDoOutput(true); // 设置该连接是可以输出的
+            connection.setRequestMethod(&quot;DELETE&quot;); // 设置请求方式
+            connection.setRequestProperty(&quot;Content-Type&quot;, Content_Type);
+            connection.setRequestProperty(&quot;Authorization&quot;, Authorization);
+            connection.connect();
+            BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8));
+            String line;
+            StringBuilder result = new StringBuilder();
+            while ((line = br.readLine()) != null) &#123; // 读取数据
+                result.append(line).append(&quot;\n&quot;);
+            &#125;
+            resultList.add(result.toString());
+            connection.disconnect();
+        &#125;
+        return resultList;
+    &#125;
+
+    public static String addAlias(String index, String alias) throws IOException &#123;
+        URL url = new URL(uri + index + &quot;/_alias/&quot; + alias);
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+
+        connection.setDoInput(true); // 设置可输入
+        connection.setDoOutput(true); // 设置该连接是可以输出的
+        connection.setRequestMethod(&quot;PUT&quot;); // 设置请求方式
+        connection.setRequestProperty(&quot;Content-Type&quot;, Content_Type);
+        connection.setRequestProperty(&quot;Authorization&quot;, Authorization);
+        connection.connect();
+        BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8));
+        String line;
+        StringBuilder result = new StringBuilder();
+        while ((line = br.readLine()) != null) &#123; // 读取数据
+            result.append(line).append(&quot;\n&quot;);
+        &#125;
+        connection.disconnect();
+        return result.toString();
+    &#125;
+&#125;
+</code></pre>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/Elasticsearch">Elasticsearch</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/Elasticsearch">Elasticsearch</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "ElasticSearch合并索引&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "left",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

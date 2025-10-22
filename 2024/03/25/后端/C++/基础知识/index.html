@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="仅限学习参考，有兴趣可以互相交流">
+  <meta name="author" content="张议">
+  <meta name="keywords" content="张议,Java,java,spring,SpringBoot,zhangyi">
+  <title>基础知识 ~ 人生展馆</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>人生展馆</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">资料</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/index.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期一, 三月 25日 2024, 3:19 下午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    3.3k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      13 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h2 id="基础知识点"><a href="#基础知识点" class="headerlink" title="基础知识点"></a>基础知识点</h2><h3 id="基础类型"><a href="#基础类型" class="headerlink" title="基础类型"></a>基础类型</h3><ol>
+<li>整型：short、int、long、long long</li>
+<li>浮点型：float、double</li>
+<li>字符型：char</li>
+<li>字符串：string</li>
+<li>布尔类型：bool</li>
+</ol>
+<p>sizeof关键字可统计数据类型所占用的内存大小</p>
+<pre><code class="c++">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+int main() &#123;
+    //C风格字符串
+    char cStr[] = &quot;hello c str&quot;;
+    cout &lt;&lt; cStr &lt;&lt; endl;
+
+    //C++风格字符串
+    string cppStr = &quot;hello cpp str&quot;;
+    cout &lt;&lt; cppStr &lt;&lt; endl;
+    return 0;
+&#125;
+</code></pre>
+<p>使用C++风格字符串时，需包含头文件#include <string></p>
+<h3 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h3><p>只有整数能进行取模运算</p>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><blockquote>
+<p>函数声明（函数头）：<code>return_type function_name( parameter list );</code><br>函数定义：</p>
+</blockquote>
+<pre><code class="c++">return_type function_name( parameter list )&#123;
+   body of the function
+&#125;
+</code></pre>
+<blockquote>
+<p>函数下方只能调用上方的，如果想任意调用，需要在文件开头声明函数头。<br>函数声明可以有多次，函数定义只能有一次。</p>
+</blockquote>
+<p>函数分文件编写 <code>#include &quot;文件名.h&quot;</code></p>
+<ol>
+<li>创建后缀名为.h的头文件</li>
+<li>创建后缀名为.cpp的源文件</li>
+<li>在头文件中写函数的声明</li>
+<li>在源文件中写函数的定义</li>
+</ol>
+<h3 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h3><blockquote>
+<p>定义指针：数据类型 * 指针变量名<br>指针变量复制：p &#x3D; &amp;a; 指针p只想变量a的地址<br>解引用（使用指针）： * 指针变量<br>空指针：int* p &#x3D; NULL; 不能解引用<br>野指针：int* p &#x3D; (int*)0x1100; 不能解引用</p>
+</blockquote>
+<pre><code class="c++">// 常量指针，不能改解引用中的内容
+const int* p = &amp; a;
+p = &amp;b;
+// 指针常量，不能改指针指向
+int* const p2 = &amp;a;
+*p2 = b;
+// 都不能修改
+const int* const p3 = &amp;a;
+</code></pre>
+<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p>引用的本质是常量函数</p>
+<p><code>int &amp;a</code></p>
+<h3 id="访问权限"><a href="#访问权限" class="headerlink" title="访问权限"></a>访问权限</h3><ul>
+<li>public：可以被该类中的函数、子类的函数、友元函数访问，也可以由该类的对象访问；</li>
+<li>protected：可以被该类中的函数、子类的函数、友元函数访问，但不可以由该类的对象访问；</li>
+<li>private：可以被该类中的函数、友元函数访问，但不可以由子类的函数、该类的对象、访问。</li>
+</ul>
+<pre><code class="c++">class Base &#123;
+public:
+    // 公有成员
+protected:
+    // 受保护成员
+private:
+    // 私有成员
+&#125;
+</code></pre>
+<h3 id="构造函数和析构函数"><a href="#构造函数和析构函数" class="headerlink" title="构造函数和析构函数"></a>构造函数和析构函数</h3><p>析构函数语法： ~类名(){}<br>1.析构函数，没有返回值也不写void<br>2.函数名称与类名相同,在名称前加上符号 ~<br>3.析构函数不可以有参数，因此不可以发生重载<br>4.程序在对象销毁前会自动调用析构，无须手动调用，而且只会调用一次</p>
+<pre><code class="c++">class Person&#123;
+public:
+    Person()&#123;
+        cout &lt;&lt; &quot;调用构造函数&quot; &lt;&lt; endl;
+    &#125;
+    //对象销毁前，自动调用
+    ~Person()&#123;
+        cout &lt;&lt; &quot;析构函数的调用&quot; &lt;&lt; endl;
+    &#125;
+&#125;
+</code></pre>
+<h3 id="在类外定义成员函数、inline成员函数"><a href="#在类外定义成员函数、inline成员函数" class="headerlink" title="在类外定义成员函数、inline成员函数"></a>在类外定义成员函数、inline成员函数</h3><p>在类外定义成员函数<br>成员函数可以在类体中直接定义。也可以在类体中只写成员函数的声明，而在类的外面进行函数定义。如：</p>
+<pre><code class="c++">class Student
+&#123;
+public :
+    void display( ); //公用成员函数原型声明  
+private :
+    int num;
+    string name;
+    char sex;
+    //以上3行是私有数据成员
+&#125;;
+void Student::display( )//在类外定义display类函数  
+&#123;
+    cout&lt;&lt;&quot;num:&quot;&lt;&lt;num&lt;&lt;endl;
+    cout&lt;&lt;&quot;name:&quot;&lt;&lt;name&lt;&lt;endl;
+    cout&lt;&lt;&quot;sex:&quot;&lt;&lt;sex&lt;&lt;endl;
+&#125;
+Student stud1,stud2; //定义两个类对象
+</code></pre>
+<p>注意：在类体中直接定义函数时，不需要在函数名前面加上类名，因为函数属于哪一个类是不言而喻的。但成员函数在类外定义时，必须在函数名前面加上类名，予以限定(qualifed)，” :: “是作用域限定符(field qualifier)或称作用域运算符，用它声明函数是属于哪个类的。:: 可以不跟类名，表示全局数据或全局函数（即非成员函数）。</p>
+<pre><code class="c++">int month;//全局变量
+int day;
+int year;
+void Set(int m,int d,int y)
+&#123;
+    ::year=y; //给全局变量赋值，此处可省略
+    ::day=d;
+    ::month=m;
+&#125;
+
+Class Tdate
+&#123;
+    public:
+        void Set(int m,int d,int y) //成员函数
+        &#123;
+            ::Set(m,d,y); //非成员函数
+        &#125;
+    private:
+        int month;
+        int day;
+        int year;
+&#125;
+</code></pre>
+<p>类函数必须先在类体中作原型声明，然后在类外定义，也就是说类体的位置应在函数定义之前，否则编译时会出错。虽然函数在类的外部定义，但在调用成员函数时会根据在类中声明的函数原型找到函数的定义（函数代码），从而执行该函数。在类的内部对成员函数作声明，而在类体外定义成员函数，这是程序设计的一种良好习惯。如果一个函数，其函数体只有2-3行，一般可在声明类时在类体中定义。多于3行的函数，一般在类体内声明，在类外定义。</p>
+<h4 id="inline-成员函数"><a href="#inline-成员函数" class="headerlink" title="inline 成员函数"></a>inline 成员函数</h4><p>在类体中定义的成员函数的规模一般都很小，而系统调用函数的过程所花费的时间开销相对是比较大的。调用一个函数的时间开销远远大于小规模函数体中全部语句的执行时间。为了减少时间开销，如果在类体中定义的成员函数中不包括循环等控制结构，C++系统会自动将它们作为内置(inline)函数来处理。也就是说，在程序调用这些成员函数时，并不是真正地执行函数的调用过程(如保留返回地址等处理)，而是把函数代码嵌入程序的调用点。这样可以大大减少调用成员函数的时间开销。C++要求对一般的内置函数要用关键字inline声明，但对类内定义的成员函数，可以省略inline，因为这些成员函数已被隐含地指定为内置函数。如：</p>
+<pre><code class="c++">class Student
+&#123;
+public :
+    void display()
+    &#123;
+        cout&lt;&lt;&quot;num:&quot;&lt;&lt;num&lt;&lt;endl;cout&lt;&lt;&quot;name:&quot;
+        &lt;&lt;name&lt;&lt;endl;cout&lt;&lt;&quot;sex:&quot;&lt;&lt;sex&lt;&lt;endl;
+    &#125;
+private :
+    int num;
+    string name;
+    char sex;
+&#125;;
+</code></pre>
+<p>其中第4行 void display( )也可以写成 inline void display()，将display函数显式地声明为内置函数。以上两种写法是等效的。对在类体内定义的函数，一般都省写inline。应该注意的是，如果成员函数不在类体内定义，而在类体外定义，系统并不把它默认为内置(inline)函数，调用这些成员函数的过程和调用一般函数的过程是相同的。如果想将这些成员函数指定为内置函数，应当用inline作显式声明。如：</p>
+<pre><code class="c++">class Student
+&#123;
+    public : inline void display( );//声明此成员函数为内置函数
+    private :
+    int num;
+    string name;
+    char sex;
+&#125;;
+
+inline void Student::display( ) // 在类外定义display函数为内置函数
+&#123;
+    cout&lt;&lt;&quot;num:&quot;&lt;&lt;num&lt;&lt;endl;cout&lt;&lt;&quot;name:&quot;&lt;&lt;name&lt;&lt;endl;cout&lt;&lt;&quot;sex:&quot;&lt;&lt;sex&lt;&lt;endl;
+&#125;
+</code></pre>
+<p>值得注意的是，如果在类体外定义inline函数，则必须将类定义和成员函数的定义都放在同一个头文件中(或者写在同一个源文件中)，否则编译时无法进行置换(将函数代码的拷贝嵌入到函数调用点)。但是这样做，不利于类的接口与类的实现分离，不利于信息隐蔽。虽然程序的执行效率提高了，但从软件工程质量的角度来看，这样做并不是好的办法。只有在类外定义的成员函数规模很小而调用频率较高时，才将此成员函数指定为内置函数。</p>
+<h3 id="友元"><a href="#友元" class="headerlink" title="友元"></a>友元</h3><blockquote>
+<p>友元的关键字为friend</p>
+</blockquote>
+<p>友元三种实现</p>
+<ul>
+<li>全局函数做友元</li>
+<li>类做友元</li>
+<li>成员函数做友元</li>
+</ul>
+<pre><code class="c++">#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+using namespace std;
+
+// 房屋类
+class Building
+&#123;
+    // 告诉编译器 laoWang全局函数是 Building类  的好朋友，可以访问Building对象的私有成员
+    friend void laoWang1(Building *building);
+    friend void laoWang2(Building &amp;building);
+    friend void laoWang3(Building building);
+
+public:
+
+    Building()
+    &#123;
+        m_SittingRoom = &quot;客厅&quot;;
+        m_BedRoom = &quot;卧室&quot;;
+    &#125;
+    
+    string m_SittingRoom;    // 客厅
+
+private:
+
+    string m_BedRoom;        // 卧室
+&#125;;
+
+
+
+//全局函数
+void laoWang1(Building *building)
+&#123;
+    cout &lt;&lt; &quot;隔壁老王 全局函数 正在访问：（地址传递） &quot; &lt;&lt; building-&gt;m_SittingRoom &lt;&lt; endl;
+
+    cout &lt;&lt; &quot;隔壁老王 全局函数 正在访问：（地址传递） &quot; &lt;&lt; building-&gt;m_BedRoom &lt;&lt; endl;
+&#125;
+
+void laoWang2(Building &amp;building)
+&#123;
+    cout &lt;&lt; &quot;隔壁老王 全局函数 正在访问：（引用传递） &quot; &lt;&lt; building.m_SittingRoom &lt;&lt; endl;
+
+    cout &lt;&lt; &quot;隔壁老王 全局函数 正在访问：（引用传递） &quot; &lt;&lt; building.m_BedRoom &lt;&lt; endl;
+&#125;
+
+void laoWang3(Building building)
+&#123;
+    cout &lt;&lt; &quot;隔壁老王 全局函数 正在访问：（ 值传递 ） &quot; &lt;&lt; building.m_SittingRoom &lt;&lt; endl;
+
+    cout &lt;&lt; &quot;隔壁老王 全局函数 正在访问：（ 值传递 ） &quot; &lt;&lt; building.m_BedRoom &lt;&lt; endl;
+&#125;
+
+void test()
+&#123;
+    Building building;
+    laoWang1(&amp;building);
+    laoWang2(building);
+    laoWang3(building);
+&#125;
+
+
+int main()
+&#123;
+    test();
+&#125;
+</code></pre>
+<h3 id="运算符重载"><a href="#运算符重载" class="headerlink" title="运算符重载"></a>运算符重载</h3><blockquote>
+<p>运算符重载就是赋予运算符新的含义（新功能），其本质是一个函数。<br>C++预定义中的运算符的操作对象只局限于基本的内置数据类型，但是对于我们自定义的类型是没办法操作的，此时就需要重载运算符来实现。<br>可以作为成员函数重载也可以作为全局函数重载</p>
+</blockquote>
+<p>运算符函数定义的一般格式如下：</p>
+<pre><code class="c++">&lt;返回类型说明符&gt; operator &lt;运算符符号&gt;(&lt;参数表&gt;)
+
+&#123;
+
+     &lt;函数体&gt;
+
+&#125;
+</code></pre>
+<h4 id="运算符重载时要遵循以下规则"><a href="#运算符重载时要遵循以下规则" class="headerlink" title="运算符重载时要遵循以下规则"></a>运算符重载时要遵循以下规则</h4><blockquote>
+<ol>
+<li>除了类属关系运算符”.”、成员指针运算符”.*”、作用域运算符”::”、sizeof运算符和三目运算符”?:”以外，其他运算符都可以重载。</li>
+<li>重载运算符限制在C++语言中已有的运算符范围内的允许重载的运算符之中，不能创建新的运算符</li>
+<li>运算符重载实质上是函数重载，因此编译程序对运算符重载的选择，遵循函数重载的选择原则。</li>
+<li>重载之后的运算符不能改变运算符的优先级和结合性，也不能改变运算符操作数的个数及语法结构。</li>
+<li>运算符重载不能改变该运算符用于内部类型对象的含义。它只能和用户自定义类型的对象一起使用，或者用于用户自定义类型的对象和内部类型的对象混合使用时。</li>
+<li>运算符重载是针对新类型数据的实际需要对原有运算符进行的适当的改造，重载的功能应当与原有功能相类似。</li>
+<li>一个运算符被重载后，原有意思没有失去，只是定义了相对一特定类的一个新运算符。</li>
+</ol>
+</blockquote>
+<pre><code class="c++">#include &lt;iostream&gt;
+
+using namespace std;
+
+ 
+
+class Complex&#123;
+
+public:
+
+    Complex(int a = 0, int b = 0)&#123;
+        this-&gt;a = a;
+        this-&gt;b = b;
+    &#125;
+
+    // 作为成员函数重载Complex的+法运算
+    Complex operator+(Complex &amp;c1)&#123;
+        Complex tmp(c1.a + this.a, c1.b + this.b);
+        return tmp;
+    &#125;
+
+    void print()&#123;
+        cout &lt;&lt; &quot;a:b =&gt; &quot; &lt;&lt; a &lt;&lt; &quot;:&quot; &lt;&lt; b &lt;&lt; endl;
+    &#125;
+
+public:
+    int a;
+    int b;
+
+&#125;;
+
+ 
+// 作为全局函数重载Complex的+法运算
+Complex operator+(Complex &amp;c1, Complex &amp;c2)&#123;
+    Complex tmp(c1.a + c2.a, c1.b + c2.b);
+    return tmp;
+&#125;
+
+ 
+void main()&#123;
+    int a = 0, b = 0;
+    int c = a + b; //1 基础类型编译器知道怎么做
+    //用户定义复杂类型需要用户重载运算符编译才知道怎么做
+    Complex c1(1, 2), c2(3, 4);
+    Complex c3 = c1 + c2;
+    c3.print();
+    system(&quot;pause&quot;);
+    return;
+&#125;
+</code></pre>
+<p>自增运算符重载时需要注意，第二个参数只能是常量引用或者为浅拷贝对象，否则&lt;&lt;会报错</p>
+<pre><code class="c++">#include &lt;iostream&gt;
+
+using namespace std;
+
+class MyInt &#123;
+    friend ostream &amp;operator&lt;&lt;(ostream &amp;out,const MyInt &amp;a);
+public:
+    // 前置++
+    MyInt &amp;operator++() &#123;
+        ++a;
+        return *this;
+    &#125;
+
+    // 后置++，只能返回值不能返回对象，因为当前对象自增后已经变更，只能返回历史的值
+    MyInt operator++(int) &#123;
+        MyInt temp = *this;
+        ++*this;
+        return temp;
+    &#125;
+
+private:
+    int a=1;
+&#125;;
+
+// 重载&lt;&lt;
+ostream &amp;operator&lt;&lt;(ostream &amp;out,const MyInt &amp;a) &#123;
+    out &lt;&lt; &quot;a:&quot; &lt;&lt; a.a;
+    return out;
+&#125;
+
+void test() &#123;
+
+    MyInt test2;
+    cout &lt;&lt; test2++ &lt;&lt; endl;
+    cout &lt;&lt; ++test2++ &lt;&lt; endl;
+&#125;
+
+
+class MyInt2 &#123;
+    friend ostream &amp;operator&lt;&lt;(ostream &amp;out, MyInt2 a) ;
+public:
+    // 前置++
+    MyInt2 &amp;operator++() &#123;
+        ++a;
+        return *this;
+    &#125;
+
+    // 后置++，只能返回值不能返回对象，因为当前对象自增后已经变更，只能返回历史的值
+    MyInt2 operator++(int) &#123;
+        MyInt2 temp = *this;
+        ++*this;
+        return temp;
+    &#125;
+
+private:
+    int a=1;
+&#125;;
+
+// 重载&lt;&lt;
+ostream &amp;operator&lt;&lt;(ostream &amp;out, MyInt2 a) &#123;
+    out &lt;&lt; &quot;a:&quot; &lt;&lt; a.a;
+    return out;
+&#125;
+
+void test2() &#123;
+
+    MyInt2 test2;
+    cout &lt;&lt; test2++ &lt;&lt; endl;
+    cout &lt;&lt; test2 &lt;&lt; endl;
+&#125;
+
+int main() &#123;
+    test();
+    test2();
+
+    return 0;
+&#125;
+</code></pre>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/C++">C++</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/C++">C++</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "基础知识&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "left",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

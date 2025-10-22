@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="仅限学习参考，有兴趣可以互相交流">
+  <meta name="author" content="张议">
+  <meta name="keywords" content="张议,Java,java,spring,SpringBoot,zhangyi">
+  <title>基础知识 ~ 人生展馆</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>人生展馆</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">资料</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/index.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期二, 十月 22日 2024, 9:04 晚上
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    6.1k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      25 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>更像java的ts</p>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>number、string、boolean</p>
+<p>变量：let<br>常量：const</p>
+<pre><code class="ts">let a: number = 1;
+let s3 = `The result is $&#123;a&#125;`;
+</code></pre>
+<h3 id="Void类型"><a href="#Void类型" class="headerlink" title="Void类型"></a>Void类型</h3><p>void类型用于指定函数没有返回值。</p>
+<p>此类型只有一个值，同样是void。由于void是引用类型，因此它可以用于泛型类型参数。</p>
+<pre><code class="ts">class Class&lt;T&gt; &#123;
+  //...
+&#125;
+let instance: Class &lt;void&gt;
+</code></pre>
+<h3 id="Object类型"><a href="#Object类型" class="headerlink" title="Object类型"></a>Object类型</h3><blockquote>
+<p>Object类型是所有引用类型的基类型。任何值，包括基本类型的值（它们会被自动装箱），都可以直接被赋给Object类型的变量。</p>
+</blockquote>
+<h3 id="Array类型"><a href="#Array类型" class="headerlink" title="Array类型"></a>Array类型</h3><p>array，即数组，是由可赋值给数组声明中指定的元素类型的数据组成的对象。</p>
+<p>数组可由数组复合字面量（即用方括号括起来的零个或多个表达式的列表，其中每个表达式为数组中的一个元素）来赋值。数组的长度由数组中元素的个数来确定。数组中第一个元素的索引为0。</p>
+<p>以下示例将创建包含三个元素的数组：</p>
+<pre><code class="ts">let names: string[] = [&#39;Alice&#39;, &#39;Bob&#39;, &#39;Carol&#39;];
+</code></pre>
+<h3 id="Enum类型"><a href="#Enum类型" class="headerlink" title="Enum类型"></a>Enum类型</h3><p>enum类型，又称枚举类型，是预先定义的一组命名值的值类型，其中命名值又称为枚举常量。</p>
+<p>使用枚举常量时必须以枚举类型名称为前缀。</p>
+<pre><code class="ts">enum ColorSet &#123; Red, Green, Blue &#125;
+let c: ColorSet = ColorSet.Red;
+</code></pre>
+<p>常量表达式可以用于显式设置枚举常量的值。</p>
+<pre><code class="ts">enum ColorSet &#123; White = 0xFF, Grey = 0x7F, Black = 0x00 &#125;
+let c: ColorSet = ColorSet.Black;
+</code></pre>
+<h3 id="Union类型"><a href="#Union类型" class="headerlink" title="Union类型"></a>Union类型</h3><p>union类型，即联合类型，是由多个类型组合成的引用类型。联合类型包含了变量可能的所有类型。</p>
+<pre><code class="ts">class Cat &#123;
+  name: string = &#39;cat&#39;;
+  // ...
+&#125;
+class Dog &#123;
+  name: string = &#39;dog&#39;;
+  // ...
+&#125;
+class Frog &#123;
+  name: string = &#39;frog&#39;;
+  // ...
+&#125;
+type Animal = Cat | Dog | Frog | number;
+// Cat、Dog、Frog是一些类型（类或接口）
+
+let animal: Animal = new Cat();
+animal = new Frog();
+animal = 42;
+// 可以将类型为联合类型的变量赋值为任何组成类型的有效值
+</code></pre>
+<p>可以用不同的机制获取联合类型中特定类型的值。</p>
+<p>示例：</p>
+<pre><code class="ts">class Cat &#123; sleep () &#123;&#125;; meow () &#123;&#125; &#125;
+class Dog &#123; sleep () &#123;&#125;; bark () &#123;&#125; &#125;
+class Frog &#123; sleep () &#123;&#125;; leap () &#123;&#125; &#125;
+
+type Animal = Cat | Dog | Frog;
+
+function foo(animal: Animal) &#123;
+  if (animal instanceof Frog) &#123;
+    animal.leap();  // animal在这里是Frog类型
+  &#125;
+  animal.sleep(); // Animal具有sleep方法
+&#125;
+</code></pre>
+<h3 id="Aliases类型"><a href="#Aliases类型" class="headerlink" title="Aliases类型"></a>Aliases类型</h3><p>Aliases类型为匿名类型（数组、函数、对象字面量或联合类型）提供名称，或为已有类型提供替代名称。</p>
+<pre><code class="ts">type Matrix = number[][];
+type Handler = (s: string, no: number) =&gt; string;
+type Predicate &lt;T&gt; = (x: T) =&gt; boolean;
+type NullableObject = Object | null;
+</code></pre>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="函数声明"><a href="#函数声明" class="headerlink" title="函数声明"></a>函数声明</h3><p>函数声明引入一个函数，包含其名称、参数列表、返回类型和函数体。</p>
+<p>以下示例是一个简单的函数，包含两个string类型的参数，返回类型为string：</p>
+<pre><code class="ts">function add(x: string, y: string): string &#123;
+  let z: string = `$&#123;x&#125; $&#123;y&#125;`;
+  return z;
+&#125;
+</code></pre>
+<p>在函数声明中，必须为每个参数标记类型。如果参数为可选参数，那么允许在调用函数时省略该参数。函数的最后一个参数可以是rest参数。</p>
+<h3 id="可选参数"><a href="#可选参数" class="headerlink" title="可选参数"></a>可选参数</h3><p>可选参数的格式可为<code>name?: Type</code>。</p>
+<pre><code class="ts">function hello(name?: string) &#123;
+  if (name == undefined) &#123;
+    console.log(&#39;Hello!&#39;);
+  &#125; else &#123;
+    console.log(`Hello, $&#123;name&#125;!`);
+  &#125;
+&#125;
+</code></pre>
+<p>可选参数的另一种形式为设置的参数默认值。如果在函数调用中这个参数被省略了，则会使用此参数的默认值作为实参。</p>
+<pre><code class="ts">function multiply(n: number, coeff: number = 2): number &#123;
+  return n * coeff;
+&#125;
+multiply(2);  // 返回2*2
+multiply(2, 3); // 返回2*3
+</code></pre>
+<h3 id="Rest参数"><a href="#Rest参数" class="headerlink" title="Rest参数"></a>Rest参数</h3><p>函数的最后一个参数可以是rest参数。使用rest参数时，允许函数或方法接受任意数量的实参。</p>
+<pre><code class="ts">function sum(...numbers: number[]): number &#123;
+  let res = 0;
+  for (let n of numbers)
+    res += n;
+  return res;
+&#125;
+
+sum(); // 返回0
+sum(1, 2, 3); // 返回6
+</code></pre>
+<h3 id="返回类型"><a href="#返回类型" class="headerlink" title="返回类型"></a>返回类型</h3><p>如果可以从函数体内推断出函数返回类型，则可在函数声明中省略标注返回类型。</p>
+<pre><code class="ts">// 显式指定返回类型
+function foo(): string &#123; return &#39;foo&#39;; &#125;
+
+// 推断返回类型为string
+function goo() &#123; return &#39;goo&#39;; &#125;
+</code></pre>
+<p>不需要返回值的函数的返回类型可以显式指定为void或省略标注。这类函数不需要返回语句。</p>
+<p>以下示例中两种函数声明方式都是有效的：</p>
+<pre><code class="ts">function hi1() &#123; console.log(&#39;hi&#39;); &#125;
+function hi2(): void &#123; console.log(&#39;hi&#39;); &#125;
+</code></pre>
+<h3 id="函数类型"><a href="#函数类型" class="headerlink" title="函数类型"></a>函数类型</h3><p>函数类型通常用于定义回调：</p>
+<pre><code class="ts">type trigFunc = (x: number) =&gt; number // 这是一个函数类型
+
+function do_action(f: trigFunc) &#123;
+   f(3.141592653589); // 调用函数
+&#125;
+
+do_action(Math.sin); // 将函数作为参数传入
+</code></pre>
+<h3 id="箭头函数（又名Lambda函数）"><a href="#箭头函数（又名Lambda函数）" class="headerlink" title="箭头函数（又名Lambda函数）"></a>箭头函数（又名Lambda函数）</h3><p>函数可以定义为箭头函数，例如：</p>
+<pre><code class="ts">let sum = (x: number, y: number): number =&gt; &#123;
+  return x + y;
+&#125;
+</code></pre>
+<p>箭头函数的返回类型可以省略；省略时，返回类型通过函数体推断。</p>
+<p>表达式可以指定为箭头函数，使表达更简短，因此以下两种表达方式是等价的：</p>
+<pre><code class="ts">let sum1 = (x: number, y: number) =&gt; &#123; return x + y; &#125;
+let sum2 = (x: number, y: number) =&gt; x + y
+</code></pre>
+<h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><p>闭包是由函数及声明该函数的环境组合而成的。该环境包含了这个闭包创建时作用域内的任何局部变量。</p>
+<p>在下例中，f函数返回了一个闭包，它捕获了count变量，每次调用z，count的值会被保留并递增。</p>
+<pre><code class="ts">function f(): () =&gt; number &#123;
+  let count = 0;
+  let g = (): number =&gt; &#123; count++; return count; &#125;;
+  return g;
+&#125;
+
+let z = f();
+z(); // 返回：1
+z(); // 返回：2
+</code></pre>
+<h3 id="函数重载"><a href="#函数重载" class="headerlink" title="函数重载"></a>函数重载</h3><p>我们可以通过编写重载，指定函数的不同调用方式。具体方法为，为同一个函数写入多个同名但签名不同的函数头，函数实现紧随其后。</p>
+<pre><code class="ts">function foo(x: number): void;            /* 第一个函数定义 */
+function foo(x: string): void;            /* 第二个函数定义 */
+function foo(x: number | string): void &#123;  /* 函数实现 */
+&#125;
+
+foo(123);     //  OK，使用第一个定义
+foo(&#39;aa&#39;); // OK，使用第二个定义
+</code></pre>
+<p>不允许重载函数有相同的名字以及参数列表，否则将会编译报错。</p>
+<h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><p>类声明引入一个新类型，并定义其字段、方法和构造函数。</p>
+<p>在以下示例中，定义了Person类，该类具有字段name和surname、构造函数和方法fullName：</p>
+<pre><code class="ts">class Person &#123;
+  name: string = &#39;&#39;;
+  surname: string = &#39;&#39;;
+  constructor (n: string, sn: string) &#123;
+    this.name = n;
+    this.surname = sn;
+  &#125;
+  fullName(): string &#123;
+    return this.name + &#39; &#39; + this.surname;
+  &#125;
+&#125;
+</code></pre>
+<p>定义类后，可以使用关键字new创建实例：</p>
+<pre><code class="ts">let p = new Person(&#39;John&#39;, &#39;Smith&#39;);
+console.log(p.fullName());
+</code></pre>
+<p>或者，可以使用对象字面量创建实例：</p>
+<pre><code class="ts">class Point &#123;
+  x: number = 0;
+  y: number = 0;
+&#125;
+let p: Point = &#123;x: 42, y: 42&#125;;
+</code></pre>
+<h2 id="字段"><a href="#字段" class="headerlink" title="字段"></a>字段</h2><p>字段是直接在类中声明的某种类型的变量。</p>
+<p>类可以具有实例字段或者静态字段。</p>
+<h3 id="实例字段"><a href="#实例字段" class="headerlink" title="实例字段"></a>实例字段</h3><p>实例字段存在于类的每个实例上。每个实例都有自己的实例字段集合。</p>
+<p>要访问实例字段，需要使用类的实例。</p>
+<pre><code class="ts">class Person &#123;
+  name: string = &#39;&#39;;
+  age: number = 0;
+  constructor(n: string, a: number) &#123;
+    this.name = n;
+    this.age = a;
+  &#125;
+
+  getName(): string &#123;
+    return this.name;
+  &#125;
+&#125;
+
+let p1 = new Person(&#39;Alice&#39;, 25);
+p1.name;
+let p2 = new Person(&#39;Bob&#39;, 28);
+p2.getName();
+</code></pre>
+<h3 id="静态字段"><a href="#静态字段" class="headerlink" title="静态字段"></a>静态字段</h3><p>使用关键字static将字段声明为静态。静态字段属于类本身，类的所有实例共享一个静态字段。</p>
+<p>要访问静态字段，需要使用类名：</p>
+<pre><code class="ts">class Person &#123;
+  static numberOfPersons = 0;
+  constructor() &#123;
+     // ...
+     Person.numberOfPersons++;
+     // ...
+  &#125;
+&#125;
+
+Person.numberOfPersons;
+</code></pre>
+<h3 id="字段初始化"><a href="#字段初始化" class="headerlink" title="字段初始化"></a>字段初始化</h3><p>为了减少运行时的错误和获得更好的执行性能，</p>
+<p>ArkTS要求所有字段在声明时或者构造函数中显式初始化。这和标准TS中的strictPropertyInitialization模式一样。</p>
+<p>以下代码是在ArkTS中不合法的代码。</p>
+<pre><code class="ts">class Person &#123;
+  name: string; // undefined
+  
+  setName(n:string): void &#123;
+    this.name = n;
+  &#125;
+  
+  getName(): string &#123;
+    // 开发者使用&quot;string&quot;作为返回类型，这隐藏了name可能为&quot;undefined&quot;的事实。
+    // 更合适的做法是将返回类型标注为&quot;string | undefined&quot;，以告诉开发者这个API所有可能的返回值。
+    return this.name;
+  &#125;
+&#125;
+
+let jack = new Person();
+// 假设代码中没有对name赋值，例如调用&quot;jack.setName(&#39;Jack&#39;)&quot;
+jack.getName().length; // 运行时异常：name is undefined
+</code></pre>
+<p>在ArkTS中，应该这样写代码。</p>
+<pre><code class="ts">class Person &#123;
+  name: string = &#39;&#39;;
+  
+  setName(n:string): void &#123;
+    this.name = n;
+  &#125;
+  
+  // 类型为&#39;string&#39;，不可能为&quot;null&quot;或者&quot;undefined&quot;
+  getName(): string &#123;
+    return this.name;
+  &#125;
+&#125;
+  
+
+let jack = new Person();
+// 假设代码中没有对name赋值，例如调用&quot;jack.setName(&#39;Jack&#39;)&quot;
+jack.getName().length; // 0, 没有运行时异常
+</code></pre>
+<p>接下来的代码展示了如果name的值可以是undefined，那么应该如何写代码。</p>
+<pre><code class="ts">class Person &#123;
+  name?: string; // 可能为`undefined`
+
+  setName(n:string): void &#123;
+    this.name = n;
+  &#125;
+
+  // 编译时错误：name可以是&quot;undefined&quot;，所以将这个API的返回值类型标记为string
+  getNameWrong(): string &#123;
+    return this.name;
+  &#125;
+
+  getName(): string | undefined &#123; // 返回类型匹配name的类型
+    return this.name;
+  &#125;
+&#125;
+
+let jack = new Person();
+// 假设代码中没有对name赋值，例如调用&quot;jack.setName(&#39;Jack&#39;)&quot;
+
+// 编译时错误：编译器认为下一行代码有可能会访问undefined的属性，报错
+jack.getName().length;  // 编译失败
+
+jack.getName()?.length; // 编译成功，没有运行时错误
+</code></pre>
+<h3 id="getter和setter"><a href="#getter和setter" class="headerlink" title="getter和setter"></a>getter和setter</h3><p>setter和getter可用于提供对对象属性的受控访问。</p>
+<p>在以下示例中，setter用于禁止将_age属性设置为无效值：</p>
+<pre><code class="ts">class Person &#123;
+  name: string = &#39;&#39;;
+  private _age: number = 0;
+  get age(): number &#123; return this._age; &#125;
+  set age(x: number) &#123;
+    if (x &lt; 0) &#123;
+      throw Error(&#39;Invalid age argument&#39;);
+    &#125;
+    this._age = x;
+  &#125;
+&#125;
+
+let p = new Person();
+p.age; // 输出0
+p.age = -42; // 设置无效age值会抛出错误
+</code></pre>
+<p>在类中可以定义getter或者setter。</p>
+<h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><p>类声明可以包含用于初始化对象状态的构造函数。</p>
+<p>构造函数定义如下：</p>
+<pre><code class="ts">constructor ([parameters]) &#123;
+  // ...
+&#125;
+</code></pre>
+<p>如果未定义构造函数，则会自动创建具有空参数列表的默认构造函数，例如：</p>
+<pre><code class="ts">class Point &#123;
+  x: number = 0;
+  y: number = 0;
+&#125;
+let p = new Point();
+</code></pre>
+<p>在这种情况下，默认构造函数使用字段类型的默认值来初始化实例中的字段。</p>
+<h3 id="派生类的构造函数"><a href="#派生类的构造函数" class="headerlink" title="派生类的构造函数"></a>派生类的构造函数</h3><p>构造函数函数体的第一条语句可以使用关键字super来显式调用直接父类的构造函数。</p>
+<pre><code class="ts">class RectangleSize &#123;
+  constructor(width: number, height: number) &#123;
+    // ...
+  &#125;
+&#125;
+class Square extends RectangleSize &#123;
+  constructor(side: number) &#123;
+    super(side, side);
+  &#125;
+&#125;
+</code></pre>
+<h3 id="构造函数重载签名"><a href="#构造函数重载签名" class="headerlink" title="构造函数重载签名"></a>构造函数重载签名</h3><p>我们可以通过编写重载签名，指定构造函数的不同调用方式。具体方法为，为同一个构造函数写入多个同名但签名不同的构造函数头，构造函数实现紧随其后。</p>
+<pre><code class="ts">class C &#123;
+  constructor(x: number)             /* 第一个签名 */
+  constructor(x: string)             /* 第二个签名 */
+  constructor(x: number | string) &#123;  /* 实现签名 */
+  &#125;
+&#125;
+let c1 = new C(123);      // OK，使用第一个签名
+let c2 = new C(&#39;abc&#39;);    // OK，使用第二个签名
+</code></pre>
+<p>如果两个重载签名的名称和参数列表均相同，则为错误。</p>
+<h2 id="对象字面量"><a href="#对象字面量" class="headerlink" title="对象字面量"></a>对象字面量</h2><p>对象字面量是一个表达式，可用于创建类实例并提供一些初始值。它在某些情况下更方便，可以用来代替new表达式。</p>
+<p>对象字面量的表示方式是：封闭在花括号对({})中的’属性名：值’的列表。</p>
+<pre><code class="ts">class C &#123;
+  n: number = 0;
+  s: string = &#39;&#39;;
+&#125;
+
+let c: C = &#123;n: 42, s: &#39;foo&#39;&#125;;
+</code></pre>
+<p>ArkTS是静态类型语言，如上述示例所示，对象字面量只能在可以推导出该字面量类型的上下文中使用。其他正确的例子：</p>
+<pre><code class="ts">class C &#123;
+  n: number = 0;
+  s: string = &#39;&#39;;
+&#125;
+
+function foo(c: C) &#123;&#125;
+
+let c: C
+
+c = &#123;n: 42, s: &#39;foo&#39;&#125;;  // 使用变量的类型
+foo(&#123;n: 42, s: &#39;foo&#39;&#125;); // 使用参数的类型
+
+function bar(): C &#123;
+  return &#123;n: 42, s: &#39;foo&#39;&#125;; // 使用返回类型
+&#125;
+</code></pre>
+<p>也可以在数组元素类型或类字段类型中使用：</p>
+<pre><code class="ts">class C &#123;
+  n: number = 0;
+  s: string = &#39;&#39;;
+&#125;
+let cc: C[] = [&#123;n: 1, s: &#39;a&#39;&#125;, &#123;n: 2, s: &#39;b&#39;&#125;];
+</code></pre>
+<h3 id="Record类型的对象字面量"><a href="#Record类型的对象字面量" class="headerlink" title="Record类型的对象字面量"></a>Record类型的对象字面量</h3><p>泛型Record&lt;K, V&gt;用于将类型（键类型）的属性映射到另一个类型（值类型）。常用对象字面量来初始化该类型的值：</p>
+<pre><code class="ts">let map: Record&lt;string, number&gt; = &#123;
+  &#39;John&#39;: 25,
+  &#39;Mary&#39;: 21,
+&#125;
+
+map[&#39;John&#39;]; // 25
+</code></pre>
+<p>类型K可以是字符串类型或数值类型，而V可以是任何类型。</p>
+<pre><code class="ts">interface PersonInfo &#123;
+  age: number;
+  salary: number;
+&#125;
+let map: Record&lt;string, PersonInfo&gt; = &#123;
+  &#39;John&#39;: &#123; age: 25, salary: 10&#125;,
+  &#39;Mary&#39;: &#123; age: 21, salary: 20&#125;
+&#125;
+</code></pre>
+<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><p>接口声明引入新类型。接口是定义代码协定的常见方式。</p>
+<p>任何一个类的实例只要实现了特定接口，就可以通过该接口实现多态。</p>
+<p>接口通常包含属性和方法的声明</p>
+<p>示例：</p>
+<pre><code class="ts">interface Style &#123;
+  color: string; // 属性
+&#125;
+interface AreaSize &#123;
+  calculateAreaSize(): number; // 方法的声明
+  someMethod(): void;     // 方法的声明
+&#125;
+</code></pre>
+<p>实现接口的类示例：</p>
+<pre><code class="ts">// 接口：
+interface AreaSize &#123;
+  calculateAreaSize(): number; // 方法的声明
+  someMethod(): void;     // 方法的声明
+&#125;
+
+// 实现：
+class RectangleSize implements AreaSize &#123;
+  private width: number = 0;
+  private height: number = 0;
+  someMethod(): void &#123;
+    console.log(&#39;someMethod called&#39;);
+  &#125;
+  calculateAreaSize(): number &#123;
+    this.someMethod(); // 调用另一个方法并返回结果
+    return this.width * this.height;
+  &#125;
+&#125;
+</code></pre>
+<h3 id="接口属性"><a href="#接口属性" class="headerlink" title="接口属性"></a>接口属性</h3><p>接口属性可以是字段、getter、setter或getter和setter组合的形式。</p>
+<p>属性字段只是getter&#x2F;setter对的便捷写法。以下表达方式是等价的：</p>
+<pre><code class="ts">interface Style &#123;
+  color: string;
+&#125;
+interface Style &#123;
+  get color(): string;
+  set color(x: string);
+&#125;
+</code></pre>
+<p>实现接口的类也可以使用以下两种方式：</p>
+<pre><code class="ts">interface Style &#123;
+  color: string;
+&#125;
+
+class StyledRectangle implements Style &#123;
+  color: string = &#39;&#39;;
+&#125;
+interface Style &#123;
+  color: string;
+&#125;
+
+class StyledRectangle implements Style &#123;
+  private _color: string = &#39;&#39;;
+  get color(): string &#123; return this._color; &#125;
+  set color(x: string) &#123; this._color = x; &#125;
+&#125;
+</code></pre>
+<h3 id="接口继承"><a href="#接口继承" class="headerlink" title="接口继承"></a>接口继承</h3><p>接口可以继承其他接口，如下面的示例所示：</p>
+<pre><code class="ts">interface Style &#123;
+  color: string;
+&#125;
+
+interface ExtendedStyle extends Style &#123;
+  width: number;
+&#125;
+</code></pre>
+<p>继承接口包含被继承接口的所有属性和方法，还可以添加自己的属性和方法。</p>
+<h2 id="泛型类型和函数"><a href="#泛型类型和函数" class="headerlink" title="泛型类型和函数"></a>泛型类型和函数</h2><p>泛型类型和函数允许创建的代码在各种类型上运行，而不仅支持单一类型。</p>
+<h3 id="泛型类和接口"><a href="#泛型类和接口" class="headerlink" title="泛型类和接口"></a>泛型类和接口</h3><p>类和接口可以定义为泛型，将参数添加到类型定义中，如以下示例中的类型参数Element：</p>
+<pre><code class="ts">class CustomStack&lt;Element&gt; &#123;
+  public push(e: Element):void &#123;
+    // ...
+  &#125;
+&#125;
+</code></pre>
+<p>要使用类型CustomStack，必须为每个类型参数指定类型实参：</p>
+<pre><code class="ts">let s = new CustomStack&lt;string&gt;();
+s.push(&#39;hello&#39;);
+</code></pre>
+<p>编译器在使用泛型类型和函数时会确保类型安全。参见以下示例：</p>
+<pre><code class="ts">let s = new CustomStack&lt;string&gt;();
+s.push(55); // 将会产生编译时错误
+</code></pre>
+<h3 id="泛型约束"><a href="#泛型约束" class="headerlink" title="泛型约束"></a>泛型约束</h3><p>泛型类型的类型参数可以被限制只能取某些特定的值。例如，MyHashMap&lt;Key, Value&gt;这个类中的Key类型参数必须具有hash方法。</p>
+<pre><code class="ts">interface Hashable &#123;
+  hash(): number;
+&#125;
+class MyHashMap&lt;Key extends Hashable, Value&gt; &#123;
+  public set(k: Key, v: Value) &#123;
+    let h = k.hash();
+    // ...其他代码...
+  &#125;
+&#125;
+</code></pre>
+<p>在上面的例子中，Key类型扩展了Hashable，Hashable接口的所有方法都可以为key调用。</p>
+<h3 id="泛型函数"><a href="#泛型函数" class="headerlink" title="泛型函数"></a>泛型函数</h3><p>使用泛型函数可编写更通用的代码。比如返回数组最后一个元素的函数：</p>
+<pre><code class="ts">function last(x: number[]): number &#123;
+  return x[x.length - 1];
+&#125;
+last([1, 2, 3]); // 3
+</code></pre>
+<p>如果需要为任何数组定义相同的函数，使用类型参数将该函数定义为泛型：</p>
+<pre><code class="ts">function last&lt;T&gt;(x: T[]): T &#123;
+  return x[x.length - 1];
+&#125;
+</code></pre>
+<p>现在，该函数可以与任何数组一起使用。</p>
+<p>在函数调用中，类型实参可以显式或隐式设置：</p>
+<pre><code class="ts">// 显式设置的类型实参
+last&lt;string&gt;([&#39;aa&#39;, &#39;bb&#39;]);
+last&lt;number&gt;([1, 2, 3]);
+
+// 隐式设置的类型实参
+// 编译器根据调用参数的类型来确定类型实参
+last([1, 2, 3]);
+</code></pre>
+<h3 id="泛型默认值"><a href="#泛型默认值" class="headerlink" title="泛型默认值"></a>泛型默认值</h3><p>泛型类型的类型参数可以设置默认值。这样可以不指定实际的类型实参，而只使用泛型类型名称。下面的示例展示了类和函数的这一点。</p>
+<pre><code class="ts">class SomeType &#123;&#125;
+interface Interface &lt;T1 = SomeType&gt; &#123; &#125;
+class Base &lt;T2 = SomeType&gt; &#123; &#125;
+class Derived1 extends Base implements Interface &#123; &#125;
+// Derived1在语义上等价于Derived2
+class Derived2 extends Base&lt;SomeType&gt; implements Interface&lt;SomeType&gt; &#123; &#125;
+
+function foo&lt;T = number&gt;(): T &#123;
+  // ...
+&#125;
+foo();
+// 此函数在语义上等价于下面的调用
+foo&lt;number&gt;();
+</code></pre>
+<h2 id="空安全"><a href="#空安全" class="headerlink" title="空安全"></a>空安全</h2><p>默认情况下，ArkTS中的所有类型都是不可为空的，因此类型的值不能为空。这类似于TypeScript的严格空值检查模式（strictNullChecks），但规则更严格。</p>
+<p>在下面的示例中，所有行都会导致编译时错误：</p>
+<pre><code class="ts">let x: number = null;    // 编译时错误
+let y: string = null;    // 编译时错误
+let z: number[] = null;  // 编译时错误
+</code></pre>
+<p>可以为空值的变量定义为联合类型T | null。</p>
+<pre><code class="ts">let x: number | null = null;
+x = 1;    // ok
+x = null; // ok
+if (x != null) &#123; /* do something */ &#125;
+</code></pre>
+<h3 id="非空断言运算符"><a href="#非空断言运算符" class="headerlink" title="非空断言运算符"></a>非空断言运算符</h3><p>后缀运算符!可用于断言其操作数为非空。</p>
+<p>应用于可空类型的值时，它的编译时类型变为非空类型。例如，类型将从T | null更改为T：</p>
+<pre><code class="ts">class A &#123;
+  value: number = 0;
+&#125;
+
+function foo(a: A | null) &#123;
+  a.value;   // 编译时错误：无法访问可空值的属性
+  a!.value;  // 编译通过，如果运行时a的值非空，可以访问到a的属性；如果运行时a的值为空，则发生运行时异常
+&#125;
+</code></pre>
+<h3 id="空值合并运算符"><a href="#空值合并运算符" class="headerlink" title="空值合并运算符"></a>空值合并运算符</h3><p>空值合并二元运算符??用于检查左侧表达式的求值是否等于null或者undefined。如果是，则表达式的结果为右侧表达式；否则，结果为左侧表达式。</p>
+<p>换句话说，a ?? b等价于三元运算符(a !&#x3D; null &amp;&amp; a !&#x3D; undefined) ? a : b。</p>
+<p>在以下示例中，getNick方法如果设置了昵称，则返回昵称；否则，返回空字符串：</p>
+<pre><code class="ts">class Person &#123;
+  // ...
+  nick: string | null = null;
+  getNick(): string &#123;
+    return this.nick ?? &#39;&#39;;
+  &#125;
+&#125;
+</code></pre>
+<h3 id="可选链"><a href="#可选链" class="headerlink" title="可选链"></a>可选链</h3><p>在访问对象属性时，如果该属性是undefined或者null，可选链运算符会返回undefined。</p>
+<pre><code class="ts">class Person &#123;
+  nick: string | null = null;
+  spouse?: Person
+
+  setSpouse(spouse: Person): void &#123;
+    this.spouse = spouse;
+  &#125;
+
+  getSpouseNick(): string | null | undefined &#123;
+    return this.spouse?.nick;
+  &#125;
+
+  constructor(nick: string) &#123;
+    this.nick = nick;
+    this.spouse = undefined;
+  &#125;
+&#125;
+</code></pre>
+<p>说明：getSpouseNick的返回类型必须为string | null | undefined，因为该方法可能返回null或者undefined。</p>
+<p>可选链可以任意长，可以包含任意数量的?.运算符。</p>
+<p>在以下示例中，如果一个Person的实例有不为空的spouse属性，且spouse有不为空的nick属性，则输出spouse.nick。否则，输出undefined：</p>
+<pre><code class="ts">class Person &#123;
+  nick: string | null = null;
+  spouse?: Person;
+
+  constructor(nick: string) &#123;
+    this.nick = nick;
+    this.spouse = undefined;
+  &#125;
+&#125;
+
+let p: Person = new Person(&#39;Alice&#39;);
+p.spouse?.nick; // undefined
+</code></pre>
+<h2 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h2><p>程序可划分为多组编译单元或模块。</p>
+<p>每个模块都有其自己的作用域，即，在模块中创建的任何声明（变量、函数、类等）在该模块之外都不可见，除非它们被显式导出。</p>
+<p>与此相对，从另一个模块导出的变量、函数、类、接口等必须首先导入到模块中。</p>
+<h3 id="导出"><a href="#导出" class="headerlink" title="导出"></a>导出</h3><p>可以使用关键字export导出顶层的声明。</p>
+<p>未导出的声明名称被视为私有名称，只能在声明该名称的模块中使用。</p>
+<p>注意：通过export方式导出，在导入时要加{}。</p>
+<pre><code class="ts">export class Point &#123;
+  x: number = 0;
+  y: number = 0;
+  constructor(x: number, y: number) &#123;
+    this.x = x;
+    this.y = y;
+  &#125;
+&#125;
+export let Origin = new Point(0, 0);
+export function Distance(p1: Point, p2: Point): number &#123;
+  return Math.sqrt((p2.x - p1.x) * (p2.x - p1.x) + (p2.y - p1.y) * (p2.y - p1.y));
+&#125;
+</code></pre>
+<h3 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h3><h4 id="静态导入"><a href="#静态导入" class="headerlink" title="静态导入"></a>静态导入</h4><p>导入声明用于导入从其他模块导出的实体，并在当前模块中提供其绑定。导入声明由两部分组成：</p>
+<p>导入路径，用于指定导入的模块；<br>导入绑定，用于定义导入的模块中的可用实体集和使用形式（限定或不限定使用）。<br>导入绑定可以有几种形式。</p>
+<p>假设模块具有路径“.&#x2F;utils”和导出实体“X”和“Y”。</p>
+<p>导入绑定* as A表示绑定名称“A”，通过A.name可访问从导入路径指定的模块导出的所有实体：</p>
+<pre><code class="ts">import * as Utils from &#39;./utils&#39;
+Utils.X // 表示来自Utils的X
+Utils.Y // 表示来自Utils的Y
+</code></pre>
+<p>导入绑定{ ident1, …, identN }表示将导出的实体与指定名称绑定，该名称可以用作简单名称：</p>
+<pre><code class="ts">import &#123; X, Y &#125; from &#39;./utils&#39;
+X // 表示来自utils的X
+Y // 表示来自utils的Y
+</code></pre>
+<p>如果标识符列表定义了ident as alias，则实体ident将绑定在名称alias下：</p>
+<pre><code class="ts">import &#123; X as Z, Y &#125; from &#39;./utils&#39;
+Z // 表示来自Utils的X
+Y // 表示来自Utils的Y
+X // 编译时错误：&#39;X&#39;不可见
+</code></pre>
+<h4 id="动态导入"><a href="#动态导入" class="headerlink" title="动态导入"></a>动态导入</h4><p>应用开发的有些场景中，如果希望根据条件导入模块或者按需导入模块，可以使用动态导入代替静态导入。</p>
+<p>import()语法通常称为动态导入dynamic import，是一种类似函数的表达式，用来动态导入模块。以这种方式调用，将返回一个promise。</p>
+<p>如下例所示，import(modulePath)可以加载模块并返回一个promise，该promise resolve为一个包含其所有导出的模块对象。该表达式可以在代码中的任意位置调用。</p>
+<pre><code class="ts">let modulePath = prompt(&quot;Which module to load?&quot;);
+import(modulePath)
+.then(obj =&gt; &lt;module object&gt;)
+.catch(err =&gt; &lt;loading error, e.g. if no such module&gt;)
+</code></pre>
+<p>如果在异步函数中，可以使用<code>let module = await import(modulePath)。</code></p>
+<pre><code class="ts">// say.ts
+export function hi() &#123;
+  console.log(&#39;Hello&#39;);
+&#125;
+export function bye() &#123;
+  console.log(&#39;Bye&#39;);
+&#125;
+</code></pre>
+<p>那么，可以像下面这样进行动态导入：</p>
+<pre><code class="ts">async function test() &#123;
+  let ns = await import(&#39;./say&#39;);
+  let hi = ns.hi;
+  let bye = ns.bye;
+  hi();
+  bye();
+&#125;
+</code></pre>
+<h4 id="导入HarmonyOS-SDK的开放能力"><a href="#导入HarmonyOS-SDK的开放能力" class="headerlink" title="导入HarmonyOS SDK的开放能力"></a>导入HarmonyOS SDK的开放能力</h4><p>HarmonyOS SDK提供的开放能力（接口）也需要在导入声明后使用。可直接导入接口模块来使用该模块内的所有接口能力，例如：</p>
+<p>import UIAbility from ‘@ohos.app.ability.UIAbility’;<br>从HarmonyOS NEXT Developer Preview 1版本开始引入Kit概念。SDK对同一个Kit下的接口模块进行了封装，开发者在示例代码中可通过导入Kit的方式来使用Kit所包含的接口能力。其中，Kit封装的接口模块可查看SDK目录下Kit子目录中各Kit的定义。</p>
+<p>通过导入Kit方式使用开放能力有三种方式：</p>
+<p>方式一：导入Kit下单个模块的接口能力。例如：<code>import &#123; UIAbility &#125; from &#39;@kit.AbilityKit&#39;;</code></p>
+<p>方式二：导入Kit下多个模块的接口能力。例如：<code>import &#123; UIAbility, Ability, Context &#125; from &#39;@kit.AbilityKit&#39;;</code></p>
+<p>方式三：导入Kit包含的所有模块的接口能力。例如：<code>import * as module from &#39;@kit.AbilityKit&#39;;</code></p>
+<p>其中，“module”为别名，可自定义，然后通过该名称调用模块的接口。</p>
+<h5 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h5><blockquote>
+<p><strong>方式三可能会导入过多无需使用的模块，导致编译后的HAP包太大，占用过多资源，请谨慎使用。</strong></p>
+</blockquote>
+<h4 id="顶层语句"><a href="#顶层语句" class="headerlink" title="顶层语句"></a>顶层语句</h4><p>顶层语句是指在模块的最外层直接编写的语句，这些语句不被包裹在任何函数、类、块级作用域中。顶层语句包括变量声明、函数声明、表达式等。</p>
+<h2 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h2><h3 id="this"><a href="#this" class="headerlink" title="this"></a>this</h3><p>关键字this只能在类的实例方法中使用。</p>
+<p>示例</p>
+<pre><code class="ts">class A &#123;
+  count: string = &#39;a&#39;;
+  m(i: string): void &#123;
+    this.count = i;
+  &#125;
+&#125;
+</code></pre>
+<p>使用限制：</p>
+<ul>
+<li>不支持this类型</li>
+<li>不支持在函数和类的静态方法中使用this</li>
+</ul>
+<p>示例</p>
+<pre><code class="ts">class A &#123;
+  n: number = 0;
+  f1(arg1: this) &#123;&#125; // 编译时错误，不支持this类型
+  static f2(arg1: number) &#123;
+    this.n = arg1;  // 编译时错误，不支持在类的静态方法中使用this
+  &#125;
+&#125;
+
+function foo(arg1: number) &#123;
+  this.n = i;       // 编译时错误，不支持在函数中使用this
+&#125;
+</code></pre>
+<p>关键字this的指向:</p>
+<ul>
+<li>调用实例方法的对象</li>
+<li>正在构造的对象</li>
+</ul>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF">前端</a>
+                  &nbsp;
+                
+                  <a class="hover-with-bg" href="/categories/ArkTS">ArkTS</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/%E5%89%8D%E7%AB%AF">前端</a>
+                
+                  <a class="hover-with-bg" href="/tags/ArkTS">ArkTS</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "基础知识&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "left",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

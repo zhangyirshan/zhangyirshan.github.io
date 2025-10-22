@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="仅限学习参考，有兴趣可以互相交流">
+  <meta name="author" content="张议">
+  <meta name="keywords" content="张议,Java,java,spring,SpringBoot,zhangyi">
+  <title>搜索复杂数据类型 ~ 人生展馆</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>人生展馆</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">资料</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/index.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期五, 十一月 13日 2020, 4:25 下午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    862 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      5 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="Insert之后返回自增主键"><a href="#Insert之后返回自增主键" class="headerlink" title="Insert之后返回自增主键"></a>Insert之后返回自增主键</h2><h3 id="mapper-xml"><a href="#mapper-xml" class="headerlink" title="mapper.xml"></a>mapper.xml</h3><pre><code class="sql">&lt;insert id=&quot;insertScript&quot; useGeneratedKeys=&quot;true&quot; keyProperty=&quot;script.id&quot; keyColumn=&quot;id&quot;&gt;
+INSERT INTO merchant_script(script_desc, tips, name, cover_oss_url, difficulty, role_num)
+VALUE (#&#123;script.desc&#125;, #&#123;script.tips&#125;, #&#123;script.name&#125;, #&#123;script.img&#125;, #&#123;script.difficulty&#125;,#&#123;script.roleNum&#125;);
+&lt;/insert&gt;
+</code></pre>
+<h3 id="dao-java"><a href="#dao-java" class="headerlink" title="dao.java"></a>dao.java</h3><pre><code class="java">Integer insertScript(@Param(&quot;script&quot;) ScriptDto script);
+</code></pre>
+<h3 id="实体类"><a href="#实体类" class="headerlink" title="实体类"></a>实体类</h3><p>实体类不需要进行特殊处理</p>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><pre><code class="java">ScriptDto scriptDto = new ScriptDto();
+scriptDao.insertScript(scriptDto);
+return new ScriptAddRespVo().setId(scriptDto.getId());
+</code></pre>
+<p>声明个空的实体类，在insert之后可以自动获取id<br><strong>注意：insert的返回值是插入的行数，不是id！！！！！</strong></p>
+<h2 id="select复杂的数据结构"><a href="#select复杂的数据结构" class="headerlink" title="select复杂的数据结构"></a>select复杂的数据结构</h2><p>可以对象中套list，再套对象<br><strong>注意如果collection中的column在sql中没有会报错，所以这个复用性不是很好</strong></p>
+<pre><code class="sql">&lt;resultMap id=&quot;merchantResultMap&quot; type=&quot;com.mega.scriptkill.merchant.controller.dto.MerchantDto&quot;&gt;
+    &lt;id column=&quot;id&quot; property=&quot;id&quot;/&gt;
+    &lt;result column=&quot;distance&quot; property=&quot;location.distance&quot;/&gt;
+    &lt;result column=&quot;name&quot; property=&quot;name&quot;/&gt;
+    &lt;result column=&quot;address&quot; property=&quot;location.address&quot;/&gt;
+    &lt;result column=&quot;name&quot; property=&quot;name&quot;/&gt;
+    &lt;collection property=&quot;tagList&quot; ofType=&quot;String&quot;&gt;
+        &lt;constructor&gt;
+            &lt;arg column=&quot;tag_name&quot;/&gt;
+        &lt;/constructor&gt;
+    &lt;/collection&gt;
+    &lt;collection property=&quot;imgList&quot; ofType=&quot;String&quot;&gt;
+        &lt;constructor&gt;
+            &lt;arg column=&quot;img_url&quot;/&gt;
+        &lt;/constructor&gt;
+    &lt;/collection&gt;
+&lt;/resultMap&gt;
+
+&lt;select id=&quot;getMerchant&quot; resultMap=&quot;merchantResultMap&quot;&gt;
+    SELECT
+    &lt;if test=&quot;merchantSearchCondition.latitude!=null and merchantSearchCondition.longitude!=null&quot;&gt;
+    ma.distance AS distance,
+    &lt;/if&gt;
+    m.id AS id, m.merchant_name AS name, ma.address AS address, mpt.tag_desc AS tag_name,
+    mp.oss_url AS img_url
+    FROM merchant AS m
+    LEFT JOIN (SELECT *,ROUND(6378.138 * 2 * ASIN(SQRT(POW(SIN((#&#123;merchantSearchCondition.latitude&#125; * PI() / 180 - ma.latitude * PI() / 180) / 2),
+    2) +
+    COS(#&#123;merchantSearchCondition.latitude&#125; * PI() / 180) * COS(ma.latitude * PI() / 180) *
+    POW(SIN((#&#123;merchantSearchCondition.longitude&#125; * PI() / 180 - ma.longitude * PI() / 180) / 2), 2))) *
+    1000) AS distance FROM merchant_address AS ma) ma ON ma.merchant_id = m.id and ma.delsign = 0
+    LEFT JOIN merchant_tag mt ON mt.merchant_id = m.id AND mt.delsign = 0
+    LEFT JOIN merchant_public_tag mpt on mt.tag_id = mpt.id AND mpt.delsign = 0
+    LEFT JOIN merchant_picture mp on mp.merchant_id = m.id AND mp.delsign = 0
+    &lt;if test=&quot;merchantSearchCondition.scriptId != null and merchantSearchCondition.scriptId != 0&quot;&gt;
+    LEFT JOIN merchant_script_ref msr on m.id = msr.merchant_id AND msr.delsign = 0
+    &lt;/if&gt;
+    WHERE m.delsign = 0 AND m.status = 10
+    &lt;if test=&quot;merchantSearchCondition.name!=null&quot;&gt;
+    AND m.merchant_name like concat(&#39;%&#39;,#&#123;merchantSearchCondition.name&#125;,&#39;%&#39;)
+    &lt;/if&gt;
+    &lt;if test=&quot;merchantSearchCondition.cityCode!=null&quot;&gt;
+    AND ma.city_code = #&#123;merchantSearchCondition.cityCode&#125;
+    &lt;/if&gt;
+    &lt;if test=&quot;merchantSearchCondition.distance!=null and merchantSearchCondition.geohashList!=null&quot;&gt;
+    AND ma.distance &gt; #&#123;merchantSearchCondition.lastId&#125; AND #&#123;merchantSearchCondition.distance&#125; &gt; ma.distance
+    AND ma.geohash IN
+    &lt;foreach collection=&quot;merchantSearchCondition.geohashList&quot; item=&quot;item&quot; separator=&quot;,&quot; open=&quot;(&quot; close=&quot;)&quot;&gt;
+        #&#123;item&#125;
+    &lt;/foreach&gt;
+    &lt;/if&gt;
+    &lt;if test=&quot;merchantSearchCondition.scriptId != null and merchantSearchCondition.scriptId != 0&quot;&gt;
+    AND msr.script_id = #&#123;merchantSearchCondition.scriptId&#125;
+    &lt;/if&gt;
+    &lt;if test=&quot;merchantSearchCondition.longitude == null and merchantSearchCondition.latitude == null and merchantSearchCondition.lastId != null and merchantSearchCondition.lastId != 0&quot;&gt;
+    AND #&#123;merchantSearchCondition.lastId&#125; &gt; m.id
+    &lt;/if&gt;
+
+    &lt;if test=&quot;merchantSearchCondition.longitude != null and merchantSearchCondition.latitude != null&quot;&gt;
+    ORDER BY ma.distance , m.id DESC
+    &lt;/if&gt;
+    &lt;if test=&quot;merchantSearchCondition.longitude == null and merchantSearchCondition.latitude == null&quot;&gt;
+    ORDER BY m.id DESC
+    &lt;/if&gt;
+    &lt;if test=&quot;merchantSearchCondition.limit != null&quot;&gt;
+    LIMIT #&#123;merchantSearchCondition.limit&#125;
+    &lt;/if&gt;
+&lt;/select&gt;
+</code></pre>
+<p>当resultType的映射类是内部类时不能用点需要用$符号</p>
+<pre><code class="sql">&lt;select id=&quot;getUserInfo&quot; resultType=&quot;com.mega.werewolf.cloud.jp.hang.vo.HangEventGetVO$Friend&quot;&gt;
+    SELECT t.no                 AS id,
+            t.nickname           AS `name`,
+            IFNULL(ti.sex, 0)    AS sex,
+            th.content           AS content,
+            t.headicon           AS headIcon,
+            IFNULL(t.frame, &#39;0&#39;) AS frame,
+            IFNULL(uex.level, 1) AS `level`,
+            t.bug                AS tag
+    FROM tuser as t
+                LEFT JOIN tuser_info ti ON t.no = ti.userno
+                LEFT JOIN tuser_hang th ON t.no = th.user_id
+                LEFT JOIN user_exp uex ON t.`no` = uex.user_id AND uex.exp_id = 1
+    WHERE t.no = #&#123;friendId&#125;
+&lt;/select&gt;
+</code></pre>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/Maybatis">Maybatis</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/Maybatis">Maybatis</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "搜索复杂数据类型&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "left",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

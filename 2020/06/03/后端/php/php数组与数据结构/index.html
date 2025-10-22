@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="仅限学习参考，有兴趣可以互相交流">
+  <meta name="author" content="张议">
+  <meta name="keywords" content="张议,Java,java,spring,SpringBoot,zhangyi">
+  <title>php数组与数据结构 ~ 人生展馆</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>人生展馆</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">资料</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/index.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期三, 六月 3日 2020, 10:15 晚上
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    2k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      8 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><h3 id="数组声明"><a href="#数组声明" class="headerlink" title="数组声明"></a>数组声明</h3><ol>
+<li>数组可以存入多个不同类型的数据，是一个复合数据类型。</li>
+<li>数组的英文是array，学一了一下最简单的数组声明。</li>
+</ol>
+<pre><code class="php">$shu = array(1 , 1.5 , true ,&#39;天王盖地虎，小鸡炖蘑菇&#39;);
+
+echo &#39;&lt;pre&gt;&#39;;
+var_dump($shu);
+echo &#39;&lt;/pre&gt;&#39;;
+
+结果是：
+array(4) &#123;
+  [0]=&gt;
+  int(1)
+  [1]=&gt;
+  float(1.5)
+  [2]=&gt;
+  bool(true)
+  [3]=&gt;
+  string(33) &quot;天王盖地虎，小鸡炖蘑菇&quot;
+&#125;
+</code></pre>
+<ol>
+<li>array(size &#x3D; 4) 说明里面有4个元素</li>
+<li>0 &#x3D;&gt; int 1 我们知道int是整型的意思，1是一个整型的数值。那前面的0,1,2,3和&#x3D;&gt;代表什么意思呢？</li>
+<li>最新前的0，1，2，3代表的是值的读取标识号，我们称之为下标或者键（英文：key）</li>
+<li>&#x3D;&gt; 是一个符号标准叫法叫作：键值对应符。因此，以后再看到 0&#x3D;&gt; int 1 可以这样来说。 下标访问符0对应整型的1。</li>
+<li>我们还称数组里面的键值对为元素，元素就是键值对的组合。</li>
+</ol>
+<pre><code class="php">$kele = array(
+           &#39;只有不断努力才能博得未来&#39;,
+           &#39;a&#39; =&gt; &#39;NoAlike&#39;,
+           &#39;PHP中文网&#39; ,
+           &#39;去PHP中文网学PHP&#39;,
+           19 =&gt; &#39;凤姐和芙蓉我都爱&#39; ,
+           &#39;杨幂我最爱&#39;
+       );
+
+
+//打印显示$kele
+echo &#39;&lt;pre&gt;&#39;;
+var_dump($kele);
+echo &#39;&lt;/pre&gt;&#39;;
+
+结果是：
+array(6) &#123;
+  [0]=&gt;
+  string(36) &quot;只有不断努力才能博得未来&quot;
+  [&quot;a&quot;]=&gt;
+  string(7) &quot;NoAlike&quot;
+  [1]=&gt;
+  string(12) &quot;PHP中文网&quot;
+  [2]=&gt;
+  string(21) &quot;去PHP中文网学PHP&quot;
+  [19]=&gt;
+  string(24) &quot;凤姐和芙蓉我都爱&quot;
+  [20]=&gt;
+  string(15) &quot;杨幂我最爱&quot;
+&#125;
+</code></pre>
+<ol>
+<li>索引数组若不强制声明他的下标，他的下标是从0开始的。（我们的第一个数组的值：只有不断努力才能博得未来。这个值的下标为0）。</li>
+<li>如果我指定过下标他的下标就为我指定的值。如下标为10和下标为19的，都是我指定过的值。</li>
+<li>若某个值（如NoAlike），强制指定了下标（下标为10）。在它后面加上的值（PHP中文网），不指定下标的话。他们的下标增长规律为最大值+1。</li>
+</ol>
+<p>一、直接用之前未声明的变量，用变量名后面接中括号的方式声明数组。</p>
+<pre><code class="php">    //直接写一个变量后面加上中括号，声明变量
+    $qi[] = &#39;可口可乐&#39;;
+    $qi[10] =&#39;百事可乐&#39;;
+    echo &#39;&lt;pre&gt;&#39;;
+    var_dump($qi);
+    echo &#39;&lt;/pre&gt;&#39;;
+</code></pre>
+<p>二、每次用array()写的太麻烦了，还可以不用写array哟，更简单。</p>
+<h3 id="增加元素"><a href="#增加元素" class="headerlink" title="增加元素"></a>增加元素</h3><pre><code class="php">$minren = array(
+           &#39;杨幂&#39;,
+           &#39;王珞丹&#39;,
+           &#39;刘亦菲&#39;,
+           &#39;黄圣依&#39;
+       );
+//如何向这$minren这个数组中增加元素呢
+
+//猜猜范冰冰的下标是多少？
+$minren[] = &#39;范冰冰&#39;;
+
+$minren[100] = &#39;范爷&#39;;
+
+//它的下标又为几呢？
+$minren[] = &#39;李晨&#39;;
+</code></pre>
+<h3 id="删除元素"><a href="#删除元素" class="headerlink" title="删除元素"></a>删除元素</h3><pre><code class="php">$minren = array(
+           &#39;杨幂&#39;,
+           &#39;王珞丹&#39;,
+           &#39;刘亦菲&#39;,
+           &#39;黄圣依&#39;,
+           &#39;范冰冰&#39;
+       );
+
+
+//假设我不喜欢：黄圣依，如何将黄圣依给删掉掉呢？
+
+//如果删除掉后范冰冰的下标为多少呢？
+
+//如果在后面再追加一个元素，会填掉：“黄圣依”留下来的空吗？
+
+unset($minren[3]);
+
+$minren[] = &#39;金星&#39;;
+
+
+echo &#39;&lt;pre&gt;&#39;;
+
+var_dump($minren);
+
+echo &#39;&lt;/pre&gt;&#39;;
+</code></pre>
+<h2 id="遍历数组"><a href="#遍历数组" class="headerlink" title="遍历数组"></a>遍历数组</h2><h3 id="​foreach遍历关联数组"><a href="#​foreach遍历关联数组" class="headerlink" title="​foreach遍历关联数组"></a>​foreach遍历关联数组</h3><pre><code class="php">foreach( 要循环的数组变量 as [键变量 =&gt;] 值变量)&#123;
+//循环的结构体
+&#125;
+</code></pre>
+<h3 id="list、each函数遍历数组"><a href="#list、each函数遍历数组" class="headerlink" title="list、each函数遍历数组"></a>list、each函数遍历数组</h3><p>list ( mixed $变量1 [, mixed $变量n ] )</p>
+<pre><code class="php">&lt;?php
+list($one, $two, $three) = array(2 =&gt; &#39;张三&#39;, &#39;李四&#39;, &#39;王五&#39;);
+echo &#39;$one----&#39; . $one . &#39;&lt;br /&gt;&#39;;
+echo &#39;$two----&#39; . $two . &#39;&lt;br /&gt;&#39;;
+echo &#39;$three----&#39; . $three . &#39;&lt;br /&gt;&#39;;
+?&gt;
+$one----
+$two----
+$three----张三
+</code></pre>
+<ol>
+<li>因为是一一对应原则，$one找不到下标为0的数组元素，$two找不到下标为1的数组元素，只有$three找到了下标为2的数组元素</li>
+<li>在list($one, $two, $three)，我只写了三个变量。对应完成，无需再对应后面的变量了，丢弃李四和王五。</li>
+</ol>
+<p>array each ( array &amp;$array )</p>
+<pre><code class="php">&lt;?php
+
+//定义一个变量叫$kongjie(空姐)
+$kongjie=[
+   &#39;gao&#39;=&gt;&#39;穿黑衣服的&#39;,
+   &#39;shou&#39;=&gt;&#39;退特别长特别细&#39;,
+   &#39;mei&#39;=&gt;&#39;好白&#39;,
+   ];
+
+//第一次each
+$data = each($kongjie);
+
+echo &#39;&lt;pre&gt;&#39;;
+var_dump($data);
+echo &#39;&lt;/pre&gt;&#39;;
+
+echo &#39;-----华丽丽分割线------&lt;br /&gt;&#39;;
+
+
+//第2次each
+$data = each($kongjie);
+
+echo &#39;&lt;pre&gt;&#39;;
+var_dump($data);
+echo &#39;&lt;/pre&gt;&#39;;
+
+echo &#39;-----华丽丽分割线------&lt;br /&gt;&#39;;
+
+//第3次each【执行到了最后一个元素了】
+$data = each($kongjie);
+
+echo &#39;&lt;pre&gt;&#39;;
+var_dump($data);
+echo &#39;&lt;/pre&gt;&#39;;
+
+echo &#39;-----华丽丽分割线------&lt;br /&gt;&#39;;
+
+//第4次【此时，后面已没有可操作的元素了，看返回什么】
+$data = each($kongjie);
+
+echo &#39;&lt;pre&gt;&#39;;
+var_dump($data);
+echo &#39;&lt;/pre&gt;&#39;;
+
+echo &#39;-----华丽丽分割线------&lt;br /&gt;&#39;;
+
+?&gt;
+
+array(4) &#123;
+  [1]=&gt;
+  string(15) &quot;穿黑衣服的&quot;
+  [&quot;value&quot;]=&gt;
+  string(15) &quot;穿黑衣服的&quot;
+  [0]=&gt;
+  string(3) &quot;gao&quot;
+  [&quot;key&quot;]=&gt;
+  string(3) &quot;gao&quot;
+&#125;
+
+-----华丽丽分割线------
+
+array(4) &#123;
+  [1]=&gt;
+  string(21) &quot;退特别长特别细&quot;
+  [&quot;value&quot;]=&gt;
+  string(21) &quot;退特别长特别细&quot;
+  [0]=&gt;
+  string(4) &quot;shou&quot;
+  [&quot;key&quot;]=&gt;
+  string(4) &quot;shou&quot;
+&#125;
+
+-----华丽丽分割线------
+
+array(4) &#123;
+  [1]=&gt;
+  string(6) &quot;好白&quot;
+  [&quot;value&quot;]=&gt;
+  string(6) &quot;好白&quot;
+  [0]=&gt;
+  string(3) &quot;mei&quot;
+  [&quot;key&quot;]=&gt;
+  string(3) &quot;mei&quot;
+&#125;
+
+-----华丽丽分割线------
+
+bool(false)
+
+-----华丽丽分割线------
+</code></pre>
+<ol>
+<li>读一次向后移动一次【可以想象有一个记录的箭头在移动】，将其中的每个元素拆解成一个新数组。</li>
+<li>读取到最后，没有可操作的元素了，所以返回了false。</li>
+</ol>
+<h3 id="list、each配合使用"><a href="#list、each配合使用" class="headerlink" title="list、each配合使用"></a>list、each配合使用</h3><pre><code class="php">&lt;?php
+
+//定义一个变量叫$kongjie(空姐)
+$kongjie=[
+   &#39;gao&#39;=&gt;&#39;穿黑衣服的&#39;,
+   &#39;shou&#39;=&gt;&#39;腿特别长特别细&#39;,
+   &#39;mei&#39;=&gt;&#39;好白&#39;,
+   ];
+
+list($key,$value) = each($kongjie);
+
+echo $key. &#39;-----&#39; .$value .&#39;&lt;br /&gt;&#39;;
+
+?&gt;
+
+gao-----穿黑衣服的
+
+&lt;?php
+
+//定义一个变量叫$kongjie(空姐)
+$kongjie=[
+   &#39;gao&#39;=&gt;&#39;穿黑衣服的&#39;,
+   &#39;shou&#39;=&gt;&#39;退特别长特别细&#39;,
+   &#39;mei&#39;=&gt;&#39;好白&#39;,
+   ];
+
+while(list($key,$value) = each($kongjie))&#123;
+
+   echo $key. &#39;-----&#39; .$value .&#39;&lt;br /&gt;&#39;;
+
+&#125;
+
+?&gt;
+gao-----穿黑衣服的
+shou-----退特别长特别细
+mei-----好白
+</code></pre>
+<h2 id="PHP中的替代语法"><a href="#PHP中的替代语法" class="headerlink" title="PHP中的替代语法"></a>PHP中的替代语法</h2><p>PHP中具体有哪些替代语法呢？<br>PHP应该在HTML中制作数据输出，输出通常伴有条件判断和循环操作，因此PHP提供了对应分支结构和循环结构的替代语法：全部都是对应的一个模式：<br>左大括号{使用冒号替代:<br>有大括号}使用end+对应的起始标记替代</p>
+<pre><code class="php">if,switch,for,while,foreach
+都可以进行替代
+</code></pre>
+<h2 id="数组相关函数"><a href="#数组相关函数" class="headerlink" title="数组相关函数"></a>数组相关函数</h2><h3 id="排序函数"><a href="#排序函数" class="headerlink" title="排序函数"></a>排序函数</h3><ol>
+<li>sort(): 顺序排序(下标重排)</li>
+<li>rsort(): 逆序排序</li>
+<li>asort(): 顺序排序（下表保留）</li>
+<li>arsort(): 逆序排序</li>
+<li>ksort(): 顺序排序，按照键名（下标）</li>
+<li>kesort(): 逆序排序</li>
+</ol>
+<h3 id="指针排序"><a href="#指针排序" class="headerlink" title="指针排序"></a>指针排序</h3><ol>
+<li>reset(): 重置指针，将数组指针回到首位</li>
+<li>end(): 重置指针，将数组指针指到末尾</li>
+<li>next(): 指针下移，取得下一个元素的值，可能会移出数组</li>
+<li>prev(): 指针上移，取得上一个元素的值，可能会移出数组</li>
+<li>current(): 获得当前指针对应的元素值</li>
+<li>key(): 或崎岖当前指针对应的下标值</li>
+</ol>
+<h3 id="其他函数"><a href="#其他函数" class="headerlink" title="其他函数"></a>其他函数</h3><ol>
+<li>count(): 统计数组中元素的数量</li>
+<li>array_count: 往数组中加入一个元素(数组后面)</li>
+<li>array_pop(): 从数组中取出一个元素(数组后面)</li>
+<li>array_shift(): 从数组中取出一个元素(数组)</li>
+<li>array_unshift(): 从数组中加入一个元素(数组前面)</li>
+<li>array_reverse(): 数组翻转</li>
+<li>in_array(): 判断一个元素在数组中是否存在</li>
+<li>array_keys(): 获取一个数组的所有下标，返回一个索引数组</li>
+<li>array_values(): 获取一个数组的所有值，返回一个索引数组</li>
+</ol>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/php">php</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/php">php</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "php数组与数据结构&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "left",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

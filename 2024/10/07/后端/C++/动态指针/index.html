@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="仅限学习参考，有兴趣可以互相交流">
+  <meta name="author" content="张议">
+  <meta name="keywords" content="张议,Java,java,spring,SpringBoot,zhangyi">
+  <title>动态指针 ~ 人生展馆</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>人生展馆</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">资料</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/index.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期一, 十月 7日 2024, 3:19 下午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    714 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      3 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="动态指针"><a href="#动态指针" class="headerlink" title="动态指针"></a>动态指针</h2><h3 id="unique-ptr"><a href="#unique-ptr" class="headerlink" title="unique_ptr"></a>unique_ptr</h3><h4 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h4><blockquote>
+<p>在 C++ 中，std::unique_ptr 是一种智能指针，用于管理动态分配的对象。下面是一个简单的例子，展示如何在头文件和源文件中使用 std::unique_ptr。</p>
+</blockquote>
+<pre><code class="c++">头文件 (example.h)
+
+#ifndef EXAMPLE_H
+#define EXAMPLE_H
+
+#include &lt;memory&gt;
+#include &lt;iostream&gt;
+
+class MyClass &#123;
+public:
+    MyClass();
+    ~MyClass();
+
+    void display();
+
+private:
+    struct Impl; // 前向声明
+    std::unique_ptr&lt;Impl&gt; impl; // 使用 unique_ptr
+&#125;;
+
+#endif // EXAMPLE_H
+源文件 (example.cpp)
+#include &quot;example.h&quot;
+
+struct MyClass::Impl &#123;
+    int value;
+    Impl() : value(42) &#123;&#125; // 初始化 value
+&#125;;
+
+MyClass::MyClass() : impl(std::make_unique&lt;Impl&gt;()) &#123;
+    // 构造函数实现
+&#125;
+
+MyClass::~MyClass() &#123;
+    // unique_ptr 会自动释放 Impl 的内存
+&#125;
+
+void MyClass::display() &#123;
+    std::cout &lt;&lt; &quot;Value: &quot; &lt;&lt; impl-&gt;value &lt;&lt; std::endl;
+&#125;
+主程序 (main.cpp)
+#include &quot;example.h&quot;
+
+int main() &#123;
+    MyClass myObject;
+    myObject.display(); // 输出 Value: 42
+    return 0;
+&#125;
+</code></pre>
+<h5 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h5><p>头文件 (example.h):</p>
+<p>定义了 MyClass 类，包含一个 <code>std::unique_ptr&lt;Impl&gt;</code> 成员指针，用于管理 Impl 结构的生命周期。<br>Impl 是一个私有结构，使用前向声明，确保封装。</p>
+<p>源文件 (example.cpp):</p>
+<p>实现了 MyClass 的构造函数，使用 std::make_unique 创建 Impl 的实例。<br>析构函数不需要显式释放 Impl，因为 std::unique_ptr 会自动处理内存。<br>主程序 (main.cpp):</p>
+<p>创建 MyClass 的实例，并调用 display 方法。<br>这样，std::unique_ptr 可以有效地管理内存，避免内存泄漏和悬挂指针的问题。</p>
+<h4 id="如果动态指针中的函数需要一些入参"><a href="#如果动态指针中的函数需要一些入参" class="headerlink" title="如果动态指针中的函数需要一些入参"></a>如果动态指针中的函数需要一些入参</h4><pre><code class="c++">// 头文件 (example.h)
+#ifndef EXAMPLE_H
+#define EXAMPLE_H
+
+#include &lt;memory&gt;
+#include &lt;iostream&gt;
+
+class MyClass &#123;
+public:
+    MyClass(int initialValue);
+    ~MyClass();
+
+    void display() const;
+    void setValue(int newValue);
+
+private:
+    struct Impl;
+    std::unique_ptr&lt;Impl&gt; impl;
+&#125;;
+
+#endif // EXAMPLE_H
+
+// 源文件 (example.cpp)
+#include &quot;example.h&quot;
+
+struct MyClass::Impl &#123;
+    int value;
+    Impl(int initialValue) : value(initialValue) &#123;&#125; // 初始化 value
+&#125;;
+
+MyClass::MyClass(int initialValue) 
+    : impl(std::make_unique&lt;Impl&gt;(initialValue)) &#123;
+    // 构造函数实现
+&#125;
+
+MyClass::~MyClass() &#123;
+    // unique_ptr 会自动释放 Impl 的内存
+&#125;
+
+void MyClass::display() const &#123;
+    std::cout &lt;&lt; &quot;Value: &quot; &lt;&lt; impl-&gt;value &lt;&lt; std::endl;
+&#125;
+
+void MyClass::setValue(int newValue) &#123;
+    impl-&gt;value = newValue;
+&#125;
+
+// 主程序 (main.cpp)
+#include &quot;example.h&quot;
+
+int main() &#123;
+    MyClass myObject(42); // 传递初始值
+    myObject.display();    // 输出 Value: 42
+    
+    myObject.setValue(100); // 设置新值
+    myObject.display();      // 输出 Value: 100
+    
+    return 0;
+&#125;
+</code></pre>
+<h5 id="说明-1"><a href="#说明-1" class="headerlink" title="说明"></a>说明</h5><ol>
+<li><p><strong>头文件 (<code>example.h</code>)</strong>:</p>
+<ul>
+<li><code>MyClass</code> 的构造函数现在接收一个 <code>int</code> 类型的参数 <code>initialValue</code>，用于初始化 <code>Impl</code> 中的 <code>value</code>。</li>
+<li>添加了 <code>setValue</code> 方法，允许更新 <code>value</code> 的值。</li>
+</ul>
+</li>
+<li><p><strong>源文件 (<code>example.cpp</code>)</strong>:</p>
+<ul>
+<li>在 <code>Impl</code> 的构造函数中使用传入的 <code>initialValue</code> 进行初始化。</li>
+<li><code>display</code> 和 <code>setValue</code> 方法用于显示和设置 <code>value</code>。</li>
+</ul>
+</li>
+<li><p><strong>主程序 (<code>main.cpp</code>)</strong>:</p>
+<ul>
+<li>创建 <code>MyClass</code> 的实例时传入初始值 <code>42</code>。</li>
+<li>通过 <code>setValue</code> 方法更新值，并显示结果。</li>
+</ul>
+</li>
+</ol>
+<p>通过这种方式，<code>std::unique_ptr</code> 仍然负责管理动态对象的生命周期，而构造函数和其他成员函数可以接收参数以初始化或修改对象的状态。</p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/C++">C++</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/C++">C++</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "动态指针&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "left",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

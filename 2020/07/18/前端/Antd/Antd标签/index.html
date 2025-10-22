@@ -1,0 +1,1929 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="仅限学习参考，有兴趣可以互相交流">
+  <meta name="author" content="张议">
+  <meta name="keywords" content="张议,Java,java,spring,SpringBoot,zhangyi">
+  <title>Antd标签 ~ 人生展馆</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>人生展馆</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">资料</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/index.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期六, 七月 18日 2020, 5:02 下午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    5.9k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      35 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="制作的页面代码"><a href="#制作的页面代码" class="headerlink" title="制作的页面代码"></a>制作的页面代码</h2><p>里面有时间，下拉框（可清除），表单分页（子目录）</p>
+<pre><code class="js">/*
+ * @Description: 奖池分组
+ * @version: 1.0.0
+ * @Company: sdbean
+ * @Author: zhangyi
+ * @Date: 2020-7-18
+ */
+
+import &#123;IawardGroup, Igachats&#125; from &#39;./models/gacha&#39;;
+import React, &#123;Component&#125; from &#39;react&#39;;
+import * as styles from &#39;./CoinWeightManager.less&#39;;
+import PageHeaderWrapper from &#39;@/components/PageHeaderWrapper&#39;;
+import &#123;connect&#125; from &#39;dva&#39;;
+import &#123;ILogin&#125; from &#39;@/models/login&#39;;
+import EditorAwardGroup from &#39;./EditorAwardGroup&#39;;
+import &#123;PlusOutlined&#125; from &#39;@ant-design/icons&#39;;
+import &#123; getGachaSeasonGroup, getGachaSeasonSelectName&#125; from &#39;@/utils/mallTool&#39;;
+import &#123;
+  Button,
+  Spin,
+  Row,
+  Card,
+  Col,
+  Select,
+  Table,
+  message
+&#125; from &#39;antd&#39;;
+import &#123;ColumnProps&#125; from &quot;antd/lib/table&quot;;
+
+export const PAGESIZE = 8;
+
+@connect((&#123;loading, login, gacha&#125;: &#123; loading: IdvaLoading; login: ILogin; gacha: Igachats &#125;) =&gt; (&#123;
+  uid: login.uid,
+  isLoading: loading.models.getSeasonList,
+  seasonList: gacha.seasonList,
+  coinList: gacha.coinList,
+  awardList: gacha.awardList,
+  modelType: gacha.modelType,
+  coinModelType: gacha.coinModelType,
+  currentWeightSeasonId: gacha.currentWeightSeasonId,
+  simpleSeasonList: gacha.simpleSeasonList,
+  simpleSeasonGroupList: gacha.simpleSeasonGroupList,
+  currentGroupSeasonId: gacha.currentGroupSeasonId,
+  currentGroupId: gacha.currentGroupId,
+  groupList: gacha.groupList,
+  groupId: gacha.groupId,
+&#125;))
+
+class AwardGroup extends Component&lt;Igachats&gt; &#123;
+
+  constructor(props) &#123;
+    super(props);
+    this.state = &#123;
+      visible: false,
+      currentPage: 1,
+    &#125;;
+  &#125;
+
+  componentDidMount() &#123;
+    const &#123;dispatch&#125; = this.props;
+
+    dispatch(&#123;
+      type: &#39;gacha/getSimpleSeasonList&#39;,
+    &#125;);
+    dispatch(&#123;
+      type: &#39;gacha/getSimpleSeasonCoinList&#39;,
+    &#125;);
+    dispatch(&#123;
+      type: &#39;gacha/getGachaSeasonAward&#39;,
+    &#125;);
+    dispatch(&#123;
+      type: &#39;gacha/getGroupList&#39;,
+      payload: &#123;gacha_season_id: this.props.currentWeightSeasonId, gacha_group_id: this.props.groupId&#125;
+    &#125;);
+  &#125;
+
+  render() &#123;
+    const &#123;isLoading&#125; = this.props;
+
+    return (
+      &lt;PageHeaderWrapper title=&quot;奖池分组&quot; content=&#123;this.renderHeader()&#125;&gt;
+        &lt;Spin spinning=&#123;!!this.props.isLoading&#125;&gt;
+          &#123;this.props.currentGroupSeasonId &gt; 0 &amp;&amp; &lt;EditorAwardGroup/&gt;&#125;
+        &lt;/Spin&gt;
+        &lt;div className=&#123;styles.avswitch&#125;&gt;
+          &lt;Row&gt;
+            &lt;Col span=&#123;2&#125;&gt;
+              &lt;Button type=&quot;primary&quot; icon=&#123;&lt;PlusOutlined/&gt;&#125; size=&quot;large&quot; onClick=&#123;this.onClickCreate&#125;&gt;添加&lt;/Button&gt;
+            &lt;/Col&gt;
+            &lt;Col span=&#123;2&#125;&gt;
+              &lt;Button type=&quot;primary&quot; icon=&#123;&lt;PlusOutlined/&gt;&#125; size=&quot;large&quot; onClick=&#123;this.onClickUpdate&#125;&gt;更新&lt;/Button&gt;
+            &lt;/Col&gt;
+          &lt;/Row&gt;
+        &lt;/div&gt;
+        &lt;Card&gt;
+          &lt;Table
+            //  scroll=&#123;&#123; x: 'calc(1800px + 50%)', y: 720 &#125;&#125;
+            // scroll=&#123;&#123; x: 2000, y: 720 &#125;&#125;
+            className=&#123;styles.tableClass&#125;
+            rowClassName=&#123;this.rowClassName&#125;
+            columns=&#123;this.columns&#125;
+            dataSource=&#123;this.props.groupList&#125;
+            loading=&#123;!!isLoading&#125;
+            bordered=&#123;true&#125;
+            rowKey=&#123;(record, index) =&gt; index.toString()&#125;
+            pagination=&#123;&#123;
+              pageSize: PAGESIZE,
+              current: this.state.currentPage,
+              total: this.props.groupList ? this.props.groupList.length : 0,
+              onChange: this.changePage,
+            &#125;&#125;
+          /&gt;
+        &lt;/Card&gt;
+      &lt;/PageHeaderWrapper&gt;
+    );
+  &#125;
+
+  rowClassName = (record, index) =&gt; &#123;
+    return (record.current === true ? styles.current : &#39;&#39;)
+  &#125;
+
+  changePage = (page) =&gt; &#123;
+    this.setState(&#123;currentPage: page&#125;);
+  &#125;;
+
+  //表格列规则
+  columns: Array&lt;ColumnProps&lt;IawardGroup&gt;&gt; = [
+    &#123;
+      title: &#39;ID&#39;,
+      dataIndex: &#39;id&#39;,
+      key: &#39;id&#39;,
+      align: &#39;center&#39;,
+    &#125;,
+    &#123;
+      title: &#39;季度 ID&#39;,
+      dataIndex: &#39;gacha_season_id&#39;,
+      key: &#39;gacha_season_id&#39;,
+      align: &#39;center&#39;,
+    &#125;,
+    &#123;
+      title: &#39;分组 ID&#39;,
+      dataIndex: &#39;gacha_group_id&#39;,
+      key: &#39;gacha_group_id&#39;,
+      align: &#39;center&#39;,
+    &#125;,
+    &#123;
+      title: &#39;名称&#39;,
+      dataIndex: &#39;item_name&#39;,
+      key: &#39;item_name&#39;,
+      align: &#39;center&#39;,
+    &#125;,
+    &#123;
+      title: &#39;操作&#39;,
+      key: &#39;action&#39;,
+      align: &#39;center&#39;,
+      render: (value, row, index) =&gt; &#123;
+        return (
+          &lt;div className=&#123;styles.cellCenter&#125;&gt;
+            &lt;Button type=&quot;primary&quot; onClick=&#123;() =&gt; this.onClickDelete(row)&#125;&gt;删除&lt;/Button&gt;
+          &lt;/div&gt;
+        );
+      &#125;,
+    &#125;,
+    &#123;
+      title: &#39;中文备注&#39;,
+      dataIndex: &#39;cn_remark&#39;,
+      key: &#39;cn_remark&#39;,
+      align: &#39;center&#39;,
+    &#125;,
+    &#123;
+      title: &#39;分类名称&#39;,
+      dataIndex: &#39;type_name&#39;,
+      key: &#39;type_name&#39;,
+      align: &#39;center&#39;,
+    &#125;,
+    &#123;
+      title: &#39;物品等级&#39;,
+      dataIndex: &#39;item_level&#39;,
+      key: &#39;item_level&#39;,
+      align: &#39;center&#39;,
+      render: (value) =&gt; &#123;
+        switch (value) &#123;
+          case 0:
+            return &#39;无&#39;;
+          case 1:
+            return &#39;C&#39;;
+          case 2:
+            return &#39;R&#39;;
+          case 3:
+            return &#39;SR&#39;;
+          case 4:
+            return &#39;SSR&#39;;
+          case 5:
+            return &#39;UR&#39;;
+        &#125;
+      &#125;,
+    &#125;,
+  ];
+
+  //渲染头部
+  renderHeader() &#123;
+    return (
+      &lt;div className=&#123;styles.avframeheader&#125;&gt;
+
+        &lt;div className=&#123;styles.title&#125;&gt;季度选择：&lt;/div&gt;
+        &lt;Select style=&#123;&#123;width: 280&#125;&#125;
+                className=&#123;styles.actionItem&#125;
+                placeholder=&quot;请选择要查看的季度&quot;
+                onChange=&#123;this.onChangeSelect&#125;
+                defaultValue=&#123;getGachaSeasonSelectName(this.props.currentWeightSeasonId, this.props.simpleSeasonList)&#125;
+        &gt;
+          &#123;this.props.simpleSeasonList.map((item, index) =&gt; &#123;
+            return (
+              &lt;Option key=&#123;index.toString()&#125; value=&#123;this.props.simpleSeasonList[index].gacha_season_id&#125;&gt;
+                &#123;&quot;季度ID: &quot; + this.props.simpleSeasonList[index].gacha_season_id + &quot; 名称: &quot; + this.props.simpleSeasonList[index].name&#125;
+              &lt;/Option&gt;
+            );
+          &#125;)&#125;
+        &lt;/Select&gt;
+        &lt;div className=&#123;styles.title&#125;&gt;分组选择：&lt;/div&gt;
+        &lt;Select style=&#123;&#123;width: 280&#125;&#125;
+                allowClear
+                className=&#123;styles.actionItem&#125;
+                placeholder=&quot;请选择要查看的分组&quot;
+                onChange=&#123;this.onChangeGroupSelect&#125;
+                defaultValue=&#123;getGachaSeasonGroup(this.props.currentWeightSeasonId, this.props.simpleSeasonGroupList)&#125;
+        &gt;
+          &#123;
+            this.props.simpleSeasonGroupList.map((item, index) =&gt; &#123;
+            return (
+              &lt;Option key=&#123;index.toString()&#125; value=&#123;this.props.simpleSeasonGroupList[index].gacha_season_group_id&#125;&gt;
+                &#123;&quot;分组ID: &quot; + this.props.simpleSeasonGroupList[index].gacha_season_group_id + &quot; 名称: &quot; + this.props.simpleSeasonGroupList[index].name&#125;
+              &lt;/Option&gt;
+            );
+          &#125;)&#125;
+        &lt;/Select&gt;
+      &lt;/div&gt;
+    );
+  &#125;
+
+  //选择框
+  onChangeSelect = value =&gt; &#123;
+    const &#123;dispatch&#125; = this.props;
+
+    this.changePage(1);
+    dispatch(&#123;
+      type: &#39;gacha/setCurrentWeight&#39;,
+      payload: null
+    &#125;);
+    dispatch(&#123;
+      type: &#39;gacha/getGroupList&#39;,
+      payload: &#123;gacha_season_id: value&#125;
+    &#125;);
+    dispatch(&#123;
+      type: &#39;gacha/setCurrentWeightSeasonId&#39;,
+      payload: value
+    &#125;);
+    dispatch(&#123;
+      type: &#39;gacha/getSimpleSeasonGroupList&#39;,
+      payload: &#123;gacha_season_id: value&#125;
+    &#125;);
+  &#125;;
+
+  onChangeGroupSelect = value =&gt; &#123;
+    const &#123;dispatch&#125; = this.props;
+    this.changePage(1);
+    dispatch(&#123;
+      type: &#39;gacha/getGroupList&#39;,
+      payload: &#123;gacha_season_id: this.props.currentWeightSeasonId, gacha_group_id: value&#125;
+    &#125;);
+    dispatch(&#123;
+      type: &#39;gacha/setCurrentGroupId&#39;,
+      payload: value,
+    &#125;)
+  &#125;
+
+  //点击编辑
+  onClickDelete = (row: any) =&gt; &#123;
+    if (this.props.currentWeightSeasonId &lt;= 0) &#123;
+      message.error(&quot;请先选择季度&quot;);
+      return;
+    &#125;
+
+    this.props.dispatch(&#123;
+      type: &#39;gacha/deleteSeasonGroupAward&#39;,
+      payload: row
+    &#125;);
+
+    message.success(&quot;删除成功&quot;);
+    this.props.dispatch(&#123;
+      type: &#39;gacha/getGroupList&#39;,
+      payload: &#123;gacha_season_id: this.props.currentWeightSeasonId, gacha_group_id: row.gacha_group_id&#125;
+    &#125;);
+  &#125;;
+
+  onClickCreate = () =&gt; &#123;
+    if (this.props.currentWeightSeasonId &lt;= 0) &#123;
+      message.error(&quot;请先选择季度&quot;);
+      return;
+    &#125;
+    this.props.dispatch(&#123;
+      type: &#39;gacha/getCurrentGroupSeasonId&#39;,
+      payload: &#123;&#125;
+    &#125;);
+    this.props.dispatch(&#123;
+      type: &#39;gacha/getGachaAwardPoolList&#39;,
+      payload: &#123;gacha_season_id: this.props.currentWeightSeasonId&#125;
+    &#125;);
+  &#125;;
+
+  onClickUpdate = () =&gt; &#123;
+    if (this.props.currentWeightSeasonId &lt;= 0) &#123;
+      message.error(&quot;请先选择季度&quot;);
+      return;
+    &#125;
+    if (this.props.currentGroupId &lt;= 0)&#123;
+      message.error(&quot;请先选择分组&quot;);
+      return;
+    &#125;
+
+    this.props.dispatch(&#123;
+      type: &#39;gacha/setCurrentGroupSeasonId&#39;,
+      payload: [&#123;id:this.props.currentGroupId&#125;]
+    &#125;);
+
+    this.props.dispatch(&#123;
+      type: &#39;gacha/getGachaAwardPoolList&#39;,
+      payload: &#123;gacha_season_id: this.props.currentWeightSeasonId&#125;
+    &#125;);
+
+    this.props.dispatch(&#123;
+      type: &#39;gacha/getSelectedRowKeys&#39;,
+      payload: &#123;gacha_season_id: this.props.currentWeightSeasonId,gacha_group_id: this.props.currentGroupId&#125;
+    &#125;);
+  &#125;;
+&#125;
+
+export default AwardGroup;
+</code></pre>
+<pre><code class="js">/*
+ * @Description: 订单管理
+ * @version: 1.0.0
+ * @Company: sdbean
+ * @Author: zhangyi
+ * @Date: 2020-7-18
+ */
+
+import &#123;IgachaOrder, Igachats&#125; from &#39;./models/gacha&#39;;
+import React, &#123;Component&#125; from &#39;react&#39;;
+import * as styles from &#39;./CoinWeightManager.less&#39;;
+import PageHeaderWrapper from &#39;@/components/PageHeaderWrapper&#39;;
+import &#123;connect&#125; from &#39;dva&#39;;
+import &#123;ILogin&#125; from &#39;@/models/login&#39;;
+import &#123;
+  Row,
+  Card,
+  Col,
+  Select,
+  DatePicker,
+  Table,
+&#125; from &#39;antd&#39;;
+import moment from &quot;moment&quot;;
+import &#123;ColumnProps&#125; from &quot;antd/es/table&quot;;
+import &#123;getGachaSeasonSelectName&#125; from &quot;@/utils/mallTool&quot;;
+
+export const PAGESIZE = 8;
+
+@connect((&#123;loading, login, gacha&#125;: &#123; loading: IdvaLoading; login: ILogin; gacha: Igachats &#125;) =&gt; (&#123;
+  uid: login.uid,
+  isLoading: loading.models.getSeasonList,
+  orderList: gacha.orderList,
+  currentWeightSeasonId: gacha.currentWeightSeasonId,
+  simpleSeasonList: gacha.simpleSeasonList,
+&#125;))
+
+class OrderManage extends Component&lt;Igachats&gt; &#123;
+
+  constructor(props) &#123;
+    super(props);
+    this.state = &#123;
+      startTime: 0,
+      endTime: 0,
+      orderState: 2,
+      seasonId: 0,
+      currentPage: 1,
+    &#125;;
+  &#125;
+
+  componentDidMount() &#123;
+    const &#123;dispatch&#125; = this.props;
+
+    dispatch(&#123;
+      type: &#39;gacha/getOrderList&#39;,
+      payload: &#123;start: 0, offset: PAGESIZE&#125;
+    &#125;);
+    dispatch(&#123;
+      type: &#39;gacha/getSimpleSeasonList&#39;,
+    &#125;);
+  &#125;
+
+  render() &#123;
+    const &#123;isLoading&#125; = this.props;
+
+    return (
+      &lt;PageHeaderWrapper title=&quot;订单管理&quot; content=&#123;this.renderHeader()&#125;&gt;
+        &lt;Card&gt;
+          &lt;Table
+            scroll=&#123;&#123;x: 'calc(1800px + 50%)', y: 450&#125;&#125;
+            className=&#123;styles.tableClass&#125;
+            rowClassName=&#123;this.rowClassName&#125;
+            columns=&#123;this.columns&#125;
+            dataSource=&#123;this.props.orderList.data&#125;
+            loading=&#123;!!isLoading&#125;
+            bordered=&#123;true&#125;
+            rowKey=&#123;(record, index) =&gt; index.toString()&#125;
+            pagination=&#123;&#123;
+              pageSize: this.props.orderList.pageSize,
+              current: this.state.currentPage,
+              total: this.props.orderList.count,
+              onChange: this.changePage,
+            &#125;&#125;
+          /&gt;
+        &lt;/Card&gt;
+      &lt;/PageHeaderWrapper&gt;
+    );
+  &#125;
+
+  renderHeader() &#123;
+    return (
+      &lt;Row style=&#123;&#123;marginBottom: 15&#125;&#125;&gt;
+        &lt;Col span=&#123;5&#125;&gt;
+          季度选择：
+          &lt;Select style=&#123;&#123;width: 280&#125;&#125;
+                  className=&#123;styles.actionItem&#125;
+                  placeholder=&quot;请选择要查看的季度&quot;
+                  allowClear
+                  onChange=&#123;this.onChangeSelect&#125;
+                  defaultValue=&#123;getGachaSeasonSelectName(this.props.currentWeightSeasonId, this.props.simpleSeasonList)&#125;
+          &gt;
+            &#123;this.props.simpleSeasonList.map((item, index) =&gt; &#123;
+              return (
+                &lt;Option key=&#123;index.toString()&#125; value=&#123;this.props.simpleSeasonList[index].gacha_season_id&#125;&gt;
+                  &#123;&quot;季度ID: &quot; + this.props.simpleSeasonList[index].gacha_season_id + &quot; 名称: &quot; + this.props.simpleSeasonList[index].name&#125;
+                &lt;/Option&gt;
+              );
+            &#125;)&#125;
+          &lt;/Select&gt;
+        &lt;/Col&gt;
+        &lt;Col span=&#123;5&#125;&gt;
+          订单状态:
+          &lt;Select style=&#123;&#123;width: 280&#125;&#125;
+                  allowClear
+                  onChange=&#123;this.onChangeOrderState&#125;&gt;
+            &lt;Option value=&quot;0&quot;&gt;已发放&lt;/Option&gt;
+            &lt;Option value=&quot;1&quot;&gt;未发放&lt;/Option&gt;
+          &lt;/Select&gt;
+        &lt;/Col&gt;
+        &lt;Col span=&#123;5&#125;&gt;
+          创建时间: &lt;DatePicker.RangePicker
+          allowClear
+          onChange=&#123;this.onTimeChange&#125;
+          showTime=&#123;&#123;
+            hideDisabledOptions: true,
+            defaultValue: [moment('00:00:00', 'HH:mm:ss'), moment('11:59:59', 'HH:mm:ss')],
+          &#125;&#125;
+          style=&#123;&#123;width: '300px'&#125;&#125;/&gt;
+        &lt;/Col&gt;
+      &lt;/Row&gt;
+    );
+  &#125;
+
+  rowClassName = (record) =&gt; &#123;
+    return (record.current === true ? styles.current : &#39;&#39;)
+  &#125;
+
+  changePage = (page) =&gt; &#123;
+    this.props.dispatch(&#123;
+      type: &#39;gacha/getOrderList&#39;,
+      payload: &#123;
+        start: (page - 1) * PAGESIZE,
+        offset: PAGESIZE,
+        gacha_season_id: this.state.seasonId,
+        startTime: this.state.startTime,
+        endTime: this.state.endTime,
+        orderState: this.state.orderState,
+      &#125;
+    &#125;);
+    this.setState(&#123;currentPage: page&#125;);
+  &#125;;
+
+  //表格列规则
+  columns: Array&lt;ColumnProps&lt;IgachaOrder&gt;&gt; = [
+    &#123;
+      title: &#39;ID&#39;,
+      dataIndex: &#39;id&#39;,
+      key: &#39;id&#39;,
+      align: &#39;center&#39;,
+      render: (value, row, index) =&gt; &#123;
+        return this.renderRow(value, row, index);
+      &#125;,
+    &#125;,
+    &#123;
+      title: &#39;订单号&#39;,
+      dataIndex: &#39;order_no&#39;,
+      key: &#39;order_no&#39;,
+      align: &#39;center&#39;,
+      width: 150,
+      render: (value, row, index) =&gt; &#123;
+        return this.renderRow(value, row, index);
+      &#125;,
+    &#125;,
+    &#123;
+      title: &#39;订单状态&#39;,
+      dataIndex: &#39;status&#39;,
+      key: &#39;status&#39;,
+      align: &#39;center&#39;,
+      render: (value, row, index) =&gt; &#123;
+        if (row.rowSpan == null) &#123;
+          row.rowSpan = 0;
+        &#125;
+        return &#123;
+          children: &lt;div&gt;&#123;value == 0 ? &quot;已发放&quot; : &quot;未发放&quot;&#125;&lt;/div&gt;,
+          props: &#123;rowSpan: row.rowSpan&#125;,
+        &#125;;
+      &#125;,
+    &#125;,
+    &#123;
+      title: &#39;创建时间&#39;,
+      dataIndex: &#39;create_time&#39;,
+      key: &#39;create_time&#39;,
+      align: &#39;center&#39;,
+      render: (value, row, index) =&gt; &#123;
+        if (row.rowSpan == null) &#123;
+          row.rowSpan = 0;
+        &#125;
+        if (!!value) &#123;
+          return &#123;
+            children: &lt;div&gt;&#123;moment(value).format(&#39;YYYY-MM-DD HH:mm:ss&#39;)&#125;&lt;/div&gt;,
+            props: &#123;rowSpan: row.rowSpan&#125;,
+          &#125;;
+        &#125; else &#123;
+          return &#123;
+            children: &lt;div&gt;无&lt;/div&gt;,
+            props: &#123;rowSpan: row.rowSpan&#125;,
+          &#125;;
+        &#125;
+      &#125;,
+      width: 150,
+    &#125;,
+    &#123;
+      title: &#39;消耗货币ID&#39;,
+      dataIndex: &#39;coin_id&#39;,
+      key: &#39;coin_id&#39;,
+      align: &#39;center&#39;,
+      render: (value, row, index) =&gt; &#123;
+        return this.renderRow(value, row, index);
+      &#125;,
+    &#125;,
+    &#123;
+      title: &#39;消耗货币数量&#39;,
+      dataIndex: &#39;coin_num&#39;,
+      key: &#39;coin_num&#39;,
+      align: &#39;center&#39;,
+      render: (value, row, index) =&gt; &#123;
+        return this.renderRow(value, row, index);
+      &#125;,
+    &#125;,
+    &#123;
+      title: &#39;消耗货币名称&#39;,
+      dataIndex: &#39;coin_name&#39;,
+      key: &#39;coin_name&#39;,
+      align: &#39;center&#39;,
+      render: (value, row, index) =&gt; &#123;
+        return this.renderRow(value, row, index);
+      &#125;,
+    &#125;,
+    &#123;
+      title: &#39;抽奖次数&#39;,
+      dataIndex: &#39;order_number&#39;,
+      key: &#39;order_number&#39;,
+      align: &#39;center&#39;,
+      render: (value, row, index) =&gt; &#123;
+        return this.renderRow(value, row, index);
+      &#125;,
+    &#125;,
+    &#123;
+      title: &#39;用户Id&#39;,
+      dataIndex: &#39;user_id&#39;,
+      key: &#39;user_id&#39;,
+      align: &#39;center&#39;,
+      render: (value, row, index) =&gt; &#123;
+        return this.renderRow(value, row, index);
+      &#125;,
+    &#125;,
+    &#123;
+      title: &#39;季度Id&#39;,
+      dataIndex: &#39;gacha_season_id&#39;,
+      key: &#39;gacha_season_id&#39;,
+      align: &#39;center&#39;,
+      render: (value, row, index) =&gt; &#123;
+        return this.renderRow(value, row, index);
+      &#125;,
+    &#125;,
+    &#123;
+      title: &#39;道具配置&#39;,
+      align: &#39;center&#39;,
+      children: [
+        &#123;
+          title: &#39;gacha赛季奖励Id&#39;,
+          dataIndex: &#39;gacha_season_award_id&#39;,
+          key: &#39;gacha_season_award_id&#39;,
+          align: &#39;center&#39;,
+        &#125;,
+        &#123;
+          title: &#39;道具DicId&#39;,
+          dataIndex: &#39;item_dic_id&#39;,
+          key: &#39;item_dic_id&#39;,
+          align: &#39;center&#39;,
+        &#125;,
+        &#123;
+          title: &#39;道具Id&#39;,
+          dataIndex: &#39;item_id&#39;,
+          key: &#39;item_id&#39;,
+          align: &#39;center&#39;,
+        &#125;,
+        &#123;
+          title: &#39;道具名称&#39;,
+          dataIndex: &#39;item_name&#39;,
+          key: &#39;item_name&#39;,
+          align: &#39;center&#39;,
+        &#125;,
+        &#123;
+          title: &#39;中文备注&#39;,
+          dataIndex: &#39;cn_remark&#39;,
+          key: &#39;cn_remark&#39;,
+          align: &#39;center&#39;,
+        &#125;,
+        &#123;
+          title: &#39;道具属性&#39;,
+          dataIndex: &#39;property_aging&#39;,
+          key: &#39;property_aging&#39;,
+          align: &#39;center&#39;,
+          render: (value) =&gt; &#123;
+            return value == 0 ? &#39;永久类&#39; : &#39;时效类&#39;;
+          &#125;,
+        &#125;,
+        &#123;
+          title: &#39;道具数量&#39;,
+          dataIndex: &#39;num&#39;,
+          key: &#39;num&#39;,
+          align: &#39;center&#39;,
+        &#125;,
+
+      ]
+    &#125;,
+  ];
+
+  renderRow = (value, row, index) =&gt; &#123;
+    if (row.rowSpan == null) &#123;
+      row.rowSpan = 0;
+    &#125;
+    return &#123;
+      children: value,
+      props: &#123;rowSpan: row.rowSpan&#125;,
+    &#125;;
+  &#125;;
+
+  onChangeOrderState = value =&gt; &#123;
+    this.props.dispatch(&#123;
+      type: &#39;gacha/getOrderList&#39;,
+      payload: &#123;
+        start: 0,
+        offset: PAGESIZE,
+        gacha_season_id: this.state.seasonId,
+        startTime: this.state.startTime,
+        endTime: this.state.endTime,
+        orderState: value,
+      &#125;
+    &#125;);
+    this.setState(&#123;orderState: value&#125;)
+  &#125;
+
+  onTimeChange = (time, str) =&gt; &#123;
+
+    this.props.dispatch(&#123;
+      type: &#39;gacha/getOrderList&#39;,
+      payload: &#123;
+        start: 0,
+        offset: PAGESIZE,
+        gacha_season_id: this.state.seasonId,
+        startTime: new Date(str[0]),
+        endTime: new Date(str[1]),
+        orderState: this.state.orderState,
+      &#125;
+    &#125;);
+    this.setState(&#123;startTime: new Date(str[0])&#125;);
+    this.setState(&#123;endTime: new Date(str[1])&#125;);
+  &#125;
+
+  onChangeSelect = value =&gt; &#123;
+    this.props.dispatch(&#123;
+      type: &#39;gacha/getOrderList&#39;,
+      payload: &#123;
+        start: 0,
+        offset: PAGESIZE,
+        gacha_season_id: value,
+        startTime: this.state.startTime,
+        endTime: this.state.endTime,
+        orderState: this.state.orderState,
+      &#125;
+    &#125;);
+    this.setState(&#123;seasonId: value&#125;)
+  &#125;
+&#125;
+
+export default OrderManage;
+</code></pre>
+<pre><code class="js">import &#123; array &#125; from &#39;prop-types&#39;;
+import &#123;
+  getGachaAwardPoolList,
+  getCurrentGroupSeasonId,
+  createGachaSeasonRule,
+  updateGachaSeasonRule,
+  getGachaSeasonAwardGroup,
+  getSimpleSeasonRuleGroupList,
+  getSimpleSeasonGroupList,
+  getSeasonRuleList,
+  gachaRefreshSeasonAwardNum,
+  createGachaSeasonAward,
+  updateGachaSeasonAward,
+  createGachaSeasonAwardCoinWeight,
+  updateGachaSeasonAwardCoinWeight,
+  getSimpleSeasonList,
+  getSimpleSeasonCoinList,
+  getGachaSeasonAwardCoinWeight,
+  getGachaSeasonAward,
+  getItemDicList,
+  getItemCateList,
+  getGachaAwardPool,
+  createGachaAwardPool,
+  updateGachaAwardPool,
+  getGachaSeasonList,
+  updateSeason,
+  createSeason,
+  getCoinList,
+  updateSeasonCoin,
+  createSeasonCoin,
+  insertGachaSeasonAwardGroup, deleteSeasonGroupAward, getSelectedRowKeys, getOrderList
+&#125; from &#39;@/services/gacha&#39;;
+import moment from &#39;moment&#39;;
+import &#123; message &#125; from &#39;antd&#39;;
+import &#123; IitemCate, IitemDic &#125; from &#39;@/dto/mallItem&#39;;
+
+export const isgiveList = [
+  &quot;小于n次不掉落(道具保值)&quot;,
+  &quot;前n次没有获得的道具,必掉落其中一个(用户保底)&quot;,
+  &quot;不可重复掉落(道具保值)&quot;,
+  &quot;前n次没有获得的道具,其权重增加(用户保底)&quot;,
+  &quot;小于n次权重增增加&quot;,
+  &quot;每抽n次没有获得的道具,必掉落其中一个,并重新计算n次(用户保底)&quot;,
+  &quot;每抽n次没有获得的道具,其权重增加并重新计算n次(用户保底)&quot;,
+  &quot;连抽,某物品不可重复掉落n次(道具保值)&quot;,
+];
+
+export const opentypeList = [
+  &quot;单抽&quot;,
+  &quot;连抽&quot;,
+  &quot;全部&quot;
+];
+
+export interface Icoin &#123;
+  id: number;
+  name: number;
+&#125;
+
+export interface IsimpleSeason &#123;
+  gacha_season_id: number;
+  name: number;
+&#125;
+
+export interface IsimpleSeasonGroup &#123;
+  gacha_season_group_id: number;
+  name: number
+&#125;
+
+export interface IsimpleSeasonCoin &#123;
+  gacha_season_id: number;
+  coin_id: number;
+  name: number;
+&#125;
+
+export interface IgachaSeason &#123;
+  id: number;
+  name: string;
+  starttime: string;
+  endtime: string;
+  first_per_free: number;
+  bg_url: string;
+  multi: number;
+  pre_free_time: number;
+  multi_free_time: number;
+  first_multi_free: number;
+  seasonCoinId: number;
+  num: number;
+  coin: number;
+  coin_id: number;
+  coinName: string;
+
+  rowSpan: number;
+  current: boolean;
+&#125;
+
+export interface Irule &#123;
+  id: number;
+  gacha_season_give_id: number;
+  gacha_season_id: number;
+  isgive: number;
+  weight: number;
+  freq: number;
+  gacha_group_id: number;
+  open_type: number;
+  coin_id: number;
+  group_name: string;
+  coin_name: string;
+&#125;
+
+export interface IawardPool &#123;
+  id: number;
+  item_name: string;
+  item_dic_id: number;
+  item_id: number;
+  remark: string;
+  cate_id: number;
+  item_pic: string;
+  item_level: number;
+  type_name: string;
+  cn_remark: string;
+  gacha_season_award_id: number;
+  gacha_award_pool_id: number;
+  gacha_season_id: number;
+  award_level: number;
+  num: number;
+  valid_num: number;
+  per_num: number;
+  min_num: number;
+  max_num: number;
+  isshow: number;
+  ischange: number;
+  ischange_coin_id: number;
+  ischange_coin_num: number;
+  coin_name: string;
+  delsign: number;
+  gacha_season_award_coin_weight_id: number;
+  weight: number;
+  coin_id: number;
+&#125;
+
+export interface IawardGroup &#123;
+  id: number;
+  gacha_season_id: number;
+  gacha_group_id: number;
+  item_name: number;
+  cn_remark: number;
+  type_name: number;
+  item_level: number; // 道具等级，0:无，1:C，2:R，3:SR，4:SSR，5:UR
+&#125;
+
+export interface IgachaSeasonAward&#123;
+  id: number;
+&#125;
+
+export interface IorderManage&#123;
+  count: number;
+  pagesize: number;
+  data: IgachaOrder[];
+&#125;
+
+export interface IgachaOrder&#123;
+  id: number; // 订单Id
+  order_no: number; // 订单号
+  status: number; // 订单状态 0：以发放 1:未发放
+  gacha_season_award_id: number;
+  gacha_season_id: number;
+  create_time: number;
+  user_id: number;
+  itemm_dic_id: number;
+  item_id: number;
+  item_name: string;
+  cn_remark: string;
+  property_aging: number;
+  num: number;
+  coin_id: number;
+  coin_num: number;
+  coin_name: string;
+  order_number: number;
+  rowSpan: number;
+&#125;
+
+export interface IgachaAwardPool &#123;
+  id: number;
+  item_name: number;
+  cn_remark: number;
+  type_name: number;
+  item_level: number; // 道具等级，0:无，1:C，2:R，3:SR，4:SSR，5:UR
+&#125;
+
+export interface IseasonManagerProps &#123;
+  uid: number;
+  isLoading: boolean;
+  dispatch: Function;
+  seasonList: IgachaSeason[];
+  seasonSimpleList: IgachaSeason[];
+  coinList: Icoin[];
+  itemDicList: IitemDic[];
+  itemCateList: IitemCate[];
+  modelType: number;
+  coinModelType: number;
+  imgModelType: number;
+  selectId: number;
+  ruleList: Irule[];
+&#125;
+
+interface Igachats &#123;
+  seasonList: IgachaSeason[];
+  seasonSimpleList: IgachaSeason[];
+  coinList: Icoin[];
+  poolList: IawardPool[];
+  awardList: IawardPool[];
+  weightList: IawardPool[];
+  simpleSeasonList: IsimpleSeason[];
+  simpleSeasonCoinList: IsimpleSeasonCoin[];
+  itemDicList: IitemDic[];
+  itemCateList: IitemCate[];
+  modelType: number;
+  coinModelType: number;
+  imgModelType: number;
+  selectId: number;
+  poolModelType: number;
+  awardModelType: number;
+  currentWeightSeasonId: number;
+  currentWeight: IawardPool;
+  ruleList: Irule[];
+  currentRule: Irule;
+  simpleRuleGroupList: IsimpleSeasonGroup[],
+  // 奖池分组数据
+  simpleSeasonGroupList: IsimpleSeasonGroup[],
+  groupList: IawardGroup[],
+  groupId: number;
+  currentGroupSeasonId: number;
+  currentGroupId: number;
+  gachaAwardPoolList: IgachaAwardPool[];
+  selectedRowKeys: IgachaSeasonAward[];
+  // 订单管理
+  orderList: IorderManage[];
+&#125;
+
+const init: Igachats = &#123;
+  seasonList: [],
+  seasonSimpleList: [],
+  coinList: [],
+  poolList: [],
+  awardList: [],
+  weightList: [],
+  simpleSeasonList: [],
+  simpleSeasonCoinList: [],
+  simpleSeasonGroupList: [],
+  groupList: [],
+  selectedRowKeys: [],
+  gachaAwardPoolList: [],
+  groupId: 0,
+  currentGroupId: 0,
+  itemDicList: [],
+  itemCateList: [],
+  modelType: 0,
+  coinModelType: 0,
+  imgModelType: 0,
+  selectId: -1,
+  poolModelType: 0,
+  awardModelType: 0,
+  currentGroupSeasonId: 0,
+  currentWeightSeasonId: 0,
+  currentWeight: null,
+  ruleList: [],
+  currentRule: null,
+  simpleRuleGroupList: [],
+  orderList: [],
+&#125;
+
+function compareDate(date1, date2) &#123;
+  date1 = new Date(date1);
+  date2 = new Date(date2);
+  if (date1.getTime() &gt;= date2.getTime()) &#123;
+    return true;
+  &#125; else &#123;
+    return false;
+  &#125;
+&#125;
+
+export default &#123;
+  namespace: &#39;gacha&#39;,
+
+  state: init,
+
+  effects: &#123;
+
+    * getSeasonList(action, &#123; call, put &#125;) &#123;
+      const response: IgachaSeason = yield call(getGachaSeasonList);
+      //更新基础状态
+      yield put(&#123; type: &#39;setSeasonList&#39;, payload: response &#125;);
+    &#125;,
+
+    * updateSeason(&#123; payload &#125;: &#123; payload: IgachaSeason &#125;, &#123; call, put &#125;) &#123;
+      const response = yield call(updateSeason, payload);
+      //更新成功
+      if (response) &#123;
+        message.success(&quot;编辑成功&quot;);
+        yield put(&#123; type: &#39;setModelType&#39;, payload: 0 &#125;);
+      &#125; else &#123;
+        message.error(&quot;编辑失败，请重试&quot;);
+      &#125;
+      yield put(&#123; type: &#39;getSeasonList&#39; &#125;)
+    &#125;,
+
+    * createSeason(&#123; payload &#125;: &#123; payload: IgachaSeason &#125;, &#123; call, put &#125;) &#123;
+      const response = yield call(createSeason, payload);
+      //更新成功
+      if (response) &#123;
+        message.success(&quot;新建成功&quot;);
+        yield put(&#123; type: &#39;setModelType&#39;, payload: 0 &#125;);
+      &#125; else &#123;
+        message.error(&quot;新建失败，请重试&quot;);
+      &#125;
+      yield put(&#123; type: &#39;getSeasonList&#39; &#125;)
+    &#125;,
+
+    * getCoinList(action, &#123; call, put &#125;) &#123;
+      const response: IgachaSeason = yield call(getCoinList);
+      //更新基础状态
+      yield put(&#123; type: &#39;setCoinList&#39;, payload: response &#125;);
+    &#125;,
+
+    * updateSeasonCoin(&#123; payload &#125;: &#123; payload: IgachaSeason &#125;, &#123; call, put &#125;) &#123;
+      const response = yield call(updateSeasonCoin, payload);
+      //更新成功
+      if (response) &#123;
+        message.success(&quot;编辑成功&quot;);
+        yield put(&#123; type: &#39;setCoinModelType&#39;, payload: 0 &#125;);
+      &#125; else &#123;
+        message.error(&quot;编辑失败，请重试&quot;);
+      &#125;
+      yield put(&#123; type: &#39;getSeasonList&#39; &#125;)
+    &#125;,
+
+    * createSeasonCoin(&#123; payload &#125;: &#123; payload: IgachaSeason &#125;, &#123; call, put &#125;) &#123;
+      const response = yield call(createSeasonCoin, payload);
+      //更新成功
+      if (response) &#123;
+        message.success(&quot;新建成功&quot;);
+        yield put(&#123; type: &#39;setCoinModelType&#39;, payload: 0 &#125;);
+      &#125; else &#123;
+        message.error(&quot;新建失败，请重试&quot;);
+      &#125;
+      yield put(&#123; type: &#39;getSeasonList&#39; &#125;)
+    &#125;,
+
+    * getGachaAwardPool(action, &#123; call, put &#125;) &#123;
+      const response = yield call(getGachaAwardPool);
+      //更新基础状态
+      yield put(&#123; type: &#39;setPoolList&#39;, payload: response &#125;);
+    &#125;,
+
+    * createGachaAwardPool(&#123; payload &#125;: &#123; payload: IgachaSeason &#125;, &#123; call, put &#125;) &#123;
+      const response = yield call(createGachaAwardPool, payload);
+      if (response) &#123;
+        message.success(&quot;新建成功&quot;);
+        yield put(&#123; type: &#39;getGachaAwardPool&#39; &#125;);
+        yield put(&#123; type: &#39;setPoolModelType&#39;, payload: 0 &#125;);
+      &#125;
+    &#125;,
+
+    * updateGachaAwardPool(&#123; payload &#125;: &#123; payload: IgachaSeason &#125;, &#123; call, put &#125;) &#123;
+      const response = yield call(updateGachaAwardPool, payload);
+      if (response) &#123;
+        message.success(&quot;编辑成功&quot;);
+        yield put(&#123; type: &#39;getGachaAwardPool&#39; &#125;);
+        yield put(&#123; type: &#39;setPoolModelType&#39;, payload: 0 &#125;);
+      &#125;
+    &#125;,
+
+    * getItemCateList(&#123; payload &#125;: &#123; payload &#125;, &#123; call, put &#125;) &#123;
+      const response = yield call(getItemCateList, payload);
+      if (response) &#123;
+        yield put(&#123; type: &#39;setItemCateList&#39;, payload: response &#125;);
+      &#125;
+    &#125;,
+
+    * getItemDicList(&#123; payload &#125;: &#123; payload &#125;, &#123; call, put &#125;) &#123;
+      const response = yield call(getItemDicList, payload);
+      if (response) &#123;
+        yield put(&#123; type: &#39;setItemDicList&#39;, payload: response &#125;);
+      &#125;
+    &#125;,
+
+    * getGachaSeasonAward(&#123; payload &#125;: &#123; payload &#125;, &#123; call, put &#125;) &#123;
+      const response = yield call(getGachaSeasonAward, payload);
+      if (response) &#123;
+        yield put(&#123; type: &#39;setAwardList&#39;, payload: response &#125;);
+      &#125;
+    &#125;,
+
+    * getGachaSeasonAwardCoinWeight(&#123; payload &#125;: &#123; payload &#125;, &#123; call, put &#125;) &#123;
+      const response = yield call(getGachaSeasonAwardCoinWeight, payload);
+      if (response) &#123;
+        yield put(&#123; type: &#39;setWeightList&#39;, payload: response &#125;);
+      &#125;
+    &#125;,
+
+    * getSimpleSeasonList(&#123; payload &#125;: &#123; payload &#125;, &#123; call, put &#125;) &#123;
+      const response = yield call(getSimpleSeasonList, payload);
+      if (response) &#123;
+        yield put(&#123; type: &#39;setSimpleSeasonList&#39;, payload: response &#125;);
+      &#125;
+    &#125;,
+    * getOrderList(&#123; payload &#125;: &#123; payload &#125;, &#123; call, put &#125;) &#123;
+      const response = yield call(getOrderList, payload);
+      if (response) &#123;
+        yield put(&#123; type: &#39;setOrderList&#39;, payload: response &#125;);
+      &#125;
+    &#125;,
+
+    * getSimpleSeasonGroupList(&#123; payload &#125;: &#123; payload &#125;, &#123; call, put &#125;) &#123;
+      const response = yield call(getSimpleSeasonGroupList, payload);
+      if (response) &#123;
+        yield put(&#123; type: &#39;setSimpleSeasonGroupList&#39;, payload: response &#125;);
+      &#125;
+    &#125;,
+
+    * deleteSeasonGroupAward(&#123; payload &#125;: &#123; payload &#125;, &#123; call, put &#125;) &#123;
+      const response = yield call(deleteSeasonGroupAward, payload);
+    &#125;,
+
+    * getCurrentGroupSeasonId(&#123; payload &#125;: &#123; payload &#125;, &#123; call, put &#125;) &#123;
+      const response = yield call(getCurrentGroupSeasonId);
+      if (response) &#123;
+        yield put(&#123; type: &#39;setCurrentGroupSeasonId&#39;, payload: response &#125;);
+      &#125;
+    &#125;,
+
+    * getGroupList(&#123; payload &#125;: &#123; payload &#125;, &#123; call, put &#125;) &#123;
+      const response = yield call(getGachaSeasonAwardGroup, payload);
+      if (response) &#123;
+        yield put(&#123; type: &#39;setGroupList&#39;, payload: response &#125;);
+      &#125;
+    &#125;,
+
+    * insertGachaSeasonAwardGroup(&#123; payload &#125;: &#123; payload &#125;, &#123; call, put &#125;) &#123;
+      const response = yield call(insertGachaSeasonAwardGroup, payload);//更新成功
+      return response;
+
+    &#125;,
+
+    * getGachaAwardPoolList(&#123; payload &#125;: &#123; payload &#125;, &#123; call, put &#125;) &#123;
+      const response = yield call(getGachaAwardPoolList,payload);
+      if (response) &#123;
+        yield put(&#123; type: &#39;setGachaAwardPoolList&#39;, payload: response &#125;);
+      &#125;
+    &#125;,
+
+    * getSimpleSeasonCoinList(&#123; payload &#125;: &#123; payload &#125;, &#123; call, put &#125;) &#123;
+      const response = yield call(getSimpleSeasonCoinList, payload);
+      if (response) &#123;
+        yield put(&#123; type: &#39;setSimpleSeasonCoinList&#39;, payload: response &#125;);
+      &#125;
+    &#125;,
+
+    * getSelectedRowKeys(&#123; payload &#125;: &#123; payload &#125;, &#123; call, put &#125;) &#123;
+      const response = yield call(getSelectedRowKeys, payload);
+      if (response) &#123;
+        yield put(&#123; type: &#39;setSelectedRowKeys&#39;, payload: response &#125;);
+      &#125;
+    &#125;,
+
+
+    *createGachaSeasonAwardCoinWeight(&#123; payload &#125;: &#123; payload: any &#125;, &#123; call, put &#125;) &#123;
+      const response = yield call(createGachaSeasonAwardCoinWeight, payload);
+      //更新成功
+      if (response) &#123;
+        message.success(&quot;创建成功&quot;);
+        yield put(&#123; type: &#39;setCurrentWeight&#39;, payload: null &#125;);
+        yield put(&#123; type: &#39;getGachaSeasonAwardCoinWeight&#39;, payload: &#123; gacha_season_id: payload.gacha_season_id &#125; &#125;);
+      &#125; else &#123;
+        message.error(&quot;创建失败，如已经存在此条目，请编辑&quot;);
+      &#125;
+    &#125;,
+
+    *updateGachaSeasonAwardCoinWeight(&#123; payload &#125;: &#123; payload: any &#125;, &#123; call, put &#125;) &#123;
+      const response = yield call(updateGachaSeasonAwardCoinWeight, payload);
+      //更新成功
+      if (response) &#123;
+        message.success(&quot;编辑成功&quot;);
+        yield put(&#123; type: &#39;setCurrentWeight&#39;, payload: null &#125;);
+        yield put(&#123; type: &#39;getGachaSeasonAwardCoinWeight&#39;, payload: &#123; gacha_season_id: payload.gacha_season_id &#125; &#125;);
+      &#125; else &#123;
+        message.error(&quot;编辑失败，请重试&quot;);
+      &#125;
+    &#125;,
+
+    *createGachaSeasonAward(&#123; payload &#125;: &#123; payload: IgachaSeason &#125;, &#123; call, put &#125;) &#123;
+      const response = yield call(createGachaSeasonAward, payload);
+      if (response) &#123;
+        message.success(&quot;新建成功&quot;);
+        yield call(gachaRefreshSeasonAwardNum, &#123; seasonId: payload.gacha_season_id &#125;);
+        yield put(&#123; type: &#39;getGachaSeasonAward&#39;, payload: &#123; gacha_season_id: payload.gacha_season_id &#125; &#125;);
+        yield put(&#123; type: &#39;setAwardModelType&#39;, payload: 0 &#125;);
+      &#125;
+    &#125;,
+
+    *updateGachaSeasonAward(&#123; payload &#125;: &#123; payload: IgachaSeason &#125;, &#123; call, put &#125;) &#123;
+      const response = yield call(updateGachaSeasonAward, payload);
+      if (response) &#123;
+        message.success(&quot;编辑成功&quot;);
+        yield call(gachaRefreshSeasonAwardNum, &#123; seasonId: payload.gacha_season_id &#125;);
+        yield put(&#123; type: &#39;getGachaSeasonAward&#39;, payload: &#123; gacha_season_id: payload.gacha_season_id &#125; &#125;);
+        yield put(&#123; type: &#39;setAwardModelType&#39;, payload: 0 &#125;);
+      &#125;
+    &#125;,
+
+    *getSeasonRuleList(&#123; payload &#125;: &#123; payload &#125;, &#123; call, put &#125;) &#123;
+      const response = yield call(getSeasonRuleList, payload);
+      if (response) &#123;
+        yield put(&#123; type: &#39;setRuleList&#39;, payload: response &#125;);
+      &#125;
+    &#125;,
+
+    *getSimpleSeasonRuleGroupList(&#123; payload &#125;: &#123; payload &#125;, &#123; call, put &#125;) &#123;
+      const response = yield call(getSimpleSeasonRuleGroupList, payload);
+      if (response) &#123;
+        yield put(&#123; type: &#39;setSimpleRuleGroupList&#39;, payload: response &#125;);
+      &#125;
+    &#125;,
+
+    *createGachaSeasonRule(&#123; payload &#125;: &#123; payload: any &#125;, &#123; call, put &#125;) &#123;
+      const response = yield call(createGachaSeasonRule, payload);
+      //更新成功
+      if (response) &#123;
+        message.success(&quot;创建成功&quot;);
+        yield put(&#123; type: &#39;setCurrentRule&#39;, payload: null &#125;);
+        yield put(&#123; type: &#39;getSeasonRuleList&#39;, payload: &#123; gacha_season_id: payload.gacha_season_id &#125; &#125;);
+      &#125; else &#123;
+        message.error(&quot;创建失败，如已经存在此条目，请编辑&quot;);
+      &#125;
+    &#125;,
+
+    *updateGachaSeasonRule(&#123; payload &#125;: &#123; payload: any &#125;, &#123; call, put &#125;) &#123;
+      const response = yield call(updateGachaSeasonRule, payload);
+      //更新成功
+      if (response) &#123;
+        message.success(&quot;编辑成功&quot;);
+        yield put(&#123; type: &#39;setCurrentRule&#39;, payload: null &#125;);
+        yield put(&#123; type: &#39;getSeasonRuleList&#39;, payload: &#123; gacha_season_id: payload.gacha_season_id &#125; &#125;);
+      &#125; else &#123;
+        message.error(&quot;编辑失败，请重试&quot;);
+      &#125;
+    &#125;,
+  &#125;,
+
+  reducers: &#123;
+
+    setSeasonList(state: Igachats, &#123; payload &#125;): Igachats &#123;
+      if (!payload) &#123;
+        console.info(&quot;payload is null&quot;, payload);
+        return state;
+      &#125;
+
+      const &#123; array &#125; = payload;
+      const now = new Date();
+      let rowCount = 0;
+      let nowId = 0;
+      const simpleArray = [];
+      for (let i = array.length - 1; i &gt;= 0; i--) &#123;
+        const item: IgachaSeason = array[i];
+        item.starttime = moment(item.starttime, &#39;YYYY-MM-DD HH:mm:ss&#39;).utcOffset(960).format(&#39;YYYY-MM-DD HH:mm:ss&#39;);
+        item.endtime = moment(item.endtime, &#39;YYYY-MM-DD HH:mm:ss&#39;).utcOffset(960).format(&#39;YYYY-MM-DD HH:mm:ss&#39;);
+        if (compareDate(now, item.starttime) &amp;&amp; !compareDate(now, item.endtime)) &#123;
+          item.current = true;
+        &#125; else &#123;
+          item.current = false;
+        &#125;
+
+        if (nowId == 0) &#123;
+          rowCount++;
+          nowId = item.id;
+          simpleArray[simpleArray.length] = item;
+          if (i == 0) &#123;
+            item.rowSpan = rowCount;
+          &#125;
+        &#125; else &#123;
+          if (nowId != item.id) &#123;
+            const itemLast: IgachaSeason = array[i + 1];
+            itemLast.rowSpan = rowCount;
+            rowCount = 1;
+            nowId = item.id;
+            simpleArray[simpleArray.length] = item;
+            if (i == 0) &#123;
+              item.rowSpan = rowCount;
+            &#125;
+          &#125; else &#123;
+            if (i == 0) &#123;
+              item.rowSpan = rowCount + 1;
+            &#125; else &#123;
+              rowCount++;
+              item.rowSpan = 0;
+            &#125;
+          &#125;
+        &#125;
+      &#125;
+
+      const simpleArrayOrder = [];
+      for (let i = simpleArray.length - 1; i &gt;= 0; i--) &#123;
+        const item: IgachaSeason = simpleArray[i];
+        simpleArrayOrder[simpleArrayOrder.length] = item;
+      &#125;
+
+      return &#123; ...state, seasonList: array, seasonSimpleList: simpleArrayOrder &#125;
+    &#125;,
+
+    //更新模态页
+    setModelType(state: Igachats, &#123; payload &#125;: &#123; payload: number &#125;): Igachats &#123;
+      return &#123; ...state, modelType: payload &#125;
+    &#125;,
+
+    //更新模态页
+    setCoinModelType(state: Igachats, &#123; payload &#125;: &#123; payload: number &#125;): Igachats &#123;
+      return &#123; ...state, coinModelType: payload &#125;
+    &#125;,
+
+    //更新选中的id
+    setSelectId(state: Igachats, &#123; payload &#125;: &#123; payload: number &#125;): Igachats &#123;
+      return &#123; ...state, selectId: payload &#125;
+    &#125;,
+
+    setCurrentGroupId(state: Igachats, &#123; payload &#125;: &#123; payload: number &#125;): Igachats &#123;
+      return &#123; ...state, currentGroupId: payload &#125;
+    &#125;,
+
+    setCoinList(state: Igachats, &#123; payload &#125;): Igachats &#123;
+      if (!payload) &#123;
+        console.info(&quot;payload is null&quot;, payload);
+        return state;
+      &#125;
+      const &#123; array &#125; = payload;
+      const free = &#123;
+        id: -1,
+        name: &quot;免费&quot;,
+      &#125;
+      array.unshift(free);
+      return &#123; ...state, coinList: array &#125;
+    &#125;,
+
+    setPoolList(state: Igachats, &#123; payload &#125;): Igachats &#123;
+      if (!payload) &#123;
+        console.info(&quot;payload is null&quot;, payload);
+        return state;
+      &#125;
+
+      return &#123; ...state, poolList: payload &#125;
+    &#125;,
+
+    setPoolModelType(state: Igachats, &#123; payload &#125;: &#123; payload &#125;): Igachats &#123;
+      return &#123; ...state, poolModelType: payload &#125;
+    &#125;,
+
+    setItemCateList(state: Igachats, &#123; payload &#125;): Igachats &#123;
+      return &#123; ...state, itemCateList: payload &#125;
+    &#125;,
+
+    setItemDicList(state: Igachats, &#123; payload &#125;: &#123; payload &#125;): Igachats &#123;
+      return &#123; ...state, itemDicList: payload &#125;
+    &#125;,
+
+    setAwardList(state: Igachats, &#123; payload &#125;: &#123; payload &#125;): Igachats &#123;
+      return &#123; ...state, awardList: payload &#125;
+    &#125;,
+
+    setAwardModelType(state: Igachats, &#123; payload &#125;: &#123; payload &#125;): Igachats &#123;
+      return &#123; ...state, awardModelType: payload &#125;
+    &#125;,
+
+    setWeightList(state: Igachats, &#123; payload &#125;: &#123; payload &#125;): Igachats &#123;
+
+      if (state.currentWeightSeasonId != 0) &#123;
+        let total = 0;
+        let weightList = [];
+        for (const item of payload) &#123;
+          total += item.weight;
+        &#125;
+        for (const item of payload) &#123;
+          item.weightPer = (item.weight / total * 100).toFixed(2) + &quot;%&quot;;
+          weightList.push(item);
+        &#125;
+        return &#123; ...state, weightList: weightList &#125;
+      &#125; else &#123;
+        return &#123; ...state, weightList: payload &#125;
+      &#125;
+
+    &#125;,
+
+    setSimpleSeasonList(state: Igachats, &#123; payload &#125;: &#123; payload &#125;): Igachats &#123;
+      return &#123; ...state, simpleSeasonList: payload &#125;
+    &#125;,
+
+    setSimpleSeasonGroupList(state: Igachats, &#123; payload &#125;: &#123; payload &#125;): Igachats &#123;
+      console.log(&quot;payload&quot;,payload)
+      return &#123; ...state, simpleSeasonGroupList: payload &#125;
+    &#125;,
+
+    setGroupList(state: Igachats, &#123; payload &#125;: &#123; payload &#125;): Igachats &#123;
+      if (state.currentWeightSeasonId != 0) &#123;
+        let total = 0;
+        let groupList = [];
+        for (const item of payload) &#123;
+          total += item.weight;
+        &#125;
+        for (const item of payload) &#123;
+          item.weightPer = (item.weight / total * 100) + &quot;%&quot;;
+          groupList.push(item);
+        &#125;
+        return &#123;...state, groupList: groupList&#125;
+      &#125; else &#123;
+        return &#123;...state, groupList: payload&#125;
+      &#125;
+      return &#123; ...state, groupList: payload &#125;
+    &#125;,
+
+    setGachaAwardPoolList(state: Igachats, &#123;payload&#125;: &#123; payload &#125;): Igachats &#123;
+      return &#123;...state, gachaAwardPoolList: payload&#125;
+    &#125;,
+
+    setSimpleSeasonCoinList(state: Igachats, &#123;payload&#125;: &#123; payload &#125;): Igachats &#123;
+      return &#123;...state, simpleSeasonCoinList: payload&#125;
+    &#125;,
+
+    setCurrentWeightSeasonId(state: Igachats, &#123; payload &#125;: &#123; payload &#125;): Igachats &#123;
+      return &#123; ...state, currentWeightSeasonId: payload &#125;
+    &#125;,
+
+    setCurrentGroupSeasonId(state: Igachats, &#123; payload &#125;: &#123; payload &#125;): Igachats &#123;
+      return &#123; ...state, currentGroupSeasonId: payload[0].id &#125;
+    &#125;,
+
+    setCurrentWeight(state: Igachats, &#123; payload &#125;: &#123; payload &#125;): Igachats &#123;
+      return &#123; ...state, currentWeight: payload &#125;
+    &#125;,
+
+    setRuleList(state: Igachats, &#123; payload &#125;: &#123; payload &#125;): Igachats &#123;
+      return &#123; ...state, ruleList: payload &#125;
+    &#125;,
+
+    setCurrentRule(state: Igachats, &#123; payload &#125;: &#123; payload &#125;): Igachats &#123;
+      return &#123; ...state, currentRule: payload &#125;
+    &#125;,
+
+    setSimpleRuleGroupList(state: Igachats, &#123; payload &#125;: &#123; payload &#125;): Igachats &#123;
+      return &#123; ...state, simpleRuleGroupList: payload &#125;
+    &#125;,
+
+    setSelectedRowKeys(state: Igachats, &#123; payload &#125;: &#123; payload &#125;): Igachats &#123;
+      return &#123; ...state, selectedRowKeys: payload &#125;
+    &#125;,
+
+    setOrderList(state: Igachats, &#123; payload &#125;: &#123; payload &#125;): Igachats &#123;
+
+      const array = payload.data;
+      let rowCount = 0;
+      let nowId = 0;
+      const simpleArray = [];
+      for (let i = array.length - 1; i &gt;= 0; i--) &#123;
+        const item: IgachaOrder = array[i];
+        if (nowId == 0) &#123;
+          rowCount++;
+          nowId = item.id;
+          simpleArray[simpleArray.length] = item;
+          if (i == 0) &#123;
+            item.rowSpan = rowCount;
+          &#125;
+        &#125; else &#123;
+          if (nowId != item.id) &#123;
+            const itemLast: IgachaOrder = array[i + 1];
+            itemLast.rowSpan = rowCount;
+            rowCount = 1;
+            nowId = item.id;
+            simpleArray[simpleArray.length] = item;
+            if (i == 0) &#123;
+              item.rowSpan = rowCount;
+            &#125;
+          &#125; else &#123;
+            if (i == 0) &#123;
+              item.rowSpan = rowCount + 1;
+            &#125; else &#123;
+              rowCount++;
+              item.rowSpan = 0;
+            &#125;
+          &#125;
+        &#125;
+      &#125;
+
+      const simpleArrayOrder = [];
+      for (let i = simpleArray.length - 1; i &gt;= 0; i--) &#123;
+        const item: IgachaOrder = simpleArray[i];
+        simpleArrayOrder[simpleArrayOrder.length] = item;
+      &#125;
+
+      return &#123; ...state, orderList: payload &#125;
+    &#125;,
+
+  &#125;,
+&#125;;
+</code></pre>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF">前端</a>
+                  &nbsp;
+                
+                  <a class="hover-with-bg" href="/categories/Antd">Antd</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/%E5%89%8D%E7%AB%AF">前端</a>
+                
+                  <a class="hover-with-bg" href="/tags/Antd">Antd</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "Antd标签&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "left",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>
