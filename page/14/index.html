@@ -136,6 +136,84 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/03/12/%E5%90%8E%E7%AB%AF/Java/%E9%AB%98%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E6%AD%BB%E9%94%81/">
+        <p class="h4 index-header">死锁</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">什么是死锁
+发生在并发中
+互不相让：当两个（或更多）线程（或进程）相互持有对方所需要的资源，又不主动释放，导致所有人都无法继续前进，导致程序陷入无尽的阻塞，这就是死锁
+
+
+死锁的影响死锁的影响在不同系统中是不一样的，这取决于系统对死锁的处理能力
+
+数据库中：检测并放弃事务
+JVM中：：无法自动处理
+
+几率不高但危害大
+不一定发生，但是遵守“墨菲定律”
+一旦发生，多是高并发常见，影响用户多
+整个系统崩溃、子系统崩溃、性能降低
+压力测试无法找出所有潜在的死锁
+
+实际生产中的里斯：转账
+需要两把锁
+获取两把锁成功，且余额大于0，则扣除转出人，增加收款人的余额，是原子操作
+
+死锁的4个必要条件
+互斥条件
+请求与保持条件
+不剥夺条件
+循环等待
+
+缺一不可，这个分析之前的例子
+如何定位死锁
+jstack
+ThreadMXBean代码演示
+
+修复死锁的策略
+线上问题都需要防患于未然，不造成损失地扑灭几乎已经是不可能
+保存案发现场然后立刻重启服务器
+暂时保证线上服务的安全，然后在利用刚才保存的信息，排查死锁，修改代码，重新发版
+
+常见修复策略
+避免策略：哲学家就餐的换手方案、转账换序方案
+
+死锁避免策</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-12&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Java">Java</a>&nbsp;
+          
+            <a href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B">多线程</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Java">Java</a>&nbsp;
+          
+            <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B">多线程</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/03/09/%E5%90%8E%E7%AB%AF/Java/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/">
         <p class="h4 index-header">单例模式</p>
         
@@ -609,45 +687,6 @@ Terminated
           <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-03&nbsp;&nbsp;
         
         
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/03/02/%E5%90%8E%E7%AB%AF/Java/Java%E5%BC%82%E5%B8%B8%E4%BD%93%E7%B3%BB/">
-        <p class="h4 index-header">Java异常体系</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">
-Error和RuntimeException共同构成了非检查异常；IOException受检查异常，应该对其提前进行处理，提供程序的健壮性。
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-02&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Java">Java</a>&nbsp;
-          
-            <a href="/categories/Java%20SE">Java SE</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Java">Java</a>&nbsp;
-          
         
       </div>
     </div>

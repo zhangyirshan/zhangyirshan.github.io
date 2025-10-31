@@ -136,6 +136,58 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/10/21/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+        <p class="h4 index-header">数据类型</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">字符串
+
+使用场景
+缓存
+计数器
+分布式锁
+。。。
+
+get、set、del12345678# 获取key对应的valueget key# 设置key-valueset key value# 删除key-valuedel key
+
+incr、decr、incrby、decrby1234567891011# key自增1，如果key不存在 ，自增后get(key) = 1incr key# key自减1，如果key不存在，自减后get(key) = -1decr key# key自增k，如果key不存在，自增后get(key)= kincrby key k# key自减k，如果key不存在，自减后get(key)= -kdecrby key k
+
+实战
+记录网站每个用户个人主页的访问量？ incr userId:pageview (单线程：无竞争)
+缓存视频的基本信息（数据源在MySQL中）
+分布式id生成器 incr idset setnx setxx
+
+12345678# 不管key是否存在，都设置set key value# key不存在，才设置     key value# ke</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-10-21&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/redis">redis</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/redis">redis</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/10/16/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%20API%20%E9%80%9A%E7%94%A8%E5%91%BD%E4%BB%A4/">
         <p class="h4 index-header">Redis API 通用命令</p>
         
@@ -561,47 +613,6 @@ MessageQueue
           <i class="iconfont icon-tag"></i>
           
             <a href="/tags/Docker">Docker</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/09/01/%E5%90%8E%E7%AB%AF/Spring/%E6%B3%A8%E8%A7%A3%E7%BC%96%E5%86%99/">
-        <p class="h4 index-header">注解编写</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">注解编写@Target注解@Target说明了Annotation所修饰的对象范围：Annotation可被用于 packages、types（类、接口、枚举、Annotation类型）、类型成员（方法、构造方法、成员变量、枚举值）、方法参数和本地变量（如循环变量、catch参数）。在Annotation类型的声明中使用了target可更加明晰其修饰的目标。
-
-作用：用于描述注解的使用范围（即：被描述的注解可以用在什么地方）
-
-12345678910111213141516171819202122232425262728293031323334353637public enum ElementType &#123;    /**用于描述类、接口(包括注解类型) 或enum声明 Class, interface (including annotation type), or enum declaration */    TYPE,     /** 用于描述域 Field declaration (includes enum constants) */    FIELD,     /**用</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-09-01&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Spring">Spring</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Java">Java</a>&nbsp;
-          
-            <a href="/tags/Spring">Spring</a>&nbsp;
           
         
       </div>

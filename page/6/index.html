@@ -136,6 +136,50 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/18/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/GEO/">
+        <p class="h4 index-header">GEO</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">GEO
+GEO(地理信息定位)：存经纬度，计算两地距离，范围计算等
+
+例：
+北京：116.28，39.55天津：117.12，39.08
+应用场景
+
+APIgeoadd12345678geoadd key longitude latitude memeber[longitude latitude memeber]# 增加地理位置信息127.0.0.1:6379&gt; geoadd city:location 120.17759030553346 30.250102922876387 保佑桥西弄5号(integer) 1127.0.0.1:6379&gt; geoadd city:location 120.17095719788504 30.262918390984563 延安路306号天阳明珠商业中心A座701(integer) 1
+
+geopos123456geopos key  memeber [memeber]# 获取地理位置信息127.0.0.1:6379&gt; geopos city:location 保佑桥西弄5号1) 1) &quot;120.177589952945</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/redis">redis</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/redis">redis</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/11/18/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/BitMap/">
         <p class="h4 index-header">Bitmap</p>
         
@@ -585,58 +629,6 @@ A: Availabi</div>
             <a href="/tags/Java">Java</a>&nbsp;
           
             <a href="/tags/Spring">Spring</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/10/21/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
-        <p class="h4 index-header">数据类型</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">字符串
-
-使用场景
-缓存
-计数器
-分布式锁
-。。。
-
-get、set、del12345678# 获取key对应的valueget key# 设置key-valueset key value# 删除key-valuedel key
-
-incr、decr、incrby、decrby1234567891011# key自增1，如果key不存在 ，自增后get(key) = 1incr key# key自减1，如果key不存在，自减后get(key) = -1decr key# key自增k，如果key不存在，自增后get(key)= kincrby key k# key自减k，如果key不存在，自减后get(key)= -kdecrby key k
-
-实战
-记录网站每个用户个人主页的访问量？ incr userId:pageview (单线程：无竞争)
-缓存视频的基本信息（数据源在MySQL中）
-分布式id生成器 incr idset setnx setxx
-
-12345678# 不管key是否存在，都设置set key value# key不存在，才设置     key value# ke</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-10-21&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/redis">redis</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/redis">redis</a>&nbsp;
           
         
       </div>
