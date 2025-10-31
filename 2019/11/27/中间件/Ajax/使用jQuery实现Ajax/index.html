@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="仅限学习参考，有兴趣可以互相交流">
+  <meta name="author" content="张议">
+  <meta name="keywords" content="张议,Java,java,spring,SpringBoot,zhangyi">
+  <title>使用jQuery实现Ajax ~ 人生展馆</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>人生展馆</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">资料</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/index.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期三, 十一月 27日 2019, 4:51 下午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    838 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      4 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="jQuery中的Ajax"><a href="#jQuery中的Ajax" class="headerlink" title="jQuery中的Ajax"></a>jQuery中的Ajax</h2><p>jQuery对Ajax操作进行了封装，在jQuery中最底层的方法时$.ajax(),第二层使load(),$.get()和$.post(),第三层使$.getScript()和$.getJSON()</p>
+<ol>
+<li><p>什么是Ajax？<br>不用刷新页面，但可以和服务器进行通信的方式，使用Ajax的主要方式时XMLHttpRequest对象</p>
+</li>
+<li><p>使用XMLHttpRequest对象实现Ajax【了解】</p>
+</li>
+<li><p>Ajax传输数据的三种方式<br> XML：笨重，解析困难，但XML是通用的数据交换格式。<br> HTML：不需要解析可以直接放到文档中，若仅更新一部分区域，但传输的数据不是很方便，且HTML代码需要拼装完成。<br> JSON：小巧，有面向对象的特征，且有很多第三方的jar包可以把Java对象或集合转为JSON字符串。</p>
+</li>
+<li><p>使用jQuery完成Ajax操作<br> 1). load方法：可以用于HTML文档的元素更新，把结果直接加为对应节点的子元素，通常而言，load方法加载后的数据时一个HTML片段。</p>
+<p> var $obj &#x3D; …<br> var url &#x3D; …<br> var args &#x3D; {key:value…};<br> $obj.load(url,args);</p>
+<p> 2). $.get,$.post, $getJSON:更加灵活，除去使用load方法的情况，大部分时候都使用这3个方法。</p>
+<pre><code> 1. 基本的使用
+ url:Ajax请求的目标URL
+ args：传递的参数：JSON类型
+ data：Ajax响应成功后的数据，可能是XML，HTML，JSON
+ $.get(url,args,function(data)&#123;&#125;)
+
+ 2. 请求JSON数据
+ $.get(url,args,function(data)&#123;&#125;,&quot;JSON&quot;)
+ $.post(url,args,function(data)&#123;&#125;,&quot;JSON&quot;)
+ $.getJSON(url,args,function(data)&#123;&#125;)
+</code></pre>
+</li>
+</ol>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="html"><a href="#html" class="headerlink" title="html"></a>html</h3><pre><code><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">&quot;../jquery-3.4.1.js&quot;</span> type=<span class="string">&quot;text/javascript&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">$(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">            $(<span class="string">&quot;a&quot;</span>).<span class="title function_">click</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">                <span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span> + <span class="string">&quot; h2, a&quot;</span>;</span><br><span class="line">                $(<span class="string">&quot;#details&quot;</span>).<span class="title function_">load</span>(url);</span><br><span class="line">                <span class="comment">//任何一个html节点都可以使用load方法来加载Ajax，结果将直接插入到html节点中。</span></span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;)</span><br></pre></td></tr></table></figure>
+</code></pre>
+<h3 id="XML"><a href="#XML" class="headerlink" title="XML"></a>XML</h3><pre><code><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">            $(<span class="string">&quot;a&quot;</span>).<span class="title function_">click</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">                <span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span>;</span><br><span class="line">                <span class="keyword">var</span> args = &#123;<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()&#125;;</span><br><span class="line"></span><br><span class="line">                <span class="comment">//url:</span></span><br><span class="line">                <span class="comment">//args:JSON格式</span></span><br><span class="line">                <span class="comment">//function：回调函数，当响应结束时，回调函数被触发，响应结果在data中。</span></span><br><span class="line">                $.<span class="title function_">get</span>(url,args,<span class="keyword">function</span> (<span class="params">data</span>) &#123;</span><br><span class="line">                    <span class="keyword">var</span> name = $(data).<span class="title function_">find</span>(<span class="string">&quot;name&quot;</span>).<span class="title function_">text</span>();</span><br><span class="line">                    <span class="keyword">var</span> email = $(data).<span class="title function_">find</span>(<span class="string">&quot;email&quot;</span>).<span class="title function_">text</span>();</span><br><span class="line">                    <span class="keyword">var</span> website = $(data).<span class="title function_">find</span>(<span class="string">&quot;website&quot;</span>).<span class="title function_">text</span>();</span><br><span class="line"></span><br><span class="line">                    $(<span class="string">&quot;#details&quot;</span>).<span class="title function_">empty</span>()</span><br><span class="line">                        .<span class="title function_">append</span>(<span class="string">&quot;&lt;h2&gt;&lt;a href=&#x27;mailto:&quot;</span> + email + <span class="string">&quot;&#x27;&gt;&quot;</span> + name + <span class="string">&quot;&lt;/a&gt;&lt;/h2&gt;&quot;</span>)</span><br><span class="line">                        .<span class="title function_">append</span>(<span class="string">&quot;&lt;a href=&#x27;&quot;</span> + website + <span class="string">&quot;&#x27;&gt;&quot;</span> + website + <span class="string">&quot;&lt;/a&gt;&quot;</span>);</span><br><span class="line">                &#125;);</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;)</span><br></pre></td></tr></table></figure>
+</code></pre>
+<h3 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h3><pre><code><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">            $(<span class="string">&quot;a&quot;</span>).<span class="title function_">click</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">                <span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span>;</span><br><span class="line">                <span class="keyword">var</span> args = &#123;<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()&#125;;</span><br><span class="line"></span><br><span class="line">                <span class="comment">//url:</span></span><br><span class="line">                <span class="comment">//args:JSON格式</span></span><br><span class="line">                <span class="comment">//function：回调函数，当响应结束时，回调函数被触发，响应结果在data中。</span></span><br><span class="line">                $.<span class="title function_">getJSON</span>(url,args,<span class="keyword">function</span> (<span class="params">data</span>) &#123;</span><br><span class="line">                    <span class="keyword">var</span> name = data.<span class="property">person</span>.<span class="property">name</span>;</span><br><span class="line">                    <span class="keyword">var</span> email = data.<span class="property">person</span>.<span class="property">email</span>;</span><br><span class="line">                    <span class="keyword">var</span> website = data.<span class="property">person</span>.<span class="property">website</span>;</span><br><span class="line"></span><br><span class="line">                    $(<span class="string">&quot;#details&quot;</span>).<span class="title function_">empty</span>()</span><br><span class="line">                        .<span class="title function_">append</span>(<span class="string">&quot;&lt;h2&gt;&lt;a href=&#x27;mailto:&quot;</span> + email + <span class="string">&quot;&#x27;&gt;&quot;</span> + name + <span class="string">&quot;&lt;/a&gt;&lt;/h2&gt;&quot;</span>)</span><br><span class="line">                        .<span class="title function_">append</span>(<span class="string">&quot;&lt;a href=&#x27;&quot;</span> + website + <span class="string">&quot;&#x27;&gt;&quot;</span> + website + <span class="string">&quot;&lt;/a&gt;&quot;</span>);</span><br><span class="line">                &#125;);</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;)</span><br></pre></td></tr></table></figure>
+</code></pre>
+<h3 id="load方法"><a href="#load方法" class="headerlink" title="load方法"></a>load方法</h3><pre><code><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;!<span class="variable constant_">DOCTYPE</span> html&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;../jquery-3.4.1.js&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        $(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            $(<span class="string">&quot;a&quot;</span>).<span class="title function_">click</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                <span class="comment">//使用load方法处理Ajax</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                <span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                <span class="keyword">var</span> args = &#123;<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()&#125;;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                $(<span class="string">&quot;#content&quot;</span>).<span class="title function_">load</span>(url, args);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                <span class="keyword">return</span> <span class="literal">false</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            &#125;)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        &#125;);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;helloAjax.txt&quot;</span>&gt;</span>HelloAjax<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;content&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+</code></pre>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/Ajax">Ajax</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/Ajax">Ajax</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "使用jQuery实现Ajax&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "left",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="仅限学习参考，有兴趣可以互相交流">
+  <meta name="author" content="张议">
+  <meta name="keywords" content="张议,Java,java,spring,SpringBoot,zhangyi">
+  <title>Redis持久化 ~ 人生展馆</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>人生展馆</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">资料</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/index.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期三, 十一月 18日 2020, 4:21 下午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    665 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      2 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="持久化的作用"><a href="#持久化的作用" class="headerlink" title="持久化的作用"></a>持久化的作用</h2><h3 id="什么是持久化"><a href="#什么是持久化" class="headerlink" title="什么是持久化"></a>什么是持久化</h3><blockquote>
+<p>redis所有数据保存在内存中，对数据的更新将一部保存到磁盘上。</p>
+</blockquote>
+<img src="/2020/11/18/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%E6%8C%81%E4%B9%85%E5%8C%96/%E6%8C%81%E4%B9%85%E5%8C%96.png" srcset="undefined" class="" title="持久化">
+
+<h3 id="持久化方式"><a href="#持久化方式" class="headerlink" title="持久化方式"></a>持久化方式</h3><img src="/2020/11/18/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%E6%8C%81%E4%B9%85%E5%8C%96/%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F.png" srcset="undefined" class="" title="持久化方式">
+
+<h2 id="RDB"><a href="#RDB" class="headerlink" title="RDB"></a>RDB</h2><h3 id="什么是RDB"><a href="#什么是RDB" class="headerlink" title="什么是RDB"></a>什么是RDB</h3><img src="/2020/11/18/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%E6%8C%81%E4%B9%85%E5%8C%96/RDB.png" srcset="undefined" class="" title="RDB">
+
+<h3 id="触发机制-主要三种方式"><a href="#触发机制-主要三种方式" class="headerlink" title="触发机制-主要三种方式"></a>触发机制-主要三种方式</h3><ol>
+<li>save（同步）</li>
+<li>bgsavve（异步）</li>
+<li>自动</li>
+</ol>
+<h4 id="save命令"><a href="#save命令" class="headerlink" title="save命令"></a>save命令</h4><img src="/2020/11/18/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%E6%8C%81%E4%B9%85%E5%8C%96/save.png" srcset="undefined" class="" title="save">
+
+<p>因为是同步命令，并且redis是单线程，所以会阻塞其他命令</p>
+<h3 id="bgsave命令"><a href="#bgsave命令" class="headerlink" title="bgsave命令"></a>bgsave命令</h3><img src="/2020/11/18/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%E6%8C%81%E4%B9%85%E5%8C%96/bgsave.png" srcset="undefined" class="" title="bgsave">
+<p>一般fork命令执行比较快，所以不会阻塞redis<br>文件策略和复杂度与save命令相同。</p>
+<h3 id="自动生成RDB"><a href="#自动生成RDB" class="headerlink" title="自动生成RDB"></a>自动生成RDB</h3><table>
+<thead>
+<tr>
+<th>配置</th>
+<th>seconds</th>
+<th>changes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>save</td>
+<td>900</td>
+<td>1</td>
+</tr>
+<tr>
+<td>save</td>
+<td>300</td>
+<td>10</td>
+</tr>
+<tr>
+<td>save</td>
+<td>60</td>
+<td>10000</td>
+</tr>
+</tbody></table>
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">save <span class="number">900</span> <span class="number">1</span></span><br><span class="line">save <span class="number">300</span> <span class="number">10</span></span><br><span class="line">save <span class="number">60</span> <span class="number">10000</span>                       # 可以做自己策略的修改</span><br><span class="line">dbfilename dump.rdb                 # 文件名字</span><br><span class="line">dir .<span class="operator">/</span>                              # 生成文件路径为当前路径</span><br><span class="line">stop<span class="operator">-</span>writes<span class="operator">-</span><span class="keyword">on</span><span class="operator">-</span>bgsave<span class="operator">-</span>error yes     # 遇到错误停止生成</span><br><span class="line">rdbcompression yes                  # rdb是否采用压缩模式     </span><br><span class="line">rdbchecksum yes                     # 是否对rdb文件进行校验和检验</span><br></pre></td></tr></table></figure>
+
+<h4 id="最佳配置"><a href="#最佳配置" class="headerlink" title="最佳配置"></a>最佳配置</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dbfilename dump<span class="operator">-</span>$&#123;port&#125;.rdb         # 文件名字</span><br><span class="line">dir <span class="operator">/</span>bigdiskpath                    # 生成文件路径为当前路径</span><br><span class="line">stop<span class="operator">-</span>writes<span class="operator">-</span><span class="keyword">on</span><span class="operator">-</span>bgsave<span class="operator">-</span>error yes     # 遇到错误停止生成</span><br><span class="line">rdbcompression yes                  # rdb是否采用压缩模式     </span><br><span class="line">rdbchecksum yes                     # 是否对rdb文件进行校验和检验</span><br></pre></td></tr></table></figure>
+
+<h4 id="触发机制-不容忽略方式"><a href="#触发机制-不容忽略方式" class="headerlink" title="触发机制-不容忽略方式"></a>触发机制-不容忽略方式</h4><ol>
+<li>全量复制，例如：主从复制</li>
+<li>debug reload</li>
+<li>shutdown</li>
+</ol>
+<h3 id="RDB的问题"><a href="#RDB的问题" class="headerlink" title="RDB的问题"></a>RDB的问题</h3><ol>
+<li>耗时、耗性能</li>
+<li>不可控、丢失数据</li>
+</ol>
+<ul>
+<li>O(n)数据 : 耗时</li>
+<li>fork() : 消耗内存，copy-on-write策略</li>
+<li>DiskI&#x2F;O : IO性能</li>
+</ul>
+<h2 id="AOF"><a href="#AOF" class="headerlink" title="AOF"></a>AOF</h2><h3 id="AOF运行原理-创建"><a href="#AOF运行原理-创建" class="headerlink" title="AOF运行原理-创建"></a>AOF运行原理-创建</h3><img src="/2020/11/18/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%E6%8C%81%E4%B9%85%E5%8C%96/%E5%88%9B%E5%BB%BA.png" srcset="undefined" class="" title="创建">
+
+<h3 id="AOF运行原理-恢复"><a href="#AOF运行原理-恢复" class="headerlink" title="AOF运行原理-恢复"></a>AOF运行原理-恢复</h3><img src="/2020/11/18/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%E6%8C%81%E4%B9%85%E5%8C%96/%E6%81%A2%E5%A4%8D.png" srcset="undefined" class="" title="恢复">
+
+<h3 id="AOF的三种策略"><a href="#AOF的三种策略" class="headerlink" title="AOF的三种策略"></a>AOF的三种策略</h3><ul>
+<li>always<img src="/2020/11/18/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%E6%8C%81%E4%B9%85%E5%8C%96/always.png" srcset="undefined" class="" title="always"></li>
+<li>everysec<img src="/2020/11/18/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%E6%8C%81%E4%B9%85%E5%8C%96/everysec.png" srcset="undefined" class="" title="everysec"></li>
+<li>no<img src="/2020/11/18/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%E6%8C%81%E4%B9%85%E5%8C%96/no.png" srcset="undefined" class="" title="no"></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>always</th>
+<th>everysec</th>
+<th>no</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>优点</td>
+<td>不丢失数据</td>
+<td>每秒一次fsync丢1秒数据</td>
+<td>不用管</td>
+</tr>
+<tr>
+<td>缺点</td>
+<td>IO开销较大，一般的sata盘只有几百TPS</td>
+<td>丢1秒数据</td>
+<td>不可控</td>
+</tr>
+</tbody></table>
+<h3 id="AOF重新作用"><a href="#AOF重新作用" class="headerlink" title="AOF重新作用"></a>AOF重新作用</h3><ul>
+<li>减少硬盘占用量</li>
+<li>加速恢复速度</li>
+</ul>
+<h3 id="AOF重写实现两种方式"><a href="#AOF重写实现两种方式" class="headerlink" title="AOF重写实现两种方式"></a>AOF重写实现两种方式</h3><h4 id="bgrewriteaof命令"><a href="#bgrewriteaof命令" class="headerlink" title="bgrewriteaof命令"></a>bgrewriteaof命令</h4>
+
+<h4 id="AOF重写配置"><a href="#AOF重写配置" class="headerlink" title="AOF重写配置"></a>AOF重写配置</h4><p>配置</p>
+<ul>
+<li>auto-aof-rewrite-min-size : AOF文件重写需要的尺寸</li>
+<li>auto-aof-rewrite-percentage : AOF文件增长率</li>
+</ul>
+<p>统计</p>
+<ul>
+<li>aof_current_size : AOF当前尺寸（单位：字节）</li>
+<li>aof_base_size : AOF上次启动和重写的尺寸（单位：字节）</li>
+</ul>
+<p>自动触发时机（同时满足）</p>
+<ul>
+<li>aof_current_size &gt; auto-aof-rewrite-min-size</li>
+<li>aof_current_size - aof_base_size &#x2F; aof_base_size &gt; auto-aof-rewrite-percentage</li>
+</ul>
+<img src="/2020/11/18/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%E6%8C%81%E4%B9%85%E5%8C%96/AOF%E9%87%8D%E5%86%99%E6%B5%81%E7%A8%8B.png" srcset="undefined" class="" title="AOF重写流程">
+
+<h5 id="配置-1"><a href="#配置-1" class="headerlink" title="配置"></a>配置</h5><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">appendonly</span> <span class="string">yes</span></span><br><span class="line"><span class="attr">appendfilename</span> <span class="string">&quot;appendonly-$&#123;port&#125;.aof&quot;</span></span><br><span class="line"><span class="attr">appendfsync</span>  <span class="string">everysec</span></span><br><span class="line"><span class="attr">dir</span> <span class="string">/bigdiskpath</span></span><br><span class="line"><span class="attr">no-appendfsync-on-rewrite</span> <span class="string">yes</span></span><br><span class="line"><span class="attr">auto-aof-rewrite-percentage</span> <span class="string">100</span></span><br><span class="line"><span class="attr">auto-aof-rewrite-min-size</span> <span class="string">64mb</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="RDB与AOF对比"><a href="#RDB与AOF对比" class="headerlink" title="RDB与AOF对比"></a>RDB与AOF对比</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>RDB</th>
+<th>AOF</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>启动优先级</td>
+<td>低</td>
+<td>高</td>
+</tr>
+<tr>
+<td>体积</td>
+<td>小</td>
+<td>大</td>
+</tr>
+<tr>
+<td>恢复速度</td>
+<td>快</td>
+<td>慢</td>
+</tr>
+<tr>
+<td>数据安全性</td>
+<td>丢数据</td>
+<td>根据策略决定</td>
+</tr>
+<tr>
+<td>轻重</td>
+<td>重</td>
+<td>轻</td>
+</tr>
+</tbody></table>
+<h3 id="RDB最佳策略"><a href="#RDB最佳策略" class="headerlink" title="RDB最佳策略"></a>RDB最佳策略</h3><ul>
+<li>“关”</li>
+<li>集中管理</li>
+<li>主从，从开？</li>
+</ul>
+<h3 id="AOF最佳策略"><a href="#AOF最佳策略" class="headerlink" title="AOF最佳策略"></a>AOF最佳策略</h3><ul>
+<li>“开”：缓存和存储</li>
+<li>AOF重写集中管理</li>
+<li>everysec</li>
+</ul>
+<h3 id="最佳策略"><a href="#最佳策略" class="headerlink" title="最佳策略"></a>最佳策略</h3><ul>
+<li>小分片</li>
+<li>缓存或者存储</li>
+<li>监控（硬盘、内存、负载、网络）</li>
+<li>足够的内存</li>
+</ul>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/redis">redis</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/redis">redis</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "Redis持久化&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "left",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

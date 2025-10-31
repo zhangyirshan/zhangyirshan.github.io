@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="仅限学习参考，有兴趣可以互相交流">
+  <meta name="author" content="张议">
+  <meta name="keywords" content="张议,Java,java,spring,SpringBoot,zhangyi">
+  <title>人生展馆</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>人生展馆</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">资料</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/index.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-md">
+        <div class="py-5 z-depth-3" id="board">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/04/25/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+        <p class="h4 index-header">数据类型</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Int类型
+
+属性
+UNSIGNED&#x2F;SIGNED
+是否有符号
+
+
+ZEROFILL
+填充0（例如：0001）
+显式属性
+只不做任何修改
+
+
+AUTO_INCREMENT
+自增
+每张表一个
+必须是索引的一部分
+
+
+
+总结
+推荐不要使用UNSIGNED
+范围本质上没有大的改变
+UNSIGNED可能会有一处现象发生
+自增INT类型逐渐建议使用BIGINT
+
+数字类型• 单精度类型：FLOAT• 双精度类型：DOUBLE    单精度类型和双精度类型精度较低，M*G&#x2F;G不一定等于M• 高精度类型：DECIMAL
+
+财务系统必须用DECIMAL类型FLOAT(M,D)&#x2F;DOUBLE(M,D)&#x2F;DECIMAL(M,D) 表示显示M位整数，其中D位位于小数点后面
+字符串类型
+BLOB &#x3D;&gt; VARBINARYTEXT &#x3D;&gt; VARCHAR
+
+在BLOB和TEXT列上创建索引时，必须制定索引前缀的长度
+VARCHAR和VARBINARY前缀长度是可选的。
+BLOB和TEXT列不能有默认值
+BLOB和TEXT列排序时只使用该列的前</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-25&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/MySQL">MySQL</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/MySQL">MySQL</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/04/25/%E5%90%8E%E7%AB%AF/Java/JVM/%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA/">
+        <p class="h4 index-header">运行时数据区</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">运行时数据区
+
+Java虚拟机定义了若干种程序运行期间会使用到的运行时数据区,其中由一些会随着虚拟机启动而创建,随着虚拟机退出而销毁.另外一些则是与线程一一对应的,这些与线程对应的数据区域会随着线程开始和结束而创建和销毁.灰色的为单独线程私有的,红色的为多个线程共享的.即:
+
+每个线程:独立包括程序计数器、栈、本地栈线程间共享：堆、堆外内存（永久代或元空间、代码缓存）
+
+线程
+线程是一个程序里的运行单元。JVM允许一个应用有多个线程并行的执行。
+
+在Hotspot JVM里，每个线程都与操作系统的本地线程直接映射。
+
+当一个Java线程准备好执行以后，此时一个操作系统的本地线程也同事创建。Java线程执行终止后，本地线程也会回收。
+
+
+操作系统负责所有线程的安排调度到任何一个可用的CPU上。一旦本地线程初始化成功，它就会调用Java线程中的run()方法
+
+如果你是用jconsole或者是任何一个调试工具，都能看到在后台有许多线程在运行。这些后台线程不包括调用public static void main(String[])的main线程以及所有这个main线程自己创建的线程。
+
+这些</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-25&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Java">Java</a>&nbsp;
+          
+            <a href="/categories/JVM">JVM</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Java">Java</a>&nbsp;
+          
+            <a href="/tags/JVM">JVM</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/04/24/%E5%90%8E%E7%AB%AF/Java/JVM/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%AD%90%E7%B3%BB%E7%BB%9F/">
+        <p class="h4 index-header">类加载子系统</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">内存结构概述
+
+类加载子系统类加载子系统的作用
+
+
+类加载子系统负责从文件系统或者网络中加载Class文件，class文件在文件开头有特定的文件表示
+ClassLoader治负责class文件的加载，至于它是否可以运行则由Execution Engine决定。
+加载的类信息存放于一块成为方法区的内存空间。除了类的信息外，方法区中还会存放运行时常量池信息，可能还包括字符串紫米那里和数字常量（这部分常量信息是Class文件中常量池部分的内存映射）
+
+类的加载过程加载
+通过一个类的全限定名获取定义此类的二进制字节流
+讲这个字节流所代表的静态存储结构转化为方法区的运行时数据结构
+在内存中生成一个代表这个类的java.lang.Class对象，作为方法区这个类的各种数据的访问入口
+
+链接验证（Verify）：
+
+目的在于确保Class文件的字节流中包含信息符合当前虚拟机的要求，保证加载类的正确性，不会危害虚拟机自身安全。
+主要包括四种验证：文件格式验证，元数据验证，字节码验证，符号引用验证
+
+准备（Prepare）：
+
+为类变了分配内存并且设置该类变了的默认初始值，即零值。
+这里不包含用fina</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Java">Java</a>&nbsp;
+          
+            <a href="/categories/JVM">JVM</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Java">Java</a>&nbsp;
+          
+            <a href="/tags/JVM">JVM</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/04/21/%E5%90%8E%E7%AB%AF/Java/JVM/JVM%E4%B8%8EJava%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">
+        <p class="h4 index-header">JVM与Java体系结构</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">JVM的位置
+JVM是运行在操作系统之上的，它与硬件没有直接的交互。
+JVM的整体结构HotSpot VM是目前市面上高性能虚拟机的代表作之一
+
+它采用解释器与即时编译器并存的架构。在今天，Java程序的云心性能早已脱胎换骨，已经达到了可以和C&#x2F;C++程序一较高下的地步。
+JVM的架构模型Java编译器输入的指令流基本上是一种基于栈的指令集架构，另外一种指令集结构则是基于寄存器的指令集架构。
+具体来说：这两种架构之间的区别：
+
+基于栈式架构的特点
+设计和实现更简单，适用于资源受限的系统；
+避开了寄存器的分配难题，使用领地址指令方式分配。
+指令流中的指令大部分是零地址指令，其执行过程依赖于操作栈。指令集更小，编译器更容易实现。
+不需要硬件支持，可移植性更好，更好实现跨平台
+
+
+基于寄存器架构的特点
+典型的应用是x86的二进制指令集:比如传统的PC以及Android的Davlik虚拟机
+指令集架构则完全依赖硬件，可移植性差
+性能优秀和执行更高效；
+花费更少的指令去完成一项操作。
+在大部分情况下，基于寄存器架构的指令集往往都以一地址指令、二地址指令和三地址指令为主，而基于栈式架构的</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-21&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Java">Java</a>&nbsp;
+          
+            <a href="/categories/JVM">JVM</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Java">Java</a>&nbsp;
+          
+            <a href="/tags/JVM">JVM</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/04/20/%E5%90%8E%E7%AB%AF/Java/%E9%AB%98%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E9%AB%98%E6%80%A7%E8%83%BD%E7%BC%93%E5%AD%98/">
+        <p class="h4 index-header">高性能缓存</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">最简单缓存入手————HashMap并发安全要保证————用synchronized实现
+性能差
+代码复用能力差
+
+给HashMap加final关键字
+属性被声明为final后，该变量则只能被复制一次，且一旦被复制，final的百年来就不能再被改变。
+所以我们把它加上final关键字，增强安全性。
+
+代码有重构空间————用装饰者模式
+我们假设ExpensiveFunction类是耗时计算的实现类，实现了Computable接口，但是其本身不具备缓存功能，也不需要考虑缓存的事情
+缺点
+性能差
+当多个线程同时想计算的时候，需要慢慢等待，严重时，性能甚至比不用缓存更差
+
+
+
+性能待优化————引出锁性能优化经验：缩小锁的粒度
+虽然提高了并发效率，但是并不意味着就是线程安全的，还需要考虑到同时读写等情况
+但是起始没必要自己实现线程安全的HashMap，也不应该加synchronized，因为我们自己实现的性能远不如现有的并发集合
+我们来使用ConcurrentHashMap优化我们的缓存
+
+用并发集合————ConcurrentHashMap
+缺点：在计算完成前，另一个要求计算相同值得请求到</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-20&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Java">Java</a>&nbsp;
+          
+            <a href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B">多线程</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Java">Java</a>&nbsp;
+          
+            <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B">多线程</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/04/15/%E5%90%8E%E7%AB%AF/Java/%E9%AB%98%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/Future%E5%92%8CCallable/">
+        <p class="h4 index-header">Future和Callable</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Runnable的缺陷
+不能返回一个返回值
+不能抛出checked Exception
+
+Callable接口类似于Runnable，被其他线程执行的任务
+
+实现call方法
+有返回值
+
+Future主要方法：一共5个get()方法：获取结果get方法的行为取决于Callable任务的状态，只有以下这5种情况：
+
+任务正常完成：get方法回立刻返回结果
+任务尚未完成（任务还没开始或进行中）：get将阻塞并直到任务完成
+任务执行过程中抛出Exception：get方法回抛出ExecutionException：这里的抛出异常，是call()执行时产生的那个异常，看到这个异常类型时java.util.concurrent.ExecutionException。不论call()执行时抛出的异常类型时什么，最后get方法抛出的异常类型都是ExecutionException。
+任务呗取消：get方法会抛出CancellationException
+任务超时：get方法有一个重载方法，时传入一共延迟时间的，如果时间到了还没有获得结果，get方法就会抛出TimeoutException。
+
+get</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-15&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Java">Java</a>&nbsp;
+          
+            <a href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B">多线程</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Java">Java</a>&nbsp;
+          
+            <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B">多线程</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/04/10/%E5%90%8E%E7%AB%AF/Java/%E9%AB%98%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/AQS/">
+        <p class="h4 index-header">AQS</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">学习AQS的思路
+学习AQS的目的主要是想理解原理、提高技术、以及应对面试
+先从应用层面理解为什么需要他如何使用它，然后再看一看我们Java代码的设计者是如何使用它的了解它的应用场景
+这样之后我们再去分析它的结构，这样的话我们就学习得更加轻松了
+
+为什么需要AQS
+锁和协作类有共同点：闸门
+我们已经学过了ReentrantLock和Semaphore，有没有发现他们有共同点？很相似?
+事实上，不仅是ReentrantLock和Semaphore，包括CountDownLatch、ReentrantReadWriteLock都有这样类似得协作（或叫同步）功能，起始他们底层都用了一个共同得基类，这就是AQS
+
+
+因为上面得那些协作类，它们有很多工作都是类似得，所以如果能提取出一个工具类，那么就可以直接用，对于ReentrantLock和Semaphore而言就可以屏蔽很多细节，只关注它们自己得“业务逻辑”就可以了
+
+Semaphore和AQS得关系
+Semaphore内部有一个Sync类，Sync类继承了AQS
+CountDownLatch也是一样的
+
+如果没有AQS
+就需要每个协作工具自</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-10&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Java">Java</a>&nbsp;
+          
+            <a href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B">多线程</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Java">Java</a>&nbsp;
+          
+            <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B">多线程</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/04/10/%E5%90%8E%E7%AB%AF/Java/%E9%AB%98%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E5%B9%B6%E5%8F%91%E6%B5%81%E7%A8%8B/">
+        <p class="h4 index-header">并发流程</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">什么是控制并发流程
+控制并发流程的工具类，作用就是帮助我们程序眼更容易得让线程之间合作
+让线程之间相互配合，来满足业务逻辑
+比如让线程A等待线程B执行完毕后再执行等合作策略
+
+
+
+CountDownLatch倒计时门闩CountDownLatch类的作用并发流程控制工具
+
+倒数门闩
+例子：购物拼团；大巴（游乐园坐过山车排队），人满发车
+流程：倒数结束之前，一直处于等待状态，直到倒计时结束了，此线程才继续工作。
+
+类的主要方法介绍
+CountDownLatch（int count）：仅有一个构造函数，参数count为需要倒数的数值。
+await（）：调用await（）方法的线程会被挂起，它会等待直到count值为0才继续执行
+countDown（）：将count值减1，直到为0时，等待的线程会被唤起。
+
+两个典型用法
+类的主要方法介绍
+用法一：一个线程邓艾多个线程都执行完毕，再继续自己的工作。
+用法二：多个线程等待某一个线程的信号，同时开始执行。
+
+CountDownLatch注意点
+扩展用法：多个线程等待多个线程完成执行后，再同时执行
+CountDownLatch是不能够重用的，如果需</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-10&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Java">Java</a>&nbsp;
+          
+            <a href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B">多线程</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Java">Java</a>&nbsp;
+          
+            <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B">多线程</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/04/07/%E5%90%8E%E7%AB%AF/Java/%E9%AB%98%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E5%B9%B6%E5%8F%91%E9%98%9F%E5%88%97/">
+        <p class="h4 index-header">并发队列</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">为什么要适用队列
+队列可以在线程间传递数据：生产者消费者模式、银行转账
+考虑锁等线程安全问题的重任从你转移到了队列上
+
+什么是阻塞队列
+简介、地位
+
+阻塞队列是具有阻塞功能的队列，所以它首先是一个队列，其次是具有阻塞功能。
+通常，阻塞队列的一端是给生产者方数据用，另一端给消费者拿数据用。阻塞队列线程安全的，所以生产者和消费者都可以是多线程的
+
+
+阻塞功能：最有特色的两个带有阻塞功能的方法是
+
+take()方法：获取并逸出队列的头结点，一旦执行take的时候，队列里误数据，则阻塞，直到队列有数据
+
+put()方法：插入元素。但是如果队列已满，那么就无法继续插入，则阻塞，知道队列有了空闲空间
+
+是否有界（容量有多大）：这是一个非常重要的属性，无界队列意味着里面可以容纳非常多（Integer.MAX_VALUE,约为2的31次，是非常大的一个数，可以近似认为是无线容量）
+
+阻塞队列和线程池的关系：阻塞队列是线程池的重要组成部分
+
+
+BlockingQueue主要方法
+put，take
+add，remove，element
+offer，poll，peek
+
+常用实现
+ArrayBlocking</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-07&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Java">Java</a>&nbsp;
+          
+            <a href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B">多线程</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Java">Java</a>&nbsp;
+          
+            <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B">多线程</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/04/04/%E5%90%8E%E7%AB%AF/Java/%E9%AB%98%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E5%B9%B6%E5%8F%91%E5%AE%B9%E5%99%A8/">
+        <p class="h4 index-header">并发容器</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">古老和过时的同步容器
+Vector和Hashtable
+并发性能差（synchronized修饰方法）
+
+
+ArrayList和HashMap
+虽然这两个类不是线程安全的，但是可以用Collections.synchronizedList(new ArrayList())和Collections.synchronizedMap(new HashMap&lt;K,V&gt;())使之变成线程安全的，用的同步代码块
+
+
+ConcurrentHashMap和CopyOnWriteArrayList
+取代同步的HashMap和同步的Arraylist（时代巨轮滚滚向前）
+绝大多数并发情况下，ConcurrentHashMap和CopyOnWriteArrayList的性能都更好
+
+
+
+ConcurrentHashMap（重点、面试常考）为什么需要ConcurrentHashMap
+为什么不用Collections.synchronizedMap()?
+为什么HashMap使线程不安全的？
+同时put碰撞导致数据丢失
+同时put扩容导致数据丢失
+死循环造成的CPU100%
+
+
+
+JDK1.7的C</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-04&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Java">Java</a>&nbsp;
+          
+            <a href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B">多线程</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Java">Java</a>&nbsp;
+          
+            <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B">多线程</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <nav aria-label="index posts navigation">
+    <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/11/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/13/"><i class="fas fa-angle-double-right"></i></a>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByClassName("page-number")) {
+      ele.href += '#board';
+    }
+  </script>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "欢迎参观我的知识站，这里记录着我的学习经历&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "left",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

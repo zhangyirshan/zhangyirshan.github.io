@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="仅限学习参考，有兴趣可以互相交流">
+  <meta name="author" content="张议">
+  <meta name="keywords" content="张议,Java,java,spring,SpringBoot,zhangyi">
+  <title>Stream ~ 人生展馆</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>人生展馆</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">资料</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/index.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期二, 十二月 10日 2019, 10:09 上午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    4.4k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      22 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="什么是-Stream"><a href="#什么是-Stream" class="headerlink" title="什么是 Stream"></a>什么是 Stream</h2><p>Java8中有两大最为重要的改变。第一个是 Lambda 表达式；另外一个则是 *<em>Stream API(java.util.stream.</em>)**。<br>Stream 是 Java8 中处理集合的关键抽象概念，它可以指定你希望对集合进行的操作，可以执行非常复杂的查找、过滤和映射数据等操作。使用Stream API 对集合数据进行操作，就类似于使用 SQL 执行的数据库查询。也可以使用 Stream API 来并行执行操作。简而言之，Stream API 提供了一种高效且易于使用的处理数据的方式。</p>
+<p>流(Stream) 到底是什么呢？<br>是数据渠道，用于操作数据源（集合、数组等）所生成的元素序列。<br><strong>“集合讲的是数据，流讲的是计算！”</strong><br>注意：<br>    1. Stream 自己不会存储元素。<br>    2. Stream 不会改变源对象。相反，他们会返回一个持有结果的新Stream。<br>    3. Stream 操作是延迟执行的。这意味着他们会等到需要结果的时候才执行。</p>
+<h2 id="Stream-的操作三个步骤"><a href="#Stream-的操作三个步骤" class="headerlink" title="Stream 的操作三个步骤"></a>Stream 的操作三个步骤</h2><ul>
+<li>创建 Stream<br>  一个数据源（如：集合、数组），获取一个流</li>
+<li>中间操作<br>  一个中间操作链，对数据源的数据进行处理</li>
+<li>终止操作(终端操作)<br>  一个终止操作，执行中间操作链，并产生结果</li>
+</ul>
+
+
+<h2 id="创建Stream"><a href="#创建Stream" class="headerlink" title="创建Stream"></a>创建Stream</h2><p>Java8 中的 Collection 接口被扩展，提供了<br>两个获取流的方法：<br>    - default Stream&lt;E&gt; stream() : 返回一个顺序流<br>    - default Stream&lt;E&gt; parallelStream() : 返回一个并行流</p>
+<ol>
+<li>由数组创建流</li>
+<li>由值创建流</li>
+<li>由函数创建流：创建无限流</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test1</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="comment">//1.可以公共Collection系列集合提供的stream()或parallelStream()</span></span><br><span class="line">    List&lt;String&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    Stream&lt;String&gt; stream = list.stream();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//2. 通过Arrays中的静态方法stream()获取数组流</span></span><br><span class="line">    Employee[] employees = <span class="keyword">new</span> <span class="title class_">Employee</span>[<span class="number">10</span>];</span><br><span class="line">    Stream&lt;Employee&gt; stream1 = Arrays.stream(employees);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//3. 通过Stream类中的静态方法of()</span></span><br><span class="line">    Stream&lt;String&gt; stream2 = Stream.of(<span class="string">&quot;aa&quot;</span>, <span class="string">&quot;bb&quot;</span>, <span class="string">&quot;cc&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//4. 创建无限流</span></span><br><span class="line">    <span class="comment">//迭代</span></span><br><span class="line">    Stream&lt;Integer&gt; iterate = Stream.iterate(<span class="number">0</span>, (x) -&gt; x + <span class="number">2</span>);</span><br><span class="line">    iterate.limit(<span class="number">10</span>).forEach(System.out::println);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//生成</span></span><br><span class="line">    Stream.generate(() -&gt; (<span class="type">int</span>) (Math.random() * <span class="number">100</span>))</span><br><span class="line">    .limit(<span class="number">5</span>).forEach(System.out::println);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Stream-的中间操作"><a href="#Stream-的中间操作" class="headerlink" title="Stream 的中间操作"></a>Stream 的中间操作</h2><p>多个<strong>中间操作</strong>可以连接起来形成一个<strong>流水线</strong>，除非流水线上触发终止操作，否则<strong>中间操作不会执行任何的处理！而在终止操作时一次性全部处理，称为“惰性求值”。</strong></p>
+<h3 id="筛选与切片"><a href="#筛选与切片" class="headerlink" title="筛选与切片"></a>筛选与切片</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>filter(Predicate p)</td>
+<td>接收 Lambda ， 从流中排除某些元素。</td>
+</tr>
+<tr>
+<td>distinct()</td>
+<td>筛选，通过流所生成元素的 hashCode() 和 equals() 去除复元素</td>
+</tr>
+<tr>
+<td>limit(long maxSize)</td>
+<td>截断流，使其元素不超过给定数量。</td>
+</tr>
+<tr>
+<td>skip(long n)</td>
+<td>跳过元素，返回一个扔掉了前 n 个元素的流。若流中元素不足 n 个，则返回一个空流。与 limit(n) 互补</td>
+</tr>
+</tbody></table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test2</span><span class="params">()</span>&#123;</span><br><span class="line">    List&lt;Employee&gt; emps = Arrays.asList(</span><br><span class="line">            <span class="keyword">new</span> <span class="title class_">Employee</span>(<span class="string">&quot;张三&quot;</span>, <span class="number">18</span>, <span class="number">9999.99</span>),</span><br><span class="line">            <span class="keyword">new</span> <span class="title class_">Employee</span>(<span class="string">&quot;李四&quot;</span>, <span class="number">59</span>, <span class="number">6669.99</span>),</span><br><span class="line">            <span class="keyword">new</span> <span class="title class_">Employee</span>(<span class="string">&quot;王五&quot;</span>, <span class="number">18</span>, <span class="number">3333.99</span>),</span><br><span class="line">            <span class="keyword">new</span> <span class="title class_">Employee</span>(<span class="string">&quot;赵六&quot;</span>, <span class="number">18</span>, <span class="number">2222.99</span>),</span><br><span class="line">            <span class="keyword">new</span> <span class="title class_">Employee</span>(<span class="string">&quot;田七&quot;</span>, <span class="number">18</span>, <span class="number">5555.99</span>),</span><br><span class="line">            <span class="keyword">new</span> <span class="title class_">Employee</span>(<span class="string">&quot;java&quot;</span>, <span class="number">18</span>, <span class="number">5555.99</span>)</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    Stream&lt;Employee&gt; stream = emps.stream();</span><br><span class="line">    <span class="comment">//中间操作：不会执行任何操作</span></span><br><span class="line">    Stream&lt;Employee&gt; employeeStream = stream.filter(e -&gt; e.getAge() &gt; <span class="number">35</span>);</span><br><span class="line">    <span class="comment">//终止操作，执行终止操作才会操作中间操作，否则中间操作不会执行</span></span><br><span class="line">    <span class="comment">//一次性执行全部内容，即“惰性求值”</span></span><br><span class="line">    employeeStream.forEach(System.out::println);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">List&lt;Employee&gt; emps = Arrays.asList(</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Employee</span>(<span class="string">&quot;张三&quot;</span>, <span class="number">18</span>, <span class="number">9999.99</span>),</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Employee</span>(<span class="string">&quot;李四&quot;</span>, <span class="number">59</span>, <span class="number">6669.99</span>),</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Employee</span>(<span class="string">&quot;王五&quot;</span>, <span class="number">18</span>, <span class="number">3333.99</span>),</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Employee</span>(<span class="string">&quot;赵六&quot;</span>, <span class="number">18</span>, <span class="number">2222.99</span>),</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Employee</span>(<span class="string">&quot;田七&quot;</span>, <span class="number">18</span>, <span class="number">5555.99</span>),</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Employee</span>(<span class="string">&quot;田七&quot;</span>, <span class="number">18</span>, <span class="number">5555.99</span>),</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Employee</span>(<span class="string">&quot;田七&quot;</span>, <span class="number">18</span>, <span class="number">5555.99</span>),</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Employee</span>(<span class="string">&quot;田七&quot;</span>, <span class="number">18</span>, <span class="number">5555.99</span>),</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Employee</span>(<span class="string">&quot;java&quot;</span>, <span class="number">18</span>, <span class="number">5555.99</span>)</span><br><span class="line">);</span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test2</span><span class="params">()</span>&#123;</span><br><span class="line"></span><br><span class="line">    Stream&lt;Employee&gt; stream = emps.stream();</span><br><span class="line">    <span class="comment">//中间操作：不会执行任何操作</span></span><br><span class="line">    Stream&lt;Employee&gt; employeeStream = stream.filter(e -&gt; e.getAge() &gt; <span class="number">35</span>);</span><br><span class="line">    <span class="comment">//终止操作，执行终止操作才会操作中间操作，否则中间操作不会执行</span></span><br><span class="line">    <span class="comment">//一次性执行全部内容，即“惰性求值”</span></span><br><span class="line">    employeeStream.forEach(System.out::println);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test3</span><span class="params">()</span>&#123;</span><br><span class="line">    emps.stream().filter(e -&gt; &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;短路&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> e.getSalary() &gt; <span class="number">5000</span>;</span><br><span class="line">    &#125;).limit(<span class="number">2</span>).forEach(System.out::println);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test4</span><span class="params">()</span>&#123;</span><br><span class="line">    emps.stream().filter(employee -&gt; &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;跳过&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> employee.getSalary() &gt; <span class="number">5000</span>;</span><br><span class="line">    &#125;).skip(<span class="number">2</span>).forEach(System.out::println);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test5</span><span class="params">()</span>&#123;</span><br><span class="line">    emps.stream().filter(employee -&gt; employee.getSalary() &gt; <span class="number">5000</span>)</span><br><span class="line">    .distinct().forEach(System.out::println);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="映射"><a href="#映射" class="headerlink" title="映射"></a>映射</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>map(Function f</td>
+<td>接收一个函数作为参数，该函数会被应用到每个元素上，并将其映射成一个新的元素。</td>
+</tr>
+<tr>
+<td>mapToDouble(ToDoubleFunction f)</td>
+<td>接收一个函数作为参数，该函数会被应用到每个元素上，产生一个新的 DoubleStream。</td>
+</tr>
+<tr>
+<td>mapToInt(ToIntFunction f)</td>
+<td>接收一个函数作为参数，该函数会被应用到每个元素上，产生一个新的 IntStream。</td>
+</tr>
+<tr>
+<td>mapToLong(ToLongFunction f)</td>
+<td>接收一个函数作为参数，该函数会被应用到每个元素上，产生一个新的 LongStream。</td>
+</tr>
+<tr>
+<td>flatMap(Function f)</td>
+<td>接收一个函数作为参数，将流中的每个值都换成另一个流，然后把所有流连接成一个流</td>
+</tr>
+</tbody></table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test6</span><span class="params">()</span>&#123;</span><br><span class="line">    List&lt;String&gt; list = Arrays.asList(<span class="string">&quot;aaa&quot;</span>,<span class="string">&quot;bbb&quot;</span>,<span class="string">&quot;ccc&quot;</span>,<span class="string">&quot;dddd&quot;</span>,<span class="string">&quot;eeee&quot;</span>);</span><br><span class="line">    list.stream().map(str -&gt; str.toUpperCase()).forEach(System.out::println);</span><br><span class="line"></span><br><span class="line">    emps.stream().map(Employee::getName).forEach(System.out::println);</span><br><span class="line"></span><br><span class="line">    System.out.println(<span class="string">&quot;-----------------&quot;</span>);</span><br><span class="line"></span><br><span class="line">    Stream&lt;Stream&lt;Character&gt;&gt; streamStream = list.stream().map(StreamAPI1::filterCharacter);</span><br><span class="line">    streamStream.forEach(sm -&gt; &#123;</span><br><span class="line">        sm.forEach(System.out::println);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    System.out.println(<span class="string">&quot;--------------&quot;</span>);</span><br><span class="line">    Stream&lt;Character&gt; characterStream = list.stream().flatMap(StreamAPI1::filterCharacter);</span><br><span class="line">    characterStream.forEach(System.out::println);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> Stream&lt;Character&gt; <span class="title function_">filterCharacter</span><span class="params">(String string)</span> &#123;</span><br><span class="line">    List&lt;Character&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (Character character : string.toCharArray()) &#123;</span><br><span class="line">        list.add(character);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> list.stream();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>sorted()</td>
+<td>产生一个新流，其中按自然顺序排序</td>
+</tr>
+<tr>
+<td>sorted(Comparator comp)</td>
+<td>产生一个新流，其中按比较器顺序排序</td>
+</tr>
+</tbody></table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test7</span><span class="params">()</span>&#123;</span><br><span class="line">    List&lt;String&gt; list = Arrays.asList(<span class="string">&quot;aaa&quot;</span>,<span class="string">&quot;bbb&quot;</span>,<span class="string">&quot;ccc&quot;</span>,<span class="string">&quot;dddd&quot;</span>,<span class="string">&quot;eeee&quot;</span>);</span><br><span class="line">    list.stream().sorted().forEach(System.out::println);</span><br><span class="line"></span><br><span class="line">    emps.stream().sorted((a, b) -&gt; a.getAge() == b.getAge() ? a.getName().compareTo(b.getName()) : a.getAge() - b.getAge())</span><br><span class="line">    .forEach(System.out::println);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="终止操作"><a href="#终止操作" class="headerlink" title="终止操作"></a>终止操作</h2><p>终端操作会从流的流水线生成结果。其结果可以是任何不是流的值，例如：List、Integer，甚至是 void 。</p>
+<h3 id="查找与匹配"><a href="#查找与匹配" class="headerlink" title="查找与匹配"></a>查找与匹配</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>allMatch(Predicate p)</td>
+<td>检查是否匹配所有元素</td>
+</tr>
+<tr>
+<td>anyMatch(Predicate p)</td>
+<td>检查是否至少匹配一个元素</td>
+</tr>
+<tr>
+<td>noneMatch(Predicate p)</td>
+<td>检查是否没有匹配所有元素</td>
+</tr>
+<tr>
+<td>findFirst()</td>
+<td>返回第一个元素</td>
+</tr>
+<tr>
+<td>findAny()</td>
+<td>返回当前流中的任意元素</td>
+</tr>
+<tr>
+<td>count()</td>
+<td>返回流中元素总数</td>
+</tr>
+<tr>
+<td>max(Comparator c)</td>
+<td>返回流中最大值</td>
+</tr>
+<tr>
+<td>min(Comparator c)</td>
+<td>返回流中最小值</td>
+</tr>
+<tr>
+<td>forEach(Consumer c)</td>
+<td>内部迭代(使用 Collection 接口需要用户去做迭代，称为外部迭代。相反，Stream API 使用内部迭代——它帮你把迭代做了)</td>
+</tr>
+</tbody></table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Objects;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Employee</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> age;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">double</span> salary;</span><br><span class="line">    <span class="keyword">private</span> Status Status;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Employee</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Employee</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Employee</span><span class="params">(String name, <span class="type">int</span> age, <span class="type">double</span> salary, Employee.Status status)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        <span class="built_in">this</span>.age = age;</span><br><span class="line">        <span class="built_in">this</span>.salary = salary;</span><br><span class="line">        Status = status;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Employee.Status <span class="title function_">getStatus</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> Status;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setStatus</span><span class="params">(Employee.Status status)</span> &#123;</span><br><span class="line">        Status = status;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">equals</span><span class="params">(Object o)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">this</span> == o) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">if</span> (o == <span class="literal">null</span> || getClass() != o.getClass()) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="type">Employee</span> <span class="variable">employee</span> <span class="operator">=</span> (Employee) o;</span><br><span class="line">        <span class="keyword">return</span> age == employee.age &amp;&amp;</span><br><span class="line">                Double.compare(employee.salary, salary) == <span class="number">0</span> &amp;&amp;</span><br><span class="line">                Objects.equals(name, employee.name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">hashCode</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> Objects.hash(name, age, salary);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Employee&#123;&quot;</span> +</span><br><span class="line">                <span class="string">&quot;name=&#x27;&quot;</span> + name + <span class="string">&#x27;\&#x27;&#x27;</span> +</span><br><span class="line">                <span class="string">&quot;, age=&quot;</span> + age +</span><br><span class="line">                <span class="string">&quot;, salary=&quot;</span> + salary +</span><br><span class="line">                <span class="string">&quot;, Status=&quot;</span> + Status +</span><br><span class="line">                <span class="string">&#x27;&#125;&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Employee</span><span class="params">(String name, <span class="type">int</span> age, <span class="type">double</span> salary)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        <span class="built_in">this</span>.age = age;</span><br><span class="line">        <span class="built_in">this</span>.salary = salary;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setName</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getAge</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setAge</span><span class="params">(<span class="type">int</span> age)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">getSalary</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> salary;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setSalary</span><span class="params">(<span class="type">double</span> salary)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.salary = salary;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">enum</span> <span class="title class_">Status</span>&#123;</span><br><span class="line">        FREE,</span><br><span class="line">        BUSY,</span><br><span class="line">        VOCATION;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">List&lt;Employee&gt; emps = Arrays.asList(</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Employee</span>(<span class="string">&quot;张三&quot;</span>, <span class="number">42</span>, <span class="number">9999.99</span>, Employee.Status.BUSY),</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Employee</span>(<span class="string">&quot;李四&quot;</span>, <span class="number">59</span>, <span class="number">6669.99</span>, Employee.Status.FREE),</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Employee</span>(<span class="string">&quot;王五&quot;</span>, <span class="number">18</span>, <span class="number">3333.99</span>, Employee.Status.BUSY),</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Employee</span>(<span class="string">&quot;赵六&quot;</span>, <span class="number">15</span>, <span class="number">2222.99</span>, Employee.Status.VOCATION),</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Employee</span>(<span class="string">&quot;田七&quot;</span>, <span class="number">12</span>, <span class="number">5555.99</span>, Employee.Status.VOCATION),</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Employee</span>(<span class="string">&quot;田七&quot;</span>, <span class="number">13</span>, <span class="number">5555.99</span>, Employee.Status.VOCATION),</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Employee</span>(<span class="string">&quot;田七&quot;</span>, <span class="number">18</span>, <span class="number">5555.99</span>, Employee.Status.FREE),</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Employee</span>(<span class="string">&quot;田七&quot;</span>, <span class="number">18</span>, <span class="number">5555.99</span>, Employee.Status.BUSY),</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Employee</span>(<span class="string">&quot;java&quot;</span>, <span class="number">21</span>, <span class="number">5555.99</span>, Employee.Status.BUSY)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test8</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">boolean</span> <span class="variable">b1</span> <span class="operator">=</span> emps.stream().allMatch(e -&gt; e.getStatus().equals(Employee.Status.BUSY));</span><br><span class="line">    <span class="type">boolean</span> <span class="variable">b2</span> <span class="operator">=</span> emps.stream().anyMatch(e -&gt; e.getStatus().equals(Employee.Status.BUSY));</span><br><span class="line">    <span class="type">boolean</span> <span class="variable">b3</span> <span class="operator">=</span> emps.stream().noneMatch(e -&gt; e.getStatus().equals(Employee.Status.BUSY));</span><br><span class="line">    System.out.println(b1);</span><br><span class="line">    System.out.println(b2);</span><br><span class="line">    System.out.println(b3);</span><br><span class="line"></span><br><span class="line">    Optional&lt;Employee&gt; first = emps.stream().sorted((e1, e2) -&gt; -Double.compare(e1.getSalary(), e2.getSalary())).findFirst();</span><br><span class="line">    System.out.println(first.get());</span><br><span class="line"></span><br><span class="line">    Optional&lt;Employee&gt; any = emps.parallelStream().filter(e -&gt; e.getStatus().equals(Employee.Status.FREE)).findAny();</span><br><span class="line">    System.out.println(any.get());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test9</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">long</span> <span class="variable">count</span> <span class="operator">=</span> emps.stream().count();</span><br><span class="line">    System.out.println(count);</span><br><span class="line"></span><br><span class="line">    Optional&lt;Employee&gt; max = emps.stream().max(Comparator.comparingDouble(Employee::getSalary));</span><br><span class="line">    Optional&lt;Double&gt; min = emps.stream().map(Employee::getSalary).min(Double::compareTo);</span><br><span class="line">    System.out.println(max.get());</span><br><span class="line">    System.out.println(<span class="string">&quot;salary&quot;</span> + min);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="归约"><a href="#归约" class="headerlink" title="归约"></a>归约</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>reduce(T iden, BinaryOperator b)</td>
+<td>可以将流中元素反复结合起来，得到一个值。返回 T</td>
+</tr>
+<tr>
+<td>reduce(BinaryOperator b)</td>
+<td>可以将流中元素反复结合起来，得到一个值。返回 Optional&lt;T&gt;</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>备注：map 和 reduce 的连接通常称为 map-reduce 模式，因 Google 用它来进行网络搜索而出名。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test10</span><span class="params">()</span>&#123;</span><br><span class="line">    List&lt;Integer&gt; list = Arrays.asList(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">    <span class="type">Integer</span> <span class="variable">sum</span> <span class="operator">=</span> list.stream().reduce(<span class="number">0</span>, Integer::sum);</span><br><span class="line">    System.out.println(sum);</span><br><span class="line"></span><br><span class="line">    System.out.println(<span class="string">&quot;-------------&quot;</span>);</span><br><span class="line"></span><br><span class="line">    Optional&lt;Double&gt; reduce = emps.stream().map(Employee::getSalary).reduce(Double::sum);</span><br><span class="line">    System.out.println(reduce.get());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="收集"><a href="#收集" class="headerlink" title="收集"></a>收集</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>collect(Collector c)</td>
+<td>将流转换为其他形式。接收一个 Collector接口的实现，用于给Stream中元素做汇总的方法</td>
+</tr>
+</tbody></table>
+<p>Collector 接口中方法的实现决定了如何对流执行收集操作(如收集到 List、Set、Map)。但是 Collectors 实用类提供了很多静态方法，可以方便地创建常见收集器实例，具体方法与实例如下表：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>返回类型</th>
+<th>作用</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>toList</td>
+<td>List&lt;T&gt;</td>
+<td>把流中元素收集到List</td>
+<td>List&lt;Employee&gt; emps&#x3D; list.stream().collect(Collectors.toList());</td>
+</tr>
+<tr>
+<td>toSet</td>
+<td>Set&lt;T&gt;</td>
+<td>把流中元素收集到Set</td>
+<td>Set&lt;Employee&gt; emps&#x3D; list.stream().collect(Collectors.toSet());</td>
+</tr>
+<tr>
+<td>toCollection</td>
+<td>Collection&lt;T&gt;</td>
+<td>把流中元素收集到创建的集合</td>
+<td>Collection&lt;Employee&gt;emps&#x3D;list.stream().collect(Collectors.toCollection(ArrayList::new));</td>
+</tr>
+<tr>
+<td>counting</td>
+<td>Long</td>
+<td>计算流中元素的个数</td>
+<td>long count &#x3D; list.stream().collect(Collectors.counting());</td>
+</tr>
+<tr>
+<td>summingInt</td>
+<td>Integer</td>
+<td>对流中元素的整数属性求和</td>
+<td>inttotal&#x3D;list.stream().collect(Collectors.summingInt(Employee::getSalary));</td>
+</tr>
+<tr>
+<td>averagingInt</td>
+<td>Double</td>
+<td>计算流中元素Integer属性的平均值</td>
+<td>doubleavg&#x3D; list.stream().collect(Collectors.averagingInt(Employee::getSalary));</td>
+</tr>
+<tr>
+<td>summarizingInt</td>
+<td>IntSummaryStatistics</td>
+<td>收集流中Integer属性的统计值。如：平均值</td>
+<td>IntSummaryStatisticsiss&#x3D; list.stream().collect(Collectors.summarizingInt(Employee::getSalary));</td>
+</tr>
+<tr>
+<td>joining</td>
+<td>String</td>
+<td>连接流中每个字符串</td>
+<td>String str&#x3D; list.stream().map(Employee::getName).collect(Collectors.joining());</td>
+</tr>
+<tr>
+<td>maxBy</td>
+<td>Optional&lt;T&gt;</td>
+<td>根据比较器选择最大值</td>
+<td>Optional<Emp>max&#x3D; list.stream().collect(Collectors.maxBy(comparingInt(Employee::getSalary)));</td>
+</tr>
+<tr>
+<td>minBy</td>
+<td>Optional&lt;T&gt;</td>
+<td>根据比较器选择最小值</td>
+<td>Optional<Emp> min &#x3D; list.stream().collect(Collectors.minBy(comparingInt(Employee::getSalary)));</td>
+</tr>
+<tr>
+<td>reducing</td>
+<td>归约产生的类型</td>
+<td>从一个作为累加器的初始值开始，利用BinaryOperator与流中元素逐个结合，从而归约成单个值</td>
+<td>inttotal&#x3D;list.stream().collect(Collectors.reducing(0, Employee::getSalar, Integer::sum));</td>
+</tr>
+<tr>
+<td>collectingAndThen</td>
+<td>转换函数返回的类型</td>
+<td>包裹另一个收集器，对其结果转换函数</td>
+<td>inthow&#x3D; list.stream().collect(Collectors.collectingAndThen(Collectors.toList(), List::size));</td>
+</tr>
+<tr>
+<td>groupingBy</td>
+<td>Map&lt;K, List&lt;T&gt;&gt;</td>
+<td>根据某属性值对流分组，属性为K，结果为V</td>
+<td>Map&lt;Emp.Status, List&lt;Emp&gt;&gt; map&#x3D; list.stream().collect(Collectors.groupingBy(Employee::getStatus));</td>
+</tr>
+<tr>
+<td>partitioningBy</td>
+<td>Map&lt;Boolean, List&lt;T&gt;&gt;</td>
+<td>根据true或false进行分区</td>
+<td>Map&lt;Boolean,List<Emp>&gt;vd&#x3D; list.stream().collect(Collectors.partitioningBy(Employee::getManage));</td>
+</tr>
+</tbody></table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test11</span><span class="params">()</span>&#123;</span><br><span class="line">    List&lt;String&gt; collect = emps.stream().map(Employee::getName).distinct().collect(Collectors.toList());</span><br><span class="line">    collect.forEach(System.out::println);</span><br><span class="line">    System.out.println(<span class="string">&quot;---------------&quot;</span>);</span><br><span class="line">    Set&lt;String&gt; collect1 = emps.stream().map(Employee::getName).collect(Collectors.toSet());</span><br><span class="line">    collect1.forEach(System.out::println);</span><br><span class="line">    System.out.println(<span class="string">&quot;---------------&quot;</span>);</span><br><span class="line">    HashSet&lt;String&gt; collect2 = emps.stream().map(Employee::getName).collect(Collectors.toCollection(HashSet::<span class="keyword">new</span>));</span><br><span class="line">    collect2.forEach(System.out::println);</span><br><span class="line">    System.out.println(<span class="string">&quot;---------------&quot;</span>);</span><br><span class="line">    <span class="type">Double</span> <span class="variable">collect3</span> <span class="operator">=</span> emps.stream().collect(Collectors.averagingDouble(Employee::getSalary));</span><br><span class="line">    System.out.println(collect3);</span><br><span class="line">    <span class="comment">//分组</span></span><br><span class="line">    Map&lt;Employee.Status, List&lt;Employee&gt;&gt; collect4 = emps.stream().collect(Collectors.groupingBy(Employee::getStatus));</span><br><span class="line">    System.out.println(collect4);</span><br><span class="line">    <span class="comment">//多级分组</span></span><br><span class="line">    System.out.println(<span class="string">&quot;--------------&quot;</span>);</span><br><span class="line">    Map&lt;Employee.Status, Map&lt;String, List&lt;Employee&gt;&gt;&gt; collect5 = emps.stream().collect(Collectors.groupingBy(Employee::getStatus, Collectors.groupingBy(e -&gt; &#123;</span><br><span class="line">        <span class="keyword">if</span> (e.getAge() &lt;= <span class="number">20</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;青年&quot;</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (e.getAge() &lt;= <span class="number">40</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;中年&quot;</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;老年&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)));</span><br><span class="line">    System.out.println(collect5);</span><br><span class="line">    <span class="comment">//分区</span></span><br><span class="line">    System.out.println(<span class="string">&quot;--------------&quot;</span>);</span><br><span class="line">    Map&lt;Boolean, List&lt;Employee&gt;&gt; collect6 = emps.stream().collect(Collectors.partitioningBy(e -&gt; e.getSalary() &gt; <span class="number">7000</span>));</span><br><span class="line">    System.out.println(collect6);</span><br><span class="line">    System.out.println(<span class="string">&quot;--------------&quot;</span>);</span><br><span class="line">    <span class="type">DoubleSummaryStatistics</span> <span class="variable">collect7</span> <span class="operator">=</span> emps.stream().collect(Collectors.summarizingDouble(Employee::getSalary));</span><br><span class="line">    System.out.println(collect7.getMax());</span><br><span class="line">    System.out.println(<span class="string">&quot;--------------&quot;</span>);</span><br><span class="line">    <span class="type">String</span> <span class="variable">collect8</span> <span class="operator">=</span> emps.stream().map(Employee::getName).collect(Collectors.joining(<span class="string">&quot;,&quot;</span>,<span class="string">&quot;[&quot;</span>,<span class="string">&quot;]&quot;</span>));</span><br><span class="line">    System.out.println(collect8);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">结果为：</span><br><span class="line">张三</span><br><span class="line">李四</span><br><span class="line">王五</span><br><span class="line">赵六</span><br><span class="line">田七</span><br><span class="line">java</span><br><span class="line">---------------</span><br><span class="line">李四</span><br><span class="line">张三</span><br><span class="line">java</span><br><span class="line">王五</span><br><span class="line">赵六</span><br><span class="line">田七</span><br><span class="line">---------------</span><br><span class="line">李四</span><br><span class="line">张三</span><br><span class="line">java</span><br><span class="line">王五</span><br><span class="line">赵六</span><br><span class="line">田七</span><br><span class="line">---------------</span><br><span class="line"><span class="number">5556.323333333333</span></span><br><span class="line">&#123;VOCATION=[Employee&#123;name=<span class="string">&#x27;赵六&#x27;</span>, age=<span class="number">15</span>, salary=<span class="number">2222.99</span>, Status=VOCATION&#125;, Employee&#123;name=<span class="string">&#x27;田七&#x27;</span>, age=<span class="number">12</span>, salary=<span class="number">5555.99</span>, Status=VOCATION&#125;, Employee&#123;name=<span class="string">&#x27;田七&#x27;</span>, age=<span class="number">13</span>, salary=<span class="number">5555.99</span>, Status=VOCATION&#125;], BUSY=[Employee&#123;name=<span class="string">&#x27;张三&#x27;</span>, age=<span class="number">42</span>, salary=<span class="number">9999.99</span>, Status=BUSY&#125;, Employee&#123;name=<span class="string">&#x27;王五&#x27;</span>, age=<span class="number">18</span>, salary=<span class="number">3333.99</span>, Status=BUSY&#125;, Employee&#123;name=<span class="string">&#x27;田七&#x27;</span>, age=<span class="number">18</span>, salary=<span class="number">5555.99</span>, Status=BUSY&#125;, Employee&#123;name=<span class="string">&#x27;java&#x27;</span>, age=<span class="number">21</span>, salary=<span class="number">5555.99</span>, Status=BUSY&#125;], FREE=[Employee&#123;name=<span class="string">&#x27;李四&#x27;</span>, age=<span class="number">59</span>, salary=<span class="number">6669.99</span>, Status=FREE&#125;, Employee&#123;name=<span class="string">&#x27;田七&#x27;</span>, age=<span class="number">18</span>, salary=<span class="number">5555.99</span>, Status=FREE&#125;]&#125;</span><br><span class="line">--------------</span><br><span class="line">&#123;VOCATION=&#123;青年=[Employee&#123;name=<span class="string">&#x27;赵六&#x27;</span>, age=<span class="number">15</span>, salary=<span class="number">2222.99</span>, Status=VOCATION&#125;, Employee&#123;name=<span class="string">&#x27;田七&#x27;</span>, age=<span class="number">12</span>, salary=<span class="number">5555.99</span>, Status=VOCATION&#125;, Employee&#123;name=<span class="string">&#x27;田七&#x27;</span>, age=<span class="number">13</span>, salary=<span class="number">5555.99</span>, Status=VOCATION&#125;]&#125;, BUSY=&#123;青年=[Employee&#123;name=<span class="string">&#x27;王五&#x27;</span>, age=<span class="number">18</span>, salary=<span class="number">3333.99</span>, Status=BUSY&#125;, Employee&#123;name=<span class="string">&#x27;田七&#x27;</span>, age=<span class="number">18</span>, salary=<span class="number">5555.99</span>, Status=BUSY&#125;], 老年=[Employee&#123;name=<span class="string">&#x27;张三&#x27;</span>, age=<span class="number">42</span>, salary=<span class="number">9999.99</span>, Status=BUSY&#125;], 中年=[Employee&#123;name=<span class="string">&#x27;java&#x27;</span>, age=<span class="number">21</span>, salary=<span class="number">5555.99</span>, Status=BUSY&#125;]&#125;, FREE=&#123;青年=[Employee&#123;name=<span class="string">&#x27;田七&#x27;</span>, age=<span class="number">18</span>, salary=<span class="number">5555.99</span>, Status=FREE&#125;], 老年=[Employee&#123;name=<span class="string">&#x27;李四&#x27;</span>, age=<span class="number">59</span>, salary=<span class="number">6669.99</span>, Status=FREE&#125;]&#125;&#125;</span><br><span class="line">--------------</span><br><span class="line">&#123;<span class="literal">false</span>=[Employee&#123;name=<span class="string">&#x27;李四&#x27;</span>, age=<span class="number">59</span>, salary=<span class="number">6669.99</span>, Status=FREE&#125;, Employee&#123;name=<span class="string">&#x27;王五&#x27;</span>, age=<span class="number">18</span>, salary=<span class="number">3333.99</span>, Status=BUSY&#125;, Employee&#123;name=<span class="string">&#x27;赵六&#x27;</span>, age=<span class="number">15</span>, salary=<span class="number">2222.99</span>, Status=VOCATION&#125;, Employee&#123;name=<span class="string">&#x27;田七&#x27;</span>, age=<span class="number">12</span>, salary=<span class="number">5555.99</span>, Status=VOCATION&#125;, Employee&#123;name=<span class="string">&#x27;田七&#x27;</span>, age=<span class="number">13</span>, salary=<span class="number">5555.99</span>, Status=VOCATION&#125;, Employee&#123;name=<span class="string">&#x27;田七&#x27;</span>, age=<span class="number">18</span>, salary=<span class="number">5555.99</span>, Status=FREE&#125;, Employee&#123;name=<span class="string">&#x27;田七&#x27;</span>, age=<span class="number">18</span>, salary=<span class="number">5555.99</span>, Status=BUSY&#125;, Employee&#123;name=<span class="string">&#x27;java&#x27;</span>, age=<span class="number">21</span>, salary=<span class="number">5555.99</span>, Status=BUSY&#125;], <span class="literal">true</span>=[Employee&#123;name=<span class="string">&#x27;张三&#x27;</span>, age=<span class="number">42</span>, salary=<span class="number">9999.99</span>, Status=BUSY&#125;]&#125;</span><br><span class="line">--------------</span><br><span class="line"><span class="number">9999.99</span></span><br><span class="line">--------------</span><br><span class="line">[张三,李四,王五,赵六,田七,田七,田七,田七,java]</span><br></pre></td></tr></table></figure>
+
+<h2 id="Stream-API练习"><a href="#Stream-API练习" class="headerlink" title="Stream API练习"></a>Stream API练习</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//交易员类</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Trader</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> String city;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Trader</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Trader</span><span class="params">(String name, String city)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        <span class="built_in">this</span>.city = city;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setName</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getCity</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> city;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setCity</span><span class="params">(String city)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.city = city;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Trader [name=&quot;</span> + name + <span class="string">&quot;, city=&quot;</span> + city + <span class="string">&quot;]&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//交易类</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Transaction</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Trader trader;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> year;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> value;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Transaction</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Transaction</span><span class="params">(Trader trader, <span class="type">int</span> year, <span class="type">int</span> value)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.trader = trader;</span><br><span class="line">        <span class="built_in">this</span>.year = year;</span><br><span class="line">        <span class="built_in">this</span>.value = value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Trader <span class="title function_">getTrader</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> trader;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setTrader</span><span class="params">(Trader trader)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.trader = trader;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getYear</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> year;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setYear</span><span class="params">(<span class="type">int</span> year)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.year = year;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getValue</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setValue</span><span class="params">(<span class="type">int</span> value)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.value = value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Transaction [trader=&quot;</span> + trader + <span class="string">&quot;, year=&quot;</span> + year + <span class="string">&quot;, value=&quot;</span></span><br><span class="line">                + value + <span class="string">&quot;]&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TestTransaction</span> &#123;</span><br><span class="line"></span><br><span class="line">    List&lt;Transaction&gt; transactions = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Before</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">before</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">Trader</span> <span class="variable">raoul</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Trader</span>(<span class="string">&quot;Raoul&quot;</span>, <span class="string">&quot;Cambridge&quot;</span>);</span><br><span class="line">        <span class="type">Trader</span> <span class="variable">mario</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Trader</span>(<span class="string">&quot;Mario&quot;</span>, <span class="string">&quot;Milan&quot;</span>);</span><br><span class="line">        <span class="type">Trader</span> <span class="variable">alan</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Trader</span>(<span class="string">&quot;Alan&quot;</span>, <span class="string">&quot;Cambridge&quot;</span>);</span><br><span class="line">        <span class="type">Trader</span> <span class="variable">brian</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Trader</span>(<span class="string">&quot;Brian&quot;</span>, <span class="string">&quot;Cambridge&quot;</span>);</span><br><span class="line"></span><br><span class="line">        transactions = Arrays.asList(</span><br><span class="line">                <span class="keyword">new</span> <span class="title class_">Transaction</span>(brian, <span class="number">2011</span>, <span class="number">300</span>),</span><br><span class="line">                <span class="keyword">new</span> <span class="title class_">Transaction</span>(raoul, <span class="number">2012</span>, <span class="number">1000</span>),</span><br><span class="line">                <span class="keyword">new</span> <span class="title class_">Transaction</span>(raoul, <span class="number">2011</span>, <span class="number">400</span>),</span><br><span class="line">                <span class="keyword">new</span> <span class="title class_">Transaction</span>(mario, <span class="number">2012</span>, <span class="number">710</span>),</span><br><span class="line">                <span class="keyword">new</span> <span class="title class_">Transaction</span>(mario, <span class="number">2012</span>, <span class="number">700</span>),</span><br><span class="line">                <span class="keyword">new</span> <span class="title class_">Transaction</span>(alan, <span class="number">2012</span>, <span class="number">950</span>)</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//1. 找出2011年发生的所有交易， 并按交易额排序（从低到高）</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test1</span><span class="params">()</span>&#123;</span><br><span class="line">        transactions.stream().filter(transaction -&gt; transaction.getYear() == <span class="number">2011</span>)</span><br><span class="line">                .sorted(Comparator.comparingInt(Transaction::getValue))</span><br><span class="line">                <span class="comment">//.sorted((v1,v2)-&gt;v2.getValue() - v1.getValue())   从高到低</span></span><br><span class="line">                .forEach(System.out::println);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//2. 交易员都在哪些不同的城市工作过？</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test2</span><span class="params">()</span>&#123;</span><br><span class="line">        transactions.stream().map(transaction -&gt; transaction.getTrader().getCity())</span><br><span class="line">                .distinct().forEach(System.out::println);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//3. 查找所有来自剑桥的交易员，并按姓名排序</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test3</span><span class="params">()</span>&#123;</span><br><span class="line">        transactions.stream().map(Transaction::getTrader).filter(trader -&gt; trader.getCity().equals(<span class="string">&quot;Cambridge&quot;</span>))</span><br><span class="line">                .sorted(Comparator.comparing(Trader::getName)).distinct()</span><br><span class="line">                .forEach(System.out::println);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//4. 返回所有交易员的姓名字符串，按字母顺序排序</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test4</span><span class="params">()</span>&#123;</span><br><span class="line">        transactions.stream().map(transaction -&gt; transaction.getTrader().getName())</span><br><span class="line">                .sorted().forEach(System.out::println);</span><br><span class="line">        System.out.println(<span class="string">&quot;----------------&quot;</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">collect</span> <span class="operator">=</span> transactions.stream().map(transaction -&gt; transaction.getTrader().getName())</span><br><span class="line">                .sorted().distinct().collect(Collectors.joining(<span class="string">&quot;,&quot;</span>, <span class="string">&quot;[&quot;</span>, <span class="string">&quot;]&quot;</span>));</span><br><span class="line">        System.out.println(collect);</span><br><span class="line">        System.out.println(<span class="string">&quot;----------------&quot;</span>);</span><br><span class="line">        transactions.stream().map(transaction -&gt; transaction.getTrader().getName()).flatMap(TestTransaction::filterCharacter)</span><br><span class="line">                .sorted(String::compareToIgnoreCase).forEach(System.out::print);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Stream&lt;String&gt; <span class="title function_">filterCharacter</span><span class="params">(String str)</span>&#123;</span><br><span class="line">        List&lt;String&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (Character ch : str.toCharArray()) &#123;</span><br><span class="line">            list.add(ch.toString());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> list.stream();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//5. 有没有交易员是在米兰工作的？</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test5</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">boolean</span> <span class="variable">milan</span> <span class="operator">=</span> transactions.stream().anyMatch(transaction -&gt; transaction.getTrader().getCity().equals(<span class="string">&quot;Milan&quot;</span>));</span><br><span class="line">        System.out.println(milan);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//6. 打印生活在剑桥的交易员的所有交易额</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test6</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">Integer</span> <span class="variable">cambridge</span> <span class="operator">=</span> transactions.stream().filter(transaction -&gt; transaction.getTrader().getCity().equals(<span class="string">&quot;Cambridge&quot;</span>))</span><br><span class="line">                .map(Transaction::getValue).reduce(<span class="number">0</span>, Integer::sum);</span><br><span class="line">        <span class="type">Integer</span> <span class="variable">cambridge1</span> <span class="operator">=</span> transactions.stream().filter(transaction -&gt; transaction.getTrader().getCity().equals(<span class="string">&quot;Cambridge&quot;</span>))</span><br><span class="line">                .collect(Collectors.summingInt(Transaction::getValue));</span><br><span class="line">        <span class="type">Integer</span> <span class="variable">cambridge2</span> <span class="operator">=</span> transactions.stream().filter(transaction -&gt; transaction.getTrader().getCity().equals(<span class="string">&quot;Cambridge&quot;</span>))</span><br><span class="line">                .mapToInt(Transaction::getValue).sum();</span><br><span class="line"></span><br><span class="line">        System.out.println(cambridge);</span><br><span class="line">        System.out.println(cambridge1);</span><br><span class="line">        System.out.println(cambridge2);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//7. 所有交易中，最高的交易额是多少</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test7</span><span class="params">()</span>&#123;</span><br><span class="line">        Optional&lt;Integer&gt; max = transactions.stream().map(Transaction::getValue).max(Integer::compare);</span><br><span class="line">        System.out.println(max.orElse(<span class="number">0</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//8. 找到交易额最小的交易</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test8</span><span class="params">()</span>&#123;</span><br><span class="line">        Optional&lt;Transaction&gt; min = transactions.stream().min(Comparator.comparingInt(Transaction::getValue));</span><br><span class="line">        System.out.println(min.get());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/Java">Java</a>
+                  &nbsp;
+                
+                  <a class="hover-with-bg" href="/categories/Java8%E6%96%B0%E7%89%B9%E6%80%A7">Java8新特性</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/Java">Java</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "Stream&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "left",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

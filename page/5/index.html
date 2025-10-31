@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="仅限学习参考，有兴趣可以互相交流">
+  <meta name="author" content="张议">
+  <meta name="keywords" content="张议,Java,java,spring,SpringBoot,zhangyi">
+  <title>人生展馆</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>人生展馆</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">资料</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/index.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-md">
+        <div class="py-5 z-depth-3" id="board">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2021/02/21/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/%E6%8F%92%E5%85%A5%E5%B9%B6%E6%9B%B4%E6%96%B0/">
+        <p class="h4 index-header">插入并更新</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">INSERT ON DUPLICATE KEY UPDATE
+如果行作为新记录被插入，则受影响行的值为1；如果原有的记录被更新，则受影响行的值为2；如果更新的数据和已有的数据一模一样，则受影响的行数是1。
+
+原因是再插入之前会先查询一次，如果没有就插入，返回1，如果有但是值相同，不用更新则也返回1，如果更新则返回2。
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2021-02-21&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/MySQL">MySQL</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/MySQL">MySQL</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2021/02/01/%E5%90%8E%E7%AB%AF/Java/JVM/%E5%AF%B9%E8%B1%A1%E5%AE%9E%E4%BE%8B%E5%8C%96/">
+        <p class="h4 index-header">对象实例化</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">对象实例化
+
+创建对象的步骤判断对象对应的类是否加载、链接、初始化虚拟机遇到一条new指令，首先去检查这个指令的参数能否在Metaspace的常量池中定位到一个类的符号引用，并且检查这个符号引用代表的类是否已经被加载、解析和初始化。（即判断类元信息是否存在）。如果没有，那么在双亲委派模式下，使用当前类加载器ClassLoader+包名+类名为Key进行查找对应的.class文件。如果没有找到文件，则跑出ClassNotFoundException异常，如果找到，则进行类加载，并生成对应的Class类对象
+为对象分配内存首先计算对象占用空间大小，接着在堆中划分一块内存给新对象。如果实例成员变量是引用变量，仅分配引用变量空间即可，即4个字节大小。
+如果内存是规整的，那么虚拟机将采用的是指针碰撞法（Bump The Pointer）来为对象分配内存。意思是所有用过的内存在一边，空闲的内存在另外一边，中间放着一个指针作为分界点的指示器，分配内存就仅仅是把指针向空闲那边挪动一段与对象大小相等的距离罢了。如果垃圾收集器选择的是Serial、ParNew这种基于压缩算法的，虚拟机采用这种分配方式。一</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2021-02-01&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Java">Java</a>&nbsp;
+          
+            <a href="/categories/JVM">JVM</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Java">Java</a>&nbsp;
+          
+            <a href="/tags/JVM">JVM</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2021/01/03/%E5%90%8E%E7%AB%AF/Mybatis/%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90/">
+        <p class="h4 index-header">代码自动生成</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">代码配置类123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150151152153154155156package com.mega.werewolfmonitor.core.util;import com.baomidou.mybatisplus.annotation.DbType;import com.baomidou.mybatisplus.annotation</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2021-01-03&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Maybatis">Maybatis</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Maybatis">Maybatis</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/12/17/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%20Cluster/">
+        <p class="h4 index-header">Redis Cluster</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">呼唤集群为什么呼唤
+并发量
+数据量
+
+分区分布式数据库-数据分区
+
+顺序分区和哈希分区
+
+对比
+
+Redis Cluster架构
+节点     cluster有16384个节点 cluster-enabled:yes
+meet     节点通讯的基础
+指派槽    每个节点都有自己的指派槽，用于存储hash计算后的数据
+复制、高可用、分片
+
+meetcluster meet ip portredis-cli -h 127.0.0.1 -p 7000 cluster meet 127.0.0.1 7001
+分配槽1234cluster addslots slot[slot...]redis-cli -h 127.0.0.1 -p 7000 cluster addslots &#123;0...5461&#125;redis-cli -h 127.0.0.1 -p 7001 cluster addslots &#123;5462...10922&#125;redis-cli -h 127.0.0.1 -p 7002 cluster addslots &#123;10923...16383&</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-12-17&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/redis">redis</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/redis">redis</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/12/13/%E5%90%8E%E7%AB%AF/Java/JVM/%E6%96%B9%E6%B3%95%E5%8C%BA/">
+        <p class="h4 index-header">方法区</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">栈、堆、方法区的交互关系
+从线程共享与否的角度来看
+
+
+
+
+方法区的理解
+方法区和java堆一样，是各个线程共享的内存区域
+方法区在JVM启动的时候被创建，并且它的实际物理内存空间和Java堆区一样都可以是不连续的。
+方法区的大小，跟堆空间一样，可以选择固定大小或者可扩展。
+方法区的大小决定了系统可以保存多少个类，如果系统定义了太多的类，导致方法区溢出，虚拟机同样会抛出内存一处错误：java.lang.OutOfMemoryError:PermGen space 或者 java.lang.OutOfMemoryError: Metaspace
+关闭JVM就会释放这个区域的内存。
+
+设置方法区大小的参数
+jdk8以后  元数据区大小可以使用参数-XX:MetaspaceSize&#x3D;100m和-XX:MaxMetaspaceSize&#x3D;100m指定，替代上述原有的两个参数。  默认值依赖于平台。windows下，-XX:MetaspaceSize是21M，-XX:MaxMetaspaceSize的值是-1，即没有限制。  与永久代不同，如果不指定大小，默认情况下，虚拟机会耗</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-12-13&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Java">Java</a>&nbsp;
+          
+            <a href="/categories/JVM">JVM</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Java">Java</a>&nbsp;
+          
+            <a href="/tags/JVM">JVM</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/12/02/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%20Sentinel/">
+        <p class="h4 index-header">Redis Sentinel</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">主从复制高可用redis sentinel架构
+
+可以使用一套sentinel监控多套maseter，slave
+
+
+安装与配置Redis主节点启动redis-server redis-7000.conf
+配置
+12345port 7000daemonize yespidfile /var/run/redis-7000.pidlogfile &quot;7000.log&quot;dir &quot;/opt/soft/redis/data/&quot;
+
+Redis从节点启动redis-server redis-7001.conf
+配置
+123456port 7001daemonize yespidfile /var/run/redis-7001.pidlogfile &quot;7001.log&quot;dir &quot;/opt/soft/redis/data/&quot;slaveof 127.0.0.1 7000
+
+sentinel主要配置1234567port $&#123;port&#125;dir &quot;/opt/soft/redis/data/&quot;l</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-12-02&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/redis">redis</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/redis">redis</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/19/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6/">
+        <p class="h4 index-header">主从复制</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">作用
+数据副本
+扩展读性能
+
+实现方式slaveof命令12slaveof 复制（异步）slaveof no one 取消复制（不会清除历史数据，只是不再同步新的数据）
+
+配置12slaveof ip portslave-read-only yes
+
+比较
+
+
+方式
+命令
+配置
+
+
+
+优点
+无需重启
+统一配置
+
+
+缺点
+不便于管理
+需要重启
+
+
+全量复制
+
+全量复制开销
+bgsave时间
+RDB文件网络传输时间
+从节点清空数据时间
+从节点加载RDB的时间
+可能的AOF重写时间
+
+部分复制
+
+故障转移
+故障发现
+故障恢复
+资格检查
+准备选举时间
+发起选举
+选举投票
+替换主节点
+
+
+
+开发与运维中的问题读写分离
+读写分离：读流量分摊到从节点。
+可能遇到问题：
+复制数据延迟
+读到过期数据
+从节点故障
+
+
+
+主从配置不一致
+例如maxmemory不一致：丢失数据
+例如数据结构优化参数（例如hash-max-ziplist-entries）:内存不一致
+
+规避全量复制
+第一次全量复制
+第一次不可避免
+小主节点、低峰
+
+
+节点运行ID不匹配
+主节点重起（运行ID变化）
+故障转移，例如哨兵或集群
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-19&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/redis">redis</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/redis">redis</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/19/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/%E5%BC%80%E5%8F%91%E8%BF%90%E7%BB%B4%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">
+        <p class="h4 index-header">开发运维常见问题</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">fork操作
+同步操作
+内存量息息相关：内存越大，耗时越长（与机器类型有关）
+info：latest_fork_usec
+
+改善fork
+优先使用物理机或者高效支持fork操作的虚拟化技术
+控制Redis实例最大可用内存：maxmemory
+合理配置Linux内存分配策略：vm.overcommit_memory &#x3D; 1
+降低fork频率：例如放宽AOF重写自动触发时机，不必要的全量复制
+
+子进程开销和优化
+CPU：
+
+
+开销：RDB和AOF文件生成，属于CPU密集型
+优化：不做CPU绑定，不和CPU密集型部署
+
+
+内存：
+
+
+开销：fork内存开销，copy-on-wirte
+优化：echo never &gt; &#x2F;sys&#x2F;kernel&#x2F;mm&#x2F;transparent_hugepage&#x2F;enabled
+
+
+硬盘
+
+
+开销：AOF和RDB文件写入，可用结合iostat，iotop分析
+
+硬盘优化
+不要和高硬盘负载服务部署一起：存储服务、消息队列等
+no-appendfsync-on-rewrite &#x3D; yes
+根据写入</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-19&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/redis">redis</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/redis">redis</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/18/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%E6%8C%81%E4%B9%85%E5%8C%96/">
+        <p class="h4 index-header">Redis持久化</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">持久化的作用什么是持久化
+redis所有数据保存在内存中，对数据的更新将一部保存到磁盘上。
+
+
+
+持久化方式
+
+RDB什么是RDB
+
+触发机制-主要三种方式
+save（同步）
+bgsavve（异步）
+自动
+
+save命令
+
+因为是同步命令，并且redis是单线程，所以会阻塞其他命令
+bgsave命令
+一般fork命令执行比较快，所以不会阻塞redis文件策略和复杂度与save命令相同。
+自动生成RDB
+
+
+配置
+seconds
+changes
+
+
+
+save
+900
+1
+
+
+save
+300
+10
+
+
+save
+60
+10000
+
+
+配置12345678save 900 1save 300 10save 60 10000                       # 可以做自己策略的修改dbfilename dump.rdb                 # 文件名字dir ./                              # 生成文件路径为当前路径stop-writes-on-bgsave-error yes     # 遇到错误停止生成rdbcompression</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/redis">redis</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/redis">redis</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/18/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/GEO/">
+        <p class="h4 index-header">GEO</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">GEO
+GEO(地理信息定位)：存经纬度，计算两地距离，范围计算等
+
+例：
+北京：116.28，39.55天津：117.12，39.08
+应用场景
+
+APIgeoadd12345678geoadd key longitude latitude memeber[longitude latitude memeber]# 增加地理位置信息127.0.0.1:6379&gt; geoadd city:location 120.17759030553346 30.250102922876387 保佑桥西弄5号(integer) 1127.0.0.1:6379&gt; geoadd city:location 120.17095719788504 30.262918390984563 延安路306号天阳明珠商业中心A座701(integer) 1
+
+geopos123456geopos key  memeber [memeber]# 获取地理位置信息127.0.0.1:6379&gt; geopos city:location 保佑桥西弄5号1) 1) &quot;120.177589952945</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/redis">redis</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/redis">redis</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <nav aria-label="index posts navigation">
+    <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/4/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/6/"><i class="fas fa-angle-double-right"></i></a>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByClassName("page-number")) {
+      ele.href += '#board';
+    }
+  </script>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "欢迎参观我的知识站，这里记录着我的学习经历&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "left",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="仅限学习参考，有兴趣可以互相交流">
+  <meta name="author" content="张议">
+  <meta name="keywords" content="张议,Java,java,spring,SpringBoot,zhangyi">
+  <title>idea选择maven后无法构建项目 ~ 人生展馆</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>人生展馆</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">资料</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/index.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期二, 十二月 6日 2022, 10:16 晚上
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    1.7k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      10 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="问题状况"><a href="#问题状况" class="headerlink" title="问题状况"></a>问题状况</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br></pre></td><td class="code"><pre><span class="line">java.lang.RuntimeException: java.lang.RuntimeException: org.codehaus.plexus.component.repository.exception.ComponentLookupException: com.google.inject.ProvisionException: Unable to provision, see the following errors:</span><br><span class="line"></span><br><span class="line"><span class="number">1</span>) Error injecting constructor, java.lang.NoSuchMethodError: org.apache.maven.model.validation.DefaultModelValidator: method <span class="string">&#x27;void &lt;init&gt;()&#x27;</span> not found</span><br><span class="line">  at org.jetbrains.idea.maven.server.embedder.CustomModelValidator.&lt;init&gt;(Unknown Source)</span><br><span class="line">  <span class="keyword">while</span> locating org.jetbrains.idea.maven.server.embedder.CustomModelValidator</span><br><span class="line">  at ClassRealm[maven.ext, parent: ClassRealm[plexus.core, parent: <span class="literal">null</span>]] (via modules: org.eclipse.sisu.wire.WireModule -&gt; org.eclipse.sisu.plexus.PlexusBindingModule)</span><br><span class="line">  <span class="keyword">while</span> locating org.apache.maven.model.validation.ModelValidator annotated with <span class="meta">@com</span>.google.inject.name.Named(value=<span class="string">&quot;ide&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="number">1</span> error</span><br><span class="line">      role: org.apache.maven.model.validation.ModelValidator</span><br><span class="line">  roleHint: ide</span><br><span class="line">	at org.jetbrains.idea.maven.server.Maven3XServerEmbedder.getComponent(Maven3XServerEmbedder.java:<span class="number">489</span>)</span><br><span class="line">	at org.jetbrains.idea.maven.server.Maven3XServerEmbedder.customizeComponents(Maven3XServerEmbedder.java:<span class="number">578</span>)</span><br><span class="line">	at org.jetbrains.idea.maven.server.Maven3XServerEmbedder.customize(Maven3XServerEmbedder.java:<span class="number">546</span>)</span><br><span class="line">	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</span><br><span class="line">	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:<span class="number">62</span>)</span><br><span class="line">	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:<span class="number">43</span>)</span><br><span class="line">	at java.base/java.lang.reflect.Method.invoke(Method.java:<span class="number">566</span>)</span><br><span class="line">	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:<span class="number">359</span>)</span><br><span class="line">	at java.rmi/sun.rmi.transport.Transport$<span class="number">1.</span>run(Transport.java:<span class="number">200</span>)</span><br><span class="line">	at java.rmi/sun.rmi.transport.Transport$<span class="number">1.</span>run(Transport.java:<span class="number">197</span>)</span><br><span class="line">	at java.base/java.security.AccessController.doPrivileged(Native Method)</span><br><span class="line">	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:<span class="number">196</span>)</span><br><span class="line">	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:<span class="number">562</span>)</span><br><span class="line">	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:<span class="number">796</span>)</span><br><span class="line">	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$<span class="number">0</span>(TCPTransport.java:<span class="number">677</span>)</span><br><span class="line">	at java.base/java.security.AccessController.doPrivileged(Native Method)</span><br><span class="line">	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:<span class="number">676</span>)</span><br><span class="line">	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:<span class="number">1128</span>)</span><br><span class="line">	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:<span class="number">628</span>)</span><br><span class="line">	at java.base/java.lang.Thread.run(Thread.java:<span class="number">834</span>)</span><br><span class="line">	at java.rmi/sun.rmi.transport.StreamRemoteCall.exceptionReceivedFromServer(StreamRemoteCall.java:<span class="number">303</span>)</span><br><span class="line">	at java.rmi/sun.rmi.transport.StreamRemoteCall.executeCall(StreamRemoteCall.java:<span class="number">279</span>)</span><br><span class="line">	at java.rmi/sun.rmi.server.UnicastRef.invoke(UnicastRef.java:<span class="number">164</span>)</span><br><span class="line">	at java.rmi/java.rmi.server.RemoteObjectInvocationHandler.invokeRemoteMethod(RemoteObjectInvocationHandler.java:<span class="number">217</span>)</span><br><span class="line">	at java.rmi/java.rmi.server.RemoteObjectInvocationHandler.invoke(RemoteObjectInvocationHandler.java:<span class="number">162</span>)</span><br><span class="line">	at com.sun.proxy.$Proxy144.customize(Unknown Source)</span><br><span class="line">	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</span><br><span class="line">	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:<span class="number">62</span>)</span><br><span class="line">	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:<span class="number">43</span>)</span><br><span class="line">	at java.base/java.lang.reflect.Method.invoke(Method.java:<span class="number">566</span>)</span><br><span class="line">	at com.intellij.execution.rmi.RemoteUtil.invokeRemote(RemoteUtil.java:<span class="number">155</span>)</span><br><span class="line">	at com.intellij.execution.rmi.RemoteUtil.access$<span class="number">400</span>(RemoteUtil.java:<span class="number">25</span>)</span><br><span class="line">	at com.intellij.execution.rmi.RemoteUtil$<span class="number">1.</span>lambda$invoke$<span class="number">0</span>(RemoteUtil.java:<span class="number">139</span>)</span><br><span class="line">	at com.intellij.openapi.util.ClassLoaderUtil.computeWithClassLoader(ClassLoaderUtil.java:<span class="number">31</span>)</span><br><span class="line">	at com.intellij.execution.rmi.RemoteUtil.executeWithClassLoader(RemoteUtil.java:<span class="number">207</span>)</span><br><span class="line">	at com.intellij.execution.rmi.RemoteUtil$<span class="number">1.</span>invoke(RemoteUtil.java:<span class="number">139</span>)</span><br><span class="line">	at com.sun.proxy.$Proxy144.customize(Unknown Source)</span><br><span class="line">	at org.jetbrains.idea.maven.server.MavenEmbedderWrapper.doCustomize(MavenEmbedderWrapper.java:<span class="number">92</span>)</span><br><span class="line">	at org.jetbrains.idea.maven.server.MavenEmbedderWrapper.lambda$customizeForResolve$<span class="number">1</span>(MavenEmbedderWrapper.java:<span class="number">65</span>)</span><br><span class="line">	at org.jetbrains.idea.maven.server.RemoteObjectWrapper.perform(RemoteObjectWrapper.java:<span class="number">76</span>)</span><br><span class="line">	at org.jetbrains.idea.maven.server.MavenEmbedderWrapper.customizeForResolve(MavenEmbedderWrapper.java:<span class="number">64</span>)</span><br><span class="line">	at org.jetbrains.idea.maven.project.MavenProjectResolver.resolve(MavenProjectResolver.java:<span class="number">77</span>)</span><br><span class="line">	at org.jetbrains.idea.maven.project.MavenProjectsProcessorResolvingTask.perform(MavenProjectsProcessorResolvingTask.java:<span class="number">45</span>)</span><br><span class="line">	at org.jetbrains.idea.maven.project.MavenProjectsProcessor.doProcessPendingTasks(MavenProjectsProcessor.java:<span class="number">141</span>)</span><br><span class="line">	at org.jetbrains.idea.maven.project.MavenProjectsProcessor.access$<span class="number">000</span>(MavenProjectsProcessor.java:<span class="number">35</span>)</span><br><span class="line">	at org.jetbrains.idea.maven.project.MavenProjectsProcessor$<span class="number">1.</span>run(MavenProjectsProcessor.java:<span class="number">110</span>)</span><br><span class="line">	at org.jetbrains.idea.maven.utils.MavenUtil.lambda$runInBackground$<span class="number">5</span>(MavenUtil.java:<span class="number">488</span>)</span><br><span class="line">	at com.intellij.util.RunnableCallable.call(RunnableCallable.java:<span class="number">20</span>)</span><br><span class="line">	at com.intellij.util.RunnableCallable.call(RunnableCallable.java:<span class="number">11</span>)</span><br><span class="line">	at com.intellij.openapi.application.impl.ApplicationImpl$<span class="number">1.</span>call(ApplicationImpl.java:<span class="number">255</span>)</span><br><span class="line">	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:<span class="number">264</span>)</span><br><span class="line">	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:<span class="number">1128</span>)</span><br><span class="line">	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:<span class="number">628</span>)</span><br><span class="line">	at java.base/java.lang.Thread.run(Thread.java:<span class="number">834</span>)</span><br><span class="line">Caused by: java.lang.RuntimeException: org.codehaus.plexus.component.repository.exception.ComponentLookupException: com.google.inject.ProvisionException: Unable to provision, see the following errors:</span><br><span class="line"></span><br><span class="line"><span class="number">1</span>) Error injecting constructor, java.lang.NoSuchMethodError: org.apache.maven.model.validation.DefaultModelValidator: method <span class="string">&#x27;void &lt;init&gt;()&#x27;</span> not found</span><br><span class="line">  at org.jetbrains.idea.maven.server.embedder.CustomModelValidator.&lt;init&gt;(Unknown Source)</span><br><span class="line">  <span class="keyword">while</span> locating org.jetbrains.idea.maven.server.embedder.CustomModelValidator</span><br><span class="line">  at ClassRealm[maven.ext, parent: ClassRealm[plexus.core, parent: <span class="literal">null</span>]] (via modules: org.eclipse.sisu.wire.WireModule -&gt; org.eclipse.sisu.plexus.PlexusBindingModule)</span><br><span class="line">  <span class="keyword">while</span> locating org.apache.maven.model.validation.ModelValidator annotated with <span class="meta">@com</span>.google.inject.name.Named(value=<span class="string">&quot;ide&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="number">1</span> error</span><br><span class="line">      role: org.apache.maven.model.validation.ModelValidator</span><br><span class="line">  roleHint: ide</span><br><span class="line">	at org.codehaus.plexus.DefaultPlexusContainer.lookup(DefaultPlexusContainer.java:<span class="number">267</span>)</span><br><span class="line">	at org.codehaus.plexus.DefaultPlexusContainer.lookup(DefaultPlexusContainer.java:<span class="number">243</span>)</span><br><span class="line">	at org.jetbrains.idea.maven.server.Maven3XServerEmbedder.getComponent(Maven3XServerEmbedder.java:<span class="number">486</span>)</span><br><span class="line">	at org.jetbrains.idea.maven.server.Maven3XServerEmbedder.customizeComponents(Maven3XServerEmbedder.java:<span class="number">578</span>)</span><br><span class="line">	at org.jetbrains.idea.maven.server.Maven3XServerEmbedder.customize(Maven3XServerEmbedder.java:<span class="number">546</span>)</span><br><span class="line">	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</span><br><span class="line">	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:<span class="number">62</span>)</span><br><span class="line">	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:<span class="number">43</span>)</span><br><span class="line">	at java.base/java.lang.reflect.Method.invoke(Method.java:<span class="number">566</span>)</span><br><span class="line">	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:<span class="number">359</span>)</span><br><span class="line">	at java.rmi/sun.rmi.transport.Transport$<span class="number">1.</span>run(Transport.java:<span class="number">200</span>)</span><br><span class="line">	at java.rmi/sun.rmi.transport.Transport$<span class="number">1.</span>run(Transport.java:<span class="number">197</span>)</span><br><span class="line">	at java.base/java.security.AccessController.doPrivileged(Native Method)</span><br><span class="line">	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:<span class="number">196</span>)</span><br><span class="line">	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:<span class="number">562</span>)</span><br><span class="line">	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:<span class="number">796</span>)</span><br><span class="line">	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$<span class="number">0</span>(TCPTransport.java:<span class="number">677</span>)</span><br><span class="line">	at java.base/java.security.AccessController.doPrivileged(Native Method)</span><br><span class="line">	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:<span class="number">676</span>)</span><br><span class="line">	... <span class="number">3</span> more</span><br><span class="line">Caused by: java.lang.RuntimeException: com.google.inject.ProvisionException: Unable to provision, see the following errors:</span><br><span class="line"></span><br><span class="line"><span class="number">1</span>) Error injecting constructor, java.lang.NoSuchMethodError: org.apache.maven.model.validation.DefaultModelValidator: method <span class="string">&#x27;void &lt;init&gt;()&#x27;</span> not found</span><br><span class="line">  at org.jetbrains.idea.maven.server.embedder.CustomModelValidator.&lt;init&gt;(Unknown Source)</span><br><span class="line">  <span class="keyword">while</span> locating org.jetbrains.idea.maven.server.embedder.CustomModelValidator</span><br><span class="line">  at ClassRealm[maven.ext, parent: ClassRealm[plexus.core, parent: <span class="literal">null</span>]] (via modules: org.eclipse.sisu.wire.WireModule -&gt; org.eclipse.sisu.plexus.PlexusBindingModule)</span><br><span class="line">  <span class="keyword">while</span> locating org.apache.maven.model.validation.ModelValidator annotated with <span class="meta">@com</span>.google.inject.name.Named(value=<span class="string">&quot;ide&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="number">1</span> error</span><br><span class="line">	at com.google.inject.internal.InternalProvisionException.toProvisionException(InternalProvisionException.java:<span class="number">226</span>)</span><br><span class="line">	at com.google.inject.internal.InjectorImpl$<span class="number">1.</span>get(InjectorImpl.java:<span class="number">1053</span>)</span><br><span class="line">	at org.eclipse.sisu.inject.LazyBeanEntry.getValue(LazyBeanEntry.java:<span class="number">81</span>)</span><br><span class="line">	at org.eclipse.sisu.plexus.LazyPlexusBean.getValue(LazyPlexusBean.java:<span class="number">51</span>)</span><br><span class="line">	at org.codehaus.plexus.DefaultPlexusContainer.lookup(DefaultPlexusContainer.java:<span class="number">263</span>)</span><br><span class="line">	... <span class="number">21</span> more</span><br><span class="line">Caused by: java.lang.NoSuchMethodError: org.apache.maven.model.validation.DefaultModelValidator: method <span class="string">&#x27;void &lt;init&gt;()&#x27;</span> not found</span><br><span class="line">	at org.jetbrains.idea.maven.server.embedder.CustomModelValidator.&lt;init&gt;(CustomModelValidator.java:<span class="number">36</span>)</span><br><span class="line">	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)</span><br><span class="line">	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:<span class="number">62</span>)</span><br><span class="line">	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:<span class="number">45</span>)</span><br><span class="line">	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:<span class="number">490</span>)</span><br><span class="line">	at com.google.inject.internal.DefaultConstructionProxyFactory$ReflectiveProxy.newInstance(DefaultConstructionProxyFactory.java:<span class="number">126</span>)</span><br><span class="line">	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:<span class="number">114</span>)</span><br><span class="line">	at com.google.inject.internal.ConstructorInjector.access$<span class="number">000</span>(ConstructorInjector.java:<span class="number">32</span>)</span><br><span class="line">	at com.google.inject.internal.ConstructorInjector$<span class="number">1.</span>call(ConstructorInjector.java:<span class="number">98</span>)</span><br><span class="line">	at com.google.inject.internal.ProvisionListenerStackCallback$Provision.provision(ProvisionListenerStackCallback.java:<span class="number">112</span>)</span><br><span class="line">	at com.google.inject.internal.ProvisionListenerStackCallback$Provision.provision(ProvisionListenerStackCallback.java:<span class="number">127</span>)</span><br><span class="line">	at com.google.inject.internal.ProvisionListenerStackCallback.provision(ProvisionListenerStackCallback.java:<span class="number">66</span>)</span><br><span class="line">	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:<span class="number">93</span>)</span><br><span class="line">	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:<span class="number">306</span>)</span><br><span class="line">	at com.google.inject.internal.InjectorImpl$<span class="number">1.</span>get(InjectorImpl.java:<span class="number">1050</span>)</span><br><span class="line">	at com.google.inject.internal.InjectorImpl.getInstance(InjectorImpl.java:<span class="number">1086</span>)</span><br><span class="line">	at org.eclipse.sisu.space.AbstractDeferredClass.get(AbstractDeferredClass.java:<span class="number">48</span>)</span><br><span class="line">	at com.google.inject.internal.ProviderInternalFactory.provision(ProviderInternalFactory.java:<span class="number">85</span>)</span><br><span class="line">	at com.google.inject.internal.InternalFactoryToInitializableAdapter.provision(InternalFactoryToInitializableAdapter.java:<span class="number">57</span>)</span><br><span class="line">	at com.google.inject.internal.ProviderInternalFactory$<span class="number">1.</span>call(ProviderInternalFactory.java:<span class="number">66</span>)</span><br><span class="line">	at com.google.inject.internal.ProvisionListenerStackCallback$Provision.provision(ProvisionListenerStackCallback.java:<span class="number">112</span>)</span><br><span class="line">	at org.eclipse.sisu.bean.BeanScheduler$CycleActivator.onProvision(BeanScheduler.java:<span class="number">230</span>)</span><br><span class="line">	at com.google.inject.internal.ProvisionListenerStackCallback$Provision.provision(ProvisionListenerStackCallback.java:<span class="number">120</span>)</span><br><span class="line">	at com.google.inject.internal.ProvisionListenerStackCallback.provision(ProvisionListenerStackCallback.java:<span class="number">66</span>)</span><br><span class="line">	at com.google.inject.internal.ProviderInternalFactory.circularGet(ProviderInternalFactory.java:<span class="number">61</span>)</span><br><span class="line">	at com.google.inject.internal.InternalFactoryToInitializableAdapter.get(InternalFactoryToInitializableAdapter.java:<span class="number">47</span>)</span><br><span class="line">	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:<span class="number">40</span>)</span><br><span class="line">	at com.google.inject.internal.SingletonScope$<span class="number">1.</span>get(SingletonScope.java:<span class="number">168</span>)</span><br><span class="line">	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:<span class="number">39</span>)</span><br><span class="line">	at com.google.inject.internal.InjectorImpl$<span class="number">1.</span>get(InjectorImpl.java:<span class="number">1050</span>)</span><br><span class="line">	... <span class="number">24</span> more</span><br><span class="line"><span class="number">2022</span>-<span class="number">12</span>-<span class="number">06</span> <span class="number">15</span>:<span class="number">49</span>:08,<span class="number">523</span> [ <span class="number">155953</span>]  ERROR -      #org.jetbrains.idea.maven - IntelliJ IDEA <span class="number">2020.1</span><span class="number">.1</span>  Build #IU-<span class="number">201.7223</span><span class="number">.91</span> </span><br><span class="line"><span class="number">2022</span>-<span class="number">12</span>-<span class="number">06</span> <span class="number">15</span>:<span class="number">49</span>:08,<span class="number">523</span> [ <span class="number">155953</span>]  ERROR -      #org.jetbrains.idea.maven - JDK: <span class="number">11.0</span><span class="number">.6</span>; VM: OpenJDK <span class="number">64</span>-Bit Server VM; Vendor: JetBrains s.r.o </span><br><span class="line"><span class="number">2022</span>-<span class="number">12</span>-<span class="number">06</span> <span class="number">15</span>:<span class="number">49</span>:08,<span class="number">523</span> [ <span class="number">155953</span>]  ERROR -      #org.jetbrains.idea.maven - OS: Windows <span class="number">10</span> </span><br><span class="line"><span class="number">2022</span>-<span class="number">12</span>-<span class="number">06</span> <span class="number">15</span>:<span class="number">49</span>:08,<span class="number">525</span> [ <span class="number">155955</span>]  ERROR -      #org.jetbrains.idea.maven - Last Action: Maven.Reimport </span><br></pre></td></tr></table></figure>
+
+<p>idea选择maven版本3.8.6构建java8，springboot版本2.6.3项目报错</p>
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>换成maven3.6.3重新构建项目即可</p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/%E9%94%99%E8%AF%AF">错误</a>
+                  &nbsp;
+                
+                  <a class="hover-with-bg" href="/categories/Maven">Maven</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/IDEA">IDEA</a>
+                
+                  <a class="hover-with-bg" href="/tags/%E9%94%99%E8%AF%AF">错误</a>
+                
+                  <a class="hover-with-bg" href="/tags/Maven">Maven</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "idea选择maven后无法构建项目&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "left",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

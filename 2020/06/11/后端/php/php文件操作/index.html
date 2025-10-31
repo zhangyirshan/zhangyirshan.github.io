@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="仅限学习参考，有兴趣可以互相交流">
+  <meta name="author" content="张议">
+  <meta name="keywords" content="张议,Java,java,spring,SpringBoot,zhangyi">
+  <title>php文件操作 ~ 人生展馆</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>人生展馆</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">资料</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/index.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期四, 六月 11日 2020, 10:15 晚上
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    1.4k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      5 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="读取文件"><a href="#读取文件" class="headerlink" title="读取文件"></a>读取文件</h2><h3 id="readfile读取文件"><a href="#readfile读取文件" class="headerlink" title="readfile读取文件"></a>readfile读取文件</h3><blockquote>
+<p>传入一个文件路径，输出一个文件。</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> <span class="title function_ invoke__">readfile</span> ( <span class="keyword">string</span> $文件名)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//linux类的读了方式</span></span><br><span class="line"><span class="title function_ invoke__">readfile</span>(<span class="string">&quot;/home/paul/test.txt&quot;</span>);</span><br><span class="line"><span class="comment">//windows类的读取方式</span></span><br><span class="line"><span class="title function_ invoke__">readfile</span>(<span class="string">&quot;c:\\boot.ini&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>注意：上面的代码中windows的斜线是\斜线，可能会转义掉一些字符。因此，我们写的时候写上两个斜线。</p>
+<h3 id="file-get-contents打开文件"><a href="#file-get-contents打开文件" class="headerlink" title="file_get_contents打开文件"></a>file_get_contents打开文件</h3><blockquote>
+<p>传入一个文件或文件路径，打开这个文件返回文件的内容。文件的内容是一个字符串。</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">string</span> <span class="title function_ invoke__">file_get_contents</span> ( <span class="keyword">string</span> filename)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//假设我们有一个多行的文件叫NoAlike.txt，没有的话你可以新建一个这个文件</span></span><br><span class="line"><span class="variable">$filename</span> = <span class="string">&#x27;NoAlike.txt&#x27;</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//打开这个文件，将文件内容赋值给$filestring</span></span><br><span class="line"><span class="variable">$filestring</span> = <span class="title function_ invoke__">file_get_contents</span>(<span class="variable">$filename</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//因为每一行有一个回车即\n，我用\n来把这个字符串切割成数组</span></span><br><span class="line"><span class="variable">$filearray</span> = <span class="title function_ invoke__">explode</span>(<span class="string">&quot;\n&quot;</span>, <span class="variable">$filestring</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//把切割成的数组，下标赋值给$key,值赋值给$val，每次循环将$key加1。</span></span><br><span class="line"><span class="keyword">while</span> (<span class="keyword">list</span>(<span class="variable">$key</span>, <span class="variable">$val</span>) = <span class="title function_ invoke__">each</span>(<span class="variable">$filearray</span>)) &#123;</span><br><span class="line">    ++<span class="variable">$key</span>;</span><br><span class="line">    <span class="variable">$val</span> = <span class="title function_ invoke__">trim</span>(<span class="variable">$val</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//用的单引号，单引号不解释变量进行了拼接而已</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">&#x27;Line&#x27;</span> . <span class="variable">$key</span> .<span class="string">&#x27;:&#x27;</span>.  <span class="variable">$val</span>.<span class="string">&#x27;&lt;br /&gt;&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="fopen、fread、fclose操作读取文件"><a href="#fopen、fread、fclose操作读取文件" class="headerlink" title="fopen、fread、fclose操作读取文件"></a>fopen、fread、fclose操作读取文件</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">resource <span class="title function_ invoke__">fopen</span> ( <span class="keyword">string</span> $文件名, <span class="keyword">string</span> 模式)</span><br><span class="line"><span class="keyword">string</span> <span class="title function_ invoke__">fread</span> ( resource $操作资源, <span class="keyword">int</span> 读取长度)</span><br><span class="line"><span class="keyword">bool</span> <span class="title function_ invoke__">fclose</span> ( resource $操作资源 )</span><br></pre></td></tr></table></figure>
+
+<p>通过上面的函数我们来讲解资源类型的通常操作方式：</p>
+<ol>
+<li>打开资源</li>
+<li>使用相关函数进行操作</li>
+<li>关闭资源</li>
+</ol>
+<h4 id="fopen函数"><a href="#fopen函数" class="headerlink" title="fopen函数"></a>fopen函数</h4><p>fopen函数的功能是打开文件，参数主要有两个：</p>
+<ol>
+<li>文件打开的路径</li>
+<li>打开文件的模式</li>
+</ol>
+<p>返回类型是一个资源类型，我们第一次遇到了之前基础类型的时候讲到的资源类型。<br>资源类型需要其他的函数来操作这个资源。所有的资源有打开就要有关闭。</p>
+<h5 id="fopen的模式"><a href="#fopen的模式" class="headerlink" title="fopen的模式"></a>fopen的模式</h5><table>
+<thead>
+<tr>
+<th>模式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>r</td>
+<td>只读方式打开，将文件指针指向文件头。</td>
+</tr>
+<tr>
+<td>r+</td>
+<td>读写方式打开，将文件指针指向文件头。</td>
+</tr>
+<tr>
+<td>w</td>
+<td>写入方式打开，将文件指针指向文件头并将文件大小截为零。如果文件不存在则尝试创建</td>
+</tr>
+<tr>
+<td>w+</td>
+<td>读写方式打开，将文件指针指向文件头并将文件大小截为零。如果文件不存在则尝试创建</td>
+</tr>
+<tr>
+<td>a</td>
+<td>写入方式打开，将文件指针指向文件末尾。如果文件不存在则尝试创建</td>
+</tr>
+<tr>
+<td>a+</td>
+<td>读写方式打开，将文件指针指向文件末尾。如果文件不存在则尝试创建之</td>
+</tr>
+<tr>
+<td>x</td>
+<td>创建并以写入方式打开，将文件指针指向文件头。如果文件已存在，则 fopen() 调用失败并返回 FALSE，并生成一条 E_WARNING 级别的错误信息。如果文件不存在则尝试创建</td>
+</tr>
+<tr>
+<td>x+</td>
+<td>创建并以读写方式打开，将文件指针指向文件头。如果文件已存在，则 fopen() 调用失败并返回 FALSE，并生成一条 E_WARNING 级别的错误信息。如果文件不存在则尝试创建</td>
+</tr>
+</tbody></table>
+<h4 id="fread函数"><a href="#fread函数" class="headerlink" title="fread函数"></a>fread函数</h4><blockquote>
+<p>函数的功能的功能是读取打开的文件资源。读取指定长度的文件资源，读取一部份向后移动一部份。至到文件结尾。</p>
+</blockquote>
+<h4 id="fclose函数"><a href="#fclose函数" class="headerlink" title="fclose函数"></a>fclose函数</h4><blockquote>
+<p>fclose函数的功能是关闭资源。资源有打开就有关闭。</p>
+</blockquote>
+<h2 id="写入文件"><a href="#写入文件" class="headerlink" title="写入文件"></a>写入文件</h2><h3 id="file-put-contents写入文件"><a href="#file-put-contents写入文件" class="headerlink" title="file_put_contents写入文件"></a>file_put_contents写入文件</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> <span class="title function_ invoke__">file_put_contents</span> ( <span class="keyword">string</span> $文件路径, <span class="keyword">string</span> $写入数据])</span><br></pre></td></tr></table></figure>
+
+<p>功能：向指定的文件当中写入一个字符串，如果文件不存在则创建文件。返回的是写入的字节长度</p>
+<h3 id="fwrite配合fopen进行写入操作"><a href="#fwrite配合fopen进行写入操作" class="headerlink" title="fwrite配合fopen进行写入操作"></a>fwrite配合fopen进行写入操作</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> <span class="title function_ invoke__">fwrite</span> ( resource $文件资源变量, <span class="keyword">string</span> $写入的字符串 [, <span class="keyword">int</span> 长度])</span><br><span class="line"><span class="comment">// 注：fwrite的别名函数是fputs</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">   <span class="variable">$filename</span> = <span class="string">&#x27;test.txt&#x27;</span>;</span><br><span class="line">   <span class="variable">$fp</span>= <span class="title function_ invoke__">fopen</span>(<span class="variable">$filename</span>, <span class="string">&quot;w&quot;</span>);</span><br><span class="line">   <span class="variable">$len</span> = <span class="title function_ invoke__">fwrite</span>(<span class="variable">$fp</span>, <span class="string">&#x27;我是一只来自北方的狼，却在南方冻成了狗&#x27;</span>);</span><br><span class="line">   <span class="title function_ invoke__">fclose</span>(<span class="variable">$fp</span>);</span><br><span class="line">   <span class="keyword">print</span> <span class="variable">$len</span> .<span class="string">&#x27;字节被写入了\n&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>总结：</p>
+<ol>
+<li>不论有没有新建都会打开文件重新写入</li>
+<li>原有的文件内容会被覆盖掉</li>
+<li>文件不存在会创建</li>
+</ol>
+<h2 id="创建临时文件"><a href="#创建临时文件" class="headerlink" title="创建临时文件"></a>创建临时文件</h2><p>我们之前创建的文件都是永久文件。</p>
+<p>而创建临时文件在我们平时的项目开发中也非常有用。创建临时文件的几个好处：</p>
+<p>文完后即删除</p>
+<p>不需要去维护这个文件的删除状态</p>
+<p>例如：我需要把A的文件内容转存B里面，把B的文件内容转存到C里面。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">resource <span class="title function_ invoke__">tmpfile</span> ( )</span><br></pre></td></tr></table></figure>
+
+<p>功能：创建一个临时文件，返回资源类型。关闭文件即被删除。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建了一个临时文件</span></span><br><span class="line"><span class="variable">$handle</span> = <span class="title function_ invoke__">tmpfile</span>();</span><br><span class="line"><span class="comment">//向里面写入了数据</span></span><br><span class="line"><span class="variable">$numbytes</span> = <span class="title function_ invoke__">fwrite</span>(<span class="variable">$handle</span>, <span class="string">&#x27;写入临时文件&#x27;</span>);</span><br><span class="line"><span class="comment">//关闭临时文件，文件即被删除</span></span><br><span class="line"><span class="title function_ invoke__">fclose</span>(<span class="variable">$handle</span>);</span><br><span class="line"><span class="keyword">echo</span>  <span class="string">&#x27;向临时文件中写入了&#x27;</span>.<span class="variable">$numbytes</span> . <span class="string">&#x27;个字节&#x27;</span>;</span><br><span class="line"></span><br><span class="line">向临时文件中写入了<span class="number">18</span>个字节</span><br></pre></td></tr></table></figure>
+
+<h2 id="移动、拷贝和删除文件"><a href="#移动、拷贝和删除文件" class="headerlink" title="移动、拷贝和删除文件"></a>移动、拷贝和删除文件</h2><h3 id="重命名文件"><a href="#重命名文件" class="headerlink" title="重命名文件"></a>重命名文件</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bool</span> <span class="title function_ invoke__">rename</span>($旧名,$新名);</span><br><span class="line">这个函数返回一个<span class="keyword">bool</span>值，将旧的名字改为新的名字。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//旧文件名</span></span><br><span class="line"><span class="variable">$filename</span> = <span class="string">&#x27;test.txt&#x27;</span>;</span><br><span class="line"><span class="comment">//新文件名</span></span><br><span class="line"><span class="variable">$filename2</span> = <span class="variable">$filename</span> . <span class="string">&#x27;.old&#x27;</span>;</span><br><span class="line"><span class="comment">//复制文件</span></span><br><span class="line"><span class="title function_ invoke__">rename</span>(<span class="variable">$filename</span>, <span class="variable">$filename2</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="复制文件"><a href="#复制文件" class="headerlink" title="复制文件"></a>复制文件</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bool</span> <span class="title function_ invoke__">copy</span>(源文件,目标文件)</span><br><span class="line">功能：将指定路径的源文件，复制一份到目标文件的位置。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//旧文件名</span></span><br><span class="line"><span class="variable">$filename</span> = <span class="string">&#x27;copy.txt&#x27;</span>;</span><br><span class="line"><span class="comment">//新文件名</span></span><br><span class="line"><span class="variable">$filename2</span> = <span class="variable">$filename</span> . <span class="string">&#x27;_new&#x27;</span>;</span><br><span class="line"><span class="comment">//修改名字。</span></span><br><span class="line"><span class="title function_ invoke__">copy</span>(<span class="variable">$filename</span>, <span class="variable">$filename2</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h3>
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/php">php</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/php">php</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "php文件操作&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "left",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

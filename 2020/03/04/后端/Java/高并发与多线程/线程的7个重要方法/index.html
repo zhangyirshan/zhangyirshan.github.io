@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="仅限学习参考，有兴趣可以互相交流">
+  <meta name="author" content="张议">
+  <meta name="keywords" content="张议,Java,java,spring,SpringBoot,zhangyi">
+  <title>线程的7个重要方法 ~ 人生展馆</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>人生展馆</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">资料</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/index.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期三, 三月 4日 2020, 8:23 早上
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    1.3k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      5 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="Thread和Object类中的重要方法详解"><a href="#Thread和Object类中的重要方法详解" class="headerlink" title="Thread和Object类中的重要方法详解"></a>Thread和Object类中的重要方法详解</h2><h3 id="方法概览"><a href="#方法概览" class="headerlink" title="方法概览"></a>方法概览</h3><img src="/2020/03/04/%E5%90%8E%E7%AB%AF/Java/%E9%AB%98%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E7%BA%BF%E7%A8%8B%E7%9A%847%E4%B8%AA%E9%87%8D%E8%A6%81%E6%96%B9%E6%B3%95/%E6%96%B9%E6%B3%95%E6%A6%82%E8%A7%88.png" srcset="undefined" class="" title="方法概览">
+
+<h3 id="wait-notify-notifyAll方法详解"><a href="#wait-notify-notifyAll方法详解" class="headerlink" title="wait,notify,notifyAll方法详解"></a>wait,notify,notifyAll方法详解</h3><ul>
+<li>用必须先拥有monitor</li>
+<li>notify只能唤醒其中一个</li>
+<li>属于Object类</li>
+<li>类似功能的Condition</li>
+<li>同时持有多个锁的情况，让一个线程wait必须让他释放所有的锁，否则会进入死锁<strong>因为如果程序不运行完，而单一的线程运行完并不会释放这个线程当前持有的锁</strong></li>
+</ul>
+<p>notify唤醒的对象必须是调用wait的对象要不无法唤醒。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">WaitNotifyReleaseOwnMonitor</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> <span class="type">Object</span> <span class="variable">resourceA</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Object</span>();</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> <span class="type">Object</span> <span class="variable">resourceB</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Object</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Thread</span> <span class="variable">thread1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Thread</span>(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (resourceA) &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;ThreadA got resourceA lock.&quot;</span>);</span><br><span class="line">                <span class="keyword">synchronized</span> (resourceB) &#123;</span><br><span class="line">                    System.out.println(<span class="string">&quot;ThreadA got resourceB lock.&quot;</span>);</span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        resourceA.wait();</span><br><span class="line">                        System.out.println(<span class="string">&quot;ThreadA releases resourceA lock.&quot;</span>);</span><br><span class="line">                        resourceA.notify();<span class="comment">//将resourceA替换位resourceB无法唤醒Thread1</span></span><br><span class="line">                    &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="type">Thread</span> <span class="variable">thread2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Thread</span>(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">synchronized</span> (resourceA) &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;ThreadB got resourceA lock.&quot;</span>);</span><br><span class="line">                System.out.println(<span class="string">&quot;ThreadB tries to resourceB lock.&quot;</span>);</span><br><span class="line">                resourceA.notify();</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    resourceA.wait();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">                System.out.println(<span class="string">&quot;--------&quot;</span>);</span><br><span class="line">                <span class="keyword">synchronized</span> (resourceB) &#123;</span><br><span class="line">                    System.out.println(<span class="string">&quot;ThreadB got resourceB lock.&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        thread1.start();</span><br><span class="line">        thread2.start();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="wait的作用和用法"><a href="#wait的作用和用法" class="headerlink" title="wait的作用和用法"></a>wait的作用和用法</h4><p>当调用wait方法之后，直到线程中情况值以发生时，才会被唤醒</p>
+<ul>
+<li>另一个线程调用这个对象的notify()方法且刚好被唤醒的时本线程；</li>
+<li>另一个线程调用这个对象的notifyAll()方法；</li>
+<li>过了wait（long timeout）规定的超时时间，如果传入就是永久等待；</li>
+<li>线程自身调用了interrupt()</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">JoinPrinciple</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException &#123;</span><br><span class="line">        <span class="type">Thread</span> <span class="variable">thread1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Thread</span>(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Thread.sleep(<span class="number">10000</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">&quot;执行完毕&quot;</span>);</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        thread1.start();</span><br><span class="line">        System.out.println(<span class="string">&quot;开始等待子线程运行完毕&quot;</span>);</span><br><span class="line"><span class="comment">//        thread1.join();</span></span><br><span class="line">        <span class="keyword">synchronized</span> (thread1) &#123;</span><br><span class="line">            thread1.wait();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;所以子线程执行完毕&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>自我理解：虽然下列代码是thread1调用wait方法，但是当前线程是main线程，所以是main函数进入waiting而不是thread1</p>
+<h3 id="sleep方法详解"><a href="#sleep方法详解" class="headerlink" title="sleep方法详解"></a>sleep方法详解</h3><p>作用:我只想让线程再预期的时间执行，其他时候不要占用CPU资源</p>
+<p>sleep方法不释放锁</p>
+<p>sleep方法响应中断<br>    1. 抛出InterruptedException<br>    2. 清楚中断状态</p>
+<p>sleep方法可用让线程进入Waiting状态，并且不占用CPU资源，但是不释放锁，知道规定时间后再执行，休眠期间如果被中断，会抛出异常并清楚中断状态。</p>
+<h3 id="join方法作用、用法"><a href="#join方法作用、用法" class="headerlink" title="join方法作用、用法"></a>join方法作用、用法</h3><p>作用：因为新的线程加入了我们，所以我们要等他执行完再出发<br>用法：main等待thread1执行完毕，注意谁等谁</p>
+<ul>
+<li>CountDownLatch或CyclicBarrier类</li>
+</ul>
+<h3 id="yield方法"><a href="#yield方法" class="headerlink" title="yield方法"></a>yield方法</h3><p>作用：释放我的CPU时间片<br>定位：JVM不保证遵循<br>yield和sleep区别：是否随时可能再次被调度</p>
+<h2 id="手写生产者消费者设计模式"><a href="#手写生产者消费者设计模式" class="headerlink" title="手写生产者消费者设计模式"></a>手写生产者消费者设计模式</h2><p>什么是生产者和消费者模式</p>
+<img src="/2020/03/04/%E5%90%8E%E7%AB%AF/Java/%E9%AB%98%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E7%BA%BF%E7%A8%8B%E7%9A%847%E4%B8%AA%E9%87%8D%E8%A6%81%E6%96%B9%E6%B3%95/%E7%94%9F%E4%BA%A7%E8%80%85%E6%B6%88%E8%B4%B9%E8%80%85%E6%A8%A1%E5%BC%8F.png" srcset="undefined" class="" title="生产者消费者模式">
+
+<h2 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h2><ol>
+<li>为什么线程通信的方法wait(),notify()和notifyAll()被定义在Object类里？而sleep定义在Thread里？<br> wait()、notify()、notifyAll()是锁级别的操作，而锁是属于某一个对象的（锁绑定在某一个对象中，而不是线程中）<br> 假设将wait()、notify()、notifyAll()定义在线程中，就会造成很大的局限性，这样，每个线程都可以休眠。但是经常会碰到这种情况，某一个线程持有多个锁，并且锁之间是相互配合的。如果将wait()这样的方法定义在Thread类中，就没有办法实现线程之间的配合</li>
+<li>用3种方式实现生产者模式</li>
+<li>为什么wait()需要再同步代码块内使用，而sleep()不需要？<br> 为了让通信变得可靠，防止死锁，或者永久等待的发生<br> 如果不把wait()、notify()放在代码块中，很有可能执行wait()前，线程突然切过去，这样另一个线程的执行完notify()后切换回来执行wait(),<br> 会导致线程执行wait()之后，永远没有线程唤醒，导致了永久等待或者死锁的发生<br> Java设计者考虑到这样的问题，将线程间需要配合的方式放到同步代码块中<br> sleep()是针对单独线程的，和其他线程关系不大，所以不需要放到同步代码块中</li>
+<li>wait方法时属于Object对象的，那调用Thread.wait会怎么样？<br> Thread类在线程退出的时，会自动执行notify()，使我们的流程受到干扰。</li>
+<li>notifyAll()之后所有的线程都会再次抢夺锁，如果某线程抢夺失败怎么办？<br> 竞争锁失败之后，陷入等待状态，等待持有锁的线程释放锁，再去竞争锁。</li>
+<li>可以用suspend()和resume()来阻塞线程吗，为什么？<br> 由于安全问题被弃用，不推荐使用。推荐使用wait()和notify()</li>
+<li>wait&#x2F;notify、sleep异同（方法属于哪个对象？线程状态怎么切换？）<ul>
+<li>相同<ul>
+<li>阻塞</li>
+<li>响应中断</li>
+</ul>
+</li>
+<li>不同<ul>
+<li>同步方法中</li>
+<li>释放锁</li>
+<li>指定时间线</li>
+<li>所属类</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>在join期间，线程处于哪种线程状态？<br> 线程处于waiting状态。</li>
+</ol>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/Java">Java</a>
+                  &nbsp;
+                
+                  <a class="hover-with-bg" href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B">多线程</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/Java">Java</a>
+                
+                  <a class="hover-with-bg" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B">多线程</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "线程的7个重要方法&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "left",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="仅限学习参考，有兴趣可以互相交流">
+  <meta name="author" content="张议">
+  <meta name="keywords" content="张议,Java,java,spring,SpringBoot,zhangyi">
+  <title>KUbernetes基础介绍 ~ 人生展馆</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>人生展馆</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">资料</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/index.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期一, 八月 22日 2022, 9:25 晚上
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    1.2k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      4 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="信息介绍"><a href="#信息介绍" class="headerlink" title="信息介绍"></a>信息介绍</h2><p>google开发，缩写k8s</p>
+<h2 id="组件说明"><a href="#组件说明" class="headerlink" title="组件说明"></a>组件说明</h2><ul>
+<li><p>服务分类<br>  有状态服务： DBMS<br>  无状态服务： LVS APACHE</p>
+</li>
+<li><p>高可用集群副本数据最好是 &gt;&#x3D; 3奇数个</p>
+</li>
+<li><p>APISERVER: 所有服务访问同一入口</p>
+</li>
+<li><p>CrontrollerManager： 维持副本期望数目</p>
+</li>
+<li><p>Scheduler： 负责介绍任务，选择合适的节点进行分配任务</p>
+</li>
+<li><p>ETCD：键值对数据库，存储K8S集群所有重要信息（持久化）</p>
+</li>
+<li><p>Kubelet：直接跟容器引擎交互实现容器的生命周期管理</p>
+</li>
+<li><p>Kube-proxy：负责写入规则至IPABLES、IPVS实现服务映射访问的</p>
+</li>
+<li><p>COREDNS：可以为集群中的SVC创建一个域名IP的对应关系解析</p>
+</li>
+<li><p>DASHBOARD： 给K8S集群提供一个B&#x2F;S结果访问体系</p>
+</li>
+<li><p>INGRESS CONTROLLER： 官方只能实现四层代理，INGRESS可以实现七层代理</p>
+</li>
+<li><p>FEDERATION：提供一个可以跨集群中心多K8S统一管理功能</p>
+</li>
+<li><p>PROMETHEUS：提供K8S集群的监控能力</p>
+</li>
+<li><p>ELK：提供K8S集群日志统一分析介入平台</p>
+</li>
+</ul>
+<h2 id="Pod"><a href="#Pod" class="headerlink" title="Pod"></a>Pod</h2><h3 id="Pod类型"><a href="#Pod类型" class="headerlink" title="Pod类型"></a>Pod类型</h3><ul>
+<li>自主式Pod</li>
+<li>控制器管理的Pod</li>
+</ul>
+<blockquote>
+<p>每个pod之间是相互隔离的，启动一个pod一定会启动一个pause容器，在此pod中启动的容器公用pause容器的网络栈（注意：因此端口不能冲突），每个容器没有独立的ip地址可以通过localhost互相访问；并且都是共享pause容器的存储卷（网页存储）的</p>
+</blockquote>
+<h3 id="Pod控制器类型"><a href="#Pod控制器类型" class="headerlink" title="Pod控制器类型"></a>Pod控制器类型</h3><h4 id="ReplicationController-amp-ReplicaSet-amp-Deployment"><a href="#ReplicationController-amp-ReplicaSet-amp-Deployment" class="headerlink" title="ReplicationController &amp; ReplicaSet &amp; Deployment"></a>ReplicationController &amp; ReplicaSet &amp; Deployment</h4><p>ReplicationController用来确保容器应用的副本数始终保持在用户定义的副本数，即如果有容器异常退出，会自动创建新的Pod来替代；而如果一场多出来的容易也会自动回收在新版本的Kubernetes中建议使用ReplicatSet来取代ReplicationController</p>
+<p>ReplicatSet跟ReplicationController没有本质的不同，但是ReplicatSet支持集合式的selector</p>
+<p>虽然ReplicatSet可以独立使用，但一般还是建议使用Deployment来自动管理ReplicatSet，这样就无需担心跟其他机制的不兼容问题（比如ReplicatSet不支持rolling-update但Deployment支持）</p>
+<h4 id="HPA（HorizontalPodAutoScale）"><a href="#HPA（HorizontalPodAutoScale）" class="headerlink" title="HPA（HorizontalPodAutoScale）"></a>HPA（HorizontalPodAutoScale）</h4><p>Horizontal Pod AutoScaling 仅适用于Deployment和ReplicaSet，在V1版本中仅支持根据Pod的CPU利用率扩容，在vlapha版本中，支持根据内存和用户自定义的metric扩缩容</p>
+<h4 id="StatefulSet"><a href="#StatefulSet" class="headerlink" title="StatefulSet"></a>StatefulSet</h4><p>StatefulSet是为了解决有状态服务的问题（对应Deployments和ReplicaSets是为无状态服务而设计），其应用场景包括：</p>
+<ul>
+<li>稳定的持久化存储，即Pod重新调度后还是能访问到相同的持久化数据，基于PVC来实现</li>
+<li>稳定的网络标志，即Pod重新调度后其PodName和HostName不变，基于Headless Service（即没有Cluster IP的Service）来实现</li>
+<li>有序部署，有序扩展，即Pod是由顺序的，在部署或者扩展的时候要依据定义的顺序依次进行（即从0到N-1，在下一个Pod运行之前所有之前的Pod必须都是Running和Ready状态），基于init containers来实现</li>
+<li>有序收缩，有序删除（即从N-1到0）</li>
+</ul>
+<h4 id="DaemonSet"><a href="#DaemonSet" class="headerlink" title="DaemonSet"></a>DaemonSet</h4><p>DaemonSet确保全部（或者一些）Node上运行一个Pod的副本。当有Node加入集群时，也会为他们新增一个Pod。当有Node移除集群时，这些Pod也会被回收。删除DaemonSet将会删除它创建的所有Pod</p>
+<p>使用DaemonSet的一些典型用法：</p>
+<ul>
+<li>运行集群存储daemon，例如在每个Node上运行glusterd、ceph</li>
+<li>在每个Node上运行日志收集daemon，例如fluentd、logstash</li>
+<li>在每个Node上运行监控daemon，例如Prometheus Node Exporter</li>
+</ul>
+<h4 id="Job，Cronjob"><a href="#Job，Cronjob" class="headerlink" title="Job，Cronjob"></a>Job，Cronjob</h4><p>Job负责批处理任务，即仅执行一次的任务，它保证批处理任务的一个或多个Pod成功结束</p>
+<p>Cron Job管理基于时间的Job，即：</p>
+<ul>
+<li>在给定时间点只运行一次</li>
+<li>周期性地在给定时间点运行</li>
+</ul>
+<h2 id="网络通信"><a href="#网络通信" class="headerlink" title="网络通信"></a>网络通信</h2><blockquote>
+<p>Kubernetes的网络模型假定了所有Pod都在一个可以直接联通的扁平的网络空间中，这在GCE（Google Compute Engine）里面是现场的网络模型，Kubernetes假定这个网络已经存在。而在私有云里搭建Kubernetes集群，就不饿能假定这个网络已经存在了。我们需要自己实现这个网络假设，将不同节点上的Docker容器之间互相范文先打通，然后运行Kubernetes</p>
+</blockquote>
+<p>同一个Pod内的多个容器之间：lo<br>各Pod之间的通讯：Overlay Network<br>Pod与Service之间的通讯：各节点的Iptables规则</p>
+<h3 id="Overlay-Network-Kubernetes-Flannel"><a href="#Overlay-Network-Kubernetes-Flannel" class="headerlink" title="Overlay Network: Kubernetes + Flannel"></a>Overlay Network: Kubernetes + Flannel</h3><blockquote>
+<p>Flannel是CoreOS团队针对Kubernetes设计的一个网络规划服务，功能是让集群中的不同节点主机创建的Docker容器都具有全集群唯一的虚拟IP地址。而且他还能在这些IP地址之间建立一个覆盖网络（Overlay Network），通过这个覆盖网络，将数据包原封不动地传递到目标容器内。</p>
+</blockquote>
+<img src="/2022/08/22/%E5%90%8E%E7%AB%AF/KUbernetes/KUbernetes%E5%9F%BA%E7%A1%80%E4%BB%8B%E7%BB%8D/flannel.png" srcset="undefined" class="" title="flannel">
+
+<h4 id="ETCD"><a href="#ETCD" class="headerlink" title="ETCD"></a>ETCD</h4><p>ETCD之Flannel提供说明：</p>
+<ul>
+<li>存储管理Flannel可分配的IP地址资源</li>
+<li>监控ETCD中每个Pod的实际地址，并在内存中建立维护Pod节点路由表</li>
+</ul>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/KUbernetes">KUbernetes</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/KUbernetes">KUbernetes</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "KUbernetes基础介绍&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "left",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

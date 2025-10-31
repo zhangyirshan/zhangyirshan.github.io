@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="仅限学习参考，有兴趣可以互相交流">
+  <meta name="author" content="张议">
+  <meta name="keywords" content="张议,Java,java,spring,SpringBoot,zhangyi">
+  <title>MetaMask ~ 人生展馆</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>人生展馆</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">资料</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/index.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期五, 十一月 12日 2021, 3:24 下午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    1.5k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      8 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="小狐狸钱包基本操作方法"><a href="#小狐狸钱包基本操作方法" class="headerlink" title="小狐狸钱包基本操作方法"></a>小狐狸钱包基本操作方法</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">MetaMaskOnboarding</span> <span class="keyword">from</span> <span class="string">&#x27;@metamask/onboarding&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">ElLoading</span> <span class="keyword">from</span> <span class="string">&#x27;element-plus/es/components/loading/index&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;element-plus/es/components/loading/style/index&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">BigNumber</span> <span class="keyword">from</span> <span class="string">&#x27;bignumber.js&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; ethers &#125; <span class="keyword">from</span> <span class="string">&#x27;ethers&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123; ethereum &#125; = <span class="variable language_">window</span></span><br><span class="line"><span class="keyword">const</span> web3 = <span class="keyword">new</span> <span class="title class_">Web3</span>(<span class="string">&#x27;https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161&#x27;</span>)</span><br><span class="line"><span class="comment">// const web3 = new Web3(import.meta.env.VITE_app_POLYGON_URL)</span></span><br><span class="line"><span class="keyword">let</span> ethersProvider</span><br><span class="line"><span class="keyword">let</span> maticPOSClientParent</span><br><span class="line"><span class="keyword">let</span> maticPOSClientMatic</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> personalSign = <span class="keyword">async</span> <span class="keyword">function</span> (<span class="params">address, randomStr</span>) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> msg = <span class="string">`0x<span class="subst">$&#123;<span class="variable language_">window</span>.Buffer.<span class="keyword">from</span>(randomStr, <span class="string">&#x27;utf8&#x27;</span>).toString(<span class="string">&#x27;hex&#x27;</span>)&#125;</span>`</span></span><br><span class="line">        <span class="keyword">const</span> sign = <span class="keyword">await</span> ethereum.<span class="title function_">request</span>(&#123;</span><br><span class="line">            <span class="attr">method</span>: <span class="string">&#x27;personal_sign&#x27;</span>,</span><br><span class="line">            <span class="attr">params</span>: [msg, address, <span class="string">&#x27;Example password&#x27;</span>],</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="keyword">return</span> sign</span><br><span class="line">        <span class="comment">// personalSignResult.innerHTML = sign</span></span><br><span class="line">        <span class="comment">// personalSignVerify.disabled = false</span></span><br><span class="line">    &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">error</span>(err)</span><br><span class="line">        <span class="comment">// personalSign.innerHTML = `Error: $&#123;err.message&#125;`</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 判断当前浏览器是否安装 metamask插件</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> isMetaMaskInstalled = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> eth = <span class="title class_">Boolean</span>(ethereum &amp;&amp; ethereum.<span class="property">isMetaMask</span>)</span><br><span class="line">    <span class="keyword">if</span> (eth) &#123;</span><br><span class="line">        ethersProvider = <span class="keyword">new</span> ethers.<span class="property">providers</span>.<span class="title class_">Web3Provider</span>(ethereum, <span class="string">&#x27;any&#x27;</span>)</span><br><span class="line">        maticPOSClientParent = <span class="keyword">new</span> <span class="title class_">Matic</span>.<span class="title class_">MaticPOSClient</span>(&#123;</span><br><span class="line">            <span class="attr">network</span>: <span class="string">&#x27;testnet&#x27;</span>,</span><br><span class="line">            <span class="attr">version</span>: <span class="string">&#x27;mumbai&#x27;</span>,</span><br><span class="line">            <span class="attr">parentProvider</span>: <span class="keyword">new</span> <span class="title class_">Web3</span>(ethereum).<span class="property">currentProvider</span>,</span><br><span class="line">            <span class="attr">maticProvider</span>: <span class="string">&#x27;https://rpc-mumbai.maticvigil.com/v1/423e0658d71aae08dd5d0eb56b3d379399c40e1b&#x27;</span>,</span><br><span class="line">        &#125;)</span><br><span class="line">        maticPOSClientMatic = <span class="keyword">new</span> <span class="title class_">Matic</span>.<span class="title class_">MaticPOSClient</span>(&#123;</span><br><span class="line">            <span class="attr">network</span>: <span class="string">&#x27;testnet&#x27;</span>,</span><br><span class="line">            <span class="attr">version</span>: <span class="string">&#x27;mumbai&#x27;</span>,</span><br><span class="line">            <span class="attr">parentProvider</span>: <span class="string">&#x27;https://goerli.infura.io/v3/5cf8a212d9e34aca9cbcc58800551ee3&#x27;</span>,</span><br><span class="line">            <span class="attr">maticProvider</span>: <span class="keyword">new</span> <span class="title class_">Web3</span>(ethereum).<span class="property">currentProvider</span>,</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> eth</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 检查当前网站是否连接钱包，如果没有安装钱包则安装，如果安装则连接</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> forwarderOrigin 当前网页url</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">MetaMaskClientCheck</span> = <span class="keyword">async</span> <span class="keyword">function</span> (<span class="params">forwarderOrigin</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="title function_">isMetaMaskInstalled</span>()) &#123;</span><br><span class="line">        <span class="title function_">onInstall</span>(forwarderOrigin)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="title function_">onConnect</span>()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 安装metamask浏览器扩展钱包</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> forwarderOrigin 当前网址</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">onInstall</span> = forwarderOrigin =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> onboarding = <span class="keyword">new</span> <span class="title class_">MetaMaskOnboarding</span>(&#123; forwarderOrigin &#125;)</span><br><span class="line">    onboarding.<span class="title function_">startOnboarding</span>()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 连接小狐狸钱包</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> onConnect = <span class="keyword">async</span> <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (ethereum) &#123;</span><br><span class="line">        <span class="keyword">let</span> result = <span class="keyword">await</span> ethereum.<span class="title function_">request</span>(&#123; <span class="attr">method</span>: <span class="string">&#x27;eth_requestAccounts&#x27;</span> &#125;).<span class="title function_">catch</span>(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="title function_">alert</span>(<span class="string">&#x27;Please connect your metaMask&#x27;</span>)</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="title function_">alert</span>(<span class="string">&#x27;Wallet not downloaded&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取当前账户</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> getAccount = <span class="keyword">async</span> <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">await</span> ethereum.<span class="title function_">request</span>(&#123;</span><br><span class="line">            <span class="attr">method</span>: <span class="string">&#x27;eth_requestAccounts&#x27;</span>,</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">error</span>(error)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 查询账户eth余额</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> address 钱包地址</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns</span> &#123;<span class="type">Promise&lt;BigNumber&gt;</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> getBalance = <span class="keyword">async</span> <span class="keyword">function</span> (<span class="params">address</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> loading = <span class="title class_">ElLoading</span>.<span class="title function_">service</span>(&#123;</span><br><span class="line">        <span class="attr">lock</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">text</span>: <span class="string">&#x27;Loading&#x27;</span>,</span><br><span class="line">        <span class="attr">spinner</span>: <span class="string">&#x27;el-icon-loading&#x27;</span>,</span><br><span class="line">        <span class="attr">background</span>: <span class="string">&#x27;rgba(0, 0, 0, 0.7)&#x27;</span>,</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> res = <span class="keyword">await</span> web3.<span class="property">eth</span>.<span class="title function_">getBalance</span>(address, <span class="string">&#x27;latest&#x27;</span>)</span><br><span class="line">        loading.<span class="title function_">close</span>()</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">        <span class="comment">// console.error(error);</span></span><br><span class="line">        loading.<span class="title function_">close</span>()</span><br><span class="line">        <span class="comment">// console.log(error)</span></span><br><span class="line">        <span class="title function_">onConnect</span>()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 发送ETH</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> receiveAddress 接收人地址</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> value 转账数量</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> gasLimit gas费限制</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> gasPrice gas费价格</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> sendEth = <span class="keyword">async</span> <span class="keyword">function</span> (<span class="params">receiveAddress, value, gasLimit = <span class="number">21000</span>, gasPrice = <span class="number">20000000000</span></span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (isMetaMaskInstalled) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">await</span> ethersProvider.<span class="title function_">getSigner</span>().<span class="title function_">sendTransaction</span>(&#123;</span><br><span class="line">            <span class="attr">to</span>: receiveAddress,</span><br><span class="line">            <span class="attr">value</span>: value,</span><br><span class="line">            <span class="attr">gasLimit</span>: gasLimit,</span><br><span class="line">            <span class="attr">gasPrice</span>: gasPrice,</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 发送合约</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> receiveAddress 接收人地址</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> data 物品tokenId[]</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> value 价格</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> gasLimit gas费限制</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> gasPrice gas费价格</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns</span> &#123;<span class="type">Promise&lt;TransactionResponse&gt;</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> sendContact = <span class="keyword">async</span> <span class="keyword">function</span> (<span class="params">receiveAddress, data, value = <span class="number">0</span>, gasLimit = <span class="number">500000</span>, gasPrice = <span class="number">30000000000</span></span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (isMetaMaskInstalled) &#123;</span><br><span class="line">        <span class="comment">// try &#123;</span></span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(receiveAddress, data, value, gasLimit, gasPrice)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">await</span> ethersProvider.<span class="title function_">getSigner</span>().<span class="title function_">sendTransaction</span>(&#123;</span><br><span class="line">            <span class="attr">to</span>: receiveAddress,</span><br><span class="line">            <span class="attr">value</span>: value,</span><br><span class="line">            <span class="attr">data</span>: data,</span><br><span class="line">            <span class="attr">gasLimit</span>: gasLimit,</span><br><span class="line">            <span class="attr">gasPrice</span>: gasPrice,</span><br><span class="line">            <span class="comment">// maxFeePerGas: gasPrice,</span></span><br><span class="line">            <span class="comment">// maxPriorityFeePerGas: &#x27;0x59682F00&#x27;,</span></span><br><span class="line">            <span class="comment">// gas:1.1</span></span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="comment">// &#125; catch (error) &#123;</span></span><br><span class="line">        <span class="comment">//     // console.error(error);</span></span><br><span class="line">        <span class="comment">//     alert(error.code)</span></span><br><span class="line">        <span class="comment">//     console.log(this)</span></span><br><span class="line">        <span class="comment">//     return error</span></span><br><span class="line">        <span class="comment">// &#125;</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> gas = <span class="keyword">async</span> <span class="keyword">function</span> (<span class="params"><span class="keyword">from</span>, to, data</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">await</span> web3.<span class="property">eth</span>.<span class="title function_">estimateGas</span>(&#123;</span><br><span class="line">        <span class="keyword">from</span>,</span><br><span class="line">        to,</span><br><span class="line">        data,</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> gasPrice = <span class="keyword">async</span> <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">await</span> web3.<span class="property">eth</span>.<span class="title function_">getGasPrice</span>()</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 添加代币</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> <span class="variable">type</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> <span class="variable">contractAddress</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> <span class="variable">tokenSymbol</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> <span class="variable">decimalUnits</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> <span class="variable">image</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns</span> &#123;<span class="type">Promise&lt;*&gt;</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">addTokenToWallet</span> = <span class="keyword">async</span> (<span class="params"></span></span><br><span class="line"><span class="params">    type = <span class="string">&#x27;ERC20&#x27;</span>,</span></span><br><span class="line"><span class="params">    contractAddress,</span></span><br><span class="line"><span class="params">    tokenSymbol,</span></span><br><span class="line"><span class="params">    decimalUnits = <span class="number">0</span>,</span></span><br><span class="line"><span class="params">    image = <span class="string">&#x27;https://metamask.github.io/test-dapp/metamask-fox.svg&#x27;</span>,</span></span><br><span class="line"><span class="params"></span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">await</span> ethereum.<span class="title function_">request</span>(&#123;</span><br><span class="line">        <span class="attr">method</span>: <span class="string">&#x27;wallet_watchAsset&#x27;</span>,</span><br><span class="line">        <span class="attr">params</span>: &#123;</span><br><span class="line">            <span class="attr">type</span>: type,</span><br><span class="line">            <span class="attr">options</span>: &#123;</span><br><span class="line">                <span class="attr">address</span>: contractAddress,</span><br><span class="line">                <span class="attr">symbol</span>: tokenSymbol,</span><br><span class="line">                <span class="attr">decimals</span>: decimalUnits,</span><br><span class="line">                <span class="attr">image</span>: image,</span><br><span class="line">            &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 创建合约方法对象</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> <span class="variable">contractAbi</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> <span class="variable">contractAddress</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> <span class="variable">currentAccount</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns</span> &#123;<span class="type">Promise&lt;*&gt;</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> contactMethod = <span class="keyword">function</span> (<span class="params">contractAbi, contractAddress, currentAccount</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> myContract = <span class="keyword">new</span> web3.<span class="property">eth</span>.<span class="title class_">Contract</span>(contractAbi, contractAddress, &#123;</span><br><span class="line">        <span class="attr">from</span>: currentAccount,</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">return</span> myContract.<span class="property">methods</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 添加网络</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns</span> &#123;<span class="type">Promise&lt;void&gt;</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">addChain</span> = <span class="keyword">async</span> (<span class="params"></span></span><br><span class="line"><span class="params">    chainId = <span class="string">&#x27;0x89&#x27;</span>,</span></span><br><span class="line"><span class="params">    rpcUrls = [<span class="string">&#x27;https://polygon-rpc.com/&#x27;</span>],</span></span><br><span class="line"><span class="params">    chainName = <span class="string">&#x27;Polygon Mainnet&#x27;</span>,</span></span><br><span class="line"><span class="params">    nativeCurrency = &#123;</span></span><br><span class="line"><span class="params">        name: <span class="string">&#x27;MATIC&#x27;</span>,</span></span><br><span class="line"><span class="params">        decimals: <span class="number">18</span>,</span></span><br><span class="line"><span class="params">        symbol: <span class="string">&#x27;MATIC&#x27;</span>,</span></span><br><span class="line"><span class="params">    &#125;,</span></span><br><span class="line"><span class="params">    blockExplorerUrls = [<span class="string">&#x27;https://polygonscan.com/&#x27;</span>],</span></span><br><span class="line"><span class="params"></span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">await</span> ethereum.<span class="title function_">request</span>(&#123;</span><br><span class="line">        <span class="attr">method</span>: <span class="string">&#x27;wallet_addEthereumChain&#x27;</span>,</span><br><span class="line">        <span class="attr">params</span>: [</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">chainId</span>: chainId,</span><br><span class="line">                <span class="attr">rpcUrls</span>: rpcUrls,</span><br><span class="line">                <span class="attr">chainName</span>: chainName,</span><br><span class="line">                <span class="attr">nativeCurrency</span>: nativeCurrency,</span><br><span class="line">                <span class="attr">blockExplorerUrls</span>: blockExplorerUrls,</span><br><span class="line">            &#125;,</span><br><span class="line">        ],</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 切换网络</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns</span> &#123;<span class="type">Promise&lt;void&gt;</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">switchChain</span> = <span class="keyword">async</span> chainId =&gt; &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(ethereum)</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">await</span> ethereum.<span class="title function_">request</span>(&#123;</span><br><span class="line">            <span class="attr">method</span>: <span class="string">&#x27;wallet_switchEthereumChain&#x27;</span>,</span><br><span class="line">            <span class="attr">params</span>: [</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="attr">chainId</span>: chainId,</span><br><span class="line">                &#125;,</span><br><span class="line">            ],</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125; <span class="keyword">catch</span> (switchError) &#123;</span><br><span class="line">        <span class="comment">// This error code indicates that the chain has not been added to MetaMask.</span></span><br><span class="line">        <span class="keyword">if</span> (switchError.<span class="property">code</span> === <span class="number">4902</span>) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="title function_">addChain</span>()</span><br><span class="line">            &#125; <span class="keyword">catch</span> (addError) &#123;</span><br><span class="line">                <span class="comment">// handle &quot;add&quot; error</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// handle other &quot;switch&quot; errors</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">buyArray</span> = <span class="keyword">async</span> (<span class="params">contractAbi, contactAddress, address, value, ids</span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">let</span> abiMethods = <span class="title function_">contactMethod</span>(contractAbi, contactAddress, address)</span><br><span class="line">    abiMethods.<span class="title function_">then</span>(<span class="function"><span class="params">fun</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> data = fun.<span class="title function_">safeBatchMintCNG</span>(ids).<span class="title function_">encodeABI</span>()</span><br><span class="line"></span><br><span class="line">        <span class="title function_">sendContact</span>(contactAddress, data, value).<span class="title function_">then</span>(</span><br><span class="line">            <span class="function"><span class="params">sendContactResult</span> =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">var</span> result = <span class="string">&#x27;approve&#x27;</span></span><br><span class="line">                <span class="keyword">var</span> txHash = sendContactResult.<span class="property">hash</span></span><br><span class="line">                <span class="title function_">walletResult</span>(&#123;</span><br><span class="line">                    result,</span><br><span class="line">                    <span class="attr">appId</span>: appId,</span><br><span class="line">                    <span class="attr">address</span>: address,</span><br><span class="line">                    <span class="attr">txHash</span>: txHash,</span><br><span class="line">                    <span class="attr">cost</span>: <span class="string">&#x27;wei&#x27;</span>,</span><br><span class="line">                &#125;)</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">var</span> result = <span class="string">&#x27;reject&#x27;</span></span><br><span class="line">                <span class="keyword">let</span> txHash</span><br><span class="line">                <span class="title function_">walletResult</span>(&#123;</span><br><span class="line">                    result,</span><br><span class="line">                    <span class="attr">appId</span>: appId,</span><br><span class="line">                    <span class="attr">address</span>: address,</span><br><span class="line">                    <span class="attr">txHash</span>: txHash,</span><br><span class="line">                    <span class="attr">cost</span>: <span class="string">&#x27;wei&#x27;</span>,</span><br><span class="line">                &#125;)</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;交易完成&#x27;</span>)</span><br><span class="line">            &#125;,</span><br><span class="line">        )</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> changeWei = <span class="keyword">function</span> (<span class="params">value</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> web3.<span class="property">utils</span>.<span class="title function_">toWei</span>(value.<span class="title function_">toString</span>(), <span class="string">&#x27;ether&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> changeFromWei = <span class="keyword">function</span> (<span class="params">value</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> web3.<span class="property">utils</span>.<span class="title function_">fromWei</span>(value.<span class="title function_">toString</span>(), <span class="string">&#x27;Gwei&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">deposit20</span> = <span class="keyword">async</span> (<span class="params">rootToken, amount, <span class="keyword">from</span></span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">await</span> <span class="title function_">switchChain</span>(<span class="string">&#x27;0x5&#x27;</span>)</span><br><span class="line">    <span class="keyword">const</span> approveResult = <span class="keyword">await</span> maticPOSClientParent.<span class="title function_">approveERC20ForDeposit</span>(rootToken, amount, &#123; <span class="attr">from</span>: <span class="keyword">from</span> &#125;)</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(approveResult)</span><br><span class="line">    <span class="keyword">const</span> depositResult = <span class="keyword">await</span> maticPOSClientParent.<span class="title function_">depositERC20ForUser</span>(rootToken, <span class="keyword">from</span>, amount, &#123; <span class="keyword">from</span> &#125;)</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(depositResult)</span><br><span class="line">    <span class="keyword">return</span> depositResult</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> burn20 = <span class="keyword">async</span> <span class="keyword">function</span> (<span class="params">childToken, amount, <span class="keyword">from</span></span>) &#123;</span><br><span class="line">    <span class="keyword">await</span> <span class="title function_">switchChain</span>(<span class="string">&#x27;0x13881&#x27;</span>)</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(maticPOSClientMatic)</span><br><span class="line">    <span class="keyword">const</span> burnTxHash = <span class="keyword">await</span> maticPOSClientMatic.<span class="title function_">burnERC20</span>(childToken, amount, &#123; <span class="keyword">from</span> &#125;).<span class="title function_">catch</span>(<span class="function"><span class="params">e</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(e)</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(burnTxHash)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">exit20</span> = <span class="keyword">async</span> (<span class="params">burnTxHash, <span class="keyword">from</span></span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">await</span> <span class="title function_">switchChain</span>(<span class="string">&#x27;0x5&#x27;</span>)</span><br><span class="line">    <span class="keyword">const</span> exitResult = <span class="keyword">await</span> maticPOSClientParent.<span class="title function_">exitERC20</span>(burnTxHash, &#123; <span class="keyword">from</span> &#125;)</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(exitResult)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">deposit721</span> = <span class="keyword">async</span> (<span class="params">rootToken, tokenId, <span class="keyword">from</span></span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">await</span> <span class="title function_">switchChain</span>(<span class="string">&#x27;0x5&#x27;</span>)</span><br><span class="line">    <span class="keyword">const</span> approveResult = <span class="keyword">await</span> maticPOSClientParent.<span class="title function_">approveERC721ForDeposit</span>(rootToken, tokenId, &#123; <span class="keyword">from</span> &#125;)</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(approveResult)</span><br><span class="line">    <span class="comment">// let gasPrice = await gasPrice();</span></span><br><span class="line">    <span class="keyword">const</span> depositResult = <span class="keyword">await</span> maticPOSClientParent.<span class="title function_">depositERC721ForUser</span>(rootToken, <span class="keyword">from</span>, tokenId, &#123; <span class="keyword">from</span> &#125;)</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(depositResult)</span><br><span class="line">    <span class="keyword">return</span> depositResult</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">burn721</span> = <span class="keyword">async</span> (<span class="params">childToken, tokenId, <span class="keyword">from</span></span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">await</span> <span class="title function_">switchChain</span>(<span class="string">&#x27;0x13881&#x27;</span>)</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(childToken, tokenId, <span class="keyword">from</span>, maticPOSClientMatic)</span><br><span class="line">    <span class="keyword">const</span> burnTxHash = <span class="keyword">await</span> maticPOSClientMatic.<span class="title function_">burnERC721</span>(childToken, tokenId, &#123; <span class="keyword">from</span> &#125;)</span><br><span class="line">    <span class="keyword">return</span> burnTxHash</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">exit721</span> = <span class="keyword">async</span> (<span class="params">burnTxHash, <span class="keyword">from</span></span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">await</span> <span class="title function_">switchChain</span>(<span class="string">&#x27;0x5&#x27;</span>)</span><br><span class="line">    <span class="keyword">const</span> exitResult = <span class="keyword">await</span> maticPOSClientParent.<span class="title function_">exitERC721</span>(burnTxHash, &#123; <span class="keyword">from</span> &#125;)</span><br><span class="line">    <span class="keyword">return</span> exitResult</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="gas费的另一种表达方式"><a href="#gas费的另一种表达方式" class="headerlink" title="gas费的另一种表达方式"></a>gas费的另一种表达方式</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> gasLimit = <span class="title function_">sanitizeHex</span>(<span class="title function_">convertStringToHex</span>(_gasLimit))</span><br><span class="line"><span class="keyword">const</span> gasPrice = <span class="title function_">sanitizeHex</span>(<span class="title function_">convertStringToHex</span>(<span class="title function_">convertAmountToRawNumber</span>(_gasPrice, <span class="number">9</span>)))</span><br><span class="line"><span class="keyword">const</span> tx = &#123;</span><br><span class="line">    <span class="keyword">from</span>,</span><br><span class="line">    to,</span><br><span class="line">    nonce,</span><br><span class="line">    <span class="attr">maxFeePerGas</span>: gasPrice,             <span class="comment">// 最大gas费</span></span><br><span class="line">    <span class="attr">maxPriorityFeePerGas</span>: <span class="string">&#x27;0x59682F00&#x27;</span>, <span class="comment">// gas倍数1.5倍</span></span><br><span class="line">    gasLimit,                           <span class="comment">// gasLimit</span></span><br><span class="line">    value,</span><br><span class="line">    <span class="attr">data</span>: _data,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">sanitizeHex</span>(<span class="params">hex</span>) &#123;</span><br><span class="line">  hex = hex.<span class="title function_">substring</span>(<span class="number">0</span>, <span class="number">2</span>) === <span class="string">&quot;0x&quot;</span> ? hex.<span class="title function_">substring</span>(<span class="number">2</span>) : hex;</span><br><span class="line">  <span class="keyword">if</span> (hex === <span class="string">&quot;&quot;</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  hex = hex.<span class="property">length</span> % <span class="number">2</span> !== <span class="number">0</span> ? <span class="string">&quot;0&quot;</span> + hex : hex;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">&quot;0x&quot;</span> + hex;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">convertStringToHex</span>(<span class="params">value</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">BigNumber</span>(<span class="string">`<span class="subst">$&#123;value&#125;</span>`</span>).<span class="title function_">toString</span>(<span class="number">16</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">convertAmountToRawNumber</span>(<span class="params">value, decimals = <span class="number">18</span></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">BigNumber</span>(<span class="string">`<span class="subst">$&#123;value&#125;</span>`</span>)</span><br><span class="line">    .<span class="title function_">times</span>(<span class="keyword">new</span> <span class="title class_">BigNumber</span>(<span class="string">&quot;10&quot;</span>).<span class="title function_">pow</span>(decimals))</span><br><span class="line">    .<span class="title function_">toString</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE">区块链</a>
+                  &nbsp;
+                
+                  <a class="hover-with-bg" href="/categories/%E9%92%B1%E5%8C%85">钱包</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/%E5%B0%8F%E7%8B%90%E7%8B%B8">小狐狸</a>
+                
+                  <a class="hover-with-bg" href="/tags/MetaMask">MetaMask</a>
+                
+                  <a class="hover-with-bg" href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE">区块链</a>
+                
+                  <a class="hover-with-bg" href="/tags/%E9%92%B1%E5%8C%85">钱包</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "MetaMask&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "left",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

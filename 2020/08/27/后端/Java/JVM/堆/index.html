@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="仅限学习参考，有兴趣可以互相交流">
+  <meta name="author" content="张议">
+  <meta name="keywords" content="张议,Java,java,spring,SpringBoot,zhangyi">
+  <title>堆 ~ 人生展馆</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>人生展馆</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">资料</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/index.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期四, 八月 27日 2020, 8:35 晚上
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    3.8k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      14 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
+<li>一个JVM实例只存在一个堆内存，堆也是Java内存管理的核心区域。</li>
+<li>Java堆区在JVM启动的时候即被创建，其空间大小也就确定了。是JVM管理的最大一块内存空间。</li>
+<li>堆内存的大小是可以调节的。</li>
+<li>《Java虚拟机规范》规定，堆可以处于物理撒花姑娘不连续的内存空间中，但在逻辑上它应该被视为连续的。</li>
+<li>所有的线程共享Java堆，在这里还可以划分线程私有的缓冲区（Thread Local Allocation Buffer，TLAB）</li>
+</ul>
+<h2 id="内存细分"><a href="#内存细分" class="headerlink" title="内存细分"></a>内存细分</h2><img src="/2020/08/27/%E5%90%8E%E7%AB%AF/Java/JVM/%E5%A0%86/%E5%A0%86%E7%A9%BA%E9%97%B4.png" srcset="undefined" class="" title="堆空间">
+
+<p>新生区+养老区+元空间</p>
+<ul>
+<li>Young Generation Space 新生区 Young&#x2F;New<ul>
+<li>又被划分为Eden区和Survivor区</li>
+</ul>
+</li>
+<li>Tenure generation space 养老区 Old&#x2F;Tenure</li>
+<li>Meta Space 元空间 Meta</li>
+</ul>
+<img src="/2020/08/27/%E5%90%8E%E7%AB%AF/Java/JVM/%E5%A0%86/%E5%B7%AE%E5%BC%82.png" srcset="undefined" class="" title="差异">
+
+<h2 id="堆空间的大小设置和查看"><a href="#堆空间的大小设置和查看" class="headerlink" title="堆空间的大小设置和查看"></a>堆空间的大小设置和查看</h2><ul>
+<li>Java堆区用于存储Java对象实例，那么堆的大小在JVM启动时就已经设定好了，大家可以通过选项”-Xmx”和”-Xms”来进行设置。<ul>
+<li>“-Xms”用于表示堆区的起始内存，等价于-XX:InitialHeapSize</li>
+<li>“-Xmx”则用于表示堆区的最大内存，等价于-XX:MaxHeapSize</li>
+</ul>
+</li>
+<li>一旦堆区中的内存大小超过”-Xmx”所指定的最大内存时，将会跑出OutOfMemoryError异常</li>
+<li>通常会将-Xms和-Xmx两个参数配置相同的，<strong>其目的是为了能够在java垃圾回收机制清理完堆区后不需要重新分隔计算堆区的大小，从而提高性能。</strong></li>
+<li>默认情况下，初始内存大小: 物理电脑内存大小&#x2F;64<br>       最大内存大小: 物理电脑内存大小&#x2F;4</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-Xms 用来设置堆空间（年轻代+老年代）的初始内存大小</span><br><span class="line">    -X 是jvm的运行参数</span><br><span class="line">    ms 是memory start</span><br><span class="line">-Xmx 用来设置堆空间（年轻代+老年代）的最大内存大小</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>手动设置：-Xms600m -Xmx600m<br>开发中建议将初始堆内存和最大的堆内存设置成相同的值</li>
+<li>查看设置的参数：方式一：jps &#x2F; jstart -gc 进程id<br>           方式二：-XX:+PrintGCDetails</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">-Xms: <span class="number">575</span> M</span><br><span class="line">-Xmx: <span class="number">575</span> M</span><br><span class="line">系统内存大小为：<span class="number">35.9375</span> G</span><br><span class="line">系统内存大小为：<span class="number">2.24609375</span> G</span><br><span class="line">Heap</span><br><span class="line"> PSYoungGen      total 179200K, used 9216K [<span class="number">0x00000000f3800000</span>, <span class="number">0x0000000100000000</span>, <span class="number">0x0000000100000000</span>)</span><br><span class="line">  eden space 153600K, <span class="number">6</span>% used [<span class="number">0x00000000f3800000</span>,<span class="number">0x00000000f41001a0</span>,<span class="number">0x00000000fce00000</span>)</span><br><span class="line">  from space 25600K, <span class="number">0</span>% used [<span class="number">0x00000000fe700000</span>,<span class="number">0x00000000fe700000</span>,<span class="number">0x0000000100000000</span>)</span><br><span class="line">  to   space 25600K, <span class="number">0</span>% used [<span class="number">0x00000000fce00000</span>,<span class="number">0x00000000fce00000</span>,<span class="number">0x00000000fe700000</span>)</span><br><span class="line"> ParOldGen       total 409600K, used 0K [<span class="number">0x00000000da800000</span>, <span class="number">0x00000000f3800000</span>, <span class="number">0x00000000f3800000</span>)</span><br><span class="line">  object space 409600K, <span class="number">0</span>% used [<span class="number">0x00000000da800000</span>,<span class="number">0x00000000da800000</span>,<span class="number">0x00000000f3800000</span>)</span><br><span class="line"> Metaspace       used 3176K, capacity 4496K, committed 4864K, reserved 1056768K</span><br><span class="line">  <span class="keyword">class</span> <span class="title class_">space</span>    used 345K, capacity 388K, committed 512K, reserved 1048576K</span><br></pre></td></tr></table></figure>
+
+<p>179200K &#x3D; 153600 + 25600<br>jvm默认from和to只有一个有数据<br>所以575 &#x3D; （153600 + 25600 + 409600）&#x2F;1024</p>
+<h2 id="OutOfMemory举例（OOM内存溢出）"><a href="#OutOfMemory举例（OOM内存溢出）" class="headerlink" title="OutOfMemory举例（OOM内存溢出）"></a>OutOfMemory举例（OOM内存溢出）</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">OutOfMemory</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        ArrayList&lt;Pic&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Thread.sleep(<span class="number">100</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">            list.add(<span class="keyword">new</span> <span class="title class_">Pic</span>(<span class="keyword">new</span> <span class="title class_">Random</span>().nextInt(<span class="number">1024</span> * <span class="number">1024</span>)));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Pic</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">byte</span>[] pix;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Pic</span><span class="params">(<span class="type">int</span> length)</span> &#123;</span><br><span class="line">        pix = <span class="keyword">new</span> <span class="title class_">byte</span>[length];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>Error occurred during initialization of VM<br>Too small initial heap</p>
+<h2 id="年轻代与老年代"><a href="#年轻代与老年代" class="headerlink" title="年轻代与老年代"></a>年轻代与老年代</h2><ul>
+<li>存储在JVM中的Java对象可以被划分为两类“<ul>
+<li>一类是生命周期较短的瞬时对象，这类对象的创建和消亡都非常迅速</li>
+<li>另外一类对象的生命周期却非常长，在某些极端请胯下还能与JVM的生命周期保持一致</li>
+</ul>
+</li>
+<li>Java堆区进一步细分的话，可以划分为年轻代（YoungGen）和老年代（OldGen）</li>
+<li>其中年轻代又可以划分为Eden空间、Survivor0空间和Survivor1空间（有时也叫作from区、to区）</li>
+</ul>
+<p>下面参数开发中一般不会调整</p>
+<ul>
+<li><p>配置新生代与老年代在对结构的占比</p>
+<ul>
+<li>默认-XX:NewRatio &#x3D; 2, 表示新生代占1，老年代占2，新生代占整个堆的1&#x2F;3</li>
+<li>可以修改-XX:NewRatio &#x3D; 4 ,表示新生代占1，老年代占4，新生代占整个堆的1&#x2F;5</li>
+</ul>
+</li>
+<li><p>在HotSpot中，Eden空间和另外两个Survivor空间缺省所占的比例是8:1:1</p>
+</li>
+<li><p>当然开发人员可以通过选项“-XX:SurvivorRatio”调整这个空间比例。比如-XX:SurvivorRatio &#x3D; 8</p>
+</li>
+<li><p>几乎所有的Java对象都是在Eden区被new出来的</p>
+</li>
+</ul>
+<h2 id="对象分配过程"><a href="#对象分配过程" class="headerlink" title="对象分配过程"></a>对象分配过程</h2><p>一般对象会出生在Eden区，经过一段时间Eden满了还在使用会转移到to区，在form和to之间转移一段时间后，迭代15次，转移到老年代。</p>
+<ol>
+<li>针对幸存者s0、s1区的总结：复制之后又交换，谁空谁是to</li>
+<li>关于垃圾回收：频繁在新生区收集，很少在养老区收集，几乎不再永久区&#x2F;元空间收集。</li>
+</ol>
+
+
+<h2 id="Minor-GC、Major-GC与Full-GC"><a href="#Minor-GC、Major-GC与Full-GC" class="headerlink" title="Minor GC、Major GC与Full GC"></a>Minor GC、Major GC与Full GC</h2><blockquote>
+<p>JVM在进行GC时,并非每次都对上面三个内存区域一起回收的，大部分时候回收的都是指新生代。</p>
+</blockquote>
+<p>针对HotSpot Vm的实现，他里面的GC按照回收区域又分为两大类型：一种是部分收集（Partial GC），一种是整堆收集（Full GC）</p>
+<ul>
+<li>部分收集：不是完整收集整个Java堆的垃圾收集。其中又分为：<ul>
+<li>新生代收集（Minor GC&#x2F;Young GC) : 只是新生代的垃圾收集。</li>
+<li>老年代收集（Major GC&#x2F;Old GC) : 只是老年代的垃圾收集，OOM在这个时候出现。<ul>
+<li>目前，只有CMS GC会有单独收集老年代的行为。</li>
+<li>注意，很多时候Major GC会和Full GC混淆使用，需要具体分辨是老年代回收还是整堆回收。</li>
+<li>混合收集（Mixed GC）：收集整个新生代以及部分老年代的垃圾收集。<ul>
+<li>目前，只有G1 GC会有这种行为</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>整堆收集（Full GC）：收集整个java堆和方法区的垃圾收集。</li>
+</ul>
+<h3 id="分代式GC策略的出发条件"><a href="#分代式GC策略的出发条件" class="headerlink" title="分代式GC策略的出发条件"></a>分代式GC策略的出发条件</h3><h4 id="年轻代GC（Minor-GC）触发机制"><a href="#年轻代GC（Minor-GC）触发机制" class="headerlink" title="年轻代GC（Minor GC）触发机制"></a>年轻代GC（Minor GC）触发机制</h4><ul>
+<li>当年轻代空间不足时，就会出发Minor GC，这里的年轻代满指的是Eden代满，Survivor满不会引发GC。（每次Minor GC会清理年轻代的内存）</li>
+<li>因为Java对象<strong>大多都具备朝生夕灭</strong>的特性，所以Minor GC 非常频繁，一般回收速度也比较快。</li>
+<li>Minor GC 会引发STW，暂停其他用户的线程，等垃圾回收结束，用户线程才恢复运行。</li>
+</ul>
+<h4 id="老年代GC（Major-GC-x2F-Full-GC-出发机制"><a href="#老年代GC（Major-GC-x2F-Full-GC-出发机制" class="headerlink" title="老年代GC（Major GC&#x2F;Full GC)出发机制"></a>老年代GC（Major GC&#x2F;Full GC)出发机制</h4><ul>
+<li>指发生在老年代的GC，对象从老年代消失时，我们说“Major GC”或“Full GC”发生了。</li>
+<li>出现了Major GC，经常会伴随至少一次的Minor GC（但非绝对的，在Parallel Scavenge收集器的收集策略里就有直接进行Major GC的策略选择过程）。<ul>
+<li>也就是在老年代空间不足时，会先尝试出发Minor GC。如果之后空间还不足，则出发Major GC</li>
+</ul>
+</li>
+<li>Major GC的速度一般会比Minor GC慢10倍以上，STW的时间更长</li>
+<li>如果Major GC后，内存还不足，就报OOM了。</li>
+</ul>
+<blockquote>
+<p>STW: Java中Stop-The-World机制简称STW，是在执行垃圾收集算法时，Java应用程序的其他所有线程都被挂起（除了垃圾收集帮助器之外）。Java中一种全局暂停现象，全局停顿，所有Java代码停止，native代码可以执行，但不能与JVM交互；这些现象多半是由于gc引起。GC时的Stop the World(STW)是大家最大的敌人。但可能很多人还不清楚，除了GC，JVM下还会发生停顿现象。</p>
+</blockquote>
+<h4 id="Full-GC出发机制"><a href="#Full-GC出发机制" class="headerlink" title="Full GC出发机制"></a>Full GC出发机制</h4><ol>
+<li>调用System.gc()时，系统建议执行Full GC，但是不必然执行</li>
+<li>老年代空间不足</li>
+<li>方法区空间不足</li>
+<li>通过Minor GC后进入老年代的平均大小大于老年代的可用内存</li>
+<li>由Eden区、survivor space0（From Space）区向survivor space1（To Space）区复制时，对象大小大于To Space可用内存，则把该对象转存到老年代，且老年代的可用内存小于该对象大小。</li>
+</ol>
+<p>说明：<strong>full gc是开发或调优中尽量要避免的。这样暂时时间会短一些</strong></p>
+<h3 id="堆空间分代思想"><a href="#堆空间分代思想" class="headerlink" title="堆空间分代思想"></a>堆空间分代思想</h3><p><strong>为什么需要把Java堆分代？不分代就不能正常工作了吗？</strong></p>
+<ul>
+<li>经研究，不同对象的生命周期不同。70%-99%的对象是临时对象。<ul>
+<li>新生代：有Eden、两块大小相同的Survivor（又称为from&#x2F;to,s0&#x2F;s1）构成，to总为空。</li>
+<li>老年代：存放新生代中经历多次GC仍然存活的对象。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>其实不分代完全可以，分代的唯一理由就是<strong>优化GC性能</strong>。如果没有分代，那所有的对象都在一块，就如同把一个学校的人都关在一个教室。GC的时候要找到哪些对象没用，这样就会对堆的所有区域进行扫描。而很多对象都是朝生夕死的，如果分代的话，吧新创建的对象放到某一地方，当GC的时候先把这块存储朝生夕死对象的区域进行回收，这样就会腾出很大的空间出来。</p>
+</blockquote>
+<h2 id="内存分配策略（或对象提升（Promotion）规则）"><a href="#内存分配策略（或对象提升（Promotion）规则）" class="headerlink" title="内存分配策略（或对象提升（Promotion）规则）"></a>内存分配策略（或对象提升（Promotion）规则）</h2><p>针对不同年龄段的对象分配原则如下所示：</p>
+<ul>
+<li>优先分配代Eden</li>
+<li>大对象直接分配到老年代<ul>
+<li>尽量避免程序中出现过多的大对象</li>
+</ul>
+</li>
+<li>长期存活的对象分配到老年代</li>
+<li>动态对象年龄判断<ul>
+<li>如果Survivor区中相同年龄的所有对象大小的总和大于Survivor空间的一半，年龄大于或等于该年龄的对象可以直接进入老年代，无须等到MaxTenuringThreshold中要求的年龄。</li>
+</ul>
+</li>
+<li>空间分配担保<ul>
+<li>-XX:HandlePromotionFailure</li>
+</ul>
+</li>
+</ul>
+<h2 id="堆时分配对象存储的唯一选择么"><a href="#堆时分配对象存储的唯一选择么" class="headerlink" title="堆时分配对象存储的唯一选择么"></a>堆时分配对象存储的唯一选择么</h2><p>在Java虚拟机中，对象是在Java堆中分配内存的，这是一个普遍的尝试。但是，有一种特殊情况，那就是<strong>如果经过逃逸分析（Escape Analysis）后发现，一个对象并没有逃逸出方法的话，那么就可能被优化成栈上分配。</strong>这样就无需再堆上分配内存，也无须进行垃圾回收了。这也是最常见的对外存储技术。</p>
+<h3 id="逃逸分析概述"><a href="#逃逸分析概述" class="headerlink" title="逃逸分析概述"></a>逃逸分析概述</h3><p>如何将堆上的对象分配到栈，需要使用逃逸分析手段，如果变量没有发生逃逸，则会在栈上存储。<br>逃逸分析的基本行为就是分析对象动态作用域：</p>
+<ul>
+<li>当一个对象在方法中被定义后，对象只在方法内部使用，则认为没有发生逃逸。</li>
+<li>当一个对象在方法中被顶一会，它被外部方法所引用，则认为发生逃逸。例如作为调用参数传递到其他地方中。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">my_method</span><span class="params">()</span>&#123;</span><br><span class="line">  <span class="type">V</span> <span class="variable">v</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">V</span>();</span><br><span class="line">  <span class="comment">// use v</span></span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  v = <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> StringBuffer <span class="title function_">createStringBuffer</span><span class="params">(String s1,String s2)</span>&#123;</span><br><span class="line">  <span class="type">StringBuffer</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuffer</span>();</span><br><span class="line">  sb.append(s1);</span><br><span class="line">  sb.append(s2);</span><br><span class="line">  <span class="keyword">return</span> sb;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 上述代码如果想要StringBuffer sb不逃出方法，可以这样写:</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">createStringBuffer</span><span class="params">(String s1,String s2)</span>&#123;</span><br><span class="line">  <span class="type">StringBuffer</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuffer</span>();</span><br><span class="line">  sb.append(s1);</span><br><span class="line">  sb.append(s2);</span><br><span class="line">  <span class="keyword">return</span> sb.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> JVM.chapter08;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* <span class="doctag">@Description</span> ：如何快速的判断是否发生了逃逸分析，大家就看new的对象实体是否有可能在方法外被调用。</span></span><br><span class="line"><span class="comment">* <span class="doctag">@Date</span>   2020/11/8 20:50</span></span><br><span class="line"><span class="comment">* <span class="doctag">@Param</span></span></span><br><span class="line"><span class="comment">* <span class="doctag">@Return</span></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">EscapeAnalysis</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> EscapeAnalysis obj;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     * @Description: 方法返回EscapeAnalysis对象，发生逃逸</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> EscapeAnalysis <span class="title function_">getInstance</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> obj == <span class="literal">null</span> ? <span class="keyword">new</span> <span class="title class_">EscapeAnalysis</span>() : obj;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     * @Description: 为成员属性赋值，发生逃逸</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setObj</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.obj = <span class="keyword">new</span> <span class="title class_">EscapeAnalysis</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 思考：如果当前的obj引用声明为static的？仍然会发生逃逸。</span></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     * @Description:对象的作用域尽在放弃方法中有效，没有发生逃逸</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">useEscapeAnalysis</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">EscapeAnalysis</span> <span class="variable">e</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">EscapeAnalysis</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     * @Description:引用成员变量的值，发生逃逸</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">useEscapeAnalysis1</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">EscapeAnalysis</span> <span class="variable">e</span> <span class="operator">=</span> getInstance();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="参数设置"><a href="#参数设置" class="headerlink" title="参数设置"></a>参数设置</h3><p>如果使用的是较早的版本，开发人员则可以通过：</p>
+<ul>
+<li>选择“-XX: +DoEscapeAnalysis”显式开启逃逸分析</li>
+<li>通过选项“-XX: +PrintEscapeAnalysis”查看逃逸分析的筛选结果。</li>
+</ul>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><blockquote>
+<p>开发中能不使用局部变量的，就不要使用在方法外定义。</p>
+</blockquote>
+<h2 id="逃逸分析：代码优化"><a href="#逃逸分析：代码优化" class="headerlink" title="逃逸分析：代码优化"></a>逃逸分析：代码优化</h2><p>使用逃逸分析，编译器可以对代码做出如下优化：<br>一、栈上分配。将对分配转化为栈分配。如果一个对象在子程序中被分配，要使指向该对象的指针永远不会逃逸，对象可能是栈分配的候选，而不是堆分配。<br>二、同步省略。如果一个对象被发现只能从一个线程被访问到，那么对于这个对象的操作可以不考虑同步。<br>三、分离对象或标量替换。有的对象可能不需要作为一个连续的内存结构存在也可以被访问到，那么对象的部分（或全部）可以不存储在内存，而是存储在CPU寄存器中。</p>
+<h2 id="为对象分配内存：TLAB"><a href="#为对象分配内存：TLAB" class="headerlink" title="为对象分配内存：TLAB"></a>为对象分配内存：TLAB</h2><blockquote>
+<p>为什么有TLAB（Thread Local Allocation Buffer）？</p>
+</blockquote>
+<ul>
+<li>堆区是线程共享区域，任何线程都可以访问到堆区中的共享数据</li>
+<li>由于对象实例的创建在JVM中非常频繁，因此在并发环境下从堆区中划分内存空间是线程不安全的</li>
+<li>为避免多个线程操作同一地址，需要使用加锁等机制，进而影响分配速度。</li>
+</ul>
+<blockquote>
+<p>什么是TLAB？</p>
+</blockquote>
+<ul>
+<li><p>从内测模型而不是垃圾收集的角度，对Eden继续划分，JVM为每个线程分配了一个私有缓存区域，它包含在Eden空间内。</p>
+</li>
+<li><p>多线程同时分配内存时，使用TLAB可以避免一系列的非线程安全问题，同时还能够提升内存分配的吞吐量，因此我们可以将这种内存分配方式称之为<strong>快速分配策略</strong>。</p>
+</li>
+<li><p>尽管不是所有对象实例都能够在TLAB中成功分配内UC你，但JVM确实是将TLAB作为内存分配的首选。</p>
+</li>
+<li><p>在程序中，开发人员可以通过选项“-XX:UseTLAB”设置是否开启TLAB空间</p>
+</li>
+<li><p>默认情况下，TLAB空间的内存非常小，**仅占有整个Eden空间的1%,当然我们可以通过选项“-XX：TLABWasteTargetPercent”设置TLAB空间所占用Eden空间的百分比大小。</p>
+</li>
+<li><p>一旦对象在TLAB空间分配内存失败时，JVM就会城市通过使用加锁机制确保数据操作的原子性，从而直接在Eden空间中分配内存。</p>
+</li>
+</ul>
+<h2 id="堆空间参数设置小结"><a href="#堆空间参数设置小结" class="headerlink" title="堆空间参数设置小结"></a>堆空间参数设置小结</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">-XX:+PrintFlagsInitial : 查看所有的参数的默认初始值</span><br><span class="line">-XX:+PrintFalgsFinal : 查看所有的参数的最终值（可能会存在修改，不再是初始值）</span><br><span class="line">    具体查看某个参数的指令: jps: 查看当前运行中的进程</span><br><span class="line">                          jinfo: -flag SurvivorRatio 进程io</span><br><span class="line">-Xms: 初始堆空间内存（默认为物理内存的<span class="number">1</span>/<span class="number">64</span>）</span><br><span class="line">-Xmx: 最大堆空间内存（默认为物理内存的<span class="number">1</span>/<span class="number">4</span>）</span><br><span class="line">-Xmn: 设置新生代的大小（初始值及最大值）</span><br><span class="line">-XX:NewRatio: 配置新生代与老年代在堆结构的占比</span><br><span class="line">-XX:SurvivorRatio: 设置新生代中Eden和So/S1空间的比例</span><br><span class="line">-XX:MaxTenuringThreshold: 设置新生代垃圾的最大年龄</span><br><span class="line">-XX:+PrintGCDetails: 输出详细的GC处理日志</span><br><span class="line">打印gc简要信息：<span class="number">1.</span> -XX:+PrintGC <span class="number">2.</span> -verbose:gc</span><br><span class="line">-XX:HandlePromotionFailure: 是否设置空间分配担保（jdk7之后默认为<span class="literal">true</span>）</span><br><span class="line">    空间分配担保：只要老年代的连续空间大于新生代对象总大小或者历次晋升的平均大小就会进行Minor GC，否则进行Full GC</span><br></pre></td></tr></table></figure>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/Java">Java</a>
+                  &nbsp;
+                
+                  <a class="hover-with-bg" href="/categories/JVM">JVM</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/Java">Java</a>
+                
+                  <a class="hover-with-bg" href="/tags/JVM">JVM</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "堆&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "left",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="仅限学习参考，有兴趣可以互相交流">
+  <meta name="author" content="张议">
+  <meta name="keywords" content="张议,Java,java,spring,SpringBoot,zhangyi">
+  <title>人生展馆</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>人生展馆</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">资料</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/index.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-md">
+        <div class="py-5 z-depth-3" id="board">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/07/10/%E9%94%99%E8%AF%AF/PHP/PHP%E6%93%8D%E4%BD%9C%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">
+        <p class="h4 index-header">PHP操作数据库的注意事项</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">关于时间的sql语句一定要将与时间比较的变量用单引号包起来
+12345678public function weekIn($cpId, $start, $end) &#123;    $pdo = $this-&gt;GetPdo();    $sql = &#x27;SELECT SUM(intimacy_add) as weekIn FROM cp_intimacy_record             WHERE delsign = 0 and cp_id = &#x27; . $cpId . &#x27; and createtime BETWEEN \&#x27;&#x27; . $start . &#x27;\&#x27; and \&#x27;&#x27; . $end . &#x27;\&#x27;&#x27;;    $prepare = $pdo-&gt;prepare($sql);    $prepare-&gt;execute();    return $prepare-&gt;fetchAll(PDO::FETCH_ASSOC);&#125;
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-10&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E9%94%99%E8%AF%AF">错误</a>&nbsp;
+          
+            <a href="/categories/PHP">PHP</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E9%94%99%E8%AF%AF">错误</a>&nbsp;
+          
+            <a href="/tags/PHP">PHP</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/07/02/%E5%90%8E%E7%AB%AF/php/%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/">
+        <p class="h4 index-header">错误处理</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">错误处理
+指的是系统（或者用户）在对某些代码进行执行的时候，发现有错误，就会通过错误处理的形式告知程序员
+
+错误分类
+语法错误：用户书写的代码不符合PHP的语法规范，语法错误会导致代码在编译过程中不通过，所以代码不会执行（Parse error）
+运行时错误：代码编译通过，但是代码在执行的过程中会出现一些条件不满足导致的错误（runtime error）
+逻辑错误：程序员在写代码的时候不够规范，出现了一些逻辑性错误，导致代码正常执行，但是得不到想要的结果
+
+错误代号所有看到的错误代码在PHP中都被定义成了系统常量（可以直接使用）
+
+系统错误： E_PARSE: 编译错误，代码不会执行 E_ERROR: fatal error,致命错误，会导致代码不能正确继续执行（出错的位置断掉） E_WARING: warning,警告错误，不会影响代码执行，但是可能得到意想不到的结果 E_NOTICE: 通知错误，不会影响代码执行
+用户错误: E_USER_ERROR、E_USER_WARNING、E_USER_NOTCE 用户在使用自定义错误出发的时候，会使用到的错误代号（系统不会用到）
+其他: </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-02&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/php">php</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/php">php</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/06/22/%E9%94%99%E8%AF%AF/Java/JedisDataException/">
+        <p class="h4 index-header">Redis的查询异常</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">123456789101112131415161718192021[MG][ERROR][2020-06-19 09:08:58,904]|REDIS查询异常|[qtp1371957475-16]redis.clients.jedis.exceptions.JedisDataException: value sent to redis cannot be null	at redis.clients.util.SafeEncoder.encode(SafeEncoder.java:28) ~[werewolf-client-jp.jar:?]	at redis.clients.jedis.Client.hget(Client.java:211) ~[werewolf-client-jp.jar:?]	at redis.clients.jedis.Jedis.hget(Jedis.java:760) ~[werewolf-client-jp.jar:?]	at com.mega.server.jedis.MegaJedisUtil.getHashValue(MegaJedisUtil.ja</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-22&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E9%94%99%E8%AF%AF">错误</a>&nbsp;
+          
+            <a href="/categories/Java">Java</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E9%94%99%E8%AF%AF,Java">错误,Java</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/06/22/%E5%90%8E%E7%AB%AF/php/php%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/">
+        <p class="h4 index-header">php文件包含</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">文件包含
+定义：文件包含，就是在一个要运行的PHP脚本中，去将另外一个PHP脚本中的代码拿过来，并且可以使用其被包含的文件里的内容，或者说将自己的内容能够在另外一个被包含的文件中使用。
+
+
+文件包含基本语法：PHP中提供了四种文件包含的方法，分别是include和include_once，require和require_once，其中四种方式的用法完全一样 include/include_once/require/equire_once &#39;文件所在路径及文件名&#39;; include/include_once/require/equire_once(&#39;文件所在路径及文件名&#39;);
+文件包含的意义：文件包含的目的有两个
+向上包含：即先包含某个文件，目的为了使用某个文件中的代码或者数据（使用公共代码）
+向下包含：即先写好代码，后包含文件，目的是为了在被包含文件中使用当前的数据（使用已产生数据）
+
+
+文件包含的语法区别：四种包含方式都能够包含文件并使用 include和require的区别在于，如果包含的文件不存在的时候，include只是报警告错误，而不影响自身代</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-22&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/php">php</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/php">php</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/06/21/%E5%90%8E%E7%AB%AF/php/%E5%B8%B8%E7%94%A8%E7%B3%BB%E7%BB%9F%E5%87%BD%E6%95%B0/">
+        <p class="h4 index-header">常用系统函数</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">函数函数的基本概念函数：function,是一种语法结构，将实现某一个功能的代码块（多行代码）封装到一个结构中，从而实现代码的重复利用（复用）。
+函数定义语法函数有几个对应的关键点：function关键字、函数名、参数（形参和实参）、函数体和返回值
+基本语法如下：Function 函数名([参数]){    &#x2F;&#x2F; 函数体    &#x2F;&#x2F; 返回值：return 结果}
+定义函数的目的：是为了实现代码的重复利用，一个功能一个函数（简单明了）函数的使用：通过访问函数的名字+(); &#x2F;&#x2F; 如果函数在定义的过程中有参数，那么在调用的时候就必须传入对应的参数：函数是一种结构不会自动运行，必须通过调用才会执行。函数是在代码执行阶段，碰到函数名字的时候才会调用，不是在编译阶段。
+函数执行的内存分析：
+
+读取代码进入到代码段（编译：将代码编程字节码存储带内存）
+根据代码逐行执行
+
+以上原因：编译和执行时分开的（先编译后执行）
+参数函数的参数分为两种：形参和实参
+形参形参：形式参数，不具有实际意义的参数，是在函数定义时使用的参数
+实参实参：实际参数，</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-21&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/php">php</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/php">php</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/06/12/%E5%90%8E%E7%AB%AF/Elasticsearch/Elasticsearch%20%E6%96%B0%E6%97%A7%E7%B4%A2%E5%BC%95%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB(_reindex)/">
+        <p class="h4 index-header">Elasticsearch 新旧索引数据迁移(_reindex)</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Elasticsearch 新旧索引数据迁移(_reindex)
+举个例子，在输入“1992-02-27”这样格式的数据，es会把他默认为是date数据类型，但是有时候我们希望它是text类型，在原索引中已经有数据的情况下该如何操作。
+
+创建原索引
+
+12345678PUT /aaron_index/aaron_type/1&#123;  &quot;name&quot;:&quot;张辽&quot;,&quot;age&quot;:27,&quot;content&quot;:&quot;1992-02-27&quot;&#125;PUT /aaron_index/aaron_type/2&#123;  &quot;name&quot;:&quot;曹阿瞒&quot;,&quot;age&quot;:28,&quot;content&quot;:&quot;1991-02-19&quot;&#125;
+
+
+创建新索引
+
+1234567891011PUT /aaron_index_new&#123;  &quot;mappings&quot;: &#123;    &quot;aaro</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-12&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Elasticsearch">Elasticsearch</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Elasticsearch">Elasticsearch</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/06/11/%E5%90%8E%E7%AB%AF/php/php%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/">
+        <p class="h4 index-header">php文件操作</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">读取文件readfile读取文件
+传入一个文件路径，输出一个文件。
+
+1234567int readfile ( string $文件名)//linux类的读了方式readfile(&quot;/home/paul/test.txt&quot;);//windows类的读取方式readfile(&quot;c:\\boot.ini&quot;);
+
+注意：上面的代码中windows的斜线是\斜线，可能会转义掉一些字符。因此，我们写的时候写上两个斜线。
+file_get_contents打开文件
+传入一个文件或文件路径，打开这个文件返回文件的内容。文件的内容是一个字符串。
+
+123456789101112131415161718192021string file_get_contents ( string filename)//假设我们有一个多行的文件叫NoAlike.txt，没有的话你可以新建一个这个文件$filename = &#x27;NoAlike.txt&#x27;;//打开这个文件，将文件内容赋值给$filestring$filestring = file_get_conte</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-11&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/php">php</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/php">php</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/06/03/%E5%90%8E%E7%AB%AF/php/php%E6%95%B0%E7%BB%84%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+        <p class="h4 index-header">php数组与数据结构</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">数组数组声明
+数组可以存入多个不同类型的数据，是一个复合数据类型。
+数组的英文是array，学一了一下最简单的数组声明。
+
+1234567891011121314151617$shu = array(1 , 1.5 , true ,&#x27;天王盖地虎，小鸡炖蘑菇&#x27;);echo &#x27;&lt;pre&gt;&#x27;;var_dump($shu);echo &#x27;&lt;/pre&gt;&#x27;;结果是：array(4) &#123;  [0]=&gt;  int(1)  [1]=&gt;  float(1.5)  [2]=&gt;  bool(true)  [3]=&gt;  string(33) &quot;天王盖地虎，小鸡炖蘑菇&quot;&#125;
+
+
+array(size &#x3D; 4) 说明里面有4个元素
+0 &#x3D;&gt; int 1 我们知道int是整型的意思，1是一个整型的数值。那前面的0,1,2,3和&#x3D;&gt;代表什么意思呢？
+最新前的0，1，2，3代表的是值的读取标识号，我们称之为下标或者键（英文：key）
+&#</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-03&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/php">php</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/php">php</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/06/03/%E5%90%8E%E7%AB%AF/Java/%E5%B7%A5%E5%85%B7%E7%B1%BB/ResultSet/">
+        <p class="h4 index-header">ResultSet</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">继承Wrapper接口和AutoCloseable接口
+Wrapper是包装类，对原生的int、float。。。进行封装AutoCloseable是自动关闭资源
+ResultSet虽然继承了AutoCloseable可以自动关闭连接释放资源，但是还是要手动关闭，因为官方文档中说：通常，立即释放此Statement对象的数据库和JDBC资源，而不是等待它自动关闭时发生。 最好在资源使用完毕后立即释放资源，以避免占用数据库资源。
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-03&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Java">Java</a>&nbsp;
+          
+            <a href="/categories/Java%E5%B7%A5%E5%85%B7%E7%B1%BB">Java工具类</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Java">Java</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/06/03/%E5%90%8E%E7%AB%AF/Java/%E5%B7%A5%E5%85%B7%E7%B1%BB/ResourceBundle/">
+        <p class="h4 index-header">ResourceBundle</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">
+这个类主要用来解决国际化和本地化问题。国际化和本地化可不是两个概念，两者都是一起出现的。可以说，国际化的目的就是为了实现本地化。比如对于“取消”，中文中我们使用“取消”来表示，而英文中我们使用“cancel”。若我们的程序是面向国际的（这也是软件发展的一个趋势），那么使用的人群必然是多语言环境的，实现国际化就非常有必要。而ResourceBundle可以帮助我们轻松完成这个任务：当程序需要一个特定于语言环境的资源时（如 String），程序可以从适合当前用户语言环境的资源包（大多数情况下也就是.properties文件）中加载它。这样可以编写很大程度上独立于用户语言环境的程序代码，它将资源包中大部分（即便不是全部）特定于语言环境的信息隔离开来。
+
+这使编写的程序可以：    轻松地本地化或翻译成不同的语言    一次处理多个语言环境    以后可以轻松进行修改，以便支持更多的语言环境
+说的简单点，这个类的作用就是读取资源属性文件（properties），然后根据.properties文件的名称信息（本地化信息），匹配当前系统的国别语言信息（也可以程序指定），然后获取相应的proper</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-03&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Java">Java</a>&nbsp;
+          
+            <a href="/categories/Java%E5%B7%A5%E5%85%B7%E7%B1%BB">Java工具类</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Java">Java</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <nav aria-label="index posts navigation">
+    <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/9/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/11/"><i class="fas fa-angle-double-right"></i></a>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByClassName("page-number")) {
+      ele.href += '#board';
+    }
+  </script>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "欢迎参观我的知识站，这里记录着我的学习经历&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "left",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

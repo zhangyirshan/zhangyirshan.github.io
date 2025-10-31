@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="仅限学习参考，有兴趣可以互相交流">
+  <meta name="author" content="张议">
+  <meta name="keywords" content="张议,Java,java,spring,SpringBoot,zhangyi">
+  <title>表的创建与维护 ~ 人生展馆</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>人生展馆</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">资料</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/index.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期日, 四月 26日 2020, 11:14 上午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    1.2k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      5 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="表"><a href="#表" class="headerlink" title="表"></a>表</h2><ul>
+<li>表是关系数据库的核心</li>
+<li>表&#x3D;关系</li>
+<li>表是记录的集合</li>
+<li>二维表格模型易于人类理解</li>
+<li>MySQL默认存储引擎都是基于行（记录）存储</li>
+<li>每行记录都是基于列进行组织的</li>
+</ul>
+<h3 id="MySQL中数据库与表之间的关系"><a href="#MySQL中数据库与表之间的关系" class="headerlink" title="MySQL中数据库与表之间的关系"></a>MySQL中数据库与表之间的关系</h3><img src="/2020/04/26/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/%E8%A1%A8%E7%9A%84%E5%88%9B%E5%BB%BA%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E8%A1%A8%E5%92%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%85%B3%E7%B3%BB.png" srcset="undefined" class="" title="表和数据库的关系">
+
+<h3 id="CREATE-TABLE语法"><a href="#CREATE-TABLE语法" class="headerlink" title="CREATE TABLE语法"></a>CREATE TABLE语法</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> [TEMPORARY] <span class="keyword">TABLE</span> [IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span>] tbl_name</span><br><span class="line">(create_definition,...)</span><br><span class="line">[table_options]</span><br><span class="line">[partition_options]</span><br><span class="line">create_definition:</span><br><span class="line">col_name column_definition</span><br><span class="line"><span class="operator">|</span> [<span class="keyword">CONSTRAINT</span> [symbol]] <span class="keyword">PRIMARY KEY</span> [index_type] </span><br><span class="line">(index_col_name,...)</span><br><span class="line">[index_option] ...</span><br><span class="line"><span class="operator">|</span> &#123;INDEX<span class="operator">|</span>KEY&#125; [index_name] [index_type] (index_col_name,...)</span><br><span class="line">[index_option] ...</span><br><span class="line"><span class="operator">|</span> [<span class="keyword">CONSTRAINT</span> [symbol]] <span class="keyword">UNIQUE</span> [INDEX<span class="operator">|</span>KEY]</span><br><span class="line">[index_name] [index_type] (index_col_name,...)</span><br><span class="line">[index_option] ...</span><br><span class="line"><span class="operator">|</span> &#123;FULLTEXT<span class="operator">|</span>SPATIAL&#125; [INDEX<span class="operator">|</span>KEY] [index_name] </span><br><span class="line">(index_col_name,...)</span><br><span class="line">[index_option] ...</span><br><span class="line"><span class="operator">|</span> [<span class="keyword">CONSTRAINT</span> [symbol]] <span class="keyword">FOREIGN KEY</span></span><br><span class="line">[index_name] (index_col_name,...) reference_definition</span><br><span class="line"><span class="operator">|</span> <span class="keyword">CHECK</span> (expr)</span><br><span class="line">table_option:</span><br><span class="line">ENGINE [<span class="operator">=</span>] engine_name</span><br><span class="line"><span class="operator">|</span> AUTO_INCREMENT [<span class="operator">=</span>] <span class="keyword">value</span></span><br><span class="line"><span class="operator">|</span> AVG_ROW_LENGTH [<span class="operator">=</span>] <span class="keyword">value</span></span><br><span class="line"><span class="operator">|</span> [<span class="keyword">DEFAULT</span>] <span class="keyword">CHARACTER SET</span> [<span class="operator">=</span>] charset_name</span><br><span class="line"><span class="operator">|</span> CHECKSUM [<span class="operator">=</span>] &#123;<span class="number">0</span> <span class="operator">|</span> <span class="number">1</span>&#125;</span><br><span class="line"><span class="operator">|</span> [<span class="keyword">DEFAULT</span>] <span class="keyword">COLLATE</span> [<span class="operator">=</span>] collation_name</span><br><span class="line"><span class="operator">|</span> COMMENT [<span class="operator">=</span>] <span class="string">&#x27;string&#x27;</span></span><br><span class="line"><span class="operator">|</span> CONNECTION [<span class="operator">=</span>] <span class="string">&#x27;connect_string&#x27;</span></span><br><span class="line"><span class="operator">|</span> DATA DIRECTORY [<span class="operator">=</span>] <span class="string">&#x27;absolute path to directory&#x27;</span></span><br><span class="line"><span class="operator">|</span> DELAY_KEY_WRITE [<span class="operator">=</span>] &#123;<span class="number">0</span> <span class="operator">|</span> <span class="number">1</span>&#125;</span><br><span class="line"><span class="operator">|</span> INDEX DIRECTORY [<span class="operator">=</span>] <span class="string">&#x27;absolute path to directory&#x27;</span></span><br><span class="line"><span class="operator">|</span> INSERT_METHOD [<span class="operator">=</span>] &#123; <span class="keyword">NO</span> <span class="operator">|</span> <span class="keyword">FIRST</span> <span class="operator">|</span> <span class="keyword">LAST</span> &#125;</span><br><span class="line"><span class="operator">|</span> KEY_BLOCK_SIZE [<span class="operator">=</span>] <span class="keyword">value</span></span><br><span class="line"><span class="operator">|</span> MAX_ROWS [<span class="operator">=</span>] <span class="keyword">value</span></span><br><span class="line"><span class="operator">|</span> MIN_ROWS [<span class="operator">=</span>] <span class="keyword">value</span></span><br><span class="line"><span class="operator">|</span> PACK_KEYS [<span class="operator">=</span>] &#123;<span class="number">0</span> <span class="operator">|</span> <span class="number">1</span> <span class="operator">|</span> <span class="keyword">DEFAULT</span>&#125;</span><br><span class="line"><span class="operator">|</span> PASSWORD [<span class="operator">=</span>] <span class="string">&#x27;string&#x27;</span></span><br><span class="line"><span class="operator">|</span> ROW_FORMAT [<span class="operator">=</span>] </span><br><span class="line">&#123;<span class="keyword">DEFAULT</span><span class="operator">|</span><span class="keyword">DYNAMIC</span><span class="operator">|</span>FIXED<span class="operator">|</span>COMPRESSED<span class="operator">|</span>REDUNDANT<span class="operator">|</span>COMPACT&#125;</span><br><span class="line"><span class="operator">|</span> STATS_AUTO_RECALC [<span class="operator">=</span>] &#123;<span class="keyword">DEFAULT</span><span class="operator">|</span><span class="number">0</span><span class="operator">|</span><span class="number">1</span>&#125;</span><br><span class="line"><span class="operator">|</span> STATS_PERSISTENT [<span class="operator">=</span>] &#123;<span class="keyword">DEFAULT</span><span class="operator">|</span><span class="number">0</span><span class="operator">|</span><span class="number">1</span>&#125;</span><br><span class="line"><span class="operator">|</span> STATS_SAMPLE_PAGES [<span class="operator">=</span>] <span class="keyword">value</span></span><br><span class="line"><span class="operator">|</span> TABLESPACE tablespace_name [STORAGE &#123;DISK<span class="operator">|</span>MEMORY<span class="operator">|</span><span class="keyword">DEFAULT</span>&#125;]</span><br><span class="line"><span class="operator">|</span> <span class="keyword">UNION</span> [<span class="operator">=</span>] (tbl_name[,tbl_name]...)</span><br></pre></td></tr></table></figure>
+
+<h3 id="CREATE-TABLE——外键约束"><a href="#CREATE-TABLE——外键约束" class="headerlink" title="CREATE TABLE——外键约束"></a>CREATE TABLE——外键约束</h3><p>外键约束主要是为了保持数据一致性</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[<span class="keyword">CONSTRAINT</span> [symbol]] <span class="keyword">FOREIGN KEY</span></span><br><span class="line">[index_name] (index_col_name, ...)</span><br><span class="line"><span class="keyword">REFERENCES</span> tbl_name (index_col_name,...)</span><br><span class="line">[<span class="keyword">ON</span> <span class="keyword">DELETE</span> reference_option]</span><br><span class="line">[<span class="keyword">ON</span> <span class="keyword">UPDATE</span> reference_option]</span><br><span class="line">reference_option:</span><br><span class="line">RESTRICT <span class="operator">|</span> CASCADE <span class="operator">|</span> <span class="keyword">SET</span> <span class="keyword">NULL</span> <span class="operator">|</span> <span class="keyword">NO</span> ACTION</span><br><span class="line">RESTRICT <span class="operator">=</span> <span class="keyword">NO</span> ACTION</span><br></pre></td></tr></table></figure>
+
+<p>CASCADE：父表delete、update的时候，子表会delete、update掉关联记录；<br>SET NULL：父表delete、update的时候，子表会将关联记录的外键字段所在列设为null，所以注意在设计子表时外键不能设为not null；<br>RESTRICT：如果想要删除父表的记录时，而在子表中有关联该父表的记录，则不允许删除父表中的记录；<br>NO ACTION：同 RESTRICT，也是首先先检查外键；</p>
+<h3 id="ALTER-TABLE"><a href="#ALTER-TABLE" class="headerlink" title="ALTER TABLE"></a>ALTER TABLE</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> [ONLINE <span class="operator">|</span> OFFLINE] [IGNORE] <span class="keyword">TABLE</span> tbl_name</span><br><span class="line">[alter_specification [, alter_specification] ...]</span><br><span class="line">[partition_options]</span><br><span class="line"></span><br><span class="line">如需在表中添加列，请使用下面的语法:</span><br><span class="line"><span class="keyword">ALTER TABLE</span> table_name</span><br><span class="line"><span class="keyword">ADD</span> column_name datatype</span><br><span class="line"></span><br><span class="line">如需删除表中的列，请使用下面的语法（请注意，某些数据库系统不允许这种在数据库表中删除列的方式）：</span><br><span class="line"><span class="keyword">ALTER TABLE</span> table_name</span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">COLUMN</span> column_name</span><br><span class="line"></span><br><span class="line">要改变表中列的数据类型，请使用下面的语法：</span><br><span class="line"></span><br><span class="line">MySQL <span class="operator">/</span> Oracle：</span><br><span class="line"><span class="keyword">ALTER TABLE</span> table_name</span><br><span class="line">MODIFY <span class="keyword">COLUMN</span> column_name datatype</span><br></pre></td></tr></table></figure>
+
+<h2 id="分区表"><a href="#分区表" class="headerlink" title="分区表"></a>分区表</h2><p>• 将一个表或者索引分解为多个更小、更可管理的部分<br>• 目前只支持水平分区<br>• 局部分区索引<br>• 每个分区保存自己的数据与索引<br>• 分区列必须是唯一索引的一个组成部分</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">CREATE TABLE</span> t1 (</span><br><span class="line"><span class="operator">-</span><span class="operator">&gt;</span> col1 <span class="type">INT</span> <span class="keyword">NOT NULL</span>,</span><br><span class="line"><span class="operator">-</span><span class="operator">&gt;</span> col2 <span class="type">DATE</span> <span class="keyword">NOT NULL</span>,</span><br><span class="line"><span class="operator">-</span><span class="operator">&gt;</span> col3 <span class="type">INT</span> <span class="keyword">NOT NULL</span>,</span><br><span class="line"><span class="operator">-</span><span class="operator">&gt;</span> col4 <span class="type">INT</span> <span class="keyword">NOT NULL</span>,</span><br><span class="line"><span class="operator">-</span><span class="operator">&gt;</span> <span class="keyword">UNIQUE</span> KEY (col1, col2)</span><br><span class="line"><span class="operator">-</span><span class="operator">&gt;</span> )</span><br><span class="line"><span class="operator">-</span><span class="operator">&gt;</span> <span class="keyword">PARTITION</span> <span class="keyword">BY</span> HASH(col3)</span><br><span class="line"><span class="operator">-</span><span class="operator">&gt;</span> PARTITIONS <span class="number">4</span>;</span><br><span class="line">ERROR <span class="number">1503</span> (HY000): A <span class="keyword">PRIMARY KEY</span> must include <span class="keyword">all</span> columns <span class="keyword">in</span> the <span class="keyword">table</span><span class="string">&#x27;s partitioning function</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="分区类型支持"><a href="#分区类型支持" class="headerlink" title="分区类型支持"></a>分区类型支持</h3><p>range分区：基于一个给定的连续区间范围(区间要求连续并且不能重叠)，把数据分配到不同的分区<br>list分区：类似于range分区，区别在于list分区是居于枚举出的值列表分区，range是基于给定的连续区间范围分区<br>hash分区：基于给定的分区个数，把数据分配到不同的分区<br>key分区：类似于hash分区</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE TABLE</span> t(</span><br><span class="line">id <span class="type">INT</span> PRIAMRY KEY</span><br><span class="line">)ENGINE<span class="operator">=</span>INNODB</span><br><span class="line"><span class="keyword">PARTITION</span> <span class="keyword">BY</span> <span class="keyword">RANGE</span> (id)(</span><br><span class="line"><span class="keyword">PARTITION</span> p0 <span class="keyword">VALUES</span> LESS THAN (<span class="number">10</span>),</span><br><span class="line"><span class="keyword">PARTITION</span> p1 <span class="keyword">VALUES</span> LESS THAN (<span class="number">20</span>));</span><br><span class="line"></span><br><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">CREATE TABLE</span> t (</span><br><span class="line"><span class="operator">-</span><span class="operator">&gt;</span> a <span class="type">INT</span>,</span><br><span class="line"><span class="operator">-</span><span class="operator">&gt;</span> b <span class="type">INT</span>)ENGINE<span class="operator">=</span>INNODB</span><br><span class="line"><span class="operator">-</span><span class="operator">&gt;</span> <span class="keyword">PARTITION</span> <span class="keyword">BY</span> LIST(b)(</span><br><span class="line"><span class="operator">-</span><span class="operator">&gt;</span> <span class="keyword">PARTITION</span> p0 <span class="keyword">VALUES</span> <span class="keyword">IN</span> (<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">9</span>),</span><br><span class="line"><span class="operator">-</span><span class="operator">&gt;</span> <span class="keyword">PARTITION</span> p1 <span class="keyword">VALUES</span> <span class="keyword">IN</span> (<span class="number">0</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">8</span>)</span><br><span class="line"><span class="operator">-</span><span class="operator">&gt;</span> );</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE TABLE</span> t_hash (</span><br><span class="line">a <span class="type">INT</span>,</span><br><span class="line">b DATETIME</span><br><span class="line">)ENGINE<span class="operator">=</span>InnoDB</span><br><span class="line"><span class="keyword">PARTITION</span> <span class="keyword">BY</span> HASH (<span class="keyword">YEAR</span>(b))</span><br><span class="line">PARTITIONS <span class="number">4</span>;</span><br><span class="line"></span><br><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">CREATE TABLE</span> t_key (</span><br><span class="line"><span class="operator">-</span><span class="operator">&gt;</span> a <span class="type">INT</span>,</span><br><span class="line"><span class="operator">-</span><span class="operator">&gt;</span> b DATETIME)ENGINE<span class="operator">=</span>InnoDB</span><br><span class="line"><span class="operator">-</span><span class="operator">&gt;</span> <span class="keyword">PARTITION</span> <span class="keyword">BY</span> KEY (b)     这里的key把b进行了内部hash所以也是<span class="type">int</span>类型</span><br><span class="line"><span class="operator">-</span><span class="operator">&gt;</span> PARTITIONS <span class="number">4</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>如果没有索引，也可以使用分区。<br><strong>分区条件必须是INT类型</strong></p>
+<h3 id="COLUMNS分区"><a href="#COLUMNS分区" class="headerlink" title="COLUMNS分区"></a>COLUMNS分区</h3><p>• COLUMNS分区支持以下的数据类型：<br>• 所有的整型类型，如INT，SMALLINT，TINYINT，BIGINT。FLOAT和DECIMAL则不予支持<br>• 日期类型，如DATE和DATETIME。其余的日期类型不予支持<br>• 字符串类型，如CHAR, VARCHAR, BINARY, 和VARBINARY。BLOB和TEXT类型不予支持</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE TABLE</span> t_columns_range(</span><br><span class="line">a <span class="type">INT</span>,</span><br><span class="line">b DATETIME</span><br><span class="line">)ENGINE<span class="operator">=</span>INNODB</span><br><span class="line"><span class="keyword">PARTITION</span> <span class="keyword">BY</span> <span class="keyword">RANGE</span> COLUMNS (B)(</span><br><span class="line"><span class="keyword">PARTITION</span> p0 <span class="keyword">VALUES</span> LESS THAN (<span class="string">&#x27;2009-01-01&#x27;</span>),</span><br><span class="line"><span class="keyword">PARTITION</span> p1 <span class="keyword">VALUES</span> LESS THAN (<span class="string">&#x27;2010-01-01&#x27;</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h3 id="子分区"><a href="#子分区" class="headerlink" title="子分区"></a>子分区</h3><p>• 在分区的基础上再进行分区<br>• 也称为复合分区<br>• 允许在RANGE和LIST的分区上再进行HASH或者是KEY的子分区</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">CREATE TABLE</span> ts (a <span class="type">INT</span>, b <span class="type">DATE</span>)engine<span class="operator">=</span>innodb</span><br><span class="line"><span class="operator">-</span><span class="operator">&gt;</span> <span class="keyword">PARTITION</span> <span class="keyword">BY</span> <span class="keyword">RANGE</span>( <span class="keyword">YEAR</span>(b) )</span><br><span class="line"><span class="operator">-</span><span class="operator">&gt;</span> SUBPARTITION <span class="keyword">BY</span> HASH( TO_DAYS(b) )</span><br><span class="line"><span class="operator">-</span><span class="operator">&gt;</span> SUBPARTITIONS <span class="number">2</span> (</span><br><span class="line"><span class="operator">-</span><span class="operator">&gt;</span> <span class="keyword">PARTITION</span> p0 <span class="keyword">VALUES</span> LESS THAN (<span class="number">1990</span>),</span><br><span class="line"><span class="operator">-</span><span class="operator">&gt;</span> <span class="keyword">PARTITION</span> p1 <span class="keyword">VALUES</span> LESS THAN (<span class="number">2000</span>),</span><br><span class="line"><span class="operator">-</span><span class="operator">&gt;</span> <span class="keyword">PARTITION</span> p2 <span class="keyword">VALUES</span> LESS THAN MAXVALUE</span><br><span class="line"><span class="operator">-</span><span class="operator">&gt;</span> );</span><br><span class="line">Query OK, <span class="number">0</span> <span class="keyword">rows</span> affected (<span class="number">0.01</span> sec)</span><br></pre></td></tr></table></figure>
+
+<h3 id="查询每个分区的记录数量"><a href="#查询每个分区的记录数量" class="headerlink" title="查询每个分区的记录数量"></a>查询每个分区的记录数量</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> PARTITION_NAME, TABLE_ROWS</span><br><span class="line"><span class="keyword">FROM</span> INFORMATION_SCHEMA.PARTITIONS</span><br><span class="line"><span class="keyword">WHERE</span> TABLE_NAME <span class="operator">=</span> <span class="string">&#x27;XXX&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看是否通过分区表进行查询"><a href="#查看是否通过分区表进行查询" class="headerlink" title="查看是否通过分区表进行查询"></a>查看是否通过分区表进行查询</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> EXPLAIN PARTITIONS <span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> Profile <span class="keyword">WHERE</span> id<span class="operator">=</span><span class="number">1</span>\G;</span><br><span class="line"><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span> <span class="number">1.</span> <span class="type">row</span> <span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span></span><br><span class="line">id: <span class="number">1</span></span><br><span class="line">select_type: SIMPLE</span><br><span class="line"><span class="keyword">table</span>: Profile</span><br><span class="line">partitions: p1</span><br><span class="line">type: const</span><br><span class="line">possible_keys: <span class="keyword">PRIMARY</span></span><br><span class="line"><span class="keyword">key</span>: <span class="keyword">PRIMARY</span></span><br><span class="line">key_len: <span class="number">4</span></span><br><span class="line"><span class="keyword">ref</span>: const</span><br><span class="line"><span class="keyword">rows</span>: <span class="number">1</span></span><br><span class="line">Extra:</span><br><span class="line"><span class="number">1</span> <span class="type">row</span> <span class="keyword">in</span> <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
+
+<p>Q：分区能提高性能吗？</p>
+<p>不要因为数据量大而作分区，要为提高性能而使用分区</p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/MySQL">MySQL</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/MySQL">MySQL</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "表的创建与维护&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "left",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

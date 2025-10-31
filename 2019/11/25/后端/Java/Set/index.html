@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="仅限学习参考，有兴趣可以互相交流">
+  <meta name="author" content="张议">
+  <meta name="keywords" content="张议,Java,java,spring,SpringBoot,zhangyi">
+  <title>Set ~ 人生展馆</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>人生展馆</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">资料</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/index.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期一, 十一月 25日 2019, 11:20 上午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    4.3k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      20 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h2><p>public interface Set&lt;E&gt;extends Collection&lt;E&gt;（继承collection接口）<br>A collection that contains no duplicate elements.<br>（一个集合不能包含重复的元素）</p>
+<h3 id="add"><a href="#add" class="headerlink" title="add"></a>add</h3><p>public boolean add(E e)<br>Adds the specified element to this set if it is not already present.<br>（将指定的元素e加入如果集合中没有）<br>More formally, adds the specified element e to this set if this set contains no element e2 such that (e&#x3D;&#x3D;null ? e2&#x3D;&#x3D;null : e.equals(e2)).<br>（更重要的是，如果它不包含满足这个(e&#x3D;&#x3D;null ? e2&#x3D;&#x3D;null : e.equals(e2))条件的时候，它会将这个e加入这个集合中）<br> If this set already contains the element, the call leaves the set unchanged and returns false.<br> （如果这个集合中包含这个元素，这个集合就不改变，并且返回false）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> fourtyfifth;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.HashSet;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SetTest1</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">HashSet</span> <span class="variable">set</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HashSet</span>();</span><br><span class="line"></span><br><span class="line">        set.add(<span class="string">&quot;c&quot;</span>);</span><br><span class="line">        System.out.println(set.add(<span class="string">&quot;a&quot;</span>));</span><br><span class="line">        set.add(<span class="string">&quot;b&quot;</span>);</span><br><span class="line">        set.add(<span class="string">&quot;d&quot;</span>);</span><br><span class="line">        System.out.println(set.add(<span class="string">&quot;a&quot;</span>));</span><br><span class="line"></span><br><span class="line">        System.out.println(set);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>结果是：<br>true<br>false<br>[a, b, c, d]<br>说明set是无序的，并且元素是不能重复的。</p>
+<h3 id="equals"><a href="#equals" class="headerlink" title="equals"></a>equals</h3><p>Indicates whether some other object is “equal to” this one.<br>（用来指示是否另外一个对象“equal to”调用equals方法的对象）<br>The equals method implements an equivalence relation on non-null object references:</p>
+<p>It is reflexive（自反的）: for any non-null reference（引用） value x, x.equals(x) should return true.<br>It is symmetric（对称的）: for any non-null reference values x and y, x.equals(y) should return true if and only if y.equals(x) returns true.<br>It is transitive（传递性）: for any non-null reference values x, y, and z, if x.equals(y) returns true and y.equals(z) returns true, then x.equals(z) should return true.<br>It is consistent（一致性）: for any non-null reference values x and y, multiple invocations of x.equals(y) consistently return true or consistently return false, provided no information used in equals comparisons on the objects is modified.<br>For any non-null reference value x, x.equals(null) should return false.</p>
+<p> 关于 Object 类的 equals 方法的特点<br>a) 自反性： x.equals(x)应该返回 true，前提是不为空。<br>b) 对称性： x.equals(y)为 true，那么 y.equals(x)也为 true。<br>c) 传递性： x.equals(y)为 true 并且 y.equals(z)为 true，那么 x.equals(z)也应该为 true。<br>d) 一致性： x.equals(y)的第一次调用为 true，那么 x.equals(y)的第二次、第三次、第 n次调用也应该为 true，前提条件是在比较之间没有修改 x 也没有修改y。<br>e) 对于非空引用 x， x.equals(null)返回 false。<br>The equals method for class Object implements the most discriminating possible equivalence relation on objects;（对于Object类的equals方法来说，它实现了最有差别的可能等价关系在对象上）<br> that is, for any non-null reference values x and y, this method returns true if and only if x and y refer to the same object (x &#x3D;&#x3D; y has the value true).<br> （对于任何的非空引用x，y来说，这个方法返回真并且只返回真，前提是x，y指向同一个对象）</p>
+<p>Note that it is generally necessary to override the hashCode method whenever this method is overridden,<br>（注意通常我们有必要去重写hashCode方法当这个方法被重写的时候）<br> so as to maintain the general contract for the hashCode method, which states that equal objects must have equal hash codes.<br>（以便维护hashCode方法的一般契约,表明相等的对象必须有相等的hashCode)</p>
+<h3 id="hashCode"><a href="#hashCode" class="headerlink" title="hashCode"></a>hashCode</h3><p>public int hashCode()<br>（返回一个整数）<br>Returns a hash code value for the object.<br>（返回这个对象的hash code 值<br>This method is supported for the benefit of hashtables such as those provided by java.util.Hashtable.<br>（这个方法被支持为了hashtables这个方法）<br>The general contract of hashCode is:<br>（hashCode的一般性契约）<br>Whenever it is invoked on the same object more than once during an execution of a Java application,<br>（无论何时当我调用一个对象一次以上的hashCode在java应用的一次执行过程当中）<br>the hashCode method must consistently return the same integer,<br>（那么这个hashCode必须返回相同的整数值）<br>provided no information used in equals comparisons on the object is modified.<br>（假设这个对象的信息没有被修改）<br>This integer need not remain consistent from one execution of an application to another execution of the same application.<br>（这个整数不需要保持一致，在第一次执行过程和另一次执行过程）<br>If two objects are equal according to the equals(Object) method, then calling the hashCode method on each of the two objects must produce the same integer result.<br>（如果两个对象通过equals方法相等，那么这两个对象调用hashCode方法一定返回相同的整型值）<br>It is not required that if two objects are unequal according to the equals (java.lang.Object) method, then calling the hashCode method on each of the two objects must produce distinct integer results. However, the programmer should be aware that producing distinct integer results for unequal objects may improve the performance of hashtables.<br>（并不需要满足两个对象不相等，hashCode一定不一样，然而，如果不同则可以提高应用的性能）<br>As much as is reasonably practical, the hashCode method defined by class Object does return distinct integers for distinct objects.<br>（根据实际的情况来说，有类Object定义的hashCode方法会针对不同的对象返回不同的整数值。）<br> (This is typically implemented by converting the internal address of the object into an integer, but this implementation technique is not required by the JavaTM programming language.)<br> （通常将内部的地址转换为十六进制的数，但是这种机制并不是强制的）</p>
+<p>关于 Object 类的 hashCode()方法的特点：<br>a) 在 Java 应用的一次执行过程当中，对于同一个对象的 hashCode 方法的多次调用，他们应该返回同样的值（前提是该对象的信息没有发生变化）。<br>b) 对于两个对象来说，如果使用 equals 方法比较返回 true，那么这两个对象的 hashCode<br>值一定是相同的。<br>c) 对于两个对象来说，如果使用 equals方法比较返回 false，那么这两个对象的 hashCode<br>值不要求一定不同（可以相同，可以不同）， 但是如果不同则可以提高应用的性能。<br>d) 对于 Object类来说，不同的 Object对象的 hashCode值是不同的（Object类的 hashCode值表示的是对象的地址）。</p>
+<p> 当使用 HashSet 时， hashCode()方法就会得到调用，判断已经存储在集合中的对象的hash code 值是否与增加的对象的 hash code 值一致；如果不一致，直接加进去；如果一致，再进行 equals 方法的比较， equals 方法如果返回 true，表示对象已经加进去了，就不会再增加新的对象，否则加进去。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> fourtyfifth;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.HashSet;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SetTest2</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">        <span class="type">HashSet</span> <span class="variable">set</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HashSet</span>();</span><br><span class="line"></span><br><span class="line">        set.add(<span class="keyword">new</span> <span class="title class_">People</span>(<span class="string">&quot;zhangsan&quot;</span>));</span><br><span class="line">        set.add(<span class="keyword">new</span> <span class="title class_">People</span>(<span class="string">&quot;lisi&quot;</span>));</span><br><span class="line">        set.add(<span class="keyword">new</span> <span class="title class_">People</span>(<span class="string">&quot;zhangsan&quot;</span>));<span class="comment">//两个zhangsan是不同的对象地址不同一定能放进去</span></span><br><span class="line"></span><br><span class="line">        System.out.println(set);</span><br><span class="line">        System.out.println(<span class="string">&quot;---------------&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="type">People</span> <span class="variable">p1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">People</span>(<span class="string">&quot;zhangsan&quot;</span>);</span><br><span class="line"></span><br><span class="line">        set.add(p1);</span><br><span class="line">        set.add(p1);<span class="comment">//p1的地址是一样的，然后用equals方法，发现一致所以只能放一个</span></span><br><span class="line"></span><br><span class="line">        System.out.println(p1);</span><br><span class="line">        System.out.println(<span class="string">&quot;---------------&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="type">String</span> <span class="variable">s1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">s2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">&quot;a&quot;</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;hash code: &quot;</span> + (s1.hashCode() == s2.hashCode()));</span><br><span class="line"></span><br><span class="line">        set.add(s1);</span><br><span class="line">        set.add(s2);</span><br><span class="line"></span><br><span class="line">        System.out.println(set);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">People</span>&#123;</span><br><span class="line">    String name;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">People</span><span class="params">(String name)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果是：<br>[fourtyfifth.People@6bc7c054,fourtyfifth.People@232204a1,fourtyfifth.People@75b84c92]<br>-————–<br>fourtyfifth.People@4aa298b7<br>-————–<br>hash code: true<br>[a,fourtyfifth.People@6bc7c054,fourtyfifth.People@232204a1,fourtyfifth.People@4aa298b7, fourtyfifth.People@75b84c92]</p>
+<p> <em><strong>如果我们重写 equals 方法，那么也要重写 hashCode 方法，反之亦然。</strong></em></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> fourtyfifth;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.HashSet;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SetTest3</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">        <span class="type">HashSet</span> <span class="variable">set</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HashSet</span>();</span><br><span class="line"></span><br><span class="line">        <span class="type">Student</span> <span class="variable">s1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;zhangsan&quot;</span>);</span><br><span class="line">        <span class="type">Student</span> <span class="variable">s2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;zhangsan&quot;</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(s1.hashCode()==s2.hashCode());</span><br><span class="line">        set.add(s1);</span><br><span class="line">        set.add(s2);</span><br><span class="line"></span><br><span class="line">        System.out.println(set.hashCode());</span><br><span class="line">        System.out.println(set);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>&#123;</span><br><span class="line">    String name;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Student</span><span class="params">(String name)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">hashCode</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="type">int</span> <span class="variable">prime</span> <span class="operator">=</span> <span class="number">31</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">result</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">        result = prime * result + ((name == <span class="literal">null</span>) ? <span class="number">0</span> : name.hashCode());</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">equals</span><span class="params">(Object obj)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">this</span> == obj)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">if</span> (obj == <span class="literal">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">if</span> (getClass() != obj.getClass())</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="type">Student</span> <span class="variable">other</span> <span class="operator">=</span> (Student) obj;</span><br><span class="line">        <span class="keyword">if</span> (name == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (other.name != <span class="literal">null</span>)</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (!name.equals(other.name))</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* public int hashCode()</span></span><br><span class="line"><span class="comment">        &#123;</span></span><br><span class="line"><span class="comment">        return this.name.hashCode();</span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">        public boolean equals(Object obj)</span></span><br><span class="line"><span class="comment">        &#123;</span></span><br><span class="line"><span class="comment">        if(this == obj)</span></span><br><span class="line"><span class="comment">        &#123;</span></span><br><span class="line"><span class="comment">        return true;</span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">        if(null != obj &amp;&amp; obj instanceof Student)</span></span><br><span class="line"><span class="comment">        &#123;</span></span><br><span class="line"><span class="comment">        Student s = (Student)obj;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">        if(name.equals(s.name))</span></span><br><span class="line"><span class="comment">        &#123;</span></span><br><span class="line"><span class="comment">        return true;</span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">        return false;</span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果是：<br>true<br>-1432604525<br>[fourtyfifth.Student@aa9c3093]<br>注释中是我们自己编写的hashCode和equals方法实现的功能和eclipse生成的一样。</p>
+<h2 id="SortedSet"><a href="#SortedSet" class="headerlink" title="SortedSet"></a>SortedSet</h2><p>public interface SortedSet&lt;E&gt;extends Set&lt;E&gt;</p>
+<p>A Set that further provides a total ordering on its elements. The elements are ordered using their natural ordering（自然排序）, or by a <em>Comparator</em> typically provided at sorted set creation time.</p>
+<h2 id="TreeSet"><a href="#TreeSet" class="headerlink" title="TreeSet"></a>TreeSet</h2><p>java.util<br>Class TreeSet&lt;E&gt;<br>java.lang.Object<br>  extended by java.util.AbstractCollection&lt;E&gt;<br>      extended by java.util.AbstractSet&lt;E&gt;<br>          extended by java.util.TreeSet&lt;E&gt;<br>All Implemented Interfaces:<br>Serializable, Cloneable, Iterable&lt;E&gt;, Collection&lt;E&gt;, NavigableSet&lt;E&gt;,<em><strong>Set&lt;E&gt;, SortedSet&lt;E&gt;</strong></em><br>TreeSet为使用树来进行存储的Set接口提供了一个工具， 对象按升序存储。访问和检索是很快的。在存储了大量的需要进行快速检索的排序信息的情况下， TreeSet是一个很好的选择。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> fourtyThird;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.TreeSet;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TreeSetTest</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">        <span class="type">TreeSet</span> <span class="variable">set</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">TreeSet</span>();</span><br><span class="line">        set.add(<span class="string">&quot;C&quot;</span>);</span><br><span class="line">        set.add(<span class="string">&quot;A&quot;</span>);</span><br><span class="line">        set.add(<span class="string">&quot;B&quot;</span>);</span><br><span class="line">        set.add(<span class="string">&quot;E&quot;</span>);</span><br><span class="line">        set.add(<span class="string">&quot;F&quot;</span>);</span><br><span class="line">        set.add(<span class="string">&quot;D&quot;</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(set);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果是：<br>[A, B, C, D, E, F]<br>正如上面解释的那样，因为TreeSet按树存储其元素，它们被按照排序次序自动安排，如程序输出所示</p>
+<table>
+<thead>
+<tr>
+<th>构造函数</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>TreeSet( )</td>
+<td>第一种形式构造一个空的树集合，该树集合将根据其元素的自然顺序按升序排序。</td>
+</tr>
+<tr>
+<td>TreeSet(Collection c)</td>
+<td>第二种形式构造一个包含了c的元素的树集合。</td>
+</tr>
+<tr>
+<td>TreeSet(Comparator comp)</td>
+<td>第三种形式构造一个空的树集合，它按照由comp指定的比较函数进行排序。</td>
+</tr>
+<tr>
+<td>TreeSet(SortedSet ss)</td>
+<td>第四种形式构造一个包含了ss的元素的树集合</td>
+</tr>
+</tbody></table>
+<h3 id="Comparator（比较函数）"><a href="#Comparator（比较函数）" class="headerlink" title="Comparator（比较函数）"></a>Comparator（比较函数）</h3><p>java.util<br>Interface Comparator&lt;T&gt;<br>Type Parameters:<br>T - the type of objects that may be compared by this comparator</p>
+<h4 id="Compare"><a href="#Compare" class="headerlink" title="Compare"></a>Compare</h4><p>int compare(T o1,T o2)<br>Compares its two arguments for order. Returns a negative integer, zero, or a positive integer as the first argument is less than, equal to, or greater than the second.<br><strong>Returns:</strong><br>a negative integer, zero, or a positive integer as the first argument is less than, equal to, or greater than the second. （返回一个正数，0，或负数，当第一个参数小于，等于，或者大于第二个参数时）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">compare（<span class="keyword">new</span> <span class="title class_">Integer</span>(<span class="number">1</span>), <span class="keyword">new</span> <span class="title class_">Integer</span>(<span class="number">2</span>));</span><br><span class="line"><span class="comment">//返回一个正数</span></span><br><span class="line">compare（<span class="keyword">new</span> <span class="title class_">Integer</span>(<span class="number">2</span>), <span class="keyword">new</span> <span class="title class_">Integer</span>(<span class="number">2</span>));</span><br><span class="line"><span class="comment">//返回0</span></span><br><span class="line">compare（<span class="keyword">new</span> <span class="title class_">Integer</span>(<span class="number">3</span>), <span class="keyword">new</span> <span class="title class_">Integer</span>(<span class="number">2</span>));</span><br><span class="line"><span class="comment">//返回负数</span></span><br></pre></td></tr></table></figure>
+
+<p>Note that it is always safe not to override Object.equals(Object)。</p>
+<h4 id="Add"><a href="#Add" class="headerlink" title="Add"></a>Add</h4><p>Throws:<br><strong>ClassCastException</strong> - if the specified object cannot be compared with the elements currently in this set<br><strong>NullPointerException</strong> - if the specified element is null and this set uses natural ordering, or its comparator does not permit null elements</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> fourtyThird;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Comparator;</span><br><span class="line"><span class="keyword">import</span> java.util.Iterator;</span><br><span class="line"><span class="keyword">import</span> java.util.TreeSet;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TreeSetTest2</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">        <span class="type">TreeSet</span> <span class="variable">set</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">TreeSet</span>(<span class="keyword">new</span> <span class="title class_">PersonComparator</span>());<span class="comment">//当排序的类可以自然排序时可以不指定比较方法</span></span><br><span class="line"></span><br><span class="line">        <span class="type">Person</span> <span class="variable">p1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="number">10</span>);</span><br><span class="line">        <span class="type">Person</span> <span class="variable">p2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="number">20</span>);</span><br><span class="line">        <span class="type">Person</span> <span class="variable">p3</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="number">30</span>);</span><br><span class="line">        <span class="type">Person</span> <span class="variable">p4</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="number">40</span>);</span><br><span class="line"></span><br><span class="line">        set.add(p1);</span><br><span class="line">        set.add(p2);<span class="comment">//如果不告诉TreeSet类用什么方法去比较，就会抛出异常,也就是说TreeSet set = new TreeSet();，在调用set.add(p2)就会抛出ClassCastException异常。</span></span><br><span class="line">        set.add(p3);</span><br><span class="line">        set.add(p4);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">Iterator</span> <span class="variable">iter</span> <span class="operator">=</span> set.iterator(); iter.hasNext();)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="type">Person</span> <span class="variable">p</span> <span class="operator">=</span> (Person)iter.next();</span><br><span class="line">            System.out.println(p.score);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span>&#123;</span><br><span class="line">    <span class="type">int</span> score;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Person</span><span class="params">(<span class="type">int</span> score)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.score = score;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> String.valueOf(<span class="built_in">this</span>.score);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PersonComparator</span> <span class="keyword">implements</span> <span class="title class_">Comparator</span><span class="comment">//告诉TreeSet如何比较Person类&#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compare</span><span class="params">(Object arg0, Object arg1)</span>&#123;</span><br><span class="line">        <span class="type">Person</span> <span class="variable">p1</span> <span class="operator">=</span> (Person) arg0;</span><br><span class="line">        <span class="type">Person</span> <span class="variable">p2</span> <span class="operator">=</span> (Person) arg1;</span><br><span class="line">        <span class="keyword">return</span> p1.score -p2.score;<span class="comment">//升序</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//  return p2.score - p1.score;//降序</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>结果是：<br>10<br>20<br>30<br>40</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> fourtyThird;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Comparator;</span><br><span class="line"><span class="keyword">import</span> java.util.Iterator;</span><br><span class="line"><span class="keyword">import</span> java.util.TreeSet;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TreeSetTest3</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">TreeSet</span> <span class="variable">set</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">TreeSet</span>(<span class="keyword">new</span> <span class="title class_">MyComparator</span>());</span><br><span class="line"></span><br><span class="line">        set.add(<span class="string">&quot;C&quot;</span>);</span><br><span class="line">        set.add(<span class="string">&quot;A&quot;</span>);</span><br><span class="line">        set.add(<span class="string">&quot;B&quot;</span>);</span><br><span class="line">        set.add(<span class="string">&quot;E&quot;</span>);</span><br><span class="line">        set.add(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">        set.add(<span class="string">&quot;F&quot;</span>);</span><br><span class="line">        set.add(<span class="string">&quot;D&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">Iterator</span> <span class="variable">iter</span> <span class="operator">=</span> set.iterator(); iter.hasNext();) &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">value</span> <span class="operator">=</span> (String) iter.next();</span><br><span class="line"></span><br><span class="line">            System.out.println(value);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">MyComparator</span> <span class="keyword">implements</span> <span class="title class_">Comparator</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compare</span><span class="params">(Object arg0, Object arg1)</span> &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">s1</span> <span class="operator">=</span> (String) arg0;</span><br><span class="line">        <span class="type">String</span> <span class="variable">s2</span> <span class="operator">=</span> (String) arg1;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> s2.compareTo(s1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>结果是：<br>a<br>F<br>E<br>D<br>C<br>B<br>A</p>
+<p>int compare(T o1,T o2)<br>Compares its two arguments for order. Returns a negative integer, zero, or a positive integer as the first argument is less than, equal to, or greater than the second.<br>s2.compareTo(s1);是降序</p>
+<h2 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h2><ol>
+<li><p>HashSet扩展AbstractSet并且实现Set接口。</p>
+</li>
+<li><p>它创建一个类集，该类集使用散列表进行存储。散列表通过使用称之为散列法的机制来存储信息。</p>
+</li>
+<li><p>在散列（hashing）中，一个关键字的信息内容被用来确定唯一的一个值，称为<strong>散列码</strong>（hash code）。而散列码被用来当做与关键字相连的数据的存储下标。关键字到其散列码的转换是自动执行的——你看不到散列码本身。你的程序代码也不能直接索引散列表。</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> fourtyThird;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HashTest1</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        String str=<span class="string">&quot;hello&quot;</span>;</span><br><span class="line">        <span class="type">int</span> hash=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;str.length();i++) &#123;</span><br><span class="line">            hash=<span class="number">31</span>*hash+str.charAt(i);</span><br><span class="line">            System.out.println(hash);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 结果是<br> 104<br> 3325<br> 103183<br> 3198781<br> 99162322<br> 那么下面散列码的结果不同也就好解释了。s和t都还是String对象，散列码由内容获得，结果一样。sb和tb是StringBuffer对象，自身没有hashCode方法，只能继承Object的默认方法，散列码是对象地址，当然不一样了。</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> fourtyThird;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HashTest1</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        String s=<span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">&quot;OK&quot;</span>);</span><br><span class="line">        String t=<span class="string">&quot;OK&quot;</span>;</span><br><span class="line">        StringBuffer sb=<span class="keyword">new</span> <span class="title class_">StringBuffer</span>(s);</span><br><span class="line">        StringBuffer tb=<span class="keyword">new</span> <span class="title class_">StringBuffer</span>(t);</span><br><span class="line">        <span class="type">int</span> hash=<span class="number">0</span>;</span><br><span class="line">        System.out.println(<span class="string">&quot;s&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;s.length();i++) &#123;</span><br><span class="line">            hash=s.hashCode();</span><br><span class="line">            System.out.println(hash);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;t&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;t.length();i++) &#123;</span><br><span class="line">            hash=t.hashCode();</span><br><span class="line">            System.out.println(hash);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;sb&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;sb.length();i++) &#123;</span><br><span class="line">            hash=sb.hashCode();</span><br><span class="line">            System.out.println(hash);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;tb&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;tb.length();i++) &#123;</span><br><span class="line">            hash=tb.hashCode();</span><br><span class="line">            System.out.println(hash);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 结果是<br> s<br> 2524<br> 2524<br> t<br> 2524<br> 2524<br> sb<br> 1975012498<br> 1975012498<br> tb<br> 1808253012<br> 1808253012<br> <img src="https://img-blog.csdnimg.cn/20181224223400833.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkwNzMzMg==,size_16,color_FFFFFF,t_70" srcset="undefined" alt="在这里插入图片描述"></p>
+</li>
+<li><p>散列法的优点在于即使对于大的集合，它允许一些基本操作如add( ),contains( ),remove( )和size( )方法的运行时间保持不变。它创建一个类集，该类集使用散列表进行存储。散列表通过使用称之为散列法的机制来存储信息。</p>
+</li>
+<li><p>hashCode方法必须与equals方法必须兼容<br> 如果我们自己定义了一个类，想对这个类的大量对象组织成散列表结构便于查找。有一点一定要注意：就是hashCode方法必须与equals方法向兼容。</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Employee</span> &#123;</span><br><span class="line">    <span class="type">int</span> id;</span><br><span class="line">    <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 相同id对象具有相同散列码</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">hashCode</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// equals必须比较id</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">equals</span><span class="params">(Employee x)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">this</span>.id == x.id)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> public HashSet()<br> Constructs a new, empty set; the backing HashMap instance has default initial capacity (16) and load factor (0.75).（构造一个新的空集；支持HashMap实例具有默认的初始容量（16）和负载因子（0.75）。）</p>
+</li>
+<li><p>散列表又称为哈希表。散列表算法的基本思想是：以结点的关键字为自变量，通过一定的函数关系（散列函数）计算出对应的函数值，以这个值作为该结点存储在散列表中的地址。当散列表中的元素存放太满，就必须进行再散列，将产生一个新的散列表，所有元素存放到新的散列表中，原先的散列表将被删除。</p>
+</li>
+<li><p>在Java语言中，通过负载因子(loadfactor)来决定何时对散列表进行再散列。例如：如果负载因子是0.75，当散列表中已经有75%的位置已经放满，那么将进行再散列。负载因子越高(越接近1.0)，内存的使用效率越高，元素的寻找时间越长。负载因子越低(越接近0.0)，元素的寻找时间越短，内存浪费越多。</p>
+</li>
+<li><p>HashSet类的缺省负载因子是0.75。</p>
+<table>
+<thead>
+<tr>
+<th>构造方法</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>HashSet( )</td>
+<td>第一种形式构造一个默认的散列集合。</td>
+</tr>
+<tr>
+<td>HashSet(Collection c)</td>
+<td>第二种形式用c中的元素初始化散列集合。</td>
+</tr>
+<tr>
+<td>HashSet(int capacity)</td>
+<td>第三种形式用capacity初始化散列集合的容量。</td>
+</tr>
+<tr>
+<td>HashSet(int capacity, float fillRatio)</td>
+<td>第四种形式用它的参数初始化散列集合的容量和填充比（也称为加载容量）。填充比必须介于0.0与1.0之间，它决定在散列集合向上调整大小之前，有多少能被充满。具体的说，就是当元素的个数大于散列集合容量乘以它的填充比时，散列集合被扩大。对于没有获得填充比的构造函数，默认使用0.75</td>
+</tr>
+<tr>
+<td>HashSet没有定义更多的其他方法。</td>
+<td></td>
+</tr>
+</tbody></table>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> fourtyThird;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.HashSet;</span><br><span class="line"><span class="keyword">import</span> java.util.Iterator;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HashTest1</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">HashSet</span> <span class="variable">set</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HashSet</span>();</span><br><span class="line">        set.add(<span class="string">&quot;3&quot;</span>);</span><br><span class="line">        set.add(<span class="string">&quot;6&quot;</span>);</span><br><span class="line">        set.add(<span class="string">&quot;5&quot;</span>);</span><br><span class="line">        set.add(<span class="string">&quot;1&quot;</span>);</span><br><span class="line">        set.add(<span class="string">&quot;9&quot;</span>);</span><br><span class="line">        <span class="type">Iterator</span> <span class="variable">iter</span> <span class="operator">=</span> set.iterator();</span><br><span class="line">        <span class="keyword">while</span>(iter.hasNext())&#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">value</span> <span class="operator">=</span> (String)iter.next();  </span><br><span class="line">            System.out.println(value);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 结果是：<br> 1<br> 3<br> 5<br> 6<br> 9</p>
+<p> • 重要的是，<strong>注意：散列集合并没有确保其元素的顺序</strong>，因为散列法的处理通常不让自己参与创建排序集合。如果需要排序存储，另一种类集——<strong>TreeSet</strong>将是一个更好的选择。</p>
+</li>
+</ol>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/Java">Java</a>
+                  &nbsp;
+                
+                  <a class="hover-with-bg" href="/categories/Java%20SE">Java SE</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/Java">Java</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "Set&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "left",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

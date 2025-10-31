@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="仅限学习参考，有兴趣可以互相交流">
+  <meta name="author" content="张议">
+  <meta name="keywords" content="张议,Java,java,spring,SpringBoot,zhangyi">
+  <title>线程8大核心基础知识 ~ 人生展馆</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>人生展馆</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">资料</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/index.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期日, 三月 1日 2020, 1:10 下午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    2.7k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      9 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="多线程全部脉络"><a href="#多线程全部脉络" class="headerlink" title="多线程全部脉络"></a>多线程全部脉络</h2><img src="/2020/03/01/%E5%90%8E%E7%AB%AF/Java/%E9%AB%98%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E7%BA%BF%E7%A8%8B8%E5%A4%A7%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/0%E5%85%A8%E8%AF%BE%E8%84%89%E7%BB%9C.png" srcset="undefined" class="" title="0全课脉络">
+
+<h2 id="多线程8大基础"><a href="#多线程8大基础" class="headerlink" title="多线程8大基础"></a>多线程8大基础</h2><img src="/2020/03/01/%E5%90%8E%E7%AB%AF/Java/%E9%AB%98%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E7%BA%BF%E7%A8%8B8%E5%A4%A7%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1%E7%BA%BF%E7%A8%8B8%E5%A4%A7%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80.png" srcset="undefined" class="" title="1线程8大核心基础">
+
+<h3 id="实现多线程的方法时1种2种还是4种"><a href="#实现多线程的方法时1种2种还是4种" class="headerlink" title="实现多线程的方法时1种2种还是4种"></a>实现多线程的方法时1种2种还是4种</h3><blockquote>
+<p>实现多线程的官方正确方法：2种</p>
+</blockquote>
+<p>Oracle官网文档：<br>There are two ways to create a new thread of execution. One is to declare a class to be a subclass of Thread. This subclass should override the run method of class Thread. An instance of the subclass can then be allocated and started. The other way to create a thread is to declare a class that implements the Runnable interface.<br>创建一个新的执行线程有两种方法：一个是将一个类声明为Thread的子类，这个子类应该重写run类的方法Thread，然后可以分配并启动子类的实例。另一种方法来创建一个线程是声明实现类Runnable接口。</p>
+<h4 id="两种方法对比"><a href="#两种方法对比" class="headerlink" title="两种方法对比"></a>两种方法对比</h4><ol>
+<li><p>方法1（实现Runnable接口）更好<br> 方法2（继承Thread类）的缺点：从代码的架构去考虑run方法应该和Thread类应该时解耦的；<br> 如果想新建一个任务只能够新建一个线程，而新建线程的损耗是比较大的，所以方法1好在资源的节约上；<br> Java无法双继承，限制了它的可扩展性。</p>
+</li>
+<li><p>两种方法的本质对比<br> 方法一：最终调用target.run()<br> 方法二：run()整个都被重写</p>
+</li>
+</ol>
+<h4 id="有多少实现线程的方法"><a href="#有多少实现线程的方法" class="headerlink" title="有多少实现线程的方法"></a>有多少实现线程的方法</h4><ol>
+<li><p>从不同的角度看，会有不同的答案。</p>
+</li>
+<li><p>典型答案时两种，分别是实现Runnable接口和继承Thread类，然后具体展开说；</p>
+</li>
+<li><p>但是我们看原理，其实Thread类实现了Runnable接口，并且看Thread类的run方法，会发现其实那两种本质都是一样的，run方法的代码如下：</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (target != <span class="literal">null</span>)&#123;</span><br><span class="line">        target.run();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 方法一和方法二，也就是“继承Thread类然后重写run()和实现Runnable接口并传入Thread类在实现多线程的本质上，并没有区别，都是最终调用了start()方法来新建线程。这两个方法的最主要区别在于run()方法的内容来源：<br> 方法一：最终调用target.run()<br> 方法二：run()整个都被重写</p>
+</li>
+<li><p>然后具体展开说其他方式；<br> 还有其他的实现线程的方法，例如线程池等，他们也能新建线程，但是细看源码，从没有逃出过本质，也就是实现Runnable接口和继承Thread类。</p>
+</li>
+<li><p>结论：我们只能通过新建Thread类这一种方式来创建线程，但是类里面的run方法有两种方式来实现，第一种是重写run方法，第二种实现Runnable接口的run方法，然后再把该runnabel实例传给Thread类。除此之外，从表面上看线程池、定时器等工具类也可以创建线程但是他们的本质都逃不出刚才所说的范围。</p>
+</li>
+</ol>
+<h3 id="典型错误观点分析"><a href="#典型错误观点分析" class="headerlink" title="典型错误观点分析"></a>典型错误观点分析</h3><ol>
+<li>“<strong>线程池</strong>拆功能键线程也算是一种新建线程的方式”<br> 原理：用的new Thread</li>
+<li>“通过Callable和FutureTask创建线程，也算是一种新建线程的方式”<br> 本质是Runnable接口</li>
+<li>“无返回值是实现runnable接口，有返回值是实现callable接口，所以callable是新的实现线程的方式”</li>
+<li>定时器</li>
+<li>匿名内部类</li>
+<li>Lambda表达式</li>
+</ol>
+<blockquote>
+<p>多线程的实现方式，在代码种写法千变万化，但其本质万变不离其宗。</p>
+</blockquote>
+<h2 id="正确的启动线程"><a href="#正确的启动线程" class="headerlink" title="正确的启动线程"></a>正确的启动线程</h2><h3 id="start-和run-的比较"><a href="#start-和run-的比较" class="headerlink" title="start()和run()的比较"></a>start()和run()的比较</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Runnable</span> <span class="variable">runnable</span> <span class="operator">=</span> () -&gt; System.out.println(Thread.currentThread().getName());</span><br><span class="line">runnable.run();</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Thread</span>(runnable).start();</span><br></pre></td></tr></table></figure>
+
+<p>运行结果为<br>main<br>Thread-0</p>
+<h4 id="start-方法含义"><a href="#start-方法含义" class="headerlink" title="start()方法含义"></a>start()方法含义</h4><ul>
+<li>启动新线程：向JVM申请启动新线程</li>
+<li>准备工作</li>
+<li>不能重复的执行start()</li>
+</ul>
+<h4 id="start-源码解析"><a href="#start-源码解析" class="headerlink" title="start()源码解析"></a>start()源码解析</h4><ul>
+<li>启动新线程检查线程状态</li>
+<li>加入线程组</li>
+<li>调用start0()</li>
+</ul>
+<p>start方法的执行流程是什么？</p>
+<ol>
+<li>检查线程状态，只有NEW状态下的线程才能继续，否则会抛出IllegalThreadStateException（在运行种或者已结束的线程，都不能再次启动，详见CantStartTwice10类）</li>
+<li>被加入线程组</li>
+<li>调用start0()方法启动线程<br>注意点：<br>start方法是被synchronized修饰的方法，可以保证线程安全；由JVM创建的main方法线程和system组线程，并不会通过start来启动。</li>
+</ol>
+<h4 id="run-方法原理解读"><a href="#run-方法原理解读" class="headerlink" title="run()方法原理解读"></a>run()方法原理解读</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (target != <span class="literal">null</span>) &#123;</span><br><span class="line">        target.run();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>通过Thread重写run方法，或者给target赋值为Runnable，调用Runnable的run方法</p>
+<h2 id="正确的停止线程"><a href="#正确的停止线程" class="headerlink" title="正确的停止线程"></a>正确的停止线程</h2><ol>
+<li>原理介绍：使用interrupt来通知，而不是强制</li>
+</ol>
+<p>Java中停止线程的原则是什么？</p>
+<p>在Java中，最好的停止线程的方式是使用中断interrupt，但是这仅仅是会通知到被终止的线程“你该停止运行了”，被终止点额线程自身拥有决定权（决定是否、以及何时停止）这依赖于请求停止方和被停止方都遵守一种约定好的编码规范。<br>任务和线程的启动很容易。在大多时候，我们都会让它们运行知道结束，或者让它们自行停止。然而，有时候我们希望提前结束任务或者线程，或许是因为用户取消了操作，或者服务需要被快速关闭，或者是运行超时或出错了。<br>要使任务和线程能安全、快速、可靠地停止下来，并不是一件容易的事。<strong>Java没有提供任何机制来安全地终止线程。但它提供了中断（Interruption），这是一种协作机制</strong>，能够使一个线程终止另一个线程的当前工作。<br>这种协作式的方法使必要的，我们很少希望某个任务、线程或服务立即停止，因为这种立即停止会使共享的数据结构处于不一致的状态。相反，在编写任务和服务时可以使用一种协作的方式：<strong>当需要停止时，它们首先会清楚当前正在执行的工作，然后再结束。这提供了更好的灵活性，因为任务本身的代码比发出取消请求的代码更清楚如何执行清楚工作。</strong><br>生命周期结束（End-of-Lifecycle)的问题会使任务、服务以及程序的设计和实现等过程变得复杂，而这个在程序设计中非常重要的要素却经常被忽略。一个行为良好的软件与勉强运的软件之间的最主要区别就是，行为良好的软件能很完善地处理失败、关闭和取消等过程。</p>
+<h3 id="正确的停止方法：interrupt"><a href="#正确的停止方法：interrupt" class="headerlink" title="正确的停止方法：interrupt"></a>正确的停止方法：interrupt</h3><ul>
+<li><p>通常线程会在什么情况下停止普通情况</p>
+</li>
+<li><p>线程可能被阻塞(例如Thread.sleep)</p>
+</li>
+<li><p>如果线程在每次迭代后都阻塞</p>
+</li>
+<li><p>while内try&#x2F;catch的问题</p>
+</li>
+<li><p>实际开发中的两种最佳实践</p>
+</li>
+<li><p>响应中断的方法总结列表</p>
+</li>
+</ul>
+<h3 id="实际开发中的两种最佳实践"><a href="#实际开发中的两种最佳实践" class="headerlink" title="实际开发中的两种最佳实践"></a>实际开发中的两种最佳实践</h3><ul>
+<li>优先选择：传递中断</li>
+<li>不想或无法传递：恢复中断</li>
+<li>不应屏蔽中断</li>
+</ul>
+<p>处理中断的最好方法是什么？</p>
+<p>优先选择在方法上抛出异常<br>用throws InterruptedException 标记你的方法，不采用try语句块捕获异常，以便于该异常可以传递到顶层，让run方法可以捕获这一异常，例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> <span class="title function_">subTask</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException &#123;</span><br><span class="line">    sleep(delay);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>由于run方法内无法抛出checked Exception（只能用try catch），顶层方法必须处理该异常，避免漏掉或者被吞掉的情况，增强了代码的健壮性。</p>
+<p>如果不能抛出中断，要怎么做？</p>
+<p>如果不想或无法传递InterruptedException（例如用run方法的时候，就不让该方法throws InterruptedException），那么应该选择在catch子句中调用Thread.currentThread().interrupt()来恢复设置中断状态，以便于在后续的执行依然能够检查到刚才发生了中断。</p>
+<h3 id="错误的停止方法"><a href="#错误的停止方法" class="headerlink" title="错误的停止方法"></a>错误的停止方法</h3><ul>
+<li><p>被弃用的<strong>stop,suspend和resume</strong>方法。<br>  为什么stop被弃用？<br>  因为它本质上是不安全的，停止线程会导致它解锁已锁定的所有监视器（monitor）；但是它会使单元数据操作不完整。<br>  为什么suspend和resume被弃用？<br>  因为调用它之后线程使带着锁挂起的，容易产生死锁。</p>
+</li>
+<li><p>用<strong>volatile</strong>设置<strong>boolean</strong>标记位。<br>  这种做法是错误的，或者说是不够全面的，在某些情况下虽然可用，但是某些情况下有严重问题。<br>  这种方法在《Java并发编程实战》中被明确指出了缺陷，我们一起来看看缺陷在哪里：<br>  此方法错误的原因在于，如果我们遇到了线程长时间阻塞（这是一种很常见的情况，例如生产者消费者模式中就存在这样的情况），就没办法即使唤醒它，<br>  或者永远都无法唤醒该线程，而interrupt设计之初就是把wait等长期阻塞作为一种特殊情况考虑在内了，我们应该用interrupt思维来停止线程。</p>
+</li>
+</ul>
+<img src="/2020/03/01/%E5%90%8E%E7%AB%AF/Java/%E9%AB%98%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E7%BA%BF%E7%A8%8B8%E5%A4%A7%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/native%E6%BA%90%E7%A0%81.png" srcset="undefined" class="" title="native源码">
+
+<h3 id="判断是否已被中断相关方法"><a href="#判断是否已被中断相关方法" class="headerlink" title="判断是否已被中断相关方法"></a>判断是否已被中断相关方法</h3><ul>
+<li>static boolean interrupted()</li>
+<li>boolean isInterrupted()</li>
+<li>Thread.interrupted()的目的对象</li>
+</ul>
+<h2 id="面试常见问题"><a href="#面试常见问题" class="headerlink" title="面试常见问题"></a>面试常见问题</h2><ol>
+<li><p>如何停止线程</p>
+<ol>
+<li>原理：用interrupt来请求、好处</li>
+<li>想停止线程，要求方、被停止方、子方法被调用方相互配合</li>
+<li>最后再说错误的方法：stop&#x2F;suspend已废弃，volatile的boolean无法处理长时间阻塞的情况</li>
+</ol>
+<p> 原理：用interrupt来请求线程停止而不是强制，好处是安全<br> 想停止线程，要求方、被停止方、子方法被调用方相互配合才行：<br> a）作为被停止方：每次循环中或者适时检查中断信号，并且在可能抛出InterruptedException的地方处理该中断信号；<br> b）请求方：发出中断信号；<br> c）子方法调用方（被线程调用的方法的作者）要注意：优先在方法层面抛出InterrupedException，或者检查到中断信号时，再次设置中断状态；<br> 最后再说错误的方法：stop&#x2F;suspend已废弃，volatile的boolean无法处理长时间阻塞的情况。</p>
+</li>
+<li><p>如何处理不可中断的阻塞</p>
+</li>
+</ol>
+<p>根据不同的类调用不同的方法<br>如果线程阻塞时由于调用了wait(),sleep()或join()方法，你可用中断线程，通过抛出InterruptedException异常来唤醒该线程。<br>但是对于不能响应InterruptedException的阻塞，很遗憾并没有一共同一的解决方案。<br>但是我们可用利用特定的其他的可用响应的中断方法，比如ReentranLock.lockInterruptibly()，比如关闭套接字使线程立即返回等方法来达到目的。<br>答案有很多种，因为有很多原因会造成线程阻塞，所以针对不同情况，唤起的方法也不同。<br>总结就是说如果不支持响应中断，就要用特定方法来唤起，没有万能药。</p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/Java">Java</a>
+                  &nbsp;
+                
+                  <a class="hover-with-bg" href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B">多线程</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/Java">Java</a>
+                
+                  <a class="hover-with-bg" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B">多线程</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "线程8大核心基础知识&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "left",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

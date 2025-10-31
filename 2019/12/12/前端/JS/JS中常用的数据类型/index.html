@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="仅限学习参考，有兴趣可以互相交流">
+  <meta name="author" content="张议">
+  <meta name="keywords" content="张议,Java,java,spring,SpringBoot,zhangyi">
+  <title>JS中常用的数据类型 ~ 人生展馆</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>人生展馆</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">资料</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/index.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期四, 十二月 12日 2019, 7:35 晚上
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    1.1k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      4 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="JS中常用的数据类型"><a href="#JS中常用的数据类型" class="headerlink" title="JS中常用的数据类型"></a>JS中常用的数据类型</h2><ul>
+<li>基本数据类型<ul>
+<li>数字number：常规数字和NaN</li>
+<li>字符串string：所有用单引号、双引号、反引号（撇）包起来的都是字符串</li>
+<li>布尔boolean：true&#x2F;false</li>
+<li>空对象指针：null</li>
+<li>未定义：undefined</li>
+</ul>
+</li>
+<li>引用数据类型<ul>
+<li>对象数据类型object<br>- {} 普通对象<br>- [] 数组对象<br>- &#x2F;^[+-]?(\d|([1-9]\d+))(.\d+)?$&#x2F; 正则对象<br>- Math数学函数对象<br>- 日期对象<br>- …</li>
+<li>函数数据类型function</li>
+</ul>
+</li>
+</ul>
+<h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><h3 id="number数字类型"><a href="#number数字类型" class="headerlink" title="number数字类型"></a>number数字类型</h3><blockquote>
+<p>包含：常规数字、NaN</p>
+</blockquote>
+<p>NaN ：not a number</p>
+<blockquote>
+<p>不是一个数，但它属于数字类型</p>
+</blockquote>
+<p>NaN和任何值（包括自己）都不相等：NaN！&#x3D;NaN，所以我们不能用相等的方式判断是否为有效数字</p>
+<p>isNaN ：检测一个值是否为非有效数字，如果不是有效数字返回TRUE，反之返回false。</p>
+<p>在使用isNaN进行检测的时候，受限会验证检测的值是否为数字类型，如果不是，先基于Number()这个方法，把值转换为数字类型，然后再检测</p>
+<h4 id="把其他类型值转换为数字类型"><a href="#把其他类型值转换为数字类型" class="headerlink" title="把其他类型值转换为数字类型"></a>把其他类型值转换为数字类型</h4><ul>
+<li>Number([val])它是按照浏览器从底层机制，把其他数据类型转换为数字<ul>
+<li>字符串：看是否半酣非有效数字字符，包含结果就是NaN；’’&#x3D;&gt;0</li>
+<li>布尔：true-&gt;1 false-&gt; 0</li>
+<li>null： -&gt;0</li>
+<li>undefined: -&gt; NaN</li>
+<li>引用类型值都要先转换为字符串再转换为数字<ul>
+<li>{}&#x2F;正则&#x2F;函数等 -&gt; NaN</li>
+<li>[] -&gt; ‘’ -&gt; 0</li>
+<li>[‘12’] -&gt; ‘12’ -&gt; 12</li>
+<li>[12,23] -&gt; ‘12,23’ -&gt; NaN</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>parseInt&#x2F;parseFloat([val],[进制])：也是转换为数字的方法，对于字符串来说，它是从左到右依次查找有效数字字符，直到遇到非有效数字字符，停止查找（不管后面是否还有数字，都不再找了），把找到的当作数字返回</li>
+<li>&#x3D;&#x3D;进行比较的时候,可能要出现把其他类型值转换为数字</li>
+</ul>
+<h2 id="string字符串数据类型"><a href="#string字符串数据类型" class="headerlink" title="string字符串数据类型"></a>string字符串数据类型</h2><blockquote>
+<p>所有用单引号、双引号、反引号（撇ES6模板字符串）抱起来的都是字符串</p>
+</blockquote>
+<h3 id="把其他类型值转换为字符串"><a href="#把其他类型值转换为字符串" class="headerlink" title="把其他类型值转换为字符串"></a>把其他类型值转换为字符串</h3><ul>
+<li>[val].toString</li>
+<li>字符串拼接</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//===========字符串拼接</span></span><br><span class="line"><span class="comment">//四则运算法则中，除加法之外，其余都是数学计算，只有假发可能存在字符串拼接（一旦遇到字符串，则不是数学运算，而是字符串拼接）</span></span><br><span class="line">console.log(<span class="string">&#x27;10&#x27;</span>+<span class="number">10</span>)<span class="comment">//=》&#x27;1010&#x27;</span></span><br><span class="line"><span class="comment">//用Number来转换（默认）</span></span><br><span class="line">console.log(<span class="string">&#x27;10&#x27;</span>-<span class="number">10</span>)</span><br><span class="line">console.log(<span class="string">&#x27;10px&#x27;</span>-<span class="number">10</span>)<span class="comment">//=》NaN-10=NaN</span></span><br><span class="line"></span><br><span class="line"><span class="type">let</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">10</span> + <span class="literal">null</span> + <span class="literal">true</span> + [] + <span class="literal">true</span> + undefined + <span class="string">&#x27;珠峰&#x27;</span> + <span class="literal">null</span> + <span class="number">32</span> + <span class="literal">false</span> + &#123;name:<span class="string">&quot;sss&quot;</span>&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">10 + null -&gt; 10 + 0 = 10</span></span><br><span class="line"><span class="comment">10 + true -&gt; 10 + 1 = 11</span></span><br><span class="line"><span class="comment">11 + [] -&gt; 11 + &#x27;&#x27; = &#x27;11&#x27; 空数组变为数字，先要经历变为空字符串，遇到字符串直接变为字符串拼接</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">console.log(a)<span class="comment">// 11trueundefined珠峰null32false[object Object]</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="boolean布尔数据类型"><a href="#boolean布尔数据类型" class="headerlink" title="boolean布尔数据类型"></a>boolean布尔数据类型</h2><blockquote>
+<p>只有两个值true&#x2F;false</p>
+</blockquote>
+<h3 id="把其他类型值转换为布尔类型"><a href="#把其他类型值转换为布尔类型" class="headerlink" title="把其他类型值转换为布尔类型"></a>把其他类型值转换为布尔类型</h3><blockquote>
+<p>只有0、NaN、’’、null、undifined五个值转换为FALSE，其余都转换为TRUE（而且没有任何的特殊情况）</p>
+</blockquote>
+<ul>
+<li>Boolean([val])</li>
+<li>!&#x2F;!!</li>
+<li>条件判断</li>
+</ul>
+<h2 id="null-x2F-undefined"><a href="#null-x2F-undefined" class="headerlink" title="null&#x2F;undefined"></a>null&#x2F;undefined</h2><blockquote>
+<p>null和undefined都代表的是没有</p>
+</blockquote>
+<ul>
+<li>null：意料之中（一般都是开始不知道值，我们手动先设置为null，后期再给予赋值操作）</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> num = <span class="literal">null</span> <span class="comment">// let num = 0 一般最好用null作为初始的空值，因为零不是空值，他在栈内存中有自己的存储空间（占了位置）</span></span><br><span class="line"></span><br><span class="line">num = <span class="number">12</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>undifined: 意料之外（不是我能决定的）</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> num<span class="comment">//-》创建一个变量没有赋值，默认值是undefined</span></span><br><span class="line"></span><br><span class="line">num = <span class="number">12</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="object对象数据类型-普通对象"><a href="#object对象数据类型-普通对象" class="headerlink" title="object对象数据类型-普通对象"></a>object对象数据类型-普通对象</h2><blockquote>
+<p>{[key]:[value],…}任何一个对象都是由0到多组键值对（属性名：属性值）组成的<br>  数组是特殊的对象数据类型</p>
+</blockquote>
+<h2 id="数据类型的区别"><a href="#数据类型的区别" class="headerlink" title="数据类型的区别"></a>数据类型的区别</h2><img src="/2019/12/12/%E5%89%8D%E7%AB%AF/JS/JS%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB.png" srcset="undefined" class="" title="数据类型之间的区别">
+
+<h2 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h2><ol>
+<li>第一题</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&#x27;abc123&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> num = <span class="built_in">parseInt</span>(str);</span><br><span class="line"><span class="keyword">if</span>(num == <span class="title class_">NaN</span>) &#123;</span><br><span class="line">  <span class="title function_">alert</span>(<span class="title class_">NaN</span>)</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>( num == <span class="number">123</span>) &#123;</span><br><span class="line">  <span class="title function_">alert</span>(<span class="number">123</span>)</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> num == <span class="string">&#x27;number&#x27;</span>)&#123;</span><br><span class="line">  <span class="title function_">alert</span>(<span class="string">&#x27;number&#x27;</span>)</span><br><span class="line">&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="title function_">alert</span>(<span class="string">&#x27;str&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果是number<br>原因是parseInt(‘abc123’)等于NaN<br>parseInt(‘123abc’)是123<br>并且NaN不等于NaN所以是number</p>
+<ol start="2">
+<li>第二题</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">alert</span>(<span class="number">1</span>))</span><br><span class="line">结果是<span class="literal">undefined</span>，原因是alert函数没有返回值（默认返回值<span class="literal">undefined</span>）</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF">前端</a>
+                  &nbsp;
+                
+                  <a class="hover-with-bg" href="/categories/JS">JS</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/%E5%89%8D%E7%AB%AF">前端</a>
+                
+                  <a class="hover-with-bg" href="/tags/JS">JS</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "JS中常用的数据类型&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "left",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

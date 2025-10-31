@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="仅限学习参考，有兴趣可以互相交流">
+  <meta name="author" content="张议">
+  <meta name="keywords" content="张议,Java,java,spring,SpringBoot,zhangyi">
+  <title>rsync+inotity实时监控同步工具 ~ 人生展馆</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>人生展馆</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">资料</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/index.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期日, 四月 25日 2021, 10:01 上午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    1.8k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      7 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="rsync-linux同步工具"><a href="#rsync-linux同步工具" class="headerlink" title="rsync linux同步工具"></a>rsync linux同步工具</h2><p><a target="_blank" rel="noopener" href="https://rsync.samba.org/">rsync官方网站</a></p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p><a target="_blank" rel="noopener" href="https://github.com/WayneD/rsync/releases">rsync下载地址</a></p>
+<ol>
+<li>tar zxvf rsync-3.2.3.tar.gz</li>
+<li>cd rsync-3.2.3</li>
+<li>.&#x2F;configure –prefix &#x3D; &#x2F;opt&#x2F;rsync</li>
+<li>make</li>
+<li>make install</li>
+</ol>
+<p>如果configure命令无法执行，请根据文档进行安装环境<br><a target="_blank" rel="noopener" href="https://github.com/WayneD/rsync/blob/master/INSTALL.md">rsync解压环境配置</a></p>
+<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sudo yum -y install epel-release</span><br><span class="line">sudo yum -y install gcc g++ gawk autoconf automake python3-pip</span><br><span class="line">sudo yum -y install acl libacl-devel</span><br><span class="line">sudo yum -y install attr libattr-devel</span><br><span class="line">sudo yum -y install xxhash-devel</span><br><span class="line">sudo yum -y install libzstd-devel</span><br><span class="line">sudo yum -y install lz4-devel</span><br><span class="line">sudo yum -y install openssl-devel</span><br><span class="line">python3 -mpip install --user commonmark</span><br></pre></td></tr></table></figure>
+
+<h4 id="服务器端"><a href="#服务器端" class="headerlink" title="服务器端"></a>服务器端</h4><p>将以下几个文件再rsync目录下创建</p>
+<ol>
+<li>rsyncd.conf</li>
+<li>rsyncd.lock</li>
+<li>rsyncd.motd</li>
+<li>rsyncd.secrets</li>
+<li>rsyncd.log</li>
+</ol>
+<h4 id="rsyncd-conf"><a href="#rsyncd-conf" class="headerlink" title="rsyncd.conf"></a>rsyncd.conf</h4><figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">port = 873</span><br><span class="line">uid = root # 指定运行该服务的权限</span><br><span class="line">gid = root</span><br><span class="line">use chroot = no</span><br><span class="line">max connections = 2000</span><br><span class="line">timeout 600</span><br><span class="line">read only = false # 是否只读,注意：如果需要从客户端推送文件到服务端一定要配置此行</span><br><span class="line">lock file = /opt/rsync/rsyncd.lock</span><br><span class="line">log file = /opt/rsync/rsyncd.log # 指定日志文件</span><br><span class="line">pid file = /opt/rsync/rsyncd.pid</span><br><span class="line">motd file = /opt/rsync/rsyncd.motd</span><br><span class="line"></span><br><span class="line">[neo4j] # 定义同步项目名 可以定义多个同步项目</span><br><span class="line">path = /opt/data/neo4j # 指定源路径</span><br><span class="line">hosts allow = *</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">hosts deny = 0.0.0.0/32</span></span><br><span class="line">auth users root  #该用户系统中存在且对后面指定的备份目录拥有权限</span><br><span class="line">secrets file = /opt/rsync/rsyncd.secrets # 用户名密码</span><br><span class="line">comment = ocpyang neo4j</span><br></pre></td></tr></table></figure>
+
+<h4 id="rsyncd-secrets"><a href="#rsyncd-secrets" class="headerlink" title="rsyncd.secrets"></a>rsyncd.secrets</h4><figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root:root # 用户名:密码</span><br></pre></td></tr></table></figure>
+
+<p>配置权限</p>
+<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 600 rsyncd.secrets</span><br></pre></td></tr></table></figure>
+
+<h4 id="rsyncd-motd"><a href="#rsyncd-motd" class="headerlink" title="rsyncd.motd"></a>rsyncd.motd</h4><figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">++++++++++++++++++++++++++++++++++++  </span><br><span class="line">Wlecome to ocpyang  rsync services         </span><br><span class="line">++++++++++++++++++++++++++++++++++++</span><br></pre></td></tr></table></figure>
+
+<h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rsync --daemon --config=/opt/rsync/rsyncd.conf</span><br><span class="line">netstat -lntp | grep 873 # 检查是否启动</span><br></pre></td></tr></table></figure>
+
+<h4 id="停止"><a href="#停止" class="headerlink" title="停止"></a>停止</h4><figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pkill rsync</span><br></pre></td></tr></table></figure>
+
+<h4 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h4><p>配置rsyncd.secrets</p>
+<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root # 单独配置密码，和服务端的密码一致</span><br></pre></td></tr></table></figure>
+
+<p>配置权限</p>
+<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 600 rsyncd.secrets</span><br></pre></td></tr></table></figure>
+
+<p>rsync 的详细参数</p>
+<ul>
+<li>-v, –verbose 详细模式输出</li>
+<li>-q, –quiet 精简输出模式</li>
+<li>-c, –checksum 打开校验开关，强制对文件传输进行校验</li>
+<li>-a, –archive 归档模式，表示以递归方式传输文件，并保持所有文件属性，等于-rlptgoD</li>
+<li>-r, –recursive 对子目录以递归模式处理</li>
+<li>-R, –relative 使用相对路径信息</li>
+<li>-b, –backup 创建备份，也就是对于目的已经存在有同样的文件名时，将老的文件重新命名为~filename。可以使用–suffix选项来指定不同的备份文件前缀。</li>
+<li>–backup-dir 将备份文件(如~filename)存放在在目录下。</li>
+<li>-suffix&#x3D;SUFFIX 定义备份文件前缀</li>
+<li>-u, –update 仅仅进行更新，也就是跳过所有已经存在于DST，并且文件时间晚于要备份的文件。(不覆盖更新的文件)</li>
+<li>-l, –links 保留软链结</li>
+<li>-L, –copy-links 想对待常规文件一样处理软链结</li>
+<li>–copy-unsafe-links 仅仅拷贝指向SRC路径目录树以外的链结</li>
+<li>–safe-links 忽略指向SRC路径目录树以外的链结</li>
+<li>-H, –hard-links 保留硬链结</li>
+<li>-p, –perms 保持文件权限</li>
+<li>-o, –owner 保持文件属主信息</li>
+<li>-g, –group 保持文件属组信息</li>
+<li>-D, –devices 保持设备文件信息</li>
+<li>-t, –times 保持文件时间信息</li>
+<li>-S, –sparse 对稀疏文件进行特殊处理以节省DST的空间</li>
+<li>-n, –dry-run现实哪些文件将被传输</li>
+<li>-W, –whole-file 拷贝文件，不进行增量检测</li>
+<li>-x, –one-file-system 不要跨越文件系统边界</li>
+<li>-B, –block-size&#x3D;SIZE 检验算法使用的块尺寸，默认是700字节</li>
+<li>-e, –rsh&#x3D;COMMAND 指定替代rsh的shell程序</li>
+<li>–rsync-path&#x3D;PATH 指定远程服务器上的rsync命令所在路径信息</li>
+<li>-C, –cvs-exclude 使用和CVS一样的方法自动忽略文件，用来排除那些不希望传输的文件</li>
+<li>–existing 仅仅更新那些已经存在于DST的文件，而不备份那些新创建的文件</li>
+<li>–delete 删除那些DST中SRC没有的文件</li>
+<li>–delete-excluded 同样删除接收端那些被该选项指定排除的文件</li>
+<li>–delete-after 传输结束以后再删除</li>
+<li>–ignore-errors 及时出现IO错误也进行删除</li>
+<li>–max-delete&#x3D;NUM 最多删除NUM个文件</li>
+<li>–partial 保留那些因故没有完全传输的文件，以是加快随后的再次传输</li>
+<li>–force 强制删除目录，即使不为空</li>
+<li>–numeric-ids 不将数字的用户和组ID匹配为用户名和组名</li>
+<li>–timeout&#x3D;TIME IP超时时间，单位为秒</li>
+<li>-I, –ignore-times 不跳过那些有同样的时间和长度的文件</li>
+<li>–size-only 当决定是否要备份文件时，仅仅察看文件大小而不考虑文件时间</li>
+<li>–modify-window&#x3D;NUM 决定文件是否时间相同时使用的时间戳窗口，默认为0</li>
+<li>-T –temp-dir&#x3D;DIR 在DIR中创建临时文件</li>
+<li>–compare-dest&#x3D;DIR 同样比较DIR中的文件来决定是否需要备份</li>
+<li>-P 等同于 –partial</li>
+<li>–progress 显示备份过程</li>
+<li>-z, –compress 对备份的文件在传输时进行压缩处理</li>
+<li>–exclude&#x3D;PATTERN 指定排除不需要传输的文件模式</li>
+<li>–include&#x3D;PATTERN 指定不排除而需要传输的文件模式</li>
+<li>–exclude-from&#x3D;FILE 排除FILE中指定模式的文件</li>
+<li>–include-from&#x3D;FILE 不排除FILE指定模式匹配的文件</li>
+<li>–version 打印版本信息</li>
+<li>–address 绑定到特定的地址</li>
+<li>–config&#x3D;FILE 指定其他的配置文件，不使用默认的rsyncd.conf文件</li>
+<li>–port&#x3D;PORT 指定其他的rsync服务端口</li>
+<li>–blocking-io 对远程shell使用阻塞IO</li>
+<li>-stats 给出某些文件的传输状态</li>
+<li>–progress 在传输时现实传输过程</li>
+<li>–log-format&#x3D;FORMAT 指定日志文件格式</li>
+<li>–password-file&#x3D;FILE 从FILE中得到密码</li>
+<li>–bwlimit&#x3D;KBPS 限制I&#x2F;O带宽，KBytes per second</li>
+<li>-h, –help 显示帮助信息</li>
+</ul>
+<h2 id="inotity-linux监控工具"><a href="#inotity-linux监控工具" class="headerlink" title="inotity linux监控工具"></a>inotity linux监控工具</h2><p>inotify介绍– 是一种强大的、细颗粒的、异步的文件系统监控机制，*&amp;####&amp;<em><em>0</em></em>&amp;####&amp;*内核从2.6.13起，加入Inotify可以监控文件系统中添加、删除、修改移动等各种事件，利用这个内核接口，就可以监控文件系统下文件的各种变化情况。</p>
+<h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install -y inotify-tools</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看inotify-tools包的工具程序</span></span><br><span class="line">rpm -ql inotify-tools</span><br></pre></td></tr></table></figure>
+
+<h3 id="inotifywait-参数说明"><a href="#inotifywait-参数说明" class="headerlink" title="inotifywait 参数说明"></a>inotifywait 参数说明</h3><table>
+    <tr>
+        <th>参数名称</th>
+        <th>参数说明</th>
+    </tr>
+    <tr>
+        <td>-m,–monitor</td>
+        <td>始终保持事件监听状态</td>
+    </tr>
+    <tr>
+        <td>-r,–recursive</td>
+        <td>递归查询目录</td>
+    </tr>
+    <tr>
+        <td>-q,–quiet</td>
+        <td>只打印监控事件的信息</td>
+    </tr>
+    <tr>
+        <td>–excludei</td>
+        <td>排除文件或目录时，不区分大小写</td>
+    </tr>
+    <tr>
+        <td>-t,–timeout</td>
+        <td>超时时间</td>
+    </tr>
+    <tr>
+        <td>–timefmt</td>
+        <td>指定时间输出格式</td>
+    </tr>
+    <tr>
+        <td>–format</td>
+        <td>指定时间输出格式</td>
+    </tr>
+    <tr>
+        <td>-e,–event</td>
+        <td>后面指定删、增、改等事件</td>
+    </tr>
+</table>
+
+<h3 id="inotifywait-events事件说明"><a href="#inotifywait-events事件说明" class="headerlink" title="inotifywait events事件说明"></a>inotifywait events事件说明</h3><table>
+    <tr>
+        <th>事件名称</th>
+        <th>事件说明</th>
+    </tr>
+    <tr>
+        <td>access</td>
+        <td>读取文件或目录内容</td>
+    </tr>
+    <tr>
+        <td>modify</td>
+        <td>修改文件或目录内容</td>
+    </tr>
+    <tr>
+        <td>attrib</td>
+        <td>文件或目录的属性改变</td>
+    </tr>
+    <tr>
+        <td>close_write</td>
+        <td>修改真实文件内容</td>
+    </tr>
+    <tr>
+        <td>move</td>
+        <td>移动，对文件进行移动操作</td>
+    </tr>
+    <tr>
+        <td>create</td>
+        <td>创建，生成新文件</td>
+    </tr>
+    <tr>
+        <td>open</td>
+        <td>打开，对文件进行打开操作</td>
+    </tr>
+    <tr>
+        <td>delete</td>
+        <td>删除，文件被删除</td>
+    </tr>
+</table>
+
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><ol>
+<li>创建inotify.sh文件</li>
+</ol>
+<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">host=172.18.219.228 #从服务器的主机地址</span><br><span class="line">data_dir=/opt/data/neo4j/ #内容发布服务器上创建的同步数的路径</span><br><span class="line">dst=neo4j #从服务器上导出的共享目录</span><br><span class="line">username=root #从服务器上/etc#/rsyncd.passwd这个文件中定义的用户名</span><br><span class="line">passfile=/opt/rsync/rsyncd.secrets # #从服务器密码文件</span><br><span class="line">/usr/bin/inotifywait -mrq --timefmt &#x27;%d/%m/%y %H:%M&#x27; --format &#x27;%T %w%f%e&#x27; -e modify,delete,create,attrib $data_dir | while read files</span><br><span class="line">        do</span><br><span class="line">                /opt/rsync/bin/rsync -vzrtopg --progress --delete --password-file=$passfile $data_dir $username@$host::$dst</span><br><span class="line">                echo &quot;$&#123;files&#125; was rsynced&quot; &gt;&gt; /opt/rsync/rsync.log 2&gt;&amp;1 #写入日志</span><br><span class="line">        done           </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">运行</span> </span><br><span class="line">bash inotify.sh &amp;</span><br><span class="line">ps -ef |grep test.sh</span><br></pre></td></tr></table></figure>
+
+<h3 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ginvip/p/6430986.html">博客</a></p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/rsync">rsync</a>
+                  &nbsp;
+                
+                  <a class="hover-with-bg" href="/categories/inotity">inotity</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/rsync">rsync</a>
+                
+                  <a class="hover-with-bg" href="/tags/inotity">inotity</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "rsync+inotity实时监控同步工具&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "left",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

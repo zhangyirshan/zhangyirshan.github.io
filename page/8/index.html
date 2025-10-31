@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="仅限学习参考，有兴趣可以互相交流">
+  <meta name="author" content="张议">
+  <meta name="keywords" content="张议,Java,java,spring,SpringBoot,zhangyi">
+  <title>人生展馆</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>人生展馆</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">资料</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/index.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-md">
+        <div class="py-5 z-depth-3" id="board">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/08/28/%E5%90%8E%E7%AB%AF/Elasticsearch/ElasticSearch%E7%B4%A2%E5%BC%95/">
+        <p class="h4 index-header">ElasticSearch索引</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">索引的操作
+
+kibana创建一个索引的基本流程：
+
+确定索引名
+创建索引轮循器
+创建索引模板
+上传索引
+创建索引模式
+观察数据
+
+创建索引轮循器Name：名称
+Hot phase先选择是否开启rollover三个max共同限制回滚界限
+Delect phase如果开启，超过设定时间会删除索引
+创建索引模板LogisticsName: 索引模板的名称Index patterns：适用于哪些索引例如：rongyun-*适用于所有以rongyun-开头的索引
+Index settingslifecycle.name: 轮循器的名称lifecycle.rollover_alias: 索引别名，用于轮循器迭代标记索引时使用refresh_interval: 索引刷新时间
+123456789&#123;  &quot;index&quot;: &#123;    &quot;lifecycle&quot;: &#123;      &quot;name&quot;: &quot;rongcloud-history&quot;,      &quot;rollover_alias&quot;: &</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-08-28&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Elasticsearch">Elasticsearch</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Elasticsearch">Elasticsearch</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/08/27/%E5%90%8E%E7%AB%AF/Java/JVM/%E5%A0%86/">
+        <p class="h4 index-header">堆</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">概述
+一个JVM实例只存在一个堆内存，堆也是Java内存管理的核心区域。
+Java堆区在JVM启动的时候即被创建，其空间大小也就确定了。是JVM管理的最大一块内存空间。
+堆内存的大小是可以调节的。
+《Java虚拟机规范》规定，堆可以处于物理撒花姑娘不连续的内存空间中，但在逻辑上它应该被视为连续的。
+所有的线程共享Java堆，在这里还可以划分线程私有的缓冲区（Thread Local Allocation Buffer，TLAB）
+
+内存细分
+
+新生区+养老区+元空间
+
+Young Generation Space 新生区 Young&#x2F;New
+又被划分为Eden区和Survivor区
+
+
+Tenure generation space 养老区 Old&#x2F;Tenure
+Meta Space 元空间 Meta
+
+
+
+堆空间的大小设置和查看
+Java堆区用于存储Java对象实例，那么堆的大小在JVM启动时就已经设定好了，大家可以通过选项”-Xmx”和”-Xms”来进行设置。
+“-Xms”用于表示堆区的起始内存，等价于-XX:InitialHeapSize
+“-Xmx”则用于表</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-08-27&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Java">Java</a>&nbsp;
+          
+            <a href="/categories/JVM">JVM</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Java">Java</a>&nbsp;
+          
+            <a href="/tags/JVM">JVM</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/08/17/%E5%90%8E%E7%AB%AF/Mina/Mina%E7%AE%80%E4%BB%8B/">
+        <p class="h4 index-header">Mina简介</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Mina服务端
+Mina apache 开发的一个开源的网络通信框架，基于我们java NIO来实现
+
+
+NIOSocket
+设置编码解码过滤器
+设置一些session属性
+绑定一个端口
+
+12cmd访问本地服务器telnet 127.0.0.1 7080
+
+Mina客户端替代cmd的telnet
+结构分析
+mina在应用程序中处于什么地位 主要屏蔽了网络通信的一些细节，对socket进行封装，并且是NIO的一个实现架构，可以帮助我们快速的开发网络通信。常常用于游戏的开发，中间件等服务端程序。
+
+IOService接口 用于描述我们的客户端和服务端接口，其子类是connector和Acceptor，分别用于描述我们的客户端和服务端。IOproceser多线程环境来处理我们的连接请求流程。IOFilter提供数据的过滤工作：包括编解码，日志等信息的过滤，Hanlder就是我们的业务对象，自定义的handler需要实现IOHandlerAcceptor
+
+大致看看我的类图结构
+                 IOService
+
+ IOconnector                 </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-08-17&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Mina">Mina</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Mina">Mina</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/08/05/%E5%90%8E%E7%AB%AF/Docker/Docker%E5%AE%B9%E5%99%A8%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/">
+        <p class="h4 index-header">Docker容器数据持久化</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">数据卷
+数据卷是一个可供一个或多个容器使用的特殊目录，它绕过UFS，可以提供很多有用的特性：
+
+
+数据卷可以在容器之间共享和重用
+对数据卷的修改会立马生效
+对数据卷的更新，不会影响镜像
+数据卷默认会一直存在，及时容器被删除
+
+注意：数据卷的使用，类似于Linux下对目录或文件进行mount，镜像中的被指定为挂载点的目录中的文件会隐藏掉，能显示看的是挂载的数据卷
+123456docker run -p 3306:3306 --name mysql \-v /usr/local/docker/mysql/conf:/etc/mysql \-v /usr/local/docker/mysql/logs:/var/log/mysql \-v /usr/local/docker/mysql/data:/var/lib/mysql \-e MYSQL_ROOT_PASSWORD=root \-d mysql
+
+如果执行sql失败吧&#x2F;etc&#x2F;mysql.conf.d&#x2F;mysqldump.cnf的max_allowed_packet = 16M追加到配置文件末尾echo </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-08-05&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Docker">Docker</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Docker">Docker</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/07/31/%E5%90%8E%E7%AB%AF/Java/%E4%BD%BF%E7%94%A8%E5%90%84%E7%A7%8D%E5%B5%8C%E5%A5%97%E7%B1%BB%E7%9A%84%E6%97%B6%E6%9C%BA/">
+        <p class="h4 index-header">使用各种嵌套类的时机</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">嵌套类（nested class）
+嵌套类是指被定义在另一个类内部的类
+
+嵌套类的分类：
+
+静态成员类（static member class）
+非静态成员类（nonstatic member class）
+匿名类（anonymous class）
+局部类（local class）
+
+除了第一种之外，其他三种被称为内部类（inner class）
+静态成员类用法
+常见的用法是作为公有的辅助类，仅当与它的外部类一起使用时才有意义。
+
+例如：考虑一个枚举类，它描述了计算机支持的各种操作。Operation枚举应该时Calculator类的公有静态成员类，然后，Calculator类的客户端就可以用诸如Calculator.Operation.PLUS和Calculator.Operation.MINUS这样的名称来引用 这些操作。
+非静态成员类用法
+常见的用法时定义一个Adapter，它允许外部类的实例被看作时另一个不相关的类的实例。
+
+例如：Map接口的是西安往往 使用非静态成员类来实现他们的集合试图（collection view），这些集合视图时由Map的keySet、entrySe</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-31&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Java">Java</a>&nbsp;
+          
+            <a href="/categories/Java%20SE">Java SE</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Java">Java</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/07/28/%E5%90%8E%E7%AB%AF/Docker/Docker%E5%91%BD%E4%BB%A4/">
+        <p class="h4 index-header">Docker命令</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">使用脚本自动安装1234$ curl -fsSL get.docker.com -o get-docker.sh$ sh get-docker.sh --mirror Aliyun           # 从阿里云国内资源上下载$ curl -L &quot;https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)&quot; -o /usr/local/bin/docker-compose # 安装docker compse$ chmod +x /usr/local/bin/docker-compose # 加可执行权限
+
+Ubuntu 16.04+、Debian8+、CentOS7对于使用systemd的系统，请在/etc/docker/daemon.json中写入如下内容（如果文件不存在请新建该文件）
+12345&#123;    &quot;registry-mirrors&quot;: [        &quot;https://regi</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-28&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Docker">Docker</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Docker">Docker</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/07/27/%E5%90%8E%E7%AB%AF/Docker/Docker%E7%AE%80%E4%BB%8B/">
+        <p class="h4 index-header">Docker简介</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">简介
+更高效的利用云资源
+更快速的启动时间
+一致的运行环境
+持续交付和部署
+更轻松的迁移
+更轻松的维护和扩展
+
+
+Docker使用客户端-服务器(C&#x2F;S)架构模式，使用原厂API来管理和创建Docker容器。  Docker容器通过Docker镜像来创建。  容器与镜像的关系类似于面向对象编程中的对象与类
+
+
+
+
+标题
+说明
+
+
+
+镜像（Images）
+Docker镜像是用于创建Docker容器的模板
+
+
+容器（Container）
+容器是独立运行的一个或一组应用
+
+
+客户端（Client）
+Docker客户端通过命令行或者其他工具使用Docker API与Docker的守护进程通信。
+
+
+主机（Host）
+一个物理或者虚拟的机器用于执行DOcker守护进程和容器。
+
+
+仓库（Registry）
+Docker仓库用来保存镜像，可以理解为代码控制中的代码仓库。Docker Hub提供了庞大的镜像集合供使用。
+
+
+Docker Machine
+Docker Machine是一个简化Docker安装的命令行工具，通过一个简单的命令行即可在相应的平台撒花姑娘安装Docker，比如Vi</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-27&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Docker">Docker</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Docker">Docker</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/07/23/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/Linux%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/">
+        <p class="h4 index-header">Linux文件权限管理</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">查看文件和目录的权限ls -al使用ls不带参数只显示文件名称，通过ls -al可以显示文件或者目录的权限信息。ls -l 文件名 显示信息包括：第一个为文件类型，以后三个符号为一组。文件类型（d 目录，- 普通文件，l 链接文件），文件权限，文件的用户，文件的所属组，文件的大小，文件的创建时间，文件的名称
+
+
+
+-rw-r–r–
+1
+root
+root
+322
+7月  21 22:25
+.bash_history
+
+
+
+文档类型及权限
+连接数
+文档所属用户
+文档所属组
+文档大小
+文档最后被修改日期
+文档名称
+
+
+
+
+
+-
+rw-
+r–
+r–
+
+
+
+文档类型
+文档所有者权限（user）
+文档所属用户组权限（group）
+其他用户权限（other）
+
+
+
+-: 普通文件
+rw-: 说明用户组root有读写权限，没有运行权限
+r–: 表示用户root只有读权限，没有写和运行的权限
+r–: 其他用户只有读权限，没有写权限和运行的权限
+
+文档所属用户和所属组就是文档属于哪个用户和用户组。文件所属用户和组时可以更改的
+文档大小默认是bytes
+更改操作权限chown是change owener的</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-23&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Linux">Linux</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Linux">Linux</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/07/23/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/Linux%E7%94%A8%E6%88%B7%E5%92%8C%E7%BB%84%E7%AE%A1%E7%90%86/">
+        <p class="h4 index-header">Linux用户和组管理</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Linux操作系统个还是一个多用户系统，他允许多用户同时登录到系统上并使用资源。系统会根据账户来区分每个用户的文件，进程，任务和工作环境，是的每个用户工作都不受干扰。
+使用Root用户给root账户设置密码sudo passwd root切换到root账户su允许root账户远程连接 vi /etc/ssh/sshd_config
+12345678910# Authentication:LoginGraceTime 2m# PermiRootLogin prohibit-password  注释此行PermitRootLogin yes            #  加入此行StrictModes yes更改完文件后保存重启服务service ssh restart
+
+组账户说明私有组当创建一个用户时没有指定属于哪个组，Linux救护建立一个与用户同名的私有组，次私有组只含有该用户
+标准组当创建一个用户时可以选定一个标准组，如果一个用户同时属于多个组时，登录后所属的组为主组，其他的位附加组。
+账户文件说明&#x2F;etc&#x2F;passwd每一行代表一个账户，众多账户是系统正常运行</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-23&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Linux">Linux</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Linux">Linux</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/07/22/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/Linux%E8%BD%AF%E4%BB%B6%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%B8%E8%BD%BD/">
+        <p class="h4 index-header">Linux软件的安装与卸载</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">软件的安装与卸载apt 软件包管理程序ubuntu 下载软件包管理是通过aptcentos通过yum来进行软件包管理程序
+安装文件    安装版    绿色版  压缩包
+命令安装：sudo apt-get install nano删除：sudo apt-get remove nano查看系统版本：lsb_release -a
+1234Distributor ID: DeepinDescription:    Deepin 20 BetaRelease:        20 BetaCodename:       n/a
+
+编辑数据源：vi /etc/apt/sources.list将数据源改为阿里的镜像数据源deb [by-hash=force] https://mirrors.aliyun.com/deepin/ panda main contrib non-free更新数据源：sudo apt-get update更新软件,就重新安装一遍纯净卸载：sudo apt-get autoremove nano,连带nano依赖一起删除
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-22&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Linux">Linux</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Linux">Linux</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <nav aria-label="index posts navigation">
+    <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/7/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/9/"><i class="fas fa-angle-double-right"></i></a>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByClassName("page-number")) {
+      ele.href += '#board';
+    }
+  </script>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "欢迎参观我的知识站，这里记录着我的学习经历&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "left",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

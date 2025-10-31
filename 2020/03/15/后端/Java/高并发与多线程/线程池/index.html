@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="仅限学习参考，有兴趣可以互相交流">
+  <meta name="author" content="张议">
+  <meta name="keywords" content="张议,Java,java,spring,SpringBoot,zhangyi">
+  <title>线程池 ~ 人生展馆</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>人生展馆</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">资料</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/index.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期日, 三月 15日 2020, 10:07 上午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    2.6k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      9 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="线程池的自我介绍"><a href="#线程池的自我介绍" class="headerlink" title="线程池的自我介绍"></a>线程池的自我介绍</h2><ul>
+<li>如果不使用线程池，每个任务都新开一个线程处理<ul>
+<li>一个线程</li>
+<li>for循环创建线程</li>
+<li>当任务数量上升到1000</li>
+</ul>
+</li>
+<li>这样开销太大，我们希望有固定数量的线程，来执行这1000个线程，这样就避免了反复创建闭关销毁线程锁带来的开销问题。</li>
+</ul>
+<h3 id="为什么要使用线程池"><a href="#为什么要使用线程池" class="headerlink" title="为什么要使用线程池"></a>为什么要使用线程池</h3><ul>
+<li><p>问题一：反复创建线程开销大</p>
+</li>
+<li><p>问题二：过多的线程会占用太多内存</p>
+</li>
+<li><p>解决以上两个问题的思路</p>
+<ul>
+<li>用少量的线程————避免内存占用过多</li>
+<li>让这部分线程都保持工作且可用反复执行任务————避免生命周期的损耗</li>
+</ul>
+</li>
+</ul>
+<h3 id="线程池的好处"><a href="#线程池的好处" class="headerlink" title="线程池的好处"></a>线程池的好处</h3><ul>
+<li>加快响应速度</li>
+<li>合理利用CPU和内存</li>
+<li>统一管理</li>
+</ul>
+<h3 id="线程池使用应用的场合"><a href="#线程池使用应用的场合" class="headerlink" title="线程池使用应用的场合"></a>线程池使用应用的场合</h3><ul>
+<li>服务器接收到大量请求时，使用线程池技术时非常合适的，他可以大大减少线程的创建和销毁次数，提高服务器的工作效率</li>
+<li>实际上，在开发中，如果需要创建5个以上的线程，那么就可用使用线程池来管理</li>
+</ul>
+<h2 id="创建和停止线程池"><a href="#创建和停止线程池" class="headerlink" title="创建和停止线程池"></a>创建和停止线程池</h2><h3 id="线程池构造函数的参数"><a href="#线程池构造函数的参数" class="headerlink" title="线程池构造函数的参数"></a>线程池构造函数的参数</h3><img src="/2020/03/15/%E5%90%8E%E7%AB%AF/Java/%E9%AB%98%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E7%BA%BF%E7%A8%8B%E6%B1%A0/%E7%BA%BF%E7%A8%8B%E6%B1%A0%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0.png" srcset="undefined" class="" title="线程池构造函数参数">
+
+<h4 id="参数中的corePoolSize和maxPoolSize"><a href="#参数中的corePoolSize和maxPoolSize" class="headerlink" title="参数中的corePoolSize和maxPoolSize"></a>参数中的corePoolSize和maxPoolSize</h4><ul>
+<li>corePoolSize指的是核心线程数:线程池在完成初始化后，默认情况下，线程池中并没有任何线程，线程池会等待会任务到来时。再创建新线程区执行任务</li>
+<li>线程池会可能胡izai核心线程数的基础上，额外增加一些线程，但是这些新增加的线程数有一个上线，这就是最大量maxPoolSize</li>
+<li>maximumPoolSize的说明<br>  maximumPoolSize和maxPoolSize的含义相同，不做额外区分。实际上，在ThreadPoolExecutor类的参数中，变量名是maximumPoolSize；不过在org.springframework.scheduling.concurrent包的ThreadPoolExecutorFactoryBean类等其他类中，也有使用maxPoolSize作为参数名的情况，我们直接理解为maximumPoolSize和maxPoolSize是相同的就可以了。</li>
+</ul>
+<img src="/2020/03/15/%E5%90%8E%E7%AB%AF/Java/%E9%AB%98%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E7%BA%BF%E7%A8%8B%E6%B1%A0/maxPoolSize.png" srcset="undefined" class="" title="maxPoolSize">
+
+<h5 id="添加线程规则"><a href="#添加线程规则" class="headerlink" title="添加线程规则"></a>添加线程规则</h5><ol>
+<li>如果线程小于corePoolSize，即使其他工作线程处于空闲状态，也很会创建一个线程来运行新任务。</li>
+<li>如果线程数等于（或大于）corePoolSize但少于maximumPoolSize，则将任务放入队列。</li>
+<li>如果队列已满，并且线程数小于maxPoolSize，则创建一个新线程来运行任务。</li>
+<li>如果队列已满，并且线程数大于或等于maxPoolSize，则拒绝该任务。</li>
+</ol>
+<img src="/2020/03/15/%E5%90%8E%E7%AB%AF/Java/%E9%AB%98%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E7%BA%BF%E7%A8%8B%E6%B1%A0/%E6%B7%BB%E5%8A%A0%E8%A7%84%E5%88%99.png" srcset="undefined" class="" title="添加规则">
+
+<ul>
+<li>是否需要增加线程的判断顺序是：<ul>
+<li>corePoolSize</li>
+<li>workQueue</li>
+<li>maxPoolSize</li>
+</ul>
+</li>
+</ul>
+<h5 id="增减线程的特点"><a href="#增减线程的特点" class="headerlink" title="增减线程的特点"></a>增减线程的特点</h5><ol>
+<li>通过设置corePoolSize和maximumPoolSize相同，就可以创建固定大小的线程池。</li>
+<li>线程池希望保持较少的线程数，并且只有再负载变得很大时才增加它。</li>
+<li>通过maximumPoolSize为很高的值，例如Interger.MAXVALUE,可用允许线程池容纳任意数量的并发任务。</li>
+<li>是只有再队列填满时才创建多余corePoolSize的线程，所以如果你使用的是无界队列（例如LinkedBlockingQueue），那么线程数就不会超过corePoolSize。</li>
+</ol>
+<h4 id="keepAliceTime"><a href="#keepAliceTime" class="headerlink" title="keepAliceTime"></a>keepAliceTime</h4><ul>
+<li>如果线程池当前的线程数多余corePoolSize，那么如果多余的线程共享啊hi见超过keepAliveTime，它们就会被终止。</li>
+</ul>
+<h4 id="ThreadFactory-用来创建线程"><a href="#ThreadFactory-用来创建线程" class="headerlink" title="ThreadFactory 用来创建线程"></a>ThreadFactory 用来创建线程</h4><ul>
+<li>新的线程是由ThreadFactory创建的，默认使用Executors.defaultThreadFactory(),创建出来的线程都在同一个线程组，拥有同样的NORM——PRIORITY优先级并且都不是守护线程。如果自己指定ThreadFactory，那么就可以改变线程名、线程组、优先级、是否是守护线程等。</li>
+<li>通常我们用默认的ThreadFactory就可以了</li>
+</ul>
+<h4 id="workQueue工作队列"><a href="#workQueue工作队列" class="headerlink" title="workQueue工作队列"></a>workQueue工作队列</h4><ul>
+<li>有3中最常见的队列类型:<ol>
+<li>直接交接：SynchronousQueue</li>
+<li>无界队列：LinkedBlockingQueue</li>
+<li>有界队列：ArrayBlockingQueue</li>
+</ol>
+</li>
+</ul>
+<h3 id="线程池应该手动创建还是自动创建"><a href="#线程池应该手动创建还是自动创建" class="headerlink" title="线程池应该手动创建还是自动创建"></a>线程池应该手动创建还是自动创建</h3><ul>
+<li>手动创建更好，因为这样可用让我们更加明确线程池的运行规则，避免资源耗尽的风险。</li>
+<li>让我们来看看自动创建线程池（也就是直接调用JDK封装号的构造函数）可能带来哪些问题</li>
+<li>newFixedThreadPool<ul>
+<li>由于传进去的LinkedBlockingQueue是没有容量上限的，所以当请求数越来越多，并且无法即使处理完毕的时候，也就是请求堆积的时候，会容易造成占用大量的内存，可能会导致OOM。<code>Exception in thread &quot;main&quot; java.lang.OutOfMemoryError: GC overhead limit exceeded at ...</code></li>
+</ul>
+</li>
+<li>newSingleThreadExecutor<ul>
+<li>可以看出，这里和刚才的newFixedThreadPool的原理基本一样，只不过把线程数直接设置成了1，所以这也会导致同意的问题，也就是当请求堆积的时候，可能会占用大量的内存。</li>
+</ul>
+</li>
+<li>newCachedThreadPool<ul>
+<li>可缓存线程池</li>
+<li>特点：无界线程池，具有自动回收多余线程的功能<img src="/2020/03/15/%E5%90%8E%E7%AB%AF/Java/%E9%AB%98%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E7%BA%BF%E7%A8%8B%E6%B1%A0/CachedThreadPool.png" srcset="undefined" class="" title="CachedThreadPool"></li>
+<li>这里的弊端在于第二个参数maximumPoolSize被设置为了Integer.MAX_VALUE,这可能会创建数量非常多的线程，甚至导致OOM。</li>
+</ul>
+</li>
+<li>newScheduledThreadPool<ul>
+<li>支持定时及周期性任务执行的线程池</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">ThreadPoolExecutor</span>(<span class="number">4</span>, <span class="number">10</span>,<span class="number">60L</span>, TimeUnit.SECONDS,<span class="keyword">new</span> <span class="title class_">SynchronousQueue</span>&lt;Runnable&gt;())</span><br></pre></td></tr></table></figure>
+
+<h4 id="正确的创建线程池的方法"><a href="#正确的创建线程池的方法" class="headerlink" title="正确的创建线程池的方法"></a>正确的创建线程池的方法</h4><ul>
+<li>根据不同的业务场景，自己设置线程池参数，分析阿里规约的图的第二个例子，比如我们的内存有多大，我们能不能接收任务被拒绝等等。</li>
+</ul>
+<h4 id="线程池里的线程数量设定为多少比较合适"><a href="#线程池里的线程数量设定为多少比较合适" class="headerlink" title="线程池里的线程数量设定为多少比较合适"></a>线程池里的线程数量设定为多少比较合适</h4><ul>
+<li>CPU密集型（加密、计算hash等）：最佳线程数为CPU核心数的1-2倍左右</li>
+<li>耗时IO型（读写数据库、文件、网络读写等）最佳线程数一般会大于CPU核心数很多倍，以JVM线程监控显示繁忙情况为依据，保证线程空闲可以衔接上，参考Brain Goetz推荐的计算方法：</li>
+<li>线程数 &#x3D; CPU核心数 * （1 + 平均等待时间&#x2F;平均工作时间）</li>
+</ul>
+<h2 id="常见线程池的特点"><a href="#常见线程池的特点" class="headerlink" title="常见线程池的特点"></a>常见线程池的特点</h2><ul>
+<li>FixedThreaddPool（固定线程）</li>
+<li>CachedThreadPool（可缓存线程池）</li>
+<li>ScheduledThreadPool（周期或定时执行任务）</li>
+<li>SingleThreadExecutor（单线程的线程池）<img src="/2020/03/15/%E5%90%8E%E7%AB%AF/Java/%E9%AB%98%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E7%BA%BF%E7%A8%8B%E6%B1%A0/%E5%B8%B8%E8%A7%81%E7%BA%BF%E7%A8%8B%E6%B1%A0.png" srcset="undefined" class="" title="常见线程池"></li>
+</ul>
+<h2 id="阻塞队列分析"><a href="#阻塞队列分析" class="headerlink" title="阻塞队列分析"></a>阻塞队列分析</h2><ul>
+<li>FixedThreadPool和SingleThreadExecutor的Queue是LinkedBlockingQueue？</li>
+<li>CachedThreadPool使用的Queue是SynchronousQueue？</li>
+<li>Scheduled Thread Pool来说，它使用的是延迟队列DelayedWoekQueue</li>
+<li>workStealingPool是JDK1.8加入的<ul>
+<li>这个线程池和之前的都有很大不同</li>
+<li>子任务（递归）</li>
+<li>窃取</li>
+</ul>
+</li>
+</ul>
+<h2 id="停止线程池的正确方法"><a href="#停止线程池的正确方法" class="headerlink" title="停止线程池的正确方法"></a>停止线程池的正确方法</h2><ol>
+<li>shutdown 作用：当前线程池任务全部结束后关闭线程池，如果shutdown后又有线程池开启线程会抛出异常</li>
+<li>isShutdown 作用：判断是否处于关闭状态（线程正在运行也有可能哦！）</li>
+<li>isTerminated 作用：判断是否彻底处于关闭状态（当前没有正在运行的线程，且线程池处于关闭状态）</li>
+<li>awaitTermination 作用：判断多长时间以内是否关闭了线程池</li>
+<li>shutdownNow 作用：立刻强制关闭线程池，结束当前运行的线程，并抛出异常</li>
+</ol>
+<h3 id="任务太多，怎么拒绝"><a href="#任务太多，怎么拒绝" class="headerlink" title="任务太多，怎么拒绝"></a>任务太多，怎么拒绝</h3><ul>
+<li>拒绝时机<ol>
+<li>当Executor关闭时，提交新任务会被拒绝</li>
+<li>以及当Executor对最大线程和工作队列容量使用有限边界并且已经饱和时</li>
+</ol>
+</li>
+</ul>
+<h3 id="4种拒绝策略"><a href="#4种拒绝策略" class="headerlink" title="4种拒绝策略"></a>4种拒绝策略</h3><ul>
+<li>AbortPolicy 直接抛出异常</li>
+<li>DiscardPolicy 默默的丢弃</li>
+<li>DiscardOldestPolicy 丢弃最老的任务</li>
+<li>CallerRunsPolicy 谁提交任务，谁执行<br>优点：避免了业务损失；提交的速度降低，主线程一直提交任务，线程池等队列都满以后，主线程开始执行提交的线程；执行期间，线程池会执行完毕，给线程池一个缓冲的时间。</li>
+</ul>
+<h3 id="钩子方法"><a href="#钩子方法" class="headerlink" title="钩子方法"></a>钩子方法</h3><ul>
+<li>每个任务执行前后</li>
+<li>日志、统计</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> MultithReading.threadpool;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.*;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.locks.Condition;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.locks.ReentrantLock;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span> 演示每个任务执行前后放钩子函数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span> Matthew</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Date</span> 2020/3/16 15:04</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Version</span> 1.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">PauseableThreadPool</span> <span class="keyword">extends</span> <span class="title class_">ThreadPoolExecutor</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">boolean</span> isPaused;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">ReentrantLock</span> <span class="variable">lock</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ReentrantLock</span>();</span><br><span class="line">    <span class="keyword">private</span> <span class="type">Condition</span> <span class="variable">unPaused</span> <span class="operator">=</span> lock.newCondition();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">PauseableThreadPool</span><span class="params">(<span class="type">int</span> corePoolSize, <span class="type">int</span> maximumPoolSize, <span class="type">long</span> keepAliveTime, TimeUnit unit, BlockingQueue&lt;Runnable&gt; workQueue)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">PauseableThreadPool</span><span class="params">(<span class="type">int</span> corePoolSize, <span class="type">int</span> maximumPoolSize, <span class="type">long</span> keepAliveTime, TimeUnit unit, BlockingQueue&lt;Runnable&gt; workQueue, ThreadFactory threadFactory)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue, threadFactory);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">PauseableThreadPool</span><span class="params">(<span class="type">int</span> corePoolSize, <span class="type">int</span> maximumPoolSize, <span class="type">long</span> keepAliveTime, TimeUnit unit, BlockingQueue&lt;Runnable&gt; workQueue, RejectedExecutionHandler handler)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue, handler);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">PauseableThreadPool</span><span class="params">(<span class="type">int</span> corePoolSize, <span class="type">int</span> maximumPoolSize, <span class="type">long</span> keepAliveTime, TimeUnit unit, BlockingQueue&lt;Runnable&gt; workQueue, ThreadFactory threadFactory, RejectedExecutionHandler handler)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue, threadFactory, handler);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">beforeExecute</span><span class="params">(Thread t, Runnable r)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.beforeExecute(t, r);</span><br><span class="line">        lock.lock();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span> (isPaused) &#123;</span><br><span class="line">                unPaused.await();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            lock.unlock();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">pause</span><span class="params">()</span> &#123;</span><br><span class="line">        lock.lock();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            isPaused = <span class="literal">true</span>;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            lock.unlock();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">resume</span><span class="params">()</span> &#123;</span><br><span class="line">        lock.lock();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            isPaused = <span class="literal">false</span>;</span><br><span class="line">            unPaused.signalAll();</span><br><span class="line">        &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">            lock.unlock();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException &#123;</span><br><span class="line">        <span class="type">PauseableThreadPool</span> <span class="variable">pauseableThreadPool</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PauseableThreadPool</span>(<span class="number">10</span>, <span class="number">20</span>, <span class="number">10l</span>, TimeUnit.SECONDS, <span class="keyword">new</span> <span class="title class_">LinkedBlockingQueue</span>&lt;&gt;());</span><br><span class="line">        <span class="type">Runnable</span> <span class="variable">runnable</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Runnable</span>() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;我被执行&quot;</span>);</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    Thread.sleep(<span class="number">10</span>);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">10000</span>; i++) &#123;</span><br><span class="line">            pauseableThreadPool.execute(runnable);</span><br><span class="line">        &#125;</span><br><span class="line">        Thread.sleep(<span class="number">1500</span>);</span><br><span class="line">        pauseableThreadPool.pause();</span><br><span class="line">        System.out.println(<span class="string">&quot;线程池被暂停了&quot;</span>);</span><br><span class="line">        Thread.sleep(<span class="number">1500</span>);</span><br><span class="line">        pauseableThreadPool.resume();</span><br><span class="line">        System.out.println(<span class="string">&quot;线程池被恢复了&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="线程池组成部分"><a href="#线程池组成部分" class="headerlink" title="线程池组成部分"></a>线程池组成部分</h2><ul>
+<li>线程池组成部分<ul>
+<li>线程池管理器</li>
+<li>工作线程</li>
+<li>任务列队</li>
+<li>任务接口（Task）</li>
+</ul>
+</li>
+</ul>
+<p>线程池、ThreadPoolExecutor、ExecutorService、Executor、Executors等这么多和线程池相关的类，大家都是什么关系？</p>
+<img src="/2020/03/15/%E5%90%8E%E7%AB%AF/Java/%E9%AB%98%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E7%BA%BF%E7%A8%8B%E6%B1%A0/%E7%BA%BF%E7%A8%8B%E6%B1%A0.png" srcset="undefined" class="" title="线程池">
+<p>虽然声明线程池的时候是new ThreadPoolExecutor但是返回的时候是ExecutorService，所以一般我们把ExecutorService当作线程池。</p>
+<h3 id="线程池实现任务复用的原理"><a href="#线程池实现任务复用的原理" class="headerlink" title="线程池实现任务复用的原理"></a>线程池实现任务复用的原理</h3><ul>
+<li>相同线程执行不同任务</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (workerCountOf(c) &lt; corePoolSize)</span><br><span class="line">    <span class="keyword">if</span> (addWorker(command, <span class="literal">true</span>))</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">进入<span class="type">addWorker</span></span><br><span class="line"><span class="variable">w</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Worker</span>(firstTask);</span><br><span class="line">进入Worker找runWorker</span><br><span class="line">我们发现相同的线程执行的Runnable的run方法不一样</span><br><span class="line"><span class="type">Runnable</span> <span class="variable">task</span> <span class="operator">=</span> w.firstTask;</span><br><span class="line">task.run();</span><br></pre></td></tr></table></figure>
+
+<h2 id="线程池状态"><a href="#线程池状态" class="headerlink" title="线程池状态"></a>线程池状态</h2><ul>
+<li>RUNNING：接受新任务并处理排队任务</li>
+<li>SHUTDOWN：不接受新任务，但处理排队任务</li>
+<li>STOP：不接受新任务，也不处理排队任务，并中断正在进行的任务</li>
+<li>TIDYING，中文是整洁，理解了中文就容易理解这个状态了：所有任务都已终止，workerCount为零时，线程会转换到TIDYING状态，并将运行terminate（）钩子方法。</li>
+<li>TERMINATED：terminate（）运行完成</li>
+</ul>
+<h3 id="使用线程池的注意点"><a href="#使用线程池的注意点" class="headerlink" title="使用线程池的注意点"></a>使用线程池的注意点</h3><ul>
+<li>避免任务堆积</li>
+<li>避免线程数过度增加</li>
+<li>排查线程泄漏</li>
+</ul>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/Java">Java</a>
+                  &nbsp;
+                
+                  <a class="hover-with-bg" href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B">多线程</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/Java">Java</a>
+                
+                  <a class="hover-with-bg" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B">多线程</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "线程池&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "left",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

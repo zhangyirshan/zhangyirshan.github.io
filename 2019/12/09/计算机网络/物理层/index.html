@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="仅限学习参考，有兴趣可以互相交流">
+  <meta name="author" content="张议">
+  <meta name="keywords" content="张议,Java,java,spring,SpringBoot,zhangyi">
+  <title>物理层 ~ 人生展馆</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>人生展馆</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">资料</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/index.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期一, 十二月 9日 2019, 7:45 晚上
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    3.2k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      11 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <p>网络设备的机械特性 电器特性 功能特性 过程特性<br>数据通信的基础知识<br>    数字信号<br>    模拟信号<br>频分多路复用<br>时分多路复用</p>
+<span id="more"></span>
+<h2 id="物理层的基本概念"><a href="#物理层的基本概念" class="headerlink" title="物理层的基本概念"></a>物理层的基本概念</h2><p>物理层解决如何在连接各个计算机的<code>传输媒体</code>上传输<code>数据比特流</code>而不是指具体的传输媒体。<br>物理层的主要人数描述为：确定媒体的接口的一些特性，即<br>    - 机械特性：例接口形状，大小，引线数目<br>    - 电器特性：例规定电压范围（-5到+5v）<br>    - 功能特性：例规定-5V表示0，+5V表示1<br>    - 过程特性：也称规程特性，规定建立连接时各个相关部件的工作步骤</p>
+<h2 id="数据通信的基础知识"><a href="#数据通信的基础知识" class="headerlink" title="数据通信的基础知识"></a>数据通信的基础知识</h2><img src="/2019/12/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%89%A9%E7%90%86%E5%B1%82/%E6%95%B0%E6%8D%AE%E9%80%9A%E4%BF%A1.png" srcset="undefined" class="" title="数据通信">
+<p>如果两台电脑通过交换机传输就直接使用数字信号通信不用转换成模拟信号</p>
+<p>通信的目的是传送消息<br>数据（data)————运动消息的实体。<br>信号（singnal）数据的电气的或电磁的表现。<br>“模拟信号”————代表消息的参数的取值是连续的。<br>“数字信号”————代表消息的参数的取值是离散的。<br>码元（code）————在使用时间域的波形表示数字信号时，则代表不同离散数值的基本波形就成为码元<br>在数字通信中常常用时间间隔相同的符号来表示一个二进制数字，这样的时间间隔的信号成为二进制码元。而这个间隔被成为码元长度。1码元可以携带nbit的信息量。</p>
+<h3 id="信道的基本概念"><a href="#信道的基本概念" class="headerlink" title="信道的基本概念"></a>信道的基本概念</h3><p>信道一般表示向一个方向传送信息的媒体。所以咱们说平常的通信线路往往包含一条发送信息的信道和一条接受信息的信道。<br><strong>单项通信</strong>（单工通信）————只能有一个方向的通信而没有反向的交互。<br><strong>双向交替通信</strong>（半双工通信）————通信的双方都可以发送信息，但不能双方同时发送（当然也就布恩那个同时接收）。<br><strong>双向同时通信</strong>（全双工通信）————通信的双方可以同时发送和接收信息</p>
+<h3 id="基带（baseband）信号和带通（band-pass）信号"><a href="#基带（baseband）信号和带通（band-pass）信号" class="headerlink" title="基带（baseband）信号和带通（band pass）信号"></a>基带（baseband）信号和带通（band pass）信号</h3><p><strong>基带信号</strong>（即基本频带信号）————来自信源的信号。向计算机输出的代表各种文字或图像文件的数据信号都属于基带信号。基带信号就是发出的直接表达了要传输的信息的信号，比如我们说话的声波就是基带信号<br><strong>带通信号</strong>————把基带信号经过载波调制后，把信号的频率范围搬移到较高的频段以便在信道中传输（即仅在一段频率范围内能够通过信道）。</p>
+<p>因此在传输距离较近时，计算机网络都采用<code>基带传输</code>方式由于近距离范围内基带信号的衰减不大，从而信号内容不会发生变化。因此在传输距离较近时，计算机网络都采用<code>基带传输</code>方式。如从计算机到监视器、打印机等外设的信号就是基带传输的。</p>
+<img src="/2019/12/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%89%A9%E7%90%86%E5%B1%82/%E4%BF%A1%E5%8F%B7.png" srcset="undefined" class="" title="信号">
+
+<img src="/2019/12/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%89%A9%E7%90%86%E5%B1%82/%E5%9F%BA%E5%B8%A6%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7.png" srcset="undefined" class="" title="基带数字信号">
+
+<h3 id="常用编码"><a href="#常用编码" class="headerlink" title="常用编码"></a>常用编码</h3><img src="/2019/12/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%89%A9%E7%90%86%E5%B1%82/%E7%BC%96%E7%A0%81.png" srcset="undefined" class="" title="编码">
+
+<ol>
+<li><p>曼彻斯特编码</p>
+ <img src="/2019/12/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%89%A9%E7%90%86%E5%B1%82/mcst.png" srcset="undefined" class="" title="曼彻斯特编码">
+<p> 采用曼彻斯特编码，一个时钟周期只可表示一个bit，并且必须通过两次采样才能得到一个bit但它能携带时钟信号，且可表示没有数据传输</p>
+</li>
+<li><p>差分曼彻斯特编码</p>
+ <img src="/2019/12/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%89%A9%E7%90%86%E5%B1%82/%E5%B7%AE%E5%88%86%E6%9B%BC%E5%BD%BB%E6%96%AF%E7%89%B9%E7%BC%96%E7%A0%81.png" srcset="undefined" class="" title="差分曼彻斯特编码">
+<p> 差分曼彻斯特编码与曼彻斯特编码相同，但抗干扰性强于曼彻斯特编码</p>
+</li>
+</ol>
+<img src="/2019/12/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%89%A9%E7%90%86%E5%B1%82/%E7%BC%96%E7%A0%81%E4%BE%8B%E9%A2%98.png" srcset="undefined" class="" title="编码例题">
+
+<h3 id="信道极限容量"><a href="#信道极限容量" class="headerlink" title="信道极限容量"></a>信道极限容量</h3><img src="/2019/12/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%89%A9%E7%90%86%E5%B1%82/%E4%BF%A1%E9%81%93%E6%9E%81%E9%99%90%E5%AE%B9%E9%87%8F.png" srcset="undefined" class="" title="信道极限容量">
+
+<h3 id="奈式准则"><a href="#奈式准则" class="headerlink" title="奈式准则"></a>奈式准则</h3><p>他给出了在假定的理想条件下，为了避免码间串扰，码元的传输速率的上限值。<br>在任何信道中，码元传输的速度是有上限的，否则就会出现码间串扰的问题，使接收端对码元的判决（即识别）成为不可能。<br>如果信道的频带越宽，也就是能够通过的信号高频分量越多，那么就可以用更高的速率传送码元而不出现码间串扰。</p>
+<h3 id="信噪比"><a href="#信噪比" class="headerlink" title="信噪比"></a>信噪比</h3><p>香农（Shannon）用信息论的理论推导出了带宽受限且有高斯白噪声干扰的信道的极限、无差错的信息传输速率。<br>信道的极限传输速率c可表达为<br>c &#x3D; W log2^(1+S&#x2F;N) b&#x2F;s<br>W为信道的带宽（以Hz为单位）<br>S为信道内所传信号的平均功率<br>N为信道内部的高斯噪声功率</p>
+<blockquote>
+<p>香农公式表明：<br>    信道的带宽或信道中的信噪比越大，则信息的极限传输速率就越高。只要信息传输速率低于信道的极限信息传输速率，就一定可以找到某种办法来实现无差错的传输。<br>    若信道带宽W或信噪比S&#x2F;N没有上限（当然实际信道不可能使这样的），则信道的极限信息传输速率c也就没有上限。<br>    实际信道上能够达到的信息传输速率要比香农的极限传输速率低不少。</p>
+</blockquote>
+<img src="/2019/12/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%89%A9%E7%90%86%E5%B1%82/%E9%80%9F%E5%BA%A6%E9%99%90%E5%88%B6.png" srcset="undefined" class="" title="速度限制">
+
+<h2 id="物理层下面的传输媒体"><a href="#物理层下面的传输媒体" class="headerlink" title="物理层下面的传输媒体"></a>物理层下面的传输媒体</h2><h3 id="导向传输媒体"><a href="#导向传输媒体" class="headerlink" title="导向传输媒体"></a>导向传输媒体</h3><p>导向传输媒体中，电磁波沿着固体媒体传播<br>双绞线<br>    - 屏蔽双绞线STP<br>    - 五屏蔽双绞线UTP<br>同轴电缆<br>    - 50Ω同轴电缆用于数字传输，由于多用于基带传输，也叫基带同轴电缆；<br>    - 75Ω同轴电缆用于模拟传输，即宽带同轴电缆<br>光缆</p>
+<img src="/2019/12/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%89%A9%E7%90%86%E5%B1%82/%E7%94%B5%E7%BC%86.png" srcset="undefined" class="" title="电缆">
+<img src="/2019/12/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%89%A9%E7%90%86%E5%B1%82/%E5%AE%9E%E9%99%85%E7%94%B5%E7%BC%86.png" srcset="undefined" class="" title="实际电缆">
+
+<h3 id="非导向传输媒体"><a href="#非导向传输媒体" class="headerlink" title="非导向传输媒体"></a>非导向传输媒体</h3><p>无线传输所使用的频段很广。<br>短波通信主要是靠电离层的反射，但短波信道的通信质量较差。</p>
+<blockquote>
+<p>微波在空间主要是直线传播。<br>  1.地面微波接力通信<br>  2.卫星通信</p>
+</blockquote>
+<img src="/2019/12/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%89%A9%E7%90%86%E5%B1%82/%E9%A2%91%E8%B0%B1.png" srcset="undefined" class="" title="频谱">
+
+<h3 id="物理层设备-集线器"><a href="#物理层设备-集线器" class="headerlink" title="物理层设备-集线器"></a>物理层设备-集线器</h3><p>工作特点：它在网络中只起到信号放大和重发作用，其目的是扩大网络的传输范围，而<code>不具备</code>信号的定向传送能力<br>最大传输距离：100m<br>集线器是一个大的冲突域</p>
+<h2 id="信道复用技术"><a href="#信道复用技术" class="headerlink" title="信道复用技术"></a>信道复用技术</h2><p>复用(multiplexing)是通信技术中的基本概念。</p>
+<img src="/2019/12/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%89%A9%E7%90%86%E5%B1%82/%E4%BF%A1%E9%81%93%E5%A4%8D%E7%94%A8.png" srcset="undefined" class="" title="信道复用">
+
+<h3 id="频分复用-FDM-Frequency-Division-Multiplexing"><a href="#频分复用-FDM-Frequency-Division-Multiplexing" class="headerlink" title="频分复用 FDM (Frequency Division Multiplexing)"></a>频分复用 FDM (Frequency Division Multiplexing)</h3><ol>
+<li>用户在分配到一定的频带后，在通信过程中自始至终都占用这个频带。</li>
+<li>频分复用的所有用户在同样的时间占用不同的带宽资源（请注意，这里的“带宽”是频率带宽而不是数据的发送速率）。</li>
+</ol>
+<img src="/2019/12/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%89%A9%E7%90%86%E5%B1%82/%E9%A2%91%E5%88%86%E5%A4%8D%E7%94%A8.png" srcset="undefined" class="" title="频分复用">
+
+<h3 id="时分复用TDM（Time-Fivision-Multiplexing）"><a href="#时分复用TDM（Time-Fivision-Multiplexing）" class="headerlink" title="时分复用TDM（Time Fivision Multiplexing）"></a>时分复用TDM（Time Fivision Multiplexing）</h3><p><code>时分复用</code>则是将时间划分为一段段等长的<code>时分复用帧</code>（TDM帧）。每一个时分复用的用户再每一个TDM帧中占用固定序号的时隙。<br>每一个用户所占用的时隙时<code>周期性</code>地出现（其周期就是TDM帧的长度<code>对应的时间</code>）。<br>TDM信号也称为<code>等时</code>信号。<br>时分复用的所有用户是在不同的时间占用<code>同样的</code>频带宽度。</p>
+<p>时分复用可能会造成线路资源的浪费<br>使用时分复用系统传送计算机数据时，由于计算机数据的突发性质，用户对分配到的子信道的利用率一般是不高的。</p>
+<h2 id="数字传输系统"><a href="#数字传输系统" class="headerlink" title="数字传输系统"></a>数字传输系统</h2><p>脉码调制OCM体制最初时为了在电话局之间的中继线上传送多路的电话。由于历史上的原因，PCM由两个互不兼容的过积标准，即北美的24路PCM（简称为T1）和欧洲的30路PCM（简称为E1）。我国采用的时欧洲的E1标准。</p>
+<p>E1的速率时2.028Mb&#x2F;s，而T1的速率时1.544Mb&#x2F;s。<br>当需要由更高的数据率时，可采用复用的方法。</p>
+<h2 id="宽带接入技术"><a href="#宽带接入技术" class="headerlink" title="宽带接入技术"></a>宽带接入技术</h2><h3 id="xDSL（用数字技术对现有的模拟电话用户线进行改造）"><a href="#xDSL（用数字技术对现有的模拟电话用户线进行改造）" class="headerlink" title="xDSL（用数字技术对现有的模拟电话用户线进行改造）"></a>xDSL（用数字技术对现有的模拟电话用户线进行改造）</h3><p>标准模拟电话信号的频带被限制在300<del>3400Hz的范围内，但用户线本身实际可通过的信号频率仍然超过1MHz。<br>xDSL技术就把0</del>4kHz低端频谱留给传统电话使用，而把<code>原来没有被利用的高端频谱留给用户上网使用。</code></p>
+<img src="/2019/12/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%89%A9%E7%90%86%E5%B1%82/xDSL.png" srcset="undefined" class="" title="xDSL">
+
+<blockquote>
+<p>xDSL 的几种类型<br>ADSL (Asymmetric Digital Subscriber Line)：非对称数字用户线<br>HDSL (High speed DSL)：高速数字用户线<br>SDSL (Single-line DSL)：1 对线的数字用户线<br>VDSL (Very high speed DSL)：甚高速数字用户线<br>DSL ：ISDN 用户线。<br>RADSL (Rate-Adaptive DSL)：速率自适应  DSL，是 ADSL 的一个子集，可自动调节线路速率）.</p>
+</blockquote>
+<h3 id="ADSL"><a href="#ADSL" class="headerlink" title="ADSL"></a>ADSL</h3><h4 id="ADSL-的极限传输距离"><a href="#ADSL-的极限传输距离" class="headerlink" title="ADSL 的极限传输距离"></a>ADSL 的极限传输距离</h4><ol>
+<li>ADSL 的极限传输距离与数据率以及用户线的线径都有很大的关系（用户线越细，信号传输时的衰减就越大），而所能得到的最高数据传输速率与实际的用户线上的信噪比密切相关。</li>
+<li>例如，0.5 毫米线径的用户线，传输速率为 1.5 ~ 2.0 Mb&#x2F;s 时可传送 5.5 公里，但当传输速率提高到 6.1 Mb&#x2F;s 时，传输距离就缩短为 3.7 公里。</li>
+<li>如果把用户线的线径减小到0.4毫米，那么在6.1 Mb&#x2F;s的传输速率下就只能传送2.7公里</li>
+</ol>
+<h4 id="ADSL-的特点"><a href="#ADSL-的特点" class="headerlink" title="ADSL 的特点"></a>ADSL 的特点</h4><ul>
+<li>上行和下行带宽做成不对称的。</li>
+<li>上行指从用户到 ISP，而下行指从 ISP 到用户。</li>
+<li>ADSL 在用户线（铜线）的两端各安装一个 ADSL 调制解调器。</li>
+<li>我国目前采用的方案是离散多音调 DMT (Discrete Multi-Tone)调制技术。这里的“多音调”就是“多载波”或“多子信道”的意思。</li>
+</ul>
+<h3 id="DMT技术"><a href="#DMT技术" class="headerlink" title="DMT技术"></a>DMT技术</h3><p>DMT调制技术采用频分复用的方法，把40kHz以上一直到1.1MHz的高端频谱划分为许多的子信道，其中25个子信道用于上行信道，而249个子信道用于下行信道。<br>每个子信道占据4kHz带宽，并使用不同的载波（即不同的音调）进行数字调制。这种做法像防御在一堆用户线上使用许多小的调制解调器并行地传送数据。</p>
+<img src="/2019/12/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%89%A9%E7%90%86%E5%B1%82/ADSL.png" srcset="undefined" class="" title="ADSL">
+
+<h3 id="光纤同轴混合网HFC-Hybrid-Fiber-Coax"><a href="#光纤同轴混合网HFC-Hybrid-Fiber-Coax" class="headerlink" title="光纤同轴混合网HFC (Hybrid Fiber Coax)"></a>光纤同轴混合网HFC (Hybrid Fiber Coax)</h3><ul>
+<li>HFC 网是在目前覆盖面很广的有线电视网 CATV 的基础上开发的一种居民宽带接入网。</li>
+<li>HFC 网除可传送 CATV 外，还提供电话、数据和其他宽带交互型业务。</li>
+<li>现有的 CATV 网是树形拓扑结构的同轴电缆网络，它采用模拟技术的频分复用对电视节目进行单向传输。而 HFC 网则需要对 CATV 网进行改造，</li>
+</ul>
+<h4 id="HFC-的主要特点"><a href="#HFC-的主要特点" class="headerlink" title="HFC 的主要特点"></a>HFC 的主要特点</h4><ol>
+<li>HFC网的主干线路采用光纤<ul>
+<li>HFC 网将原 CATV 网中的同轴电缆主干部分改换为光纤，并使用模拟光纤技术。</li>
+<li>在模拟光纤中采用光的振幅调制 AM，这比使用数字光纤更为经济。</li>
+<li>模拟光纤从头端连接到光纤结点(fiber node)，即光分配结点 ODN (Optical Distribution Node)。在光纤结点光信号被转换为电信号。在光纤结点以下就是同轴电缆。</li>
+</ul>
+</li>
+<li>HFC 网采用结点体系结构 <img src="/2019/12/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%89%A9%E7%90%86%E5%B1%82/HFS.png" srcset="undefined" class="" title="HFS"></li>
+<li>HFC 网具有比 CATV 网更宽的频谱，且具有双向传输功能 <img src="/2019/12/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%89%A9%E7%90%86%E5%B1%82/HFS1.png" srcset="undefined" class="" title="HFS1"></li>
+<li>每个家庭要安装一个用户接口盒<br> 用户接口盒 UIB (User Interface Box)要提供三种连接，即：<ul>
+<li>使用同轴电缆连接到机顶盒(set-top box)，然后再连接到用户的电视机。</li>
+<li>使用双绞线连接到用户的电话机。</li>
+<li>使用电缆调制解调器连接到用户的计算机。</li>
+</ul>
+</li>
+</ol>
+<h4 id="HFC-网的最大优点"><a href="#HFC-网的最大优点" class="headerlink" title="HFC 网的最大优点"></a>HFC 网的最大优点</h4><ol>
+<li>具有很宽的频带，并且能够利用已经有相当大的覆盖面的有线电视网。</li>
+<li>要将现有的 450 MHz 单向传输的有线电视网络改造为 750 MHz 双向传输的 HFC 网（还要将所有的用户服务区互连起来而不是一个个 HFC 网的孤岛），也需要相当的资金和时间。</li>
+<li>在电信政策方面也有一些需要协调解决的问题。</li>
+</ol>
+<h3 id="FTTx-技术"><a href="#FTTx-技术" class="headerlink" title="FTTx 技术"></a>FTTx 技术</h3><ul>
+<li>FTTx（光纤到……）也是一种实现宽带居民接入网的方案。这里字母 x 可代表不同意思。</li>
+<li>光纤到家 FTTH (Fiber To The Home)：光纤一直铺设到用户家庭可能是居民接入网最后的解决方法。</li>
+<li>光纤到大楼 FTTB (Fiber To The Building)：光纤进入大楼后就转换为电信号，然后用电缆或双绞线分配到各用户。</li>
+<li>光纤到路边 FTTC (Fiber To The Curb)：从路边到各用户可使用星形结构双绞线作为传输媒体。</li>
+</ul>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "物理层&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "left",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

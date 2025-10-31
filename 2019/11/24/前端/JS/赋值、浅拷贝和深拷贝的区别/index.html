@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="仅限学习参考，有兴趣可以互相交流">
+  <meta name="author" content="张议">
+  <meta name="keywords" content="张议,Java,java,spring,SpringBoot,zhangyi">
+  <title>赋值、浅拷贝和深拷贝的区别 ~ 人生展馆</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>人生展馆</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">资料</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/index.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期日, 十一月 24日 2019, 10:38 晚上
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    2.1k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      9 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="赋值（Copy）"><a href="#赋值（Copy）" class="headerlink" title="赋值（Copy）"></a>赋值（Copy）</h2><p>赋值是将某一数值或对象赋给某个变量的过程，分为：</p>
+<ol>
+<li><p>基本数据类型：赋值，赋值之后两个变量互不影响</p>
+</li>
+<li><p>引用数据类型：赋<strong>址</strong>，两个变量具有相同的引用，指向同一个对象，相互之间有影响对基本类型进行赋值操作，两个变量互不影响。</p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// saucxs</span><br><span class="line">let a = &quot;saucxs&quot;;</span><br><span class="line">let b = a;</span><br><span class="line">console.log(b);  // saucxs</span><br><span class="line"></span><br><span class="line">a = &quot;change&quot;;</span><br><span class="line">console.log(a);   // change</span><br><span class="line"></span><br><span class="line">console.log(b);    // saucxs</span><br></pre></td></tr></table></figure>
+
+<p> 对引用类型进行赋<strong>址</strong>操作，两个变量指向同一个对象，改变变量 a 之后会影响变量 b，哪怕改变的只是对象 a 中的基本类型数据。</p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">// saucxs</span><br><span class="line">let a = &#123;</span><br><span class="line">    name: &quot;saucxs&quot;,</span><br><span class="line">    book: &#123;</span><br><span class="line">        title: &quot;You Don&#x27;t Know JS&quot;,</span><br><span class="line">        price: &quot;45&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">let b = a;</span><br><span class="line">console.log(b);</span><br><span class="line">// &#123;</span><br><span class="line">//  name: &quot;saucxs&quot;,</span><br><span class="line">//  book: &#123;title: &quot;You Don&#x27;t Know JS&quot;, price: &quot;45&quot;&#125;</span><br><span class="line">// &#125;</span><br><span class="line"></span><br><span class="line">a.name = &quot;change&quot;;</span><br><span class="line">a.book.price = &quot;55&quot;;</span><br><span class="line">console.log(a);</span><br><span class="line">// &#123;</span><br><span class="line">//  name: &quot;change&quot;,</span><br><span class="line">//  book: &#123;title: &quot;You Don&#x27;t Know JS&quot;, price: &quot;55&quot;&#125;</span><br><span class="line">// &#125;</span><br><span class="line"></span><br><span class="line">console.log(b);</span><br><span class="line">// &#123;</span><br><span class="line">//  name: &quot;change&quot;,</span><br><span class="line">//  book: &#123;title: &quot;You Don&#x27;t Know JS&quot;, price: &quot;55&quot;&#125;</span><br><span class="line">// &#125;</span><br></pre></td></tr></table></figure>
+
+<p> 通常在开发中并不希望改变变量 a 之后会影响到变量 b，这时就需要用到浅拷贝和深拷贝。</p>
+</li>
+</ol>
+<h2 id="浅拷贝（Shallow-Copy）"><a href="#浅拷贝（Shallow-Copy）" class="headerlink" title="浅拷贝（Shallow Copy）"></a>浅拷贝（Shallow Copy）</h2><h3 id="什么是浅拷贝"><a href="#什么是浅拷贝" class="headerlink" title="什么是浅拷贝"></a>什么是浅拷贝</h3><p>创建一个新对象，这个对象有着原始对象属性值的一份精确拷贝。如果属性是基本类型，拷贝的就是基本类型的值，如果属性是引用类型，拷贝的就是内存地址 ，所以如果其中一个对象改变了这个地址，就会影响到另一个对象。</p>
+<img src="/2019/11/24/%E5%89%8D%E7%AB%AF/JS/%E8%B5%8B%E5%80%BC%E3%80%81%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%8C%BA%E5%88%AB/%E6%B5%85%E6%8B%B7%E8%B4%9D.png" srcset="undefined" class="" title="浅拷贝">
+
+<p>上图中，<code>SourceObject</code> 是原对象，其中包含基本类型属性 <code>field1</code> 和引用类型属性 <code>refObj</code>。浅拷贝之后基本类型数据 <code>field2</code> 和 <code>filed1</code> 是不同属性，互不影响。但引用类型 <code>refObj</code> 仍然是同一个，改变之后会对另一个对象产生影响。</p>
+<p>简单来说可以理解为浅拷贝只解决了第一层的问题，拷贝第一层的<strong>基本类型值</strong>，以及第一层的<strong>引用类型地址</strong>。</p>
+<h3 id="浅拷贝使用场景"><a href="#浅拷贝使用场景" class="headerlink" title="浅拷贝使用场景"></a>浅拷贝使用场景</h3><ol>
+<li><p>Object.assign()</p>
+<p> <code>Object.assign()</code> 方法用于将所有可枚举属性的值从一个或多个源对象复制到目标对象。它将返回目标对象。</p>
+<p> 有些文章说<code>Object.assign()</code> 是深拷贝，其实这是不正确的。</p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">    // saucxs</span><br><span class="line">    let a = &#123;</span><br><span class="line">        name: &quot;saucxs&quot;,</span><br><span class="line">        book: &#123;</span><br><span class="line">            title: &quot;You Don&#x27;t Know JS&quot;,</span><br><span class="line">            price: &quot;45&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    let b = Object.assign(&#123;&#125;, a);</span><br><span class="line">    console.log(b);</span><br><span class="line">    // &#123;</span><br><span class="line">    //  name: &quot;saucxs&quot;,</span><br><span class="line">    //  book: &#123;title: &quot;You Don&#x27;t Know JS&quot;, price: &quot;45&quot;&#125;</span><br><span class="line">    // &#125;</span><br><span class="line"></span><br><span class="line">    a.name = &quot;change&quot;;</span><br><span class="line">    a.book.price = &quot;55&quot;;</span><br><span class="line">    console.log(a);</span><br><span class="line">    // &#123;</span><br><span class="line">    //  name: &quot;change&quot;,</span><br><span class="line">    //  book: &#123;title: &quot;You Don&#x27;t Know JS&quot;, price: &quot;55&quot;&#125;</span><br><span class="line">    // &#125;</span><br><span class="line"></span><br><span class="line">    console.log(b);</span><br><span class="line">    // &#123;</span><br><span class="line">    //  name: &quot;saucxs&quot;,</span><br><span class="line">    //  book: &#123;title: &quot;You Don&#x27;t Know JS&quot;, price: &quot;55&quot;&#125;</span><br><span class="line">    // &#125;```</span><br><span class="line"></span><br><span class="line">    上面代码改变对象 a 之后，对象 b 的基本属性保持不变。但是当改变对象 a 中的对象 `book` 时，对象 b 相应的位置也发生了变化。</span><br><span class="line"></span><br><span class="line">2. 展开语法 `Spread`</span><br><span class="line"></span><br><span class="line">    ```html</span><br><span class="line">    // saucxs</span><br><span class="line">    let a = &#123;</span><br><span class="line">        name: &quot;saucxs&quot;,</span><br><span class="line">        book: &#123;</span><br><span class="line">            title: &quot;You Don&#x27;t Know JS&quot;,</span><br><span class="line">            price: &quot;45&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    let b = &#123;...a&#125;;</span><br><span class="line">    console.log(b);</span><br><span class="line">    // &#123;</span><br><span class="line">    //  name: &quot;saucxs&quot;,</span><br><span class="line">    //  book: &#123;title: &quot;You Don&#x27;t Know JS&quot;, price: &quot;45&quot;&#125;</span><br><span class="line">    // &#125;</span><br><span class="line"></span><br><span class="line">    a.name = &quot;change&quot;;</span><br><span class="line">    a.book.price = &quot;55&quot;;</span><br><span class="line">    console.log(a);</span><br><span class="line">    // &#123;</span><br><span class="line">    //  name: &quot;change&quot;,</span><br><span class="line">    //  book: &#123;title: &quot;You Don&#x27;t Know JS&quot;, price: &quot;55&quot;&#125;</span><br><span class="line">    // &#125;</span><br><span class="line"></span><br><span class="line">    console.log(b);</span><br><span class="line">    // &#123;</span><br><span class="line">    //  name: &quot;saucxs&quot;,</span><br><span class="line">    //  book: &#123;title: &quot;You Don&#x27;t Know JS&quot;, price: &quot;55&quot;&#125;</span><br><span class="line">    // &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Array.prototype.slice方法</p>
+<p> slice不会改变原数组，<code>slice()</code> 方法返回一个新的数组对象，这一对象是一个由 <code>begin</code>和 <code>end</code>（不包括<code>end</code>）决定的原数组的<strong>浅拷贝</strong>。</p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// saucxs</span><br><span class="line">let a = [0, &quot;1&quot;, [2, 3]];</span><br><span class="line">let b = a.slice(1);</span><br><span class="line">console.log(b);</span><br><span class="line">// [&quot;1&quot;, [2, 3]]</span><br><span class="line"></span><br><span class="line">a[1] = &quot;99&quot;;</span><br><span class="line">a[2][0] = 4;</span><br><span class="line">console.log(a);</span><br><span class="line">// [0, &quot;99&quot;, [4, 3]]</span><br><span class="line"></span><br><span class="line">console.log(b);</span><br><span class="line">//  [&quot;1&quot;, [4, 3]]</span><br></pre></td></tr></table></figure>
+
+<p> 可以看出，改变 <code>a[1]</code> 之后 <code>b[0]</code> 的值并没有发生变化，但改变 <code>a[2][0]</code> 之后，相应的 <code>b[1][0]</code> 的值也发生变化。</p>
+<p> 说明 <code>slice()</code> 方法是浅拷贝，相应的还有<code>concat</code>等，在工作中面对复杂数组结构要额外注意。</p>
+</li>
+</ol>
+<h2 id="深拷贝（Deep-Copy）"><a href="#深拷贝（Deep-Copy）" class="headerlink" title="深拷贝（Deep Copy）"></a>深拷贝（Deep Copy）</h2><h3 id="什么是深拷贝"><a href="#什么是深拷贝" class="headerlink" title="什么是深拷贝"></a>什么是深拷贝</h3><p>深拷贝会拷贝所有的属性，并拷贝属性指向的动态分配的内存。当对象和它所引用的对象一起拷贝时即发生深拷贝。深拷贝相比于浅拷贝速度较慢并且花销较大。拷贝前后两个对象互不影响。</p>
+<img src="/2019/11/24/%E5%89%8D%E7%AB%AF/JS/%E8%B5%8B%E5%80%BC%E3%80%81%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%8C%BA%E5%88%AB/%E6%B7%B1%E6%8B%B7%E8%B4%9D.png" srcset="undefined" class="" title="深拷贝">
+
+<h3 id="使用深拷贝的场景"><a href="#使用深拷贝的场景" class="headerlink" title="使用深拷贝的场景"></a>使用深拷贝的场景</h3><ol>
+<li>JSON.parse(JSON.stringify(object))</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">// saucxs</span><br><span class="line">let a = &#123;</span><br><span class="line">    name: &quot;saucxs&quot;,</span><br><span class="line">    book: &#123;</span><br><span class="line">        title: &quot;You Don&#x27;t Know JS&quot;,</span><br><span class="line">        price: &quot;45&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">let b = JSON.parse(JSON.stringify(a));</span><br><span class="line">console.log(b);</span><br><span class="line">// &#123;</span><br><span class="line">//  name: &quot;saucxs&quot;,</span><br><span class="line">//  book: &#123;title: &quot;You Don&#x27;t Know JS&quot;, price: &quot;45&quot;&#125;</span><br><span class="line">// &#125;</span><br><span class="line"></span><br><span class="line">a.name = &quot;change&quot;;</span><br><span class="line">a.book.price = &quot;55&quot;;</span><br><span class="line">console.log(a);</span><br><span class="line">// &#123;</span><br><span class="line">//  name: &quot;change&quot;,</span><br><span class="line">//  book: &#123;title: &quot;You Don&#x27;t Know JS&quot;, price: &quot;55&quot;&#125;</span><br><span class="line">// &#125;</span><br><span class="line"></span><br><span class="line">console.log(b);</span><br><span class="line">// &#123;</span><br><span class="line">//  name: &quot;saucxs&quot;,</span><br><span class="line">//  book: &#123;title: &quot;You Don&#x27;t Know JS&quot;, price: &quot;45&quot;&#125;</span><br><span class="line">// &#125;</span><br></pre></td></tr></table></figure>
+
+<p>完全改变变量 a 之后对 b 没有任何影响，这就是深拷贝的魔力。</p>
+<p>我们看下对数组深拷贝效果如何。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// saucxs</span><br><span class="line">let a = [0, &quot;1&quot;, [2, 3]];</span><br><span class="line">let b = JSON.parse(JSON.stringify( a.slice(1) ));</span><br><span class="line">console.log(b);</span><br><span class="line">// [&quot;1&quot;, [2, 3]]</span><br><span class="line"></span><br><span class="line">a[1] = &quot;99&quot;;</span><br><span class="line">a[2][0] = 4;</span><br><span class="line">console.log(a);</span><br><span class="line">// [0, &quot;99&quot;, [4, 3]]</span><br><span class="line"></span><br><span class="line">console.log(b);</span><br><span class="line">//  [&quot;1&quot;, [2, 3]]</span><br></pre></td></tr></table></figure>
+
+<p>对数组深拷贝之后，改变原数组不会影响到拷贝之后的数组。</p>
+<p>但是该方法有以下几个问题：</p>
+<p>（1）会忽略 <code>undefined</code></p>
+<p>（2）会忽略 <code>symbol</code></p>
+<p>（3）不能序列化函数</p>
+<p>（4）不能解决循环引用的对象</p>
+<p>（5）不能正确处理<code>new Date()</code></p>
+<p>（6）不能处理正则</p>
+<p>其中（1）（2）（3） <code>undefined</code>、<code>symbol</code> 和函数这三种情况，会直接忽略。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// saucxs</span><br><span class="line">let obj = &#123;</span><br><span class="line">    name: &#x27;saucxs&#x27;,</span><br><span class="line">    a: undefined,</span><br><span class="line">    b: Symbol(&#x27;saucxs&#x27;),</span><br><span class="line">    c: function() &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">console.log(obj);</span><br><span class="line">// &#123;</span><br><span class="line">//  name: &quot;saucxs&quot;,</span><br><span class="line">//  a: undefined,</span><br><span class="line">//  b: Symbol(saucxs),</span><br><span class="line">//  c: ƒ ()</span><br><span class="line">// &#125;</span><br><span class="line"></span><br><span class="line">let b = JSON.parse(JSON.stringify(obj));</span><br><span class="line">console.log(b);</span><br><span class="line">// &#123;name: &quot;saucxs&quot;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中（4）循环引用会报错</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// saucxs</span><br><span class="line">let obj = &#123;</span><br><span class="line">    a: 1,</span><br><span class="line">    b: &#123;</span><br><span class="line">        c: 2,</span><br><span class="line">        d: 3</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.a = obj.b;</span><br><span class="line">obj.b.c = obj.a;</span><br><span class="line"></span><br><span class="line">let b = JSON.parse(JSON.stringify(obj));</span><br><span class="line">// Uncaught TypeError: Converting circular structure to JSON</span><br></pre></td></tr></table></figure>
+
+<p>其中(5)* <code>new Date</code> 情况下，转换结果不正确。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// saucxs</span><br><span class="line">new Date();</span><br><span class="line">// Mon Dec 24 2018 10:59:14 GMT+0800 (China Standard Time)</span><br><span class="line"></span><br><span class="line">JSON.stringify(new Date());</span><br><span class="line">// &quot;&quot;2018-12-24T02:59:25.776Z&quot;&quot;</span><br><span class="line"></span><br><span class="line">JSON.parse(JSON.stringify(new Date()));</span><br><span class="line">// &quot;2018-12-24T02:59:41.523Z&quot;</span><br><span class="line"></span><br><span class="line">解决方法转成字符串或者时间戳就好了。</span><br><span class="line"></span><br><span class="line">// saucxs</span><br><span class="line">let date = (new Date()).valueOf();</span><br><span class="line">// 1545620645915</span><br><span class="line"></span><br><span class="line">JSON.stringify(date);</span><br><span class="line">// &quot;1545620673267&quot;</span><br><span class="line"></span><br><span class="line">JSON.parse(JSON.stringify(date));</span><br><span class="line">// 1545620658688</span><br></pre></td></tr></table></figure>
+
+<p>其中（6）正则情况下</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// saucxs</span><br><span class="line">let obj = &#123;</span><br><span class="line">    name: &quot;saucxs&quot;,</span><br><span class="line">    a: /&#x27;123&#x27;/</span><br><span class="line">&#125;</span><br><span class="line">console.log(obj);</span><br><span class="line">// &#123;name: &quot;saucxs&quot;, a: /&#x27;123&#x27;/&#125;</span><br><span class="line"></span><br><span class="line">let b = JSON.parse(JSON.stringify(obj));</span><br><span class="line">console.log(b);</span><br><span class="line">// &#123;name: &quot;saucxs&quot;, a: &#123;&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>PS：为什么会存在这些问题可以学习一下 JSON。</p>
+<p>除了上面介绍的深拷贝方法，</p>
+<p>常用的还有<code>jQuery.extend()</code> 和 <code>lodash.cloneDeep()</code>，后面文章会详细介绍源码实现。</p>
+<h3 id="深拷贝常用函数"><a href="#深拷贝常用函数" class="headerlink" title="深拷贝常用函数"></a>深拷贝常用函数</h3><h4 id="对象拷贝"><a href="#对象拷贝" class="headerlink" title="对象拷贝"></a>对象拷贝</h4><p>···js<br>&#x2F;&#x2F; 该方法的局限性在于，当值为undefined、function、symbol会在转换过程中被忽略。<br>var obj &#x3D; {name:’123’,age:13};<br>var obj2 &#x3D; {…obj}<br>&#x2F;&#x2F; 使用对象的合并<br>var obj &#x3D; {name:’123’,age:13};<br>var obj2 &#x3D; Object.assign({},obj);<br>···</p>
+<h3 id="数组深拷贝"><a href="#数组深拷贝" class="headerlink" title="数组深拷贝"></a>数组深拷贝</h3><p>···js<br>&#x2F;&#x2F; slice方法<br>var arr &#x3D; [1,2,3,4,5]<br>var arr2 &#x3D; arr.slice()<br>arr[2] &#x3D; 5<br>console.log(arr)<br>console.log(arr2)<br>&#x2F;&#x2F; concat方法<br>var arr &#x3D; [1,2,3,4,5]<br>var arr2 &#x3D; arr.concat()<br>arr[2] &#x3D; 5<br>console.log(arr)<br>console.log(arr2)<br>&#x2F;&#x2F; ES6扩展运算符实现<br>var arr &#x3D; [1,2,3,4,5]<br>var [ …arr2 ] &#x3D; arr<br>arr[2] &#x3D; 5<br>console.log(arr)<br>console.log(arr2)<br>···</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><table>
+<thead>
+<tr>
+<th></th>
+<th>和原数据是否指向同一对象</th>
+<th>第一层数据为基本数据类型</th>
+<th>原数据中包含子对象</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>赋值</td>
+<td>是</td>
+<td>改变会使原数据一起改变</td>
+<td>改变会使原数据一起改变</td>
+</tr>
+<tr>
+<td>浅拷贝</td>
+<td>否</td>
+<td>改变不会使原数据一起改变</td>
+<td>改变会使原数据一起改变</td>
+</tr>
+<tr>
+<td>深拷贝</td>
+<td>否</td>
+<td>改变不会使原数据一起改变</td>
+<td>改变不会使原数据一起改变</td>
+</tr>
+</tbody></table>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF">前端</a>
+                  &nbsp;
+                
+                  <a class="hover-with-bg" href="/categories/JS">JS</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/JS">JS</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "赋值、浅拷贝和深拷贝的区别&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "left",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

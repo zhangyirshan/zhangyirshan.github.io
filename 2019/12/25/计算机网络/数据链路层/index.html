@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="仅限学习参考，有兴趣可以互相交流">
+  <meta name="author" content="张议">
+  <meta name="keywords" content="张议,Java,java,spring,SpringBoot,zhangyi">
+  <title>数据链路层 ~ 人生展馆</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>人生展馆</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">资料</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/index.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期三, 十二月 25日 2019, 7:52 晚上
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    3.5k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      12 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <p>封装成帧<br>透明封装<br>无差错接收<br>点到点线路的数据链路层 PPP<br>国博信道的数据链路层能 CSMA&#x2F;CD<br>以太网 集线器 网桥 交换机<br>100M 1000M 10000M以太网</p>
+<span id="more"></span>
+<h2 id="数据链路层的信道类型"><a href="#数据链路层的信道类型" class="headerlink" title="数据链路层的信道类型"></a>数据链路层的信道类型</h2><p>点对点信道。这种信道使用一对一的点对点通信方式。<br>广播信道。这种信道使用一对多的广播通信方式，因此过程比较复杂。广播信道上连接的主机很多，因此必须使用专用的共享信道协议来协调这些主机的数据发送。</p>
+<h2 id="使用点对点信道的数据链路层"><a href="#使用点对点信道的数据链路层" class="headerlink" title="使用点对点信道的数据链路层"></a>使用点对点信道的数据链路层</h2><h3 id="数据链路和帧"><a href="#数据链路和帧" class="headerlink" title="数据链路和帧"></a>数据链路和帧</h3><ol>
+<li><p><code>链路(link)</code>是一条无源的点到点的物理线路段，中间没有任何其他的交换结点。<strong>一条链路只是一条通路的一个组成部分.</strong></p>
+</li>
+<li><p><code>数据链路(data link)</code>除了物理线路外，还必须有通信协议来控制这些数据的传输。若把实现这些协议的硬件和软件加到链路上，就构成了数据链路。<br> <strong>现在最常用的方法是使用适配器（即网卡）来实现这些协议的硬件和软件。</strong><br> <strong>一般的适配器都包括了数据链路层和物理层这两层的功能。</strong></p>
+</li>
+<li><img src="/2019/12/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/%E5%B8%A7.png" srcset="undefined" class="" title="帧">
+<p> 常常在两个对等的数据链路层之间画出一个数字管道，而在这条数字管道上传输的数据单位是帧。<br> 早期的数据通信协议曾叫作通信规程(procedure)。因此在数据链路层，规程和协议是同义语。<br> 帧 帧头 帧尾 物理层地址 校验值</p>
+</li>
+</ol>
+<h2 id="封装成帧"><a href="#封装成帧" class="headerlink" title="封装成帧"></a>封装成帧</h2><ul>
+<li>封装成帧(framing)就是在一段数据的前后分别添加首部和尾部，然后就构成了一个帧。确定帧的界限。</li>
+<li>首部和尾部的一个重要作用就是进行<strong>帧定界</strong>。<img src="/2019/12/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/%E5%B0%81%E8%A3%85%E6%88%90%E5%B8%A7.png" srcset="undefined" class="" title="封装成帧"></li>
+</ul>
+<h2 id="透明传输"><a href="#透明传输" class="headerlink" title="透明传输"></a>透明传输</h2><img src="/2019/12/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/%E9%80%8F%E6%98%8E%E4%BC%A0%E8%BE%93.png" srcset="undefined" class="" title="透明传输">
+
+<h3 id="字节填充透明传输"><a href="#字节填充透明传输" class="headerlink" title="字节填充透明传输"></a>字节填充透明传输</h3><p>发送端的数据链路层在数据中出现控制字符“SOH”或“EOT”的前面插入一个转义字符“ESC”(其十六进制编码是 1B)。<br><code>字节填充(byte stuffing)</code>或<code>字符填充(character stuffing)</code>——接收端的数据链路层在将数据送往网络层之前删除插入的<code>转义字符</code>。<br>如果转义字符也出现数据当中，那么应在转义字符前面插入一个转义字符。当接收端收到连续的两个转义字符时，就删除其中前面的一个。</p>
+<img src="/2019/12/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/%E5%AD%97%E8%8A%82%E5%A1%AB%E5%85%85%E9%80%8F%E6%98%8E%E4%BC%A0%E8%BE%93.png" srcset="undefined" class="" title="字节填充透明传输">
+
+<h2 id="差错检测"><a href="#差错检测" class="headerlink" title="差错检测"></a>差错检测</h2><ul>
+<li>在传输过程中可能会产生<code>比特差错</code>：1 可能会变成 0 而 0 也可能变成 1。</li>
+<li>在一段时间内，传输错误的比特占所传输比特总数的比率称为<code>误码率</code> BER (Bit Error Rate)。</li>
+<li>误码率与信噪比有很大的关系。</li>
+<li>为了保证数据传输的可靠性，在计算机网络传输数据时，必须采用各种差错检测措施。</li>
+</ul>
+<h3 id="循环冗余检验的原理"><a href="#循环冗余检验的原理" class="headerlink" title="循环冗余检验的原理"></a>循环冗余检验的原理</h3><p>在数据链路层传送的帧中，广泛使用了循环冗余检验 CRC 的检错技术。<br>在发送端，先把数据划分为组。假定每组 k 个比特。<br>假设待传送的一组数据 M &#x3D; 101001（现在 k &#x3D; 6）。我们在 M 的后面再添加供差错检测用的 n 位冗余码一起发送。</p>
+<h3 id="冗余码的计算"><a href="#冗余码的计算" class="headerlink" title="冗余码的计算"></a>冗余码的计算</h3><p>用二进制的模 2 运算进行 2n 乘 M 的运算，这相当于在 M 后面添加 n 个 0。<br>得到的 (k + n) 位的数除以事先选定好的长度为 (n + 1) 位的除数 P，得出商是 Q 而余数是 R，余数 R 比除数 P 少1 位，即 R 是 n 位。</p>
+<h3 id="冗余码的计算举例"><a href="#冗余码的计算举例" class="headerlink" title="冗余码的计算举例"></a>冗余码的计算举例</h3><p>现在 k &#x3D; 6, M &#x3D; 101001。<br>设 n &#x3D; 3, 除数 P &#x3D; 1101，<br>被除数是 2nM &#x3D; 101001000。<br>模 2 运算的结果是：商 Q &#x3D; 110101，<br>           余数 R &#x3D; 001。<br>把余数 R 作为冗余码添加在数据 M 的后面发送出去。发送的数据是：2nM + R<br>   即：101001001，共 (k + n) 位。</p>
+<img src="/2019/12/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/%E5%BE%AA%E7%8E%AF%E5%86%97%E4%BD%99%E6%A3%80%E9%AA%8CCRC.png" srcset="undefined" class="" title="循环冗余检验CRC">
+
+<h3 id="帧检验序列-FCS"><a href="#帧检验序列-FCS" class="headerlink" title="帧检验序列 FCS"></a>帧检验序列 FCS</h3><ul>
+<li>在数据后面添加上的冗余码称为帧检验序列 FCS (Frame Check Sequence)。</li>
+<li>循环冗余检验 CRC 和帧检验序列 FCS并不等同。<ul>
+<li>CRC 是一种常用的检错方法，而 FCS 是添加在数据后面的冗余码。</li>
+<li>FCS 可以用 CRC 这种方法得出，但 CRC 并非用来获得 FCS 的唯一方法。</li>
+</ul>
+</li>
+</ul>
+<h3 id="接收端对收到的每一帧进行-CRC-检验"><a href="#接收端对收到的每一帧进行-CRC-检验" class="headerlink" title="接收端对收到的每一帧进行 CRC 检验"></a>接收端对收到的每一帧进行 CRC 检验</h3><p>(1) 若得出的余数 R &#x3D; 0，则判定这个帧没有差错，就接受(accept)。<br>(2) 若余数 R  0，则判定这个帧有差错，就丢弃。<br>但这种检测方法并不能确定究竟是哪一个或哪几个比特出现了差错。<br>只要经过严格的挑选，并使用位数足够多的除数 P，那么出现检测不到的差错的概率就很小很小。</p>
+<h3 id="应当注意"><a href="#应当注意" class="headerlink" title="应当注意"></a>应当注意</h3><p>仅用循环冗余检验 CRC 差错检测技术只能做到无差错接受(accept)。<br>“无差错接受”是指：“凡是接受的帧（即不包括丢弃的帧），我们都能以非常接近于 1 的概率认为这些帧在传输过程中没有产生差错”。<br>也就是说：“凡是接收端数据链路层接受的帧都没有传输差错”（有差错的帧就丢弃而不接受）。<br>要做到“可靠传输”（即发送什么就收到什么）就必须再加上确认和重传机制。</p>
+<h2 id="点到点通信数据链路层协议PPP"><a href="#点到点通信数据链路层协议PPP" class="headerlink" title="点到点通信数据链路层协议PPP"></a>点到点通信数据链路层协议PPP</h2><h3 id="PPP协议使用场合"><a href="#PPP协议使用场合" class="headerlink" title="PPP协议使用场合"></a>PPP协议使用场合</h3><img src="/2019/12/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/ppp%E5%8D%8F%E8%AE%AE%E4%BD%BF%E7%94%A8%E5%9C%BA%E5%90%88.png" srcset="undefined" class="" title="ppp协议使用场合">
+
+<h3 id="PPP协议"><a href="#PPP协议" class="headerlink" title="PPP协议"></a>PPP协议</h3><p>现在在全世界使用得最多得数据链路层协议是点对点协议PPP（Point-to-Point Protocol）<br>用户使用拨号电话线接入因特网时，一般都是使用PPP协议</p>
+<h3 id="PPP协议的组成"><a href="#PPP协议的组成" class="headerlink" title="PPP协议的组成"></a>PPP协议的组成</h3><ul>
+<li>PPP协议有三个组成部分<ul>
+<li>数据链路层协议可以用于异步串行或同步串行介质</li>
+<li>它使用LCP（链路控制协议）建立并维护数据链路连接</li>
+<li>网络控制协议（NCP）允许在点到点连接上使用多种网络层协议，如图所示<img src="/2019/12/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/ppp%E5%8D%8F%E8%AE%AE%E7%9A%84%E7%BB%84%E6%88%90.png" srcset="undefined" class="" title="ppp协议的组成"></li>
+</ul>
+</li>
+</ul>
+<h3 id="PPP协议帧格式"><a href="#PPP协议帧格式" class="headerlink" title="PPP协议帧格式"></a>PPP协议帧格式</h3><img src="/2019/12/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/PPP%E5%8D%8F%E8%AE%AE%E5%B8%A7%E6%A0%BC%E5%BC%8F.png" srcset="undefined" class="" title="PPP协议帧格式">
+<p>标志字段F &#x3D; 0x7E（符号“0x”表示后面的额字符时用十六进制表示。十六进制的7E的二进制表示时0111110）<br>地址字段A只置为0xFF。地址字段实际上并不起作用。<br>控制字段C通常置为0x03。<br>PPP时面向字节的，所有的PPP帧的长度都是整数字节。</p>
+<h3 id="字节填充"><a href="#字节填充" class="headerlink" title="字节填充"></a>字节填充</h3><p>问题：信息字段中出现了标志字段的值，可能会被误认为时“标志”，怎么办？</p>
+<ol>
+<li>将信息字段中出现的每个0x7E字节转变成为2字节序列（0x7D，0x5E）</li>
+<li>若信息字段中出现一个0x7D的字节，则将其转变成为2字节序列（0x7D，0x5D）</li>
+<li>若信息字段中出现ASCII码的控制字符（即数值小于0x20的字符），则在该字符前面要加入一个0x7D字节，同时将该字符的编码加以改变。</li>
+</ol>
+<h3 id="零比特填充方法"><a href="#零比特填充方法" class="headerlink" title="零比特填充方法"></a>零比特填充方法</h3><p>PPP协议用在SONET&#x2F;SDH链路时，是使用同步传输（一连串的比特连续传送）。这时PPP协议采用<strong>零比特填充方法</strong>来实现透明传送。<br>在发送端，只要发现有5个连续1，则立即填入一个0.接收端对帧中的比特流进行扫描。每当发现5个连续1时，就把这个连续1后的一个0删除。</p>
+<img src="/2019/12/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/%E9%9B%B6%E6%AF%94%E7%89%B9%E5%A1%AB%E5%85%85%E6%B3%95.png" srcset="undefined" class="" title="零比特填充法">
+
+<h3 id="不适用序号和确认机制"><a href="#不适用序号和确认机制" class="headerlink" title="不适用序号和确认机制"></a>不适用序号和确认机制</h3><p>PPP协议之所以不适用序号和确认机制时出于以下的考虑：</p>
+<ul>
+<li>在数据链路层出现差错的概率不大时，使用比较简单的PPP协议较为合理。</li>
+<li>在因特网环境下，PPP的信息字段放入的数据时IP数据报。数据链路层的可靠传输并不能够保证网络层的传输也是可靠的。</li>
+<li>帧检验序列FCS字段可保证无差错接受。</li>
+</ul>
+<h3 id="PPP协议的工作状态"><a href="#PPP协议的工作状态" class="headerlink" title="PPP协议的工作状态"></a>PPP协议的工作状态</h3><p>当用户拨号接入ISP时，路由器的调制解调器对拨号做出确认，并建立一条物理连接。<br>PC机向路由器发送一系列的LCP分组（封装成多个PPP帧）。<br>这些分组及其响应选择一些PPP参数，和进行网络层配置NCP给新接入的PC机分配一个临时的IP地址，使PC机成为因特网上的一个主机。<br>通信完毕时，NCP释放网络层连接，收回原来分配出去的IP地址。接着，LCP释放数据链路层连接。最后释放的使物理层的连接。</p>
+<h2 id="使用广播信道的数据链路层"><a href="#使用广播信道的数据链路层" class="headerlink" title="使用广播信道的数据链路层"></a>使用广播信道的数据链路层</h2><h3 id="共享通信媒体"><a href="#共享通信媒体" class="headerlink" title="共享通信媒体"></a>共享通信媒体</h3><p>静态划分信道（太麻烦，现在很少使用）</p>
+<ol>
+<li>频分复用</li>
+<li>时分复用</li>
+<li>波分复用</li>
+<li>码分复用</li>
+</ol>
+<p>动态媒体接入控制（多点接入）</p>
+<ul>
+<li><strong>随机接入（主要被以太网采用）</strong></li>
+<li>受控接入，如多点线路探寻，或轮询（目前已不被采用）</li>
+</ul>
+<h3 id="认是以太网"><a href="#认是以太网" class="headerlink" title="认是以太网"></a>认是以太网</h3><p>最初的以太网使将许多计算机都连接到一根总线上。当初认为这样的连接方法既简单有可靠，因为总线上没有有源器件</p>
+<img src="/2019/12/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/%E4%BB%A5%E5%A4%AA%E7%BD%91.png" srcset="undefined" class="" title="以太网">
+<p>总线上的每一个工作的计算机都能检测到B发送的数据信号。<br>由于只有jisuanjiD的地质与首部写入的地址一致，因此只有D才接受这个数据帧。<br>其他所有的计算机（A，C和E）都检测到不是发送给他们的数据帧，因此就丢弃这个数据帧而不能够收下来。<br>具有广播特性的总线上实现了一对一的通信。</p>
+<h4 id="载波监听多点接入-x2F-碰撞检测-以太网使用CSMA-x2F-CD协议"><a href="#载波监听多点接入-x2F-碰撞检测-以太网使用CSMA-x2F-CD协议" class="headerlink" title="载波监听多点接入&#x2F;碰撞检测 以太网使用CSMA&#x2F;CD协议"></a>载波监听多点接入&#x2F;碰撞检测 以太网使用CSMA&#x2F;CD协议</h4><p>CSMA&#x2F;CD表示 Carrier sense Multiple Access with Collision Detection。</p>
+<p>“<strong>多点接入</strong>”表示许多计算机以多点接入的方式连接在一根总线上。</p>
+<p>“<strong>载波监听</strong>”是指每一个站在发送数据之前先要检测一下总线上是否有其他计算机在发送数据，如果有，则暂时不要发送数据，以免发送碰撞。<br>它是用电子技术检测总线上有没有其他计算机发送的数据信号。</p>
+<h2 id="以太局域网（以太网）"><a href="#以太局域网（以太网）" class="headerlink" title="以太局域网（以太网）"></a>以太局域网（以太网）</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><blockquote>
+<p>DIX Ethernet V2 是世界上第一个局域网产品（以太网）的规约。<br>  IEEE的802.3标准。<br>  DIX Ethernet V2 标准与IEEE的802.3标准只有很小的差别，因此可以将802.3局域网简称为“以太网”<br>  严格来说，“以太网”应当是指符合DIX Ethernet V2 标准的局域网</p>
+</blockquote>
+<p>为了使数据链路层能更好地适应多种局域网标准，802委员会就将局域网的数据链路层拆成两个子层：<br>    1. 逻辑链路层控制LLC（Logical Link Control）子层<br>    2. 媒体接入控制<code>MAC</code>（Medium Access Control）子层</p>
+<h4 id="以太网提供的服务"><a href="#以太网提供的服务" class="headerlink" title="以太网提供的服务"></a>以太网提供的服务</h4><p>以太网提供的服务使不可靠的交付，即尽最大努力的交付。<br>当接收站收到有差错的数据帧时就丢弃此帧，其他什么也不做。差错的纠正由高层来决定。<br>如果高层发现丢失了一些数据而进行重传，但以太网并不知道这是一个重传的帧，而是当作一个信道额数据帧来发送。</p>
+<h3 id="拓扑"><a href="#拓扑" class="headerlink" title="拓扑"></a>拓扑</h3><ol>
+<li>星型拓扑</li>
+<li>集线器的一些特点：集线器时使用电子器件来模拟实际电缆线的工作，因此整个系统仍然享一个传统的以太网那样运行。 <img src="/2019/12/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/%E9%9B%86%E7%BA%BF%E5%99%A8%E7%9A%84%E7%89%B9%E7%82%B9.png" srcset="undefined" class="" title="集线器的特点">
+ 集线器很像一个多借口的转发器，工作在物理层。</li>
+<li>10Base-T</li>
+</ol>
+<h3 id="以太网的信道利用率"><a href="#以太网的信道利用率" class="headerlink" title="以太网的信道利用率"></a>以太网的信道利用率</h3><h3 id="MAC层"><a href="#MAC层" class="headerlink" title="MAC层"></a>MAC层</h3><h4 id="MAC层的硬件地址（MAC地址）"><a href="#MAC层的硬件地址（MAC地址）" class="headerlink" title="MAC层的硬件地址（MAC地址）"></a>MAC层的硬件地址（MAC地址）</h4><p>在局域网种，硬件地址又称为物理地址，或MAC地址</p>
+<img src="/2019/12/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/MAC%E5%9C%B0%E5%9D%80.png" srcset="undefined" class="" title="MAC地址">
+
+<h4 id="MAC帧格式"><a href="#MAC帧格式" class="headerlink" title="MAC帧格式"></a>MAC帧格式</h4><img src="/2019/12/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/MAC%E5%B8%A7%E6%A0%BC%E5%BC%8F.png" srcset="undefined" class="" title="MAC帧格式">
+
+<h4 id="无效的MAC帧"><a href="#无效的MAC帧" class="headerlink" title="无效的MAC帧"></a>无效的MAC帧</h4><p>帧的长度不是整数个字节；<br>用收到的帧检验序列FCS查出有差错；<br>数据字段的长度不在46<del>1500字节之间。<br>有效的MAC帧长度为64</del>1518字节之间。<br>对于检查除的无效MAC帧就简单地丢弃，以太网不负责重传丢弃的帧。</p>
+<h4 id="帧间最小间隔"><a href="#帧间最小间隔" class="headerlink" title="帧间最小间隔"></a>帧间最小间隔</h4><p>帧间最小间隔为9.6μs，相当于96bit的发送时间。一个站在检测到总线开始空闲后，还要等待9.6μs才能再次发送数据。<br>这样做是为了使刚刚收到数据帧的站的接收缓存来得及清理，做好接收下一帧的准备。</p>
+<h3 id="扩展以太网"><a href="#扩展以太网" class="headerlink" title="扩展以太网"></a>扩展以太网</h3><h4 id="物理扩展"><a href="#物理扩展" class="headerlink" title="物理扩展"></a>物理扩展</h4><p>扩展距离 100m -&gt; 光纤</p>
+<p>集线器级联 使网络中计算机数量增加 组建了一个大的冲突域</p>
+<ul>
+<li>用集线器扩展局域网优点<ul>
+<li>使原来属于不同碰撞域的局域网上的计算机能够进行跨碰撞域的通信。</li>
+<li>扩大了局域网覆盖的递例范围</li>
+</ul>
+</li>
+<li>用集线器扩展局域网的缺点<ul>
+<li>碰撞域增大了，但总的吞吐量并未提高。</li>
+<li>如果不同的碰撞域使用不同的数据率，那么就不能用集线器将他们互连起来</li>
+</ul>
+</li>
+</ul>
+<h3 id="优化以太网"><a href="#优化以太网" class="headerlink" title="优化以太网"></a>优化以太网</h3><h4 id="数据链路层的扩展"><a href="#数据链路层的扩展" class="headerlink" title="数据链路层的扩展"></a>数据链路层的扩展</h4><p>在数据链路层扩展局域网使使用<strong>网桥</strong><br>交换机的前身就是网桥。<br>交换机特点：端口带宽独享、安全、基于MAC地址转发、通过学习构建MAC地址表</p>
+<h3 id="高速以太网"><a href="#高速以太网" class="headerlink" title="高速以太网"></a>高速以太网</h3><p>速率达到或超过100Mb&#x2F;s的以太网成为高速以太网<br>100BASE-T以太网又称为快速以太网<br>吉比特以太网允许在1Gb&#x2F;s下全双工和半双工两种方式工作</p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "数据链路层&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "left",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

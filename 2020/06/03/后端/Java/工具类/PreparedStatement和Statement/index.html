@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="仅限学习参考，有兴趣可以互相交流">
+  <meta name="author" content="张议">
+  <meta name="keywords" content="张议,Java,java,spring,SpringBoot,zhangyi">
+  <title>PreparedStatement和Statement ~ 人生展馆</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>人生展馆</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">资料</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/index.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期三, 六月 3日 2020, 3:08 下午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    3.1k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      12 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <p>网上有很多文章讨论PrepardStatement与Statement的区别，不过要完完全全的作出比较难度很大，因为每个数据库对底层的实现及应用场合不一样，Oracle对PrepardStatement的支持最好，Mysql对PrepardStatement支持最差。Statement执行单个sql语句速度较快而PrepardStatement执行批处理的效率较高。</p>
+<p>以Oracle为例</p>
+<ol>
+<li><p>Statement为每一条Sql语句生成执行计划， 如果要执行两条sql语句<br> select colume from table where colume&#x3D;1;<br> select colume from table where colume&#x3D;2;<br> 会生成两个执行计划，一千个查询就生成一千个执行计划。而生成计划是非常消耗资源的</p>
+</li>
+<li><p>PreparedStatement用于使用绑定变量重用执行计划<br> select * from xxx.sometable t where t.id&#x3D;?;<br> 通过set方法给sql语句按占位符”?”先后顺序赋值，只需要生成一个执行计划，可以重复使用。</p>
+</li>
+</ol>
+<p>当处理批量SQL语句时，这个时候就可以体现PrepareStatement的优势，由于采用Cache机制，则预先编译的语句，就会放在Cache中，下次执行相同SQL语句时，则可以直接从Cache中取出来,效率要比statement高好几倍</p>
+<p>PrepardStatement的优点<br>&lt;1&gt;、用PrepardStatement写成的sql语句，容易阅读，维护方便。<br>&lt;2&gt;、批处理效率高，执行速度快。<br>&lt;3&gt;、安全，可以防止sql注入攻击。</p>
+<p>缺点:当执行批处理时，你无法得知这个批处理总共影响了多少行。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* PrepareStatement 测试插入数据库</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 如果使用Statement，那么就必须在SQL语句中，实际地去嵌入值，比如之前的insert语句</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* 但是这种方式有一个弊端，第一，是容易发生SQL注入，SQL注入，简单来说，就是，你的网页的用户</span></span><br><span class="line"><span class="comment">* 在使用，比如论坛的留言板，电商网站的评论页面，提交内容的时候，可以使用&#x27;1 or 1&#x27;，诸如此类的</span></span><br><span class="line"><span class="comment">* 非法的字符，然后你的后台，如果在插入评论数据到表中的时候，如果使用Statement，就会原封不动的</span></span><br><span class="line"><span class="comment">* 将用户填写的内容拼接在SQL中，此时可能会发生对数据库的意外的损坏，甚至数据泄露，这种情况就叫做</span></span><br><span class="line"><span class="comment">* SQL注入</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* 第二种弊端，就是性能的低下，比如insert into test_user(name,age) values(&#x27;张三&#x27;,25)</span></span><br><span class="line"><span class="comment">* insert into test_user(name,age) values(&#x27;李四&#x27;,26)</span></span><br><span class="line"><span class="comment">* 其实两条SQL语句的结构大同小异，但是如果使用这种方式，在MySQL中执行SQL语句的时候，却需要对</span></span><br><span class="line"><span class="comment">* 每一条SQL语句都实现编译，编译的耗时在整个SQL语句的执行耗时中占据了大部分的比例</span></span><br><span class="line"><span class="comment">* 所以，Statement会导致执行大量类似SQL语句的时候的，性能低下</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* 如果使用PreparedStatement，那么就可以解决上述的两个问题</span></span><br><span class="line"><span class="comment">* 1、SQL注入，使用PreparedStatement时，是可以在SQL语句中，对值所在的位置使用?这种占位符的</span></span><br><span class="line"><span class="comment">* 使用占位符之后，实际的值，可以通过另外一份放在数组中的参数来代表。此时PreparedStatement会对</span></span><br><span class="line"><span class="comment">* 值做特殊的处理，往往特殊处理后，就会导致不法分子的恶意注入的SQL代码失效</span></span><br><span class="line"><span class="comment">* 2、提升性能，使用PreparedStatement之后，其实结构类似的SQL语句，都变成一样的了，因为值的地方</span></span><br><span class="line"><span class="comment">* 都会变成?，那么一条SQL语句，在MySQL中只会编译一次，后面的SQL语句过来，就直接拿编译后的执行计划</span></span><br><span class="line"><span class="comment">* 加上不同的参数直接执行，可以大大提升性能</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">preparedStatement</span><span class="params">()</span> &#123;</span><br><span class="line"><span class="comment">// 总结一下JDBC的最基本的使用过程</span></span><br><span class="line"><span class="comment">// 1、加载驱动类：Class.forName()</span></span><br><span class="line"><span class="comment">// 2、获取数据库连接：DriverManager.getConnection()</span></span><br><span class="line"><span class="comment">// 3、创建SQL语句执行句柄：Connection.createStatement()</span></span><br><span class="line"><span class="comment">// 4、执行SQL语句：Statement.executeUpdate()</span></span><br><span class="line"><span class="comment">// 5、释放数据库连接资源：finally，Connection.close()</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义数据库连接对象</span></span><br><span class="line"><span class="comment">// 引用JDBC相关的所有接口或者是抽象类的时候，必须是引用java.sql包下的</span></span><br><span class="line"><span class="comment">// java.sql包下的，才代表了java提供的JDBC接口，只是一套规范</span></span><br><span class="line"><span class="comment">// 至于具体的实现，则由数据库驱动来提供，切记不要引用诸如com.mysql.jdbc包的类</span></span><br><span class="line">Connection conn=<span class="literal">null</span>;</span><br><span class="line"><span class="comment">//定义SQL语句执行句柄:PrepareStatement对象</span></span><br><span class="line"><span class="comment">//PreparedStatement对象,其实就是底层会基于Connection数据库连接</span></span><br><span class="line"><span class="comment">//可以让我们方便的针对数据库中的表,执行增删改查的SQL语句</span></span><br><span class="line"><span class="comment">//比如和insert update delete和select语句</span></span><br><span class="line">PreparedStatement ps=<span class="literal">null</span>;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">// 第一步，加载数据库的驱动，我们都是面向java.sql包下的接口在编程，所以</span></span><br><span class="line">    <span class="comment">// 要想让JDBC代码能够真正操作数据库，那么就必须第一步先加载进来你要操作的数据库的驱动类</span></span><br><span class="line">    <span class="comment">// 使用Class.forName()方式来加载数据库的驱动类</span></span><br><span class="line">    <span class="comment">// Class.forName()是Java提供的一种基于反射的方式，直接根据类的全限定名（包+类）</span></span><br><span class="line">    <span class="comment">// 从类所在的磁盘文件（.class文件）中加载类对应的内容，并创建对应的Class对象</span></span><br><span class="line">    Class.forName(<span class="string">&quot;com.mysql.jdbc.Driver&quot;</span>);</span><br><span class="line">    <span class="comment">// 获取数据库的连接</span></span><br><span class="line">    <span class="comment">// 使用DriverManager.getConnection()方法获取针对数据库的连接</span></span><br><span class="line">    <span class="comment">// 需要给方法传入三个参数，包括url、user、password</span></span><br><span class="line">    <span class="comment">// 其中url就是有特定格式的数据库连接串，包括“主协议:子协议://主机名:端口号//数据库”</span></span><br><span class="line">    conn = DriverManager.getConnection(</span><br><span class="line">            <span class="string">&quot;jdbc:mysql://localhost:3306/spark_project?characterEncoding=utf8&quot;</span>,</span><br><span class="line">            <span class="string">&quot;root&quot;</span>,</span><br><span class="line">            <span class="string">&quot;root&quot;</span></span><br><span class="line">    );</span><br><span class="line">    <span class="comment">// 基于数据库连接Connection对象，创建SQL语句执行句柄，Statement对象</span></span><br><span class="line">    <span class="comment">// prepareStatement对象，就是用来基于底层的Connection代表的数据库连接</span></span><br><span class="line">    <span class="comment">// 允许我们通过java程序，通过prepareStatement对象，向MySQL数据库发送SQL语句</span></span><br><span class="line">    <span class="comment">// 从而实现通过发送的SQL语句来执行增删改查等逻辑</span></span><br><span class="line">    <span class="comment">// 第一个，SQL语句中，值所在的地方，都用问好代表</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">sql</span> <span class="operator">=</span> <span class="string">&quot;insert into user(name,age) values(?,?)&quot;</span>;</span><br><span class="line">    ps = conn.prepareStatement(sql);</span><br><span class="line">    <span class="comment">// 第二个，必须调用PreparedStatement的setX()系列方法，对指定的占位符设置实际的值</span></span><br><span class="line">    ps.setString(<span class="number">1</span>,<span class="string">&quot;李四&quot;</span>);</span><br><span class="line">    ps.setInt(<span class="number">2</span>,<span class="number">26</span>);</span><br><span class="line">    <span class="comment">// Statement.executeUpdate()方法，就可以用来执行insert、update、delete语句</span></span><br><span class="line">    <span class="comment">// 返回类型是个int值，也就是SQL语句影响的行数</span></span><br><span class="line">    <span class="comment">// 第三个，执行SQL语句时，直接使用executeUpdate()即可，不用传入任何参数</span></span><br><span class="line">    <span class="type">int</span> <span class="variable">rtn</span> <span class="operator">=</span> ps.executeUpdate();</span><br><span class="line"></span><br><span class="line">    System.out.println(<span class="string">&quot;SQL语句影响了【&quot;</span> + rtn + <span class="string">&quot;】行。&quot;</span>);</span><br><span class="line">&#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">// 最后一定要记得在finally代码块中，尽快在执行完SQL语句之后，就释放数据库连接</span></span><br><span class="line">        <span class="keyword">if</span> (ps != <span class="literal">null</span>)&#123;</span><br><span class="line">            ps.close();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (conn !=<span class="literal">null</span>)&#123;</span><br><span class="line">            conn.close();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>jdbc(java database connectivity，java数据库连接)的api中的主要的四个类之一的java.sql.statement要求开发者付出大量的时间和精力。在使用statement获取jdbc访问时所具有的一个共通的问题是输入适当格式的日期和时间戳：2002-02-05 20:56 或者 02&#x2F;05&#x2F;02 8:56 pm。<br>通过使用java.sql.preparedstatement，这个问题可以自动解决。一个preparedstatement是从java.sql.connection对象和所提供的sql字符串得到的，sql字符串中包含问号（?），这些问号标明变量的位置，然后提供变量的值，最后执行语句，例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">stringsql = <span class="string">&quot;select * from people p where p.id = ? and p.name = ?&quot;</span>;</span><br><span class="line"><span class="type">preparedstatement</span> <span class="variable">ps</span> <span class="operator">=</span> connection.preparestatement(sql);</span><br><span class="line">ps.setint(<span class="number">1</span>,id);</span><br><span class="line">ps.setstring(<span class="number">2</span>,name);</span><br><span class="line"><span class="type">resultset</span> <span class="variable">rs</span> <span class="operator">=</span> ps.executequery();</span><br><span class="line">使用preparedstatement的另一个优点是字符串不是动态创建的。下面是一个动态创建字符串的例子：</span><br><span class="line">stringsql = <span class="string">&quot;select * from people p where p.i = &quot;</span>+id;</span><br><span class="line"></span><br><span class="line">这允许jvm（javavirtual machine，java虚拟机）和驱动/数据库缓存语句和字符串并提高性能。</span><br><span class="line">preparedstatement也提供数据库无关性。当显示声明的sql越少，那么潜在的sql语句的数据库依赖性就越小。</span><br><span class="line">由于preparedstatement具备很多优点，开发者可能通常都使用它，只有在完全是因为性能原因或者是在一行sql语句中没有变量的时候才使用通常的statement。</span><br><span class="line">一个完整的preparedstatement的例子：</span><br><span class="line"><span class="keyword">package</span> jstarproject;</span><br><span class="line"><span class="keyword">import</span> java.sql.*;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">mypreparedstatement</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> string db_driver=<span class="string">&quot;com.microsoft.jdbc.sqlserver.sqlserverdriver&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">string</span> <span class="variable">url</span> <span class="operator">=</span> <span class="string">&quot;jdbc:microsoft:sqlserver://127.0.0.1:1433;databasename=pubs&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">mypreparedstatement</span><span class="params">()</span>&#123;&#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">query</span><span class="params">()</span> <span class="keyword">throws</span> sqlexception&#123;</span><br><span class="line">        <span class="type">connection</span> <span class="variable">conn</span> <span class="operator">=</span> <span class="built_in">this</span>.getconnection();</span><br><span class="line">        <span class="type">string</span> <span class="variable">strsql</span> <span class="operator">=</span> <span class="string">&quot;select emp_id from employee where emp_id = ?&quot;</span>;</span><br><span class="line">        <span class="type">preparedstatement</span> <span class="variable">pstmt</span> <span class="operator">=</span> conn.preparestatement(strsql);</span><br><span class="line">        pstmt.setstring(<span class="number">1</span>,<span class="string">&quot;pma42628m&quot;</span>);</span><br><span class="line">        <span class="type">resultset</span> <span class="variable">rs</span> <span class="operator">=</span> pstmt.executequery();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(rs.next())&#123;</span><br><span class="line">            <span class="type">string</span> <span class="variable">fname</span> <span class="operator">=</span> rs.getstring(<span class="string">&quot;emp_id&quot;</span>);</span><br><span class="line">            system.out.println(<span class="string">&quot;the fname is &quot;</span> + fname);</span><br><span class="line">        &#125;</span><br><span class="line">        rs.close();</span><br><span class="line">        pstmt.close();</span><br><span class="line">        conn.close();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> connection <span class="title function_">getconnection</span><span class="params">()</span> <span class="keyword">throws</span> sqlexception&#123;</span><br><span class="line">        <span class="comment">// class.</span></span><br><span class="line">        <span class="type">connection</span> <span class="variable">conn</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">        class.forname(db_driver);</span><br><span class="line">        conn = drivermanager.getconnection(url,<span class="string">&quot;sa&quot;</span>,<span class="string">&quot;sa&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span> (classnotfoundexception ex) &#123;&#125;</span><br><span class="line">        <span class="keyword">return</span> conn;</span><br><span class="line">    &#125;</span><br><span class="line">        <span class="comment">//main</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(string[] args)</span> <span class="keyword">throws</span> sqlexception &#123;</span><br><span class="line">        <span class="type">mypreparedstatement</span> <span class="variable">jdbctest1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">mypreparedstatement</span>();</span><br><span class="line">        jdbctest1.query();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>为什么要始终使用PreparedStatement代替Statement?为什么要始终使用PreparedStatement代替Statement?</p>
+<p>在JDBC应用中,如果你已经是稍有水平开发者,你就应该始终以PreparedStatement代替Statement.也就是说,在任何时候都不要使用Statement.<br>基于以下的原因:<br>一.代码的可读性和可维护性.<br>虽然用PreparedStatement来代替Statement会使代码多出几行,但这样的代码无论从可读性还是可维护性上来说.都比直接用Statement的代码高很多档次:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">stmt.executeUpdate(<span class="string">&quot;insert into tb_name (col1,col2,col2,col4) values (&#x27;&quot;</span>+var1+<span class="string">&quot;&#x27;,&#x27;&quot;</span>+var2+<span class="string">&quot;&#x27;,&quot;</span>+var3+<span class="string">&quot;,&#x27;&quot;</span>+var4+<span class="string">&quot;&#x27;)&quot;</span>);</span><br><span class="line"></span><br><span class="line">perstmt = con.prepareStatement(<span class="string">&quot;insert into tb_name (col1,col2,col2,col4) values (?,?,?,?)&quot;</span>);</span><br><span class="line">perstmt.setString(<span class="number">1</span>,var1);</span><br><span class="line">perstmt.setString(<span class="number">2</span>,var2);</span><br><span class="line">perstmt.setString(<span class="number">3</span>,var3);</span><br><span class="line">perstmt.setString(<span class="number">4</span>,var4);</span><br><span class="line">perstmt.executeUpdate();</span><br></pre></td></tr></table></figure>
+
+<p>不用我多说,对于第一种方法.别说其他人去读你的代码,就是你自己过一段时间再去读,都会觉得伤心.</p>
+<p>二.PreparedStatement尽最大可能提高性能.</p>
+<p>每一种数据库都会尽最大努力对预编译语句提供最大的性能优化.因为预编译语句有可能被重复调用.所以语句在被DB的编译器编译后的执行代码被缓存下来,那么下次调用时只要是相同的预编译语句就不需要编译,只要将参数直接传入编译过的语句执行代码中(相当于一个涵数)就会得到执行.这并不是说只有一个Connection中多次执行的预编译语句被缓存,而是对于整个DB中,只要预编译的语句语法和缓存中匹配.那么在任何时候就可以不需要再次编译而可以直接执行.而statement的语句中,即使是相同一操作,而由于每次操作的数据不同所以使整个语句相匹配的机会极小,几乎不太可能匹配.比如:<br>insert into tb_name (col1,col2) values (‘11’,’22’);<br>insert into tb_name (col1,col2) values (‘11’,’23’);<br>即使是相同操作但因为数据内容不一样,所以整个个语句本身不能匹配,没有缓存语句的意义.事实是没有数据库会对普通语句编译后的执行代码缓存.</p>
+<p>当然并不是所以预编译语句都一定会被缓存,数据库本身会用一种策略,比如使用频度等因素来决定什么时候不再缓存已有的预编译结果.以保存有更多的空间存储新的预编译语句.</p>
+<p>三.最重要的一点是极大地提高了安全性.</p>
+<p>即使到目前为止,仍有一些人连基本的恶义SQL语法都不知道.<br>String sql &#x3D; “select * from tb_name where name&#x3D; ‘“+varname+”‘ and passwd&#x3D;’”+varpasswd+”‘“;<br>如果我们把[‘ or ‘1’ &#x3D; ‘1]作为varpasswd传入进来.用户名随意,看看会成为什么?</p>
+<p>select * from tb_name &#x3D; ‘随意’ and passwd &#x3D; ‘’ or ‘1’ &#x3D; ‘1’;<br>因为’1’&#x3D;’1’肯定成立,所以可以任何通过验证.更有甚者:<br>把[‘;drop table tb_name;]作为varpasswd传入进来,则:<br>select * from tb_name &#x3D; ‘随意’ and passwd &#x3D; ‘’;drop table tb_name;有些数据库是不会让你成功的,但也有很多数据库就可以使这些语句得到执行.</p>
+<p>而如果你使用预编译语句.你传入的任何内容就不会和原来的语句发生任何匹配的关系.只要全使用预编译语句,你就用不着对传入的数据做任何过虑.而如果使用普通的statement,有可能要对drop,;等做费尽心机的判断和过虑.</p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/Java">Java</a>
+                  &nbsp;
+                
+                  <a class="hover-with-bg" href="/categories/Java%E5%B7%A5%E5%85%B7%E7%B1%BB">Java工具类</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/Java">Java</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "PreparedStatement和Statement&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "left",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

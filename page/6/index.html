@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="仅限学习参考，有兴趣可以互相交流">
+  <meta name="author" content="张议">
+  <meta name="keywords" content="张议,Java,java,spring,SpringBoot,zhangyi">
+  <title>人生展馆</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>人生展馆</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">资料</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/index.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-md">
+        <div class="py-5 z-depth-3" id="board">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/18/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/BitMap/">
+        <p class="h4 index-header">Bitmap</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">位图
+
+APIsetbit12setbit key offset value# 给位图指定索引设置值
+
+12345678910127.0.0.1:6379&gt; setbit unique:users:2016-04-05 0 1(integer) 0127.0.0.1:6379&gt; setbit unique:users:2016-04-05 5 1(integer) 0127.0.0.1:6379&gt; setbit unique:users:2016-04-05 11 1(integer) 0127.0.0.1:6379&gt; setbit unique:users:2016-04-05 15 1(integer) 0127.0.0.1:6379&gt; setbit unique:users:2016-04-05 19 1(integer) 0
+
+
+
+getbit1234567891011getbit keyy offset# 获取位图指定索引的值127.0.0.1:6379&gt; getbit unique:users:2016-04-05 8(integer) </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/redis">redis</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/redis">redis</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/18/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85/">
+        <p class="h4 index-header">发布订阅</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">角色
+发布者（publisher）
+订阅者（subscriber）
+频道（channel）
+
+模型
+
+没有消息堆积的功能，无法查询历史发布消息
+APIpublish（发布命令）1234publish  channel message127.0.0.1:6379&gt; publish sohu:tv &quot;hello world&quot;(integer) 0 # 订阅者个数
+
+subcribe（订阅）1234567subscribe [channel] # 一个或多个127.0.0.1:6379&gt; subscribe sohu:tvReading messages... (press Ctrl-C to quit)1) &quot;subscribe&quot;2) &quot;sohu:tv&quot;3) (integer) 1
+
+unsubcribe（取消订阅）123456unsubscribe [channel] # 一个或多个127.0.0.1:6379&gt; unsubscribe sohu:tv1) &quot;unsubscribe&quot;2) &</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/redis">redis</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/redis">redis</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/17/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/pipeline/">
+        <p class="h4 index-header">pipeline</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">什么是流水线
+
+流水线的作用
+
+
+命令
+N个命令操作
+1次 pipeline（n个命令）
+
+
+
+时间
+n次网络 + n次命令
+1次网络 + n次命令
+
+
+数据量
+1条命令
+n条命令
+
+
+两点注意
+
+Redis的命令时间是微妙级别。
+pipeline每次条数要控制（网络）。
+
+
+
+与原生M操作的区别
+
+
+使用建议
+注意每次pipeline携带数据量
+pipeline每次只能作用在一个Redis节点上
+M操作与pipeline区别
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-17&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/redis">redis</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/redis">redis</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/14/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/%E6%85%A2%E6%9F%A5%E8%AF%A2/">
+        <p class="h4 index-header">慢查询</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">生命周期
+
+两点说明
+
+慢查询发生在第三阶段
+客户端超时不一定慢查询，但慢查询是客户端超时的一个可能因素
+
+两个配置slowlog-max-len
+先进先出队列
+固定长度
+保存在内存内
+
+
+
+slowlog-log-slower-than
+慢查询阈值（单位：微妙）
+slowlog-log-slower-than &#x3D; 0 , 记录所有命令
+slowlog-log-slower-than &lt; 0 , 不记录任何命令
+
+配置方法
+默认值
+
+12config get slowlog-max-len = 128config get slowlog-log-slower-than = 10000
+
+
+修改配置文件重启
+动态配置
+
+12config set slowlog-max-len 128config set slowlog-log-slower-than 10000
+
+慢查询命令
+slowlog get[n] : 获取慢查询队列
+slowlog len : 获取慢查询队列长度
+slowlog reset : 清空慢查询队列
+
+运维经验
+slowlog-max-len不要设置过</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-14&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/redis">redis</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/redis">redis</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/13/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Jedis%E9%85%8D%E7%BD%AE%E4%BC%98%E5%8C%96/">
+        <p class="h4 index-header">Jedis配置优化</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Jedis配置优化初始化Jedis连接池，通常来讲JedisPool是单例的。
+12GenericObjectPoolConfig poolConfig = new GenericObjectPoolConfig();JedisPool jedisPool = new JedisPool(poolConfig,&quot;127.0.0.1&quot;,6379);
+
+
+
+
+适合的maxTotal比较难确定的，举个例子：
+
+命令平均执行时间0.1ms&#x3D;0.001s
+业务需要5wQPS
+maxTotal理论值 &#x3D; 0.001 * 50000 &#x3D; 50个。实际值要偏大一些
+业务希望Redis并发量
+客户端执行命令时间
+Redis资源：例如nodes（例如应用个数） * maxTotal是不能超过redis的最大连接数。（config get maxclients）
+资源开销: 例如虽然希望控制空闲连接，但是不希望因为连接池的频繁释放创建连接造成不必要开销。
+
+适合的maxIdle和minIdle建议maxIdle &#x3D; maxTotal
+
+减少新连接的</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-13&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/redis">redis</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/redis">redis</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/13/%E5%90%8E%E7%AB%AF/Java/%E5%B0%8F%E6%95%B0%E7%9A%84%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5/">
+        <p class="h4 index-header">小数的四舍五入</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1234四舍五入Math.round((float) reputation.get(i) / commentNum)四舍五入保留一位小数(float) Math.round(sum / commentNum * 10) / 10</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-13&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Java">Java</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Java">Java</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/13/%E5%90%8E%E7%AB%AF/Mybatis/%E6%90%9C%E7%B4%A2%E5%A4%8D%E6%9D%82%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+        <p class="h4 index-header">搜索复杂数据类型</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Insert之后返回自增主键mapper.xml1234&lt;insert id=&quot;insertScript&quot; useGeneratedKeys=&quot;true&quot; keyProperty=&quot;script.id&quot; keyColumn=&quot;id&quot;&gt;INSERT INTO merchant_script(script_desc, tips, name, cover_oss_url, difficulty, role_num)VALUE (#&#123;script.desc&#125;, #&#123;script.tips&#125;, #&#123;script.name&#125;, #&#123;script.img&#125;, #&#123;script.difficulty&#125;,#&#123;script.roleNum&#125;);&lt;/insert&gt;
+
+dao.java1Integer insertScript(@Param(&quot;script&quot;) Scri</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-13&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Maybatis">Maybatis</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Maybatis">Maybatis</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/13/%E9%94%99%E8%AF%AF/Java/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%88%AA%E5%8F%96/">
+        <p class="h4 index-header">字符串截取</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">
+出现场景：在mina，redis等传输的过程中，原本的名字中有表情，一个emoji有时候占2个或多个字符，使得字符串截取有问题显示报错，因此要使用java的offsetByCodePoints方法来截取字符。
+
+12345678910111213141516/*** 截取出包含emoji表情字符串的前四位** @param source 包含emoji表情的源字符串* @return 截取前四位后的结果*/private String subStrIncludeEmojiFour(String source) &#123;    String result;    try &#123;        result = source.substring(source.offsetByCodePoints(0, 0),                source.offsetByCodePoints(0, 4));    &#125; catch (Exception e) &#123;        result = &quot;&quot;;    &#125;    return </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-13&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E9%94%99%E8%AF%AF">错误</a>&nbsp;
+          
+            <a href="/categories/Java">Java</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E9%94%99%E8%AF%AF">错误</a>&nbsp;
+          
+            <a href="/tags/Java">Java</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/10/23/%E5%90%8E%E7%AB%AF/Spring/%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/">
+        <p class="h4 index-header">项目搭建</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">快速搭建https://blog.csdn.net/forezp/article/details/70148833
+https://gitee.com/huangxunhui/basic_project/tree/master/
+项目版本选型https://start.spring.io/actuator/info
+https://spring.io/projects/spring-cloud/#learn
+cloud搭建使用技术
+服务注册中心：Consul、Nacos
+服务调用：Ribbon、LoadBalancer
+服务调用2：openFeign、dubbo
+服务降级：resilience4j、sentienl
+服务网关：gateway
+服务配置：Nacos
+服务总线：Nacos
+
+服务注册中心
+当对数据一致性要求没有那么高可以选择AP，例如淘宝双十一秒杀，视频点赞数
+
+
+AP(EureKa&#x2F;Nacos)
+CP(Zookeeper&#x2F;Consul)
+
+ConsulCAP最多只能同时较好的满足两个。
+
+C: Consistency(强一致性)
+A: Availabi</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-10-23&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Spring">Spring</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Java">Java</a>&nbsp;
+          
+            <a href="/tags/Spring">Spring</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/10/21/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+        <p class="h4 index-header">数据类型</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">字符串
+
+使用场景
+缓存
+计数器
+分布式锁
+。。。
+
+get、set、del12345678# 获取key对应的valueget key# 设置key-valueset key value# 删除key-valuedel key
+
+incr、decr、incrby、decrby1234567891011# key自增1，如果key不存在 ，自增后get(key) = 1incr key# key自减1，如果key不存在，自减后get(key) = -1decr key# key自增k，如果key不存在，自增后get(key)= kincrby key k# key自减k，如果key不存在，自减后get(key)= -kdecrby key k
+
+实战
+记录网站每个用户个人主页的访问量？ incr userId:pageview (单线程：无竞争)
+缓存视频的基本信息（数据源在MySQL中）
+分布式id生成器 incr idset setnx setxx
+
+12345678# 不管key是否存在，都设置set key value# key不存在，才设置     key value# ke</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-10-21&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/redis">redis</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/redis">redis</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <nav aria-label="index posts navigation">
+    <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/5/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/7/"><i class="fas fa-angle-double-right"></i></a>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByClassName("page-number")) {
+      ele.href += '#board';
+    }
+  </script>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "欢迎参观我的知识站，这里记录着我的学习经历&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "left",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

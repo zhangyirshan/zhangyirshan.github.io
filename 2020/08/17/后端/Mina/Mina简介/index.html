@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="仅限学习参考，有兴趣可以互相交流">
+  <meta name="author" content="张议">
+  <meta name="keywords" content="张议,Java,java,spring,SpringBoot,zhangyi">
+  <title>Mina简介 ~ 人生展馆</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>人生展馆</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">资料</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/index.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期一, 八月 17日 2020, 9:52 晚上
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    1.8k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      6 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="Mina服务端"><a href="#Mina服务端" class="headerlink" title="Mina服务端"></a>Mina服务端</h2><blockquote>
+<p>Mina apache 开发的一个开源的网络通信框架，基于我们java NIO来实现</p>
+</blockquote>
+<ol>
+<li>NIOSocket</li>
+<li>设置编码解码过滤器</li>
+<li>设置一些session属性</li>
+<li>绑定一个端口</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cmd访问本地服务器</span><br><span class="line">telnet 127.0.0.1 7080</span><br></pre></td></tr></table></figure>
+
+<h2 id="Mina客户端"><a href="#Mina客户端" class="headerlink" title="Mina客户端"></a>Mina客户端</h2><p>替代cmd的telnet</p>
+<h2 id="结构分析"><a href="#结构分析" class="headerlink" title="结构分析"></a>结构分析</h2><ol>
+<li><p>mina在应用程序中处于什么地位<br> 主要屏蔽了网络通信的一些细节，对socket进行封装，并且是NIO的一个实现架构，可以帮助我们快速的开发网络通信。常常用于游戏的开发，中间件等服务端程序。</p>
+</li>
+<li><p>IOService接口<br> 用于描述我们的客户端和服务端接口，其子类是connector和Acceptor，分别用于描述我们的客户端和服务端。IOproceser多线程环境来处理我们的连接请求流程。IOFilter提供数据的过滤工作：包括编解码，日志等信息的过滤，Hanlder就是我们的业务对象，自定义的handler需要实现IOHandlerAcceptor</p>
+</li>
+<li><p>大致看看我的类图结构</p>
+<pre><code>                 IOService
+</code></pre>
+<p> IOconnector                         IOAcceptor<br> NIOSocketConnector                  NIOSocketAcceptor</p>
+</li>
+</ol>
+<p>IOsession：描述的是客户端和服务端连接的描述。常常用于接受和发送数据。</p>
+<p>总结：<br>       IOconnector -&gt; IOProcessor -&gt; IOFilter -&gt; Handler<br>       IOAcceptor -&gt; IOProcessor -&gt; IOFilter -&gt; Handler</p>
+<h2 id="长短连接"><a href="#长短连接" class="headerlink" title="长短连接"></a>长短连接</h2><ol>
+<li>长连接：通信双方长期的保持一个连接状态不断开，比如qq，当我们登录qq的时候，我们就去连接腾讯服务器，一旦建立连接，就不断开，除非发生异常，这样的范式就是长连接，对于长连接比较耗费IO资源。</li>
+<li>短连接：通信双方不是保持一个长期的连接状态，比如http协议，当客户端发起http请求，服务器处理http请求，当服务器处理完成之后，返回客户端数据后就断开连接，对于下次的连接请求需要重新发起。</li>
+</ol>
+<h2 id="IOService"><a href="#IOService" class="headerlink" title="IOService"></a>IOService</h2><ol>
+<li>它实现了对网络通信的客户端和服务端之间的抽象，用于描述客户端的子接口IOConnector，用于描述服务端的子接口IOAcceptor。</li>
+<li>它的作用是可以管理我们网络通信的客户端和服务端，并且可以管理连接双方的会话session，同样可以添加过滤器。</li>
+<li>IOService类结构<br>                             IOService<br>                 IOAcceptor                  IOConnector<br>                             abstractIoService<br>                 abstractIOAcceptor          abstractIOConnector<br>                 NioSocketAcceptor           NioSocketConnector</li>
+</ol>
+<h3 id="常用API"><a href="#常用API" class="headerlink" title="常用API"></a>常用API</h3><h3 id="IOService常用API"><a href="#IOService常用API" class="headerlink" title="IOService常用API"></a>IOService常用API</h3><ol>
+<li>getFilterChain() 获得过滤器链</li>
+<li>setHandler(IoHandler handelr) 设置我们真正业务handler</li>
+<li>getSessionConfig() 得到我们会话的配置信息</li>
+<li>dispose() 在我们完成关闭连接的时候所调用的方法</li>
+</ol>
+<h3 id="IOConnector常用API"><a href="#IOConnector常用API" class="headerlink" title="IOConnector常用API"></a>IOConnector常用API</h3><ol>
+<li>connect(SocketAddress remoteAddress) 主要用户发起一个连接请求</li>
+<li>setConnectTimeout(int connectTimeout) 连接超时的设置</li>
+</ol>
+<h3 id="IoAcceptor常用API"><a href="#IoAcceptor常用API" class="headerlink" title="IoAcceptor常用API"></a>IoAcceptor常用API</h3><ol>
+<li>bind(SocketAddress localAddress) 绑定端口</li>
+<li>getLocalAddress() 获得本地ip地址</li>
+</ol>
+<h3 id="NioSocketAcceptor常用API"><a href="#NioSocketAcceptor常用API" class="headerlink" title="NioSocketAcceptor常用API"></a>NioSocketAcceptor常用API</h3><ol>
+<li>accept（IoProcessor&lt;NioSession&gt; processor, ServerSocketChannel handle) 接受一个连接</li>
+<li>open(SocketAddress localAddress) 打开一个socketchannel</li>
+<li>select() 获得我们的选择器</li>
+</ol>
+<h3 id="NIOSocketConnector常用API"><a href="#NIOSocketConnector常用API" class="headerlink" title="NIOSocketConnector常用API"></a>NIOSocketConnector常用API</h3><ol>
+<li>connect(SocketChannel handle,SocketAddress remoteAddress)用于描述连接请求</li>
+<li>register(SocketChannel handle,AbstractPollingIoConnector.ConnectionRequest request) 注册我们的IO事件</li>
+<li>select(int timeout) 返回选择器</li>
+</ol>
+<h2 id="IOFilter"><a href="#IOFilter" class="headerlink" title="IOFilter"></a>IOFilter</h2><blockquote>
+<p>IOFilte:对应用程序和网络传输，就是二进制数据和对象之间的相互转化，有相应的解码和编码器。这也是我们过滤器一种，我们对过了长期还可以做日志、消息确认等功能。它是在应用层和我们的业务层之间的过滤层</p>
+</blockquote>
+<p>Client：业务handler之前会调用我们的过滤器<br>Server：同样在我们接收到数据的时候和发送数据的时候也调用了过滤器，然后交给我嗯的handler</p>
+<h2 id="IOSession"><a href="#IOSession" class="headerlink" title="IOSession"></a>IOSession</h2><ol>
+<li>主要描述我们网络通信双方所建立的连接之间描述。</li>
+<li>可以完成对于连接的一些管理，可以发送或者读取数据，并且可以设置我们会话的上下文信息。</li>
+</ol>
+<h3 id="IOSession常用API"><a href="#IOSession常用API" class="headerlink" title="IOSession常用API"></a>IOSession常用API</h3><ol>
+<li>getAttribute(Object key) 根据key获获得设置的上下文属性。</li>
+<li>setAttribute(Object key,Object value)设置上下文属性</li>
+<li>removeAttribute(Object key) 删除上下文属性</li>
+<li>write(Object message)发送数据</li>
+<li>read() 读取数据</li>
+</ol>
+<h2 id="IOSessionConfig"><a href="#IOSessionConfig" class="headerlink" title="IOSessionConfig"></a>IOSessionConfig</h2><ol>
+<li>提供我们对连接的配置信息的描述，比如缓冲区的设置等等。</li>
+<li>设置读写缓冲区的信息，读和写的空闲时间以及设置读写超时信息。</li>
+</ol>
+<h3 id="IOSessionConfig常用API"><a href="#IOSessionConfig常用API" class="headerlink" title="IOSessionConfig常用API"></a>IOSessionConfig常用API</h3><ol>
+<li>getBothIdleTime() 获得读写通用的空闲时间</li>
+<li>setIdleTime(IdleStatus status,int idleTime)设置我们的读或者写的空闲时间</li>
+<li>setReadBufferSize(int readBufferSize) 设置读缓冲区大小</li>
+<li>setWriteTimeout(int writeTimeout) 设置写超时时间</li>
+</ol>
+<h2 id="IOProcessor"><a href="#IOProcessor" class="headerlink" title="IOProcessor"></a>IOProcessor</h2><ol>
+<li>Processor：是以NIO为基础实现的以多线程的方式来完成我们读写工作。</li>
+<li>Processor的作用：是为我们的filter读写原始数据的多线程环境，如果mina不去实现的话，我们来实现NIO的话需要自己写一个非阻塞读写的多线程的环境。</li>
+<li>配置Processor的多线程环境<ul>
+<li>通过NioSocketAcceptor(int processorCount)构造函数可以指定多线程的个数</li>
+<li>通过NioSocketConnector(int processorCount)构造函数也可以指定多线程的个数</li>
+</ul>
+</li>
+</ol>
+<h2 id="IOBuffer"><a href="#IOBuffer" class="headerlink" title="IOBuffer"></a>IOBuffer</h2><p>基于java NIO 中的ByteBuffer做了封装，用户操作缓冲区中的数据，包括基本数据类型以及字节数组和一些对象，其本质就是可扩展的byte数组</p>
+<p>IoBuffer的索引属性</p>
+<img src="/2020/08/17/%E5%90%8E%E7%AB%AF/Mina/Mina%E7%AE%80%E4%BB%8B/iobuffer.png" srcset="undefined" class="" title="iobuffer">
+
+<ol>
+<li>Capacity：代表当前缓冲区的大小</li>
+<li>Position：理解成当前读写位置，也可以理解成下一个刻度数据单元的位置，Position&lt;&#x3D;Capicity的时候可以完成数据的读写操作</li>
+<li>Limit：就是下一个不可以被读写缓冲区的单元的位置。Limit&lt;&#x3D;Capacity</li>
+</ol>
+<h3 id="IOBuffer常用的API"><a href="#IOBuffer常用的API" class="headerlink" title="IOBuffer常用的API"></a>IOBuffer常用的API</h3><ol>
+<li>static allocate(int capacity) 开辟已制定的大小缓冲区的空间</li>
+<li>setAutoExpand(boolean autoExpand) 可以设置是否支持动态的扩展</li>
+<li>putString(CharSequence val,CharsetEncoder encoder),putInt(int calue)等等方法实现让缓冲区中法如数据Putxxx()</li>
+<li>flip() 就是把缓冲区的数据放入到流中，往往在发送数据之前调用</li>
+<li>hasRemaining() 缓冲区中是否有数据: boolean是关于position&lt;&#x3D;limit&#x3D;true,否则返回false</li>
+<li>remaining() 返回的是缓冲区中可读数据的大小，limit-position的值</li>
+<li>Rest和Clear<br> reset() 实现情况数据<br> Clear() 实现数据的覆盖，position&#x3D;0，重新开始都我们缓冲区的数据</li>
+</ol>
+<h2 id="自定义协议"><a href="#自定义协议" class="headerlink" title="自定义协议"></a>自定义协议</h2><ol>
+<li>自定义的编解码工厂：要实现编解码工厂就要实现ProtocolCodecFactory接口。</li>
+<li>实现自定义编解码器：<ol>
+<li>实现自定义解码器：实现ProtocolDecoder接口</li>
+<li>实现自定义编码器：实现ProtocolEncoder接口</li>
+</ol>
+</li>
+<li>根据我们自定义的编解码工厂来获得编解码对象</li>
+</ol>
+<h3 id="为什么要使用自定义的编码器"><a href="#为什么要使用自定义的编码器" class="headerlink" title="为什么要使用自定义的编码器"></a>为什么要使用自定义的编码器</h3><p>因为现实中往往不是通过一个字符串就可以传输所有的信息。我们传输的是自定义的协议包。并且能在应用程序和网络通信中存在对象和二进制流之前转化关系。所以我们需要结合业务编写自定义的编解码器</p>
+<h3 id="常用的自定义协议的方法"><a href="#常用的自定义协议的方法" class="headerlink" title="常用的自定义协议的方法"></a>常用的自定义协议的方法</h3><ol>
+<li>定长的方式：Aa,bb,cc,ok,po等这样的通信方式</li>
+<li>定界符：helloworld|watchmend|…|…|通过特殊的符号来区别消息，这样方式会出现粘包，半包等现象。</li>
+<li>自定义协议包：包头+包体，包头：数据包的版本号，以及整个数据包长度，包体：实际数据。</li>
+</ol>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/Mina">Mina</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/Mina">Mina</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "Mina简介&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "left",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

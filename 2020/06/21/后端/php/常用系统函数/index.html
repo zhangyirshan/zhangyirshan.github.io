@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="仅限学习参考，有兴趣可以互相交流">
+  <meta name="author" content="张议">
+  <meta name="keywords" content="张议,Java,java,spring,SpringBoot,zhangyi">
+  <title>常用系统函数 ~ 人生展馆</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>人生展馆</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">资料</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/index.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期日, 六月 21日 2020, 10:45 上午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    1.6k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      5 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="函数的基本概念"><a href="#函数的基本概念" class="headerlink" title="函数的基本概念"></a>函数的基本概念</h3><p>函数：function,是一种语法结构，将实现某一个功能的代码块（多行代码）封装到一个结构中，从而实现代码的重复利用（复用）。</p>
+<h3 id="函数定义语法"><a href="#函数定义语法" class="headerlink" title="函数定义语法"></a>函数定义语法</h3><p>函数有几个对应的关键点：function关键字、函数名、参数（形参和实参）、函数体和返回值</p>
+<p>基本语法如下：<br>Function 函数名([参数]){<br>    &#x2F;&#x2F; 函数体<br>    &#x2F;&#x2F; 返回值：return 结果<br>}</p>
+<p>定义函数的目的：是为了实现代码的重复利用，一个功能一个函数（简单明了）<br>函数的使用：通过访问函数的名字+(); &#x2F;&#x2F; 如果函数在定义的过程中有参数，那么在调用的时候就必须传入对应的参数：函数是一种结构不会自动运行，必须通过调用才会执行。<br>函数是在代码执行阶段，碰到函数名字的时候才会调用，不是在编译阶段。</p>
+<p>函数执行的内存分析：</p>
+<ol>
+<li>读取代码进入到代码段（编译：将代码编程字节码存储带内存）</li>
+<li>根据代码逐行执行</li>
+</ol>
+<p>以上原因：编译和执行时分开的（先编译后执行）</p>
+<h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><p>函数的参数分为两种：形参和实参</p>
+<h3 id="形参"><a href="#形参" class="headerlink" title="形参"></a>形参</h3><p>形参：形式参数，不具有实际意义的参数，是在函数定义时使用的参数</p>
+<h3 id="实参"><a href="#实参" class="headerlink" title="实参"></a>实参</h3><p>实参：实际参数，具有实际数据意义的参数，是在函数调用时使用的参数</p>
+<p>形参是实参的载体：实参在调用时通常是需要传入到函数内部参与计算，那么需要在函数内部去找到实际数据所在的位置才能找到数据本身：需要实际调用的时候，将数据以实参的形式传递给形参：给形参赋值，从而使得函数内部可以用到外部数据。</p>
+<h3 id="默认值"><a href="#默认值" class="headerlink" title="默认值"></a>默认值</h3><p>默认值：default value，指的是形参的默认值，在函数定义的时候，就给形参进行一个初始赋值：如果实际调用传入的参数（实参）没有提供，那么形参就会使用定义时的值来进入函数内部参与运算。<br>通常默认值是用在一些，一定会有</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">jian</span>(<span class="params"><span class="variable">$num</span> = <span class="number">0</span>,<span class="variable">$num1</span> = <span class="number">0</span></span>)</span>&#123; <span class="comment">// 当前的$num1是形参，在编译时不执行，即便执行也是在jian函数内部，不会与玩不的$num1变量冲突</span></span><br><span class="line">    <span class="keyword">echo</span> <span class="variable">$num</span> - <span class="variable">$num1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 调用：默认值如果存在，可以不用传入</span></span><br><span class="line"></span><br><span class="line"><span class="title function_ invoke__">jian</span>(<span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><ol>
+<li>默认值的定义是放在最后边的（多个），不能左边形参有默认值，但是右边没有</li>
+</ol>
+<p>函数外部定义的变量名字与函数定义的形参名字冲突（同名）是没有任何关联关系的；如果多个函数使用同样的形参名字也不冲突。</p>
+<h3 id="引用传递"><a href="#引用传递" class="headerlink" title="引用传递"></a>引用传递</h3><p>实参在调用时会将值赋值给形参，那么实际上使用的方式就是一种简单的值传递：将实参（如果是变量或者常量或者其他表达式）的结果取出来赋值给形参：形参与外部实际传入的参数本身没有任何关联关系，只是结构一样。<br><strong>只有变量能够引用传递</strong></p>
+<h3 id="函数返回值"><a href="#函数返回值" class="headerlink" title="函数返回值"></a>函数返回值</h3><p>返回值：return，指的是将函数实现的结果，通过return关键字，返回给函数外部(函数调用处)：在PHP中所有的函数都有返回值。如果没有明确return使用，那么系统默认返回NULL）</p>
+<h3 id="可变函数"><a href="#可变函数" class="headerlink" title="可变函数"></a>可变函数</h3><blockquote>
+<p>当前有一个变量所保存的值，刚好是一个函数的名字，那么捷克语使用变量+()来充当函数名使用。</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$a</span> = <span class="string">&#x27;display&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">display</span>(<span class="params"><span class="variable">$num</span>=<span class="number">0</span></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="variable">$num</span>;</span><br><span class="line">&#125;</span><br><span class="line">s</span><br><span class="line"><span class="variable">$a</span>();</span><br></pre></td></tr></table></figure>
+
+<h3 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h3><blockquote>
+<p>没有名字的函数</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$a</span> = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 函数体</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="variable">$a</span>();</span><br><span class="line"><span class="title function_ invoke__">var_dump</span>(<span class="variable">$a</span>());</span><br><span class="line"></span><br><span class="line"><span class="comment">//object(Closure)#1 (0) &#123; &#125;  </span></span><br></pre></td></tr></table></figure>
+
+<p>变量保存匿名函数，本质得到的是一个对象。</p>
+<h4 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h4><blockquote>
+<p>Closure,一词源于一下两者的结合：要执行的代码块（由于自由变量呗包含在代码块中，这些自由变量以及他们引用的对象没有被释放）和为自由变量提供绑定的计算机环境（作用域）</p>
+</blockquote>
+<h2 id="输出函数"><a href="#输出函数" class="headerlink" title="输出函数"></a>输出函数</h2><ol>
+<li>print(): 类似于echo输出提供的内容，本质是一种结构（不是函数），返回1，可以不需要使用括号</li>
+<li>print_r(): 类似于var_dump,但是比var_dump简单，不会输出数据的类型，只会输出值</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$a</span> = <span class="string">&#x27;hello world&lt;br/&gt;&#x27;</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="keyword">print</span> <span class="variable">$a</span>;  <span class="comment">// hello world 1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="variable">$a</span>; <span class="comment">// hello world</span></span><br><span class="line"></span><br><span class="line"><span class="title function_ invoke__">print_r</span>(<span class="variable">$a</span>); <span class="comment">// hello world</span></span><br><span class="line"></span><br><span class="line">hello world</span><br><span class="line"><span class="number">1</span>hello world</span><br><span class="line">hello world</span><br></pre></td></tr></table></figure>
+
+<h2 id="时间函数"><a href="#时间函数" class="headerlink" title="时间函数"></a>时间函数</h2><ol>
+<li>date(): 按照9指定格式对应的时间戳（从1970年格林威治时间开始计算的秒数）如果没有特定格式的时间戳，返回time函数的时间戳</li>
+<li>time(): 获取当前时间对应的时间戳</li>
+<li>microtime(): 获取微秒级别的时间</li>
+<li>Strtotime(): 按照规定格式的字符串转换成时间戳</li>
+</ol>
+<h2 id="数学函数"><a href="#数学函数" class="headerlink" title="数学函数"></a>数学函数</h2><ol>
+<li>max(): 指定参数中最大的值，可以传数组，或两个值</li>
+<li>min(): 得到两个数中较小的值</li>
+<li>rand([int $min], max): 得到指定遇见的随机整数</li>
+<li>mt_rand(): 效率比rand高（建议使用）</li>
+<li>round(): 四舍五入</li>
+<li>ceil(): 向上取整</li>
+<li>floor(): 向下取整</li>
+<li>pow(): 求指定数字的指定指数次结果<code>pow(2,8) == 2^8==256</code></li>
+<li>abs(): 绝对值</li>
+<li>sqrt(): 求平方根</li>
+</ol>
+<h2 id="有关函数的函数"><a href="#有关函数的函数" class="headerlink" title="有关函数的函数"></a>有关函数的函数</h2><ol>
+<li>function_exit(): 判断指定的函数名字是否在内存中存在（帮助用户不去使用一个不存在的函数，让代码安全性更高）</li>
+<li>func_get_arg(): 在自定义函数中去获取指定数值对应的参数</li>
+<li>func_get_args(): 在自定义函数中获取所有的参数（数组）</li>
+<li>func_mun_args(): 获取当前自定义函数的参数数量</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> <span class="string">&#x27;&lt;pre&gt;&#x27;</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"><span class="variable">$a</span>,<span class="variable">$b</span></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 获取指定参数</span></span><br><span class="line">    <span class="title function_ invoke__">var_dump</span>(<span class="title function_ invoke__">func_get_arg</span>(<span class="number">1</span>));</span><br><span class="line">    <span class="comment">// 获取所有参数</span></span><br><span class="line">    <span class="title function_ invoke__">var_dump</span>(<span class="title function_ invoke__">func_get_args</span>());</span><br><span class="line">    <span class="comment">// 获取参数数量</span></span><br><span class="line">    <span class="title function_ invoke__">var_dump</span>(<span class="title function_ invoke__">func_num_args</span>());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_ invoke__">function_exists</span>(<span class="string">&#x27;test&#x27;</span>) &amp;&amp; <span class="title function_ invoke__">test</span>(<span class="number">1</span>,<span class="string">&#x27;2&#x27;</span>,<span class="number">3</span>,<span class="number">4</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">string</span>(<span class="number">1</span>) <span class="string">&quot;2&quot;</span></span><br><span class="line"><span class="keyword">array</span>(<span class="number">4</span>) &#123;</span><br><span class="line">  [<span class="number">0</span>]=&gt;</span><br><span class="line">  <span class="keyword">int</span>(<span class="number">1</span>)</span><br><span class="line">  [<span class="number">1</span>]=&gt;</span><br><span class="line">  <span class="keyword">string</span>(<span class="number">1</span>) <span class="string">&quot;2&quot;</span></span><br><span class="line">  [<span class="number">2</span>]=&gt;</span><br><span class="line">  <span class="keyword">int</span>(<span class="number">3</span>)</span><br><span class="line">  [<span class="number">3</span>]=&gt;</span><br><span class="line">  <span class="keyword">int</span>(<span class="number">4</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span>(<span class="number">4</span>)</span><br></pre></td></tr></table></figure>
+
+<p>func_get_args和func_num_args都是统计的对应的实参数量</p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/php">php</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/php">php</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "常用系统函数&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "left",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

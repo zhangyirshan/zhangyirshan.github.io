@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="仅限学习参考，有兴趣可以互相交流">
+  <meta name="author" content="张议">
+  <meta name="keywords" content="张议,Java,java,spring,SpringBoot,zhangyi">
+  <title>Linux操作命令 ~ 人生展馆</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>人生展馆</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">资料</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/index.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期二, 七月 21日 2020, 10:24 晚上
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    1.3k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      5 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="系统管理命令"><a href="#系统管理命令" class="headerlink" title="系统管理命令"></a>系统管理命令</h2><p><a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-command-manual.html">参考手册</a></p>
+<h3 id="交换空间"><a href="#交换空间" class="headerlink" title="交换空间"></a>交换空间</h3><p>内存 1GB 超过   内存溢出 会造成阻塞崩溃宕机<br>磁盘 1TB swap 交换空间，虽然会防止内存溢出，但是会减慢速度拖垮系统<br>云服务器    一台超级计算机 1TB 硬盘 128G 内存，云服务器是没有交换空间的<br>                开辟一个空间    20GB 1G</p>
+<h3 id="Linuxw文件操作命令"><a href="#Linuxw文件操作命令" class="headerlink" title="Linuxw文件操作命令"></a>Linuxw文件操作命令</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">如果无法找到ls或其他命令</span><br><span class="line">export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin</span><br><span class="line">压缩文件</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">tar -xzvf test.tar.gz</span></span><br></pre></td></tr></table></figure>
+
+<p>tail 命令可用于查看文件的内容，有一个常用的参数 -f 常用于查阅正在改变的日志文件。<br>tail -f filename 会把 filename 文件里的最尾部的内容显示在屏幕上，并且不断刷新，只要 filename 更新就可以看到最新的文件内容。<br>显示文件 notes.log 的内容，从第 20 行至文件末尾:<code>tail +20 notes.log</code><br>显示文件 notes.log 的最后 10 个字符: <code>tail -c 10 notes.log</code></p>
+<h3 id="重启"><a href="#重启" class="headerlink" title="重启"></a>重启</h3><ul>
+<li>reboot</li>
+<li>shutdown -r now</li>
+</ul>
+<h3 id="关机"><a href="#关机" class="headerlink" title="关机"></a>关机</h3><ul>
+<li>shutdown -h now</li>
+</ul>
+<h3 id="查询正在运行的进程"><a href="#查询正在运行的进程" class="headerlink" title="查询正在运行的进程"></a>查询正在运行的进程</h3><p>使用ps -ef查看所有进程<br>使用ps axu，查看所有进程<br>如果想查询特定进程，可以使用</p>
+<p>（1）ps -ef|grep 名称</p>
+<p>（2）ps aux|grep 名称</p>
+<h3 id="停止进程"><a href="#停止进程" class="headerlink" title="停止进程"></a>停止进程</h3><p>通过kill 进程id的方式可以实现,<br>首先需要知道进程id, 例如,想要杀死firefox的进程,通过 ps -ef|grep firefox,可以查到firefox的进程id:<br>然后通过 kill 3781 就可以关闭进程了.<br>补充: 1. kill -9 来强制终止退出, 例如: kill -9 3781</p>
+<h3 id="查询程序内存或cpu的使用情况"><a href="#查询程序内存或cpu的使用情况" class="headerlink" title="查询程序内存或cpu的使用情况"></a>查询程序内存或cpu的使用情况</h3><ul>
+<li><p>htop常用功能键</p>
+<p>  F1 : 查看htop使用说明<br>  F2 : 设置<br>  F3 : 搜索进程<br>  F4 : 过滤器，按关键字搜索<br>  F5 : 显示树形结构<br>  F6 : 选择排序方式<br>  F7 : 减少nice值，这样就可以提高对应进程的优先级<br>  F8 : 增加nice值，这样可以降低对应进程的优先级<br>  F9 : 杀掉选中的进程<br>  F10 : 退出htop</p>
+<p>  &#x2F; : 搜索字符<br>  h : 显示帮助<br>  l ：显示进程打开的文件: 如果安装了lsof，按此键可以显示进程所打开的文件<br>  u ：显示所有用户，并可以选择某一特定用户的进程<br>  s : 将调用strace追踪进程的系统调用<br>  t : 显示树形结构</p>
+<p>  H ：显示&#x2F;隐藏用户线程<br>  I ：倒转排序顺序<br>  K ：显示&#x2F;隐藏内核线程<br>  M ：按内存占用排序<br>  P ：按CPU排序<br>  T ：按运行时间排序</p>
+<p>  上下键或PgUP, PgDn : 移动选中进程<br>  左右键或Home, End : 移动列表<br>  Space(空格) : 标记&#x2F;取消标记一个进程。命令可以作用于多个进程，</p>
+</li>
+</ul>
+<p>例如 “kill”，将应用于所有已标记的进程</p>
+<h2 id="Linux编辑器"><a href="#Linux编辑器" class="headerlink" title="Linux编辑器"></a>Linux编辑器</h2><h3 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h3><ul>
+<li>编辑模式：等待编辑命令输入</li>
+<li>插入模式：编辑模式下，输入i进入插入模式，插入文本信息</li>
+<li>命令模式：在编辑模式下，输入:进行命令模式</li>
+</ul>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sheft + g 直达文件底部</span><br></pre></td></tr></table></figure>
+
+<h3 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h3><ol>
+<li>:q 直接退出vi</li>
+<li>:wq 保存后退出vi，并可以新建文件</li>
+<li>:q! 强制退出</li>
+<li>:w file 将当前内容保存成某个文件</li>
+<li>:set nu&#x2F;number 在编辑文件显示行号</li>
+<li>:set nonumber 在编辑文件不显示行号</li>
+<li>:set ic 查找不区分大小写配合<code>/</code>查找命令,:set noic 查找区分大小写</li>
+</ol>
+<h3 id="nano"><a href="#nano" class="headerlink" title="nano"></a>nano</h3><p>nano是一个字符中断的文本编辑器，有点像DOS下的editor程序。它比vi&#x2F;vim要简单的多，比较审核Linux初学者使用。某些Linux发行版的默认编辑器就是nano。</p>
+<h2 id="查看Linux服务器的外网访问地址"><a href="#查看Linux服务器的外网访问地址" class="headerlink" title="查看Linux服务器的外网访问地址"></a>查看Linux服务器的外网访问地址</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1、curl ifconfig.me</span><br><span class="line">2、curl cip.cc</span><br><span class="line">3、curl icanhazip.com</span><br><span class="line">4、curl ident.me</span><br><span class="line">5、curl ipecho.net/plain</span><br><span class="line">6、curl whatismyip.akamai.com</span><br><span class="line">7、curl tnx.nl/ip</span><br><span class="line">8、curl myip.dnsomatic.com</span><br><span class="line">9、curl ip.appspot.com</span><br><span class="line">10、curl -s checkip.dyndns.org | sed &#x27;s/.*IP Address: \([0-9\.]*\).*/\1/g&#x27;</span><br></pre></td></tr></table></figure>
+
+<h2 id="解压压缩包"><a href="#解压压缩包" class="headerlink" title="解压压缩包"></a>解压压缩包</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip -d  压缩文件    // 不保留原来的压缩文件</span><br></pre></td></tr></table></figure>
+
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="文件处理命令"><a href="#文件处理命令" class="headerlink" title="文件处理命令"></a>文件处理命令</h3><h4 id="touch"><a href="#touch" class="headerlink" title="touch"></a>touch</h4><p>命令名称： touch<br>命令所在路径： &#x2F;bin&#x2F;touch<br>执行权限：所有用户<br>语法： touch [文件名]<br>功能描述：创建空文件<br>范例：<code>$ touch newfile</code></p>
+<h4 id="mkdir"><a href="#mkdir" class="headerlink" title="mkdir"></a>mkdir</h4><p>命令名称： mkdir<br>命令所在路径： &#x2F;bin&#x2F;mkdir<br>执行权限：所有用户<br>语法： mkdir [目录名]<br>功能描述：创建空文件夹<br>范例：<code>$ mkdir newdir</code></p>
+<h4 id="mkdir-1"><a href="#mkdir-1" class="headerlink" title="mkdir"></a>mkdir</h4><p>命令名称： ln<br>命令所在路径： &#x2F;bin&#x2F;ln<br>执行权限：所有用户<br>语法： ln -s [源文件] [目标文件]<br>          -s 创建软连接<br>功能描述：创建链接文件<br>范例：<code>$ ln -s /etc/issue /issue.soft</code><br>      创建文件&#x2F;etc&#x2F;issue的软链接&#x2F;issue.soft<br>      <code>$ ln /etc/issue /issue.hard</code><br>      创建文件&#x2F;etc&#x2F;issue的硬链接&#x2F;issue.soft，硬链接相当于复制+同步更新</p>
+<h4 id="chmod"><a href="#chmod" class="headerlink" title="chmod"></a>chmod</h4><p>改变文件或目录权限<br>chmod [mode&#x3D;421] [文件或目录]<br>读r-4、写w-2、可执行x-1</p>
+<p>文件<br>r-cat、more、head、tail<br>w-echo、vi<br>x-命令、脚本<br>目录<br>r-ls<br>w-创建删除文件、touch、mkdir、rm<br>x-cd</p>
+<h3 id="系统常用快捷键"><a href="#系统常用快捷键" class="headerlink" title="系统常用快捷键"></a>系统常用快捷键</h3><p>ctrl+u 清空当前行<br>ctrl+l 清空当前页面</p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/Linux">Linux</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/Linux">Linux</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "Linux操作命令&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "left",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

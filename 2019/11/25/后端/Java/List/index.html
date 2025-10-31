@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="仅限学习参考，有兴趣可以互相交流">
+  <meta name="author" content="张议">
+  <meta name="keywords" content="张议,Java,java,spring,SpringBoot,zhangyi">
+  <title>List ~ 人生展馆</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>人生展馆</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">资料</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/index.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期一, 十一月 25日 2019, 1:31 下午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    3.3k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      15 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="链表List"><a href="#链表List" class="headerlink" title="链表List"></a>链表List</h2><h3 id="ArrayList（数组列表）"><a href="#ArrayList（数组列表）" class="headerlink" title="ArrayList（数组列表）"></a>ArrayList（数组列表）</h3><ol>
+<li>java.util<br>Class ArrayList&lt;E&gt;<br>java.lang.Object<br>  extended by java.util.AbstractCollection&lt;E&gt;<br>   extended by java.util.AbstractList&lt;E&gt;<br>   extended by java.util.ArrayList&lt;E&gt;</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>构造方法（Constructor Summary）</th>
+<th>具体含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ArrayList()</td>
+<td>Constructs an empty list with an initial capacity of ten. 他是一个集合，通过add（E e） 添加</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>Method Summary</th>
+<th>具体含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public boolean add(E e)</td>
+<td>Appends the specified element to the end of this list.</td>
+</tr>
+<tr>
+<td>public int size()</td>
+<td>Returns the number of elements in this list.</td>
+</tr>
+<tr>
+<td>public void clear()</td>
+<td>Removes all of the elements from this list. The list will be empty after this call returns.</td>
+</tr>
+<tr>
+<td>public boolean isEmpty()</td>
+<td>Returns true if this list contains no elements.</td>
+</tr>
+<tr>
+<td>public E remove(int index)</td>
+<td>Removes the element at the specified position in this list. Shifts any subsequent elements to the left (subtracts one from their indices).</td>
+</tr>
+<tr>
+<td>public boolean remove(Object o)</td>
+<td>Removes the first occurrence of the specified element from this list, if it is present. If the list does not contain the element, it is unchanged. More formally, removes the element with the lowest index i such that (o&#x3D;&#x3D;null ? get(i)&#x3D;&#x3D;null : o.equals(get(i))) (if such an element exists). Returns true if this list contained the specified element (or equivalently, if this list changed as a result of the call).</td>
+</tr>
+<tr>
+<td>public int indexOf(Object o)</td>
+<td>Returns the index of the first occurrence of the specified element in this list, or -1 if this list does not contain the element. More formally, returns the lowest index i such that (o&#x3D;&#x3D;null ? get(i)&#x3D;&#x3D;null : o.equals(get(i))), or -1 if there is no such index.</td>
+</tr>
+<tr>
+<td>Object[] toArray()</td>
+<td>Returns an array containing all of the elements（元素） in this list in proper sequence (from first to last element).</td>
+</tr>
+</tbody></table>
+<h4 id="add方法，get方法，size方法，remove方法，clear方法"><a href="#add方法，get方法，size方法，remove方法，clear方法" class="headerlink" title="add方法，get方法，size方法，remove方法，clear方法"></a>add方法，get方法，size方法，remove方法，clear方法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ArrayListTest1</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">ArrayList</span> <span class="variable">arrayList</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ArrayList</span>();</span><br><span class="line"></span><br><span class="line">        arrayList.add(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">        arrayList.add(<span class="string">&quot;world&quot;</span>);</span><br><span class="line">        arrayList.add(<span class="string">&quot;world&quot;</span>);</span><br><span class="line">        arrayList.add(<span class="string">&quot;welcome&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="type">String</span> <span class="variable">s1</span> <span class="operator">=</span> (String) arrayList.get(<span class="number">0</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">s2</span> <span class="operator">=</span> (String) arrayList.get(<span class="number">1</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">s3</span> <span class="operator">=</span> (String) arrayList.get(<span class="number">2</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">s4</span> <span class="operator">=</span> (String) arrayList.get(<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(s1);</span><br><span class="line">        System.out.println(s2);</span><br><span class="line">        System.out.println(s3);</span><br><span class="line">        System.out.println(s4);</span><br><span class="line">        System.out.println(<span class="string">&quot;-----------------&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; arrayList.size(); i++) &#123;</span><br><span class="line">            System.out.println(arrayList.get(i));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        arrayList.remove(<span class="number">0</span>);</span><br><span class="line">        arrayList.remove(<span class="string">&quot;welcome&quot;</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;-----------------&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; arrayList.size(); i++) &#123;</span><br><span class="line">            System.out.println(arrayList.get(i));</span><br><span class="line">        &#125;</span><br><span class="line">        arrayList.add(<span class="string">&quot;aaa&quot;</span>);</span><br><span class="line">        arrayList.add(<span class="string">&quot;bbb&quot;</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(arrayList.indexOf(<span class="string">&quot;world&quot;</span>));</span><br><span class="line">        System.out.println(arrayList.indexOf(<span class="string">&quot;aaa&quot;</span>));</span><br><span class="line"></span><br><span class="line">        arrayList.clear();</span><br><span class="line"></span><br><span class="line">        System.out.println(arrayList.size());</span><br><span class="line">        System.out.println(arrayList.isEmpty());</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果是<br>hello<br>world<br>world<br>welcome</p>
+<hr>
+<p>hello<br>world<br>world<br>welcome</p>
+<hr>
+<p>world<br>world<br>0<br>2<br>0<br>true</p>
+<p>说明集合元素可重复。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ArrayListTest2</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">ArrayList</span> <span class="variable">list</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ArrayList</span>();</span><br><span class="line"></span><br><span class="line">        list.add(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">        list.add(<span class="keyword">new</span> <span class="title class_">Integer</span>(<span class="number">2</span>));</span><br><span class="line"></span><br><span class="line">        <span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> (String)list.get(<span class="number">0</span>);</span><br><span class="line">        <span class="type">Integer</span> <span class="variable">in</span> <span class="operator">=</span> (Integer)list.get(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(str);</span><br><span class="line">        System.out.println(in.intValue());</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果是<br>hello<br>2</p>
+<p>输入什么类型输出什么类型，如果将in的类型改为String编译时不会出错，但运行时会出错，出错原因： <em><strong>java.lang.Integer cannot be cast to java.lang.String</strong></em>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">ArrayList</span> <span class="variable">list</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ArrayList</span>();</span><br><span class="line">list.add(<span class="number">3</span>);</span><br><span class="line"><span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> (<span class="type">int</span>)list.get(<span class="number">0</span>);</span><br><span class="line">System.out.println(i);</span><br></pre></td></tr></table></figure>
+
+<p>这样是错误的因为add中的参数是对象，而8种原生数据类型不是对象，所以会出错。<br>但是实际上你编译运行时是不会报错的是因为编译器自动将3装箱放入ArrayList中，get方法又将object强转为integer对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    <span class="comment">//自动装箱</span></span><br><span class="line">    <span class="type">Integer</span> <span class="variable">total</span> <span class="operator">=</span> <span class="number">99</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//自定拆箱</span></span><br><span class="line">    <span class="type">int</span> <span class="variable">totalprim</span> <span class="operator">=</span> total;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>简单一点说，装箱就是自动将基本数据类型转换为包装器类型；拆箱就是自动将包装器类型转换为基本数据类型。</p>
+<p>我们用arrayList实现个例子：将3，4，5，6存到集合中然后取出求和输出</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ArrayListTest3</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">ArrayList</span> <span class="variable">list</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ArrayList</span>();</span><br><span class="line">        list.add(<span class="keyword">new</span> <span class="title class_">Integer</span>(<span class="number">3</span>));</span><br><span class="line">        list.add(<span class="keyword">new</span> <span class="title class_">Integer</span>(<span class="number">4</span>));</span><br><span class="line">        list.add(<span class="keyword">new</span> <span class="title class_">Integer</span>(<span class="number">5</span>));</span><br><span class="line">        list.add(<span class="keyword">new</span> <span class="title class_">Integer</span>(<span class="number">6</span>));</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;list.size();i++) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">value</span> <span class="operator">=</span> ((Integer)list.get(i)).intValue();</span><br><span class="line">            sum+=value;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(sum);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果是<br>18</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ArrayListTest4</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">ArrayList</span> <span class="variable">list</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ArrayList</span>();</span><br><span class="line"></span><br><span class="line">        list.add(<span class="keyword">new</span> <span class="title class_">Integer</span>(<span class="number">1</span>));</span><br><span class="line">        list.add(<span class="keyword">new</span> <span class="title class_">Integer</span>(<span class="number">2</span>));</span><br><span class="line">        list.add(<span class="keyword">new</span> <span class="title class_">Integer</span>(<span class="number">3</span>));</span><br><span class="line">        list.add(<span class="keyword">new</span> <span class="title class_">Integer</span>(<span class="number">4</span>));</span><br><span class="line">        list.add(<span class="keyword">new</span> <span class="title class_">Integer</span>(<span class="number">5</span>));</span><br><span class="line">        list.add(<span class="keyword">new</span> <span class="title class_">Integer</span>(<span class="number">6</span>));</span><br><span class="line"></span><br><span class="line">        Integer[] in = (Integer[])list.toArray();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i= <span class="number">0</span>;i&lt;in.length;i++) &#123;</span><br><span class="line">            System.out.println(in[i].intValue());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果出错<br><em><strong>[Ljava.lang.Object; cannot be cast to [Ljava.lang.Integer;</strong></em><br>虽然Object可以转换为Integer，但Object[]不能转换为Integer[]，因此我们只能用遍历。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ArrayListTest4</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">ArrayList</span> <span class="variable">list</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ArrayList</span>();</span><br><span class="line"></span><br><span class="line">        list.add(<span class="keyword">new</span> <span class="title class_">Integer</span>(<span class="number">1</span>));</span><br><span class="line">        list.add(<span class="keyword">new</span> <span class="title class_">Integer</span>(<span class="number">2</span>));</span><br><span class="line">        list.add(<span class="keyword">new</span> <span class="title class_">Integer</span>(<span class="number">3</span>));</span><br><span class="line">        list.add(<span class="keyword">new</span> <span class="title class_">Integer</span>(<span class="number">4</span>));</span><br><span class="line">        list.add(<span class="keyword">new</span> <span class="title class_">Integer</span>(<span class="number">5</span>));</span><br><span class="line">        list.add(<span class="keyword">new</span> <span class="title class_">Integer</span>(<span class="number">6</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        * 不能将Object[]转换为Integer[]</span></span><br><span class="line"><span class="comment">        * 因为Integer[]继承的是Object而不是Object[]</span></span><br><span class="line"><span class="comment">        * 或者我们可以这么想，假设Object[]中有字符串那么我们转换时就会出错。</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line"></span><br><span class="line">        Object[] in = list.toArray();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i= <span class="number">0</span>;i&lt;in.length;i++) &#123;</span><br><span class="line">            System.out.println(((Integer)in[i]).intValue());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>集合中存放的依然是对象的引用而不是对象本身</strong>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> Fortieth;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ArrayListTest5</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">ArrayList</span> <span class="variable">list</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ArrayList</span>();</span><br><span class="line"></span><br><span class="line">        list.add(<span class="keyword">new</span> <span class="title class_">Point</span>(<span class="number">2</span>, <span class="number">3</span>));</span><br><span class="line">        list.add(<span class="keyword">new</span> <span class="title class_">Point</span>(<span class="number">2</span>, <span class="number">2</span>));</span><br><span class="line">        list.add(<span class="keyword">new</span> <span class="title class_">Point</span>(<span class="number">4</span>, <span class="number">4</span>));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; list.size(); i++) &#123;</span><br><span class="line">            System.out.println(list.get(i));<span class="comment">// 虽然返回的是Object但是实际上是Point，系统会调用Point的toString方法，因为我们没有重写所以会继承Object中的toString方法</span></span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(list);<span class="comment">// 调用list的toString方法</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> Fortieth;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Point</span> &#123;</span><br><span class="line">    <span class="type">int</span> x;</span><br><span class="line">    <span class="type">int</span> y;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> x coordinate of x</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> y coordinate of y</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"></span><br><span class="line">    Point(<span class="type">int</span> x, <span class="type">int</span> y) &#123;</span><br><span class="line">        <span class="built_in">this</span>.x = x;</span><br><span class="line">        <span class="built_in">this</span>.y = y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果是<br>Fortieth.Point@75b84c92<br>Fortieth.Point@6bc7c054<br>Fortieth.Point@232204a1<br>[Fortieth.Point@75b84c92, Fortieth.Point@6bc7c054, Fortieth.Point@232204a1]<br>很显然直接输出get返回的参数是Point调用自己的toString方法，因为没有重写，所以使用的是继承Object方法中的toString。<br>而直接输出list先调用list的toString方法输出[]然后再调用每一个元素的toString方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ArrayListTest5</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">ArrayList</span> <span class="variable">list</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ArrayList</span>();</span><br><span class="line"></span><br><span class="line">        list.add(<span class="keyword">new</span> <span class="title class_">Point</span>(<span class="number">2</span>, <span class="number">3</span>));</span><br><span class="line">        list.add(<span class="keyword">new</span> <span class="title class_">Point</span>(<span class="number">2</span>, <span class="number">2</span>));</span><br><span class="line">        list.add(<span class="keyword">new</span> <span class="title class_">Point</span>(<span class="number">4</span>, <span class="number">4</span>));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; list.size(); i++) &#123;</span><br><span class="line">            System.out.println(list.get(i));<span class="comment">// 虽然返回的是Object但是实际上是Point，系统会调用Point的toString方法，因为我们没有重写所以会继承Object中的toString方法</span></span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(list);<span class="comment">// 调用list的toString方法</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Point</span> &#123;</span><br><span class="line">    <span class="type">int</span> x;</span><br><span class="line">    <span class="type">int</span> y;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> x coordinate of x</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> y coordinate of y</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"></span><br><span class="line">    Point(<span class="type">int</span> x, <span class="type">int</span> y) &#123;</span><br><span class="line">        <span class="built_in">this</span>.x = x;</span><br><span class="line">        <span class="built_in">this</span>.y = y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span> return coordinate of axis of x and y</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;x=&quot;</span> + <span class="built_in">this</span>.x + <span class="string">&quot;,y=&quot;</span> + <span class="built_in">this</span>.y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果是<br>x&#x3D;2,y&#x3D;3<br>x&#x3D;2,y&#x3D;2<br>x&#x3D;4,y&#x3D;4<br>[x&#x3D;2,y&#x3D;3, x&#x3D;2,y&#x3D;2, x&#x3D;4,y&#x3D;4]</p>
+<ol>
+<li>ArrayList 底层采用数组实现，当使用不带参数的构造方法生成ArrayList对象时，实际上会在底层生成一个长度为 10 的 Object 类型数组</li>
+<li>如果增加的元素个数超过了 10 个，那么 ArrayList 底层会新生成一个数组，长度为原数组的 1.5 倍+1， 然后将原数组的内容复制到新数组当中，并且后续增加的内容都会放到新数组当中。当新数组无法容纳增加的元素时，重复该过程。</li>
+<li>对于 ArrayList 元素的删除操作，需要将被删除元素的后续元素向前移动，代价比较高，对于 ArrayList 元素的插入操作，同样如此，如果已经有3个元素，再第二个元素位插入一个新的元素，后续元素将向后移动。</li>
+<li>集合当中只能放置对象的引用，无法放置原生数据类型，我们需要使用原生数据类型的包装类才能加入到集合当中。</li>
+<li>集合当中放置的都是 Object 类型，因此取出来的也是 Object 类型，那么必须要使用强制类型转换将其转换为真正的类型（放置进去的类型）。</li>
+</ol>
+<h3 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h3><p>无参的构造方法我们已经了解了，接下来我们了解下有参的构造方法</p>
+<ol>
+<li>public ArrayList(int initialCapacity)<br>Constructs an empty list with the specified initial capacity. （构造一个空的列表使用初始的容量）<br>initialCapacity - the initial capacity of the list （列表最开始的容量）<br>建立一个数组列表，该数组有指定的初始容量（capacity）。容量是用于存储元素的基本数组的大小。当元素被追加到数组列表上时，容量会自动增加。</li>
+<li>public ArrayList(Collection&lt;? extends E&gt; c)<br>Constructs a list containing the elements of the specified collection, in the order they are returned by the collection’s iterator. （构造一个列表包含指定集合的元素，顺序是在集合迭代的顺序返回）<br>c - the collection whose elements are to be placed into this list<br>建立一个数组列表，该数组列表由类集c中的元素初始化</li>
+</ol>
+<p><strong>但是LinkedList只有两个没有第三个，因为没必要</strong></p>
+<h3 id="LinkedList（链表）（链接的列表）"><a href="#LinkedList（链表）（链接的列表）" class="headerlink" title="LinkedList（链表）（链接的列表）"></a>LinkedList（链表）（链接的列表）</h3><p>java.util<br>Class LinkedList&lt;E&gt;<br>java.lang.Object<br>java.util.AbstractCollection&lt;E&gt;<br>java.util.AbstractList&lt;E&gt;<br>java.util.AbstractSequentialList&lt;E&gt;<br>java.util.LinkedList&lt;E&gt;</p>
+<p>LinkedList和ArrayList都是实现的list接口但是LinkedList有一些特有的方法</p>
+<h3 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">LinkedList</span> <span class="variable">list</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">LinktedLIst</span>();</span><br><span class="line">list.add(<span class="string">&quot;aaa&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>当向 ArrayList 添加一个对象时，实际上就是将该对象放置到了 ArrayList 底层所维护的数组当中；当向 LinkedList 中添加一个对象时，实际上 LinkedList 内部会生成一个Entry 对象，该 Entry 对象的结构为：</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">Entry&#123;</span><br><span class="line">    Entry previous;</span><br><span class="line">    Object element;</span><br><span class="line">    Entry next;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">Entry</span> <span class="variable">entry</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Entry</span>();</span><br><span class="line">entry.element = <span class="string">&quot;aaa&quot;</span>;</span><br><span class="line">entry</span><br><span class="line">lis.add(;</span><br><span class="line">```)</span><br><span class="line"></span><br><span class="line">其中的 Object 类型的元素 element 就是我们向 LinkedList 中所添加的元素，然后 Entry又构造好了向前与向后的引用 previous、 next，最后将生成的这个 Entry 对象加入到了表当中。 换句话说， **LinkedList 中所维护的是一个个的 Entry 对象**。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### addLast</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addLast</span><span class="params">(E e)</span></span><br><span class="line">Appends the specified element to the end of <span class="built_in">this</span> list.</span><br><span class="line"></span><br><span class="line">#### addFirst</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addFirst</span><span class="params">(E e)</span></span><br><span class="line">Inserts the specified element at the beginning of <span class="built_in">this</span> list.</span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line"><span class="keyword">package</span> fourtyFirst;</span><br><span class="line"><span class="keyword">import</span> java.io.ObjectStreamException;</span><br><span class="line"><span class="keyword">import</span> java.util.LinkedList;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LinkedListTest1</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">LinkedList</span> <span class="variable">list</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">LinkedList</span>();</span><br><span class="line"></span><br><span class="line">        list.add(<span class="string">&quot;F&quot;</span>);</span><br><span class="line">        list.add(<span class="string">&quot;B&quot;</span>);</span><br><span class="line">        list.add(<span class="string">&quot;D&quot;</span>);</span><br><span class="line">        list.add(<span class="string">&quot;E&quot;</span>);</span><br><span class="line">        list.add(<span class="string">&quot;C&quot;</span>);</span><br><span class="line"></span><br><span class="line">        list.addLast(<span class="string">&quot;Z&quot;</span>);</span><br><span class="line">        list.addFirst(<span class="string">&quot;A&quot;</span>);</span><br><span class="line"></span><br><span class="line">        list.add(<span class="number">1</span>, <span class="string">&quot;A2&quot;</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;最初的集合&quot;</span> + list);</span><br><span class="line"></span><br><span class="line">        list.remove(<span class="string">&quot;F&quot;</span>);</span><br><span class="line">        list.remove(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;变化之后的集合&quot;</span>+list);</span><br><span class="line"></span><br><span class="line">        <span class="type">Object</span> <span class="variable">value</span> <span class="operator">=</span> list.get(<span class="number">2</span>);</span><br><span class="line">        list.set(<span class="number">2</span>, (String)value + <span class="string">&quot;changed&quot;</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;最后的集合&quot;</span>+ list);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果是<br>最初的集合[A, A2, F, B, D, E, C, Z]<br>变化之后的集合[A, A2, D, E, C, Z]<br>最后的集合[A, A2, Dchanged, E, C, Z]</p>
+<h2 id="链表的数据结构"><a href="#链表的数据结构" class="headerlink" title="链表的数据结构"></a>链表的数据结构</h2><ol>
+<li>一般将数据结构分为两大类：<strong>线型数据结构和非线性数据结构</strong>。线型数据结构有线性表、栈、队列、串、数组和文件非线性数据结构有树和图（继承）</li>
+<li>线性表的逻辑结构是n个数据元素的有限序列:(a1, a2 ,a3,…an)n为线性表的长度(n≥0)， n&#x3D;0的表称为空表。2 数据元素呈线性关系。必存在唯一的称为“第一个” 的数据元素；必存在唯一的称为“最后一个”的数据元素；除第一个元素外，每个元素都有且只有一个前驱元素； 除最后一个素外，每个元素都有且只有一个后继元素。</li>
+<li>所有数据元素在同一个线性表中必须是相同的数据类型。</li>
+<li>线性表按其存储结构可分为顺序表和链表。用顺序存储结构存储的线性表称为顺序表；<br>用链式存储结构存储的线性表称为链表。</li>
+<li>将线性表中的数据元素依次存放在某个存储区域中,所形成的表称为顺序表。 <strong>一维数组就是用顺序方式存储的线性表</strong>。</li>
+</ol>
+<h3 id="单向链表"><a href="#单向链表" class="headerlink" title="单向链表"></a>单向链表</h3><h4 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h4><p><img src="https://img-blog.csdnimg.cn/20181222211910174.png" srcset="undefined" alt="在这里插入图片描述"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> fourtyFirst;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">NodeTest</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Node</span> <span class="variable">fNode</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Node</span>(<span class="string">&quot;node1&quot;</span>);</span><br><span class="line">        <span class="type">Node</span> <span class="variable">sNode</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Node</span>(<span class="string">&quot;node2&quot;</span>);</span><br><span class="line">        <span class="type">Node</span> <span class="variable">tNode</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Node</span>(<span class="string">&quot;node3&quot;</span>);</span><br><span class="line"></span><br><span class="line">        fNode.next = sNode;</span><br><span class="line">        sNode.next = tNode;</span><br><span class="line">        tNode.next = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">        System.out.println(fNode.next.next.data);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> fourtyFirst;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Node</span> &#123;</span><br><span class="line">    String data;<span class="comment">//存放节点数据本身</span></span><br><span class="line">    Node next; <span class="comment">//存放指向下一个节点的引用</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Node</span><span class="params">(String str)</span> &#123;</span><br><span class="line">        data = str;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果是<br>node3</p>
+<h4 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h4><p><img src="https://img-blog.csdnimg.cn/20181222212240254.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkwNzMzMg==,size_16,color_FFFFFF,t_70" srcset="undefined" alt="在这里插入图片描述"></p>
+<p>在上述main方法中加入下列代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="string">&quot;---------------&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="type">Node</span> <span class="variable">node4</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Node</span>(<span class="string">&quot;node4&quot;</span>);</span><br><span class="line"></span><br><span class="line">fNode.next = node4;</span><br><span class="line">node4.next = sNode;</span><br><span class="line"></span><br><span class="line">System.out.println(fNode.next.next.next.data);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>结果是<br>node3<br>-————–<br>node3</p>
+<h4 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h4><p><img src="https://img-blog.csdnimg.cn/20181222212729606.png" srcset="undefined" alt="在这里插入图片描述"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="string">&quot;---------------&quot;</span>);</span><br><span class="line"></span><br><span class="line">fNode.next = sNode;</span><br><span class="line">node4.next = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">System.out.println(fNode.next.next.data);</span><br></pre></td></tr></table></figure>
+
+<p>结果是<br>node3<br>-————–<br>node3<br>-————–<br>node3</p>
+<h3 id="循环链表"><a href="#循环链表" class="headerlink" title="循环链表"></a>循环链表</h3><p><img src="https://img-blog.csdnimg.cn/2018122221303666.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkwNzMzMg==,size_16,color_FFFFFF,t_70" srcset="undefined" alt="在这里插入图片描述"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tNode.next = fNode;</span><br></pre></td></tr></table></figure>
+
+<h3 id="双向循环链表"><a href="#双向循环链表" class="headerlink" title="双向循环链表"></a>双向循环链表</h3><p><img src="https://img-blog.csdnimg.cn/20181222213105107.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkwNzMzMg==,size_16,color_FFFFFF,t_70" srcset="undefined" alt="在这里插入图片描述"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> fourtyFirst;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Node2</span> &#123;</span><br><span class="line">    Node2 previous;</span><br><span class="line"></span><br><span class="line">    String data;</span><br><span class="line"></span><br><span class="line">    Node2 next;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Node2</span><span class="params">(String data)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.data = data;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> fourtyFirst;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Node2Test</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Node2</span> <span class="variable">node1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Node2</span>(<span class="string">&quot;node1&quot;</span>);</span><br><span class="line">        <span class="type">Node2</span> <span class="variable">node2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Node2</span>(<span class="string">&quot;node2&quot;</span>);</span><br><span class="line">        <span class="type">Node2</span> <span class="variable">node3</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Node2</span>(<span class="string">&quot;node3&quot;</span>);</span><br><span class="line"></span><br><span class="line">        node1.previous = node3;</span><br><span class="line">        node2.previous = node1;</span><br><span class="line">        node3.previous = node2;</span><br><span class="line"></span><br><span class="line">        node1.next = node2;</span><br><span class="line">        node2.next = node3;</span><br><span class="line">        node3.next = node1;</span><br><span class="line"></span><br><span class="line">        <span class="type">Node2</span> <span class="variable">node4</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Node2</span>(<span class="string">&quot;node4&quot;</span>);</span><br><span class="line">        <span class="comment">//插入到1和2之间</span></span><br><span class="line">        node1.next = node4;</span><br><span class="line">        node4.next = node2;</span><br><span class="line"></span><br><span class="line">        node2.previous = node4;</span><br><span class="line">        node4.previous = node1;</span><br><span class="line">        <span class="comment">//删除4</span></span><br><span class="line">        node1.next = node2;</span><br><span class="line">        node4.next = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">        node2.previous = node1;</span><br><span class="line">        node4.previous = <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><code>LinkedList实际上就是双向链表</code></p>
+<h2 id="关于-ArrayList-与-LinkedList-的比较分析"><a href="#关于-ArrayList-与-LinkedList-的比较分析" class="headerlink" title="关于 ArrayList 与 LinkedList 的比较分析"></a>关于 ArrayList 与 LinkedList 的比较分析</h2><ol>
+<li>ArrayList 底层采用数组实现， LinkedList 底层采用双向链表实现。</li>
+<li>当执行插入或者删除操作时， 采用 LinkedList 比较好。</li>
+<li>当执行搜索操作时， 采用 ArrayList 比较好。</li>
+</ol>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/Java">Java</a>
+                  &nbsp;
+                
+                  <a class="hover-with-bg" href="/categories/Java%20SE">Java SE</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/Java">Java</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "List&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "left",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

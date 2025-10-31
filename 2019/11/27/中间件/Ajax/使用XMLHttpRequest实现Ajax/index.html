@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="仅限学习参考，有兴趣可以互相交流">
+  <meta name="author" content="张议">
+  <meta name="keywords" content="张议,Java,java,spring,SpringBoot,zhangyi">
+  <title>使用XMLHttpRequest实现Ajax ~ 人生展馆</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>人生展馆</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">资料</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/index.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期三, 十一月 27日 2019, 2:29 下午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    2.6k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      10 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="XMLHttpRequest的概述"><a href="#XMLHttpRequest的概述" class="headerlink" title="XMLHttpRequest的概述"></a>XMLHttpRequest的概述</h2><ol>
+<li>XMLHttpRequest最早是在IE5中以ActiveX组件的形式实现的。非W3C标准。</li>
+<li>创建XMLHttpRequest对象<font color=blue>（由于非标准所有实现方法不统一）</font><ul>
+<li>Internet Explor把XMLHttpRequest实现为一个ActiveX对象</li>
+<li>其他浏览器（Firefox、Safari、Opera。。。）把它实现为一个本地的JavaScript</li>
+<li><font color=blue>XMLHttpRequest在不同浏览器上的实现是兼容的。</font>所有可以用同样的方式访问XMLHttpRequest实例的属性和方法，而不论这个实例创建的方法是什么。</li>
+</ul>
+</li>
+</ol>
+<h2 id="创建XMLHttpRequest对象"><a href="#创建XMLHttpRequest对象" class="headerlink" title="创建XMLHttpRequest对象"></a>创建XMLHttpRequest对象</h2><p>为了每次下Ajax的时候都节省一点时间，可以把对象检查的内容打包成一个可服用的函数；</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">getHTTPObject</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> xhr = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable language_">window</span>.<span class="property">XMLHttpRequest</span>)&#123;</span><br><span class="line">        xhr = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>();</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(<span class="variable language_">window</span>.<span class="property">ActiveXObject</span>)&#123;</span><br><span class="line">        xhr = <span class="keyword">new</span> <span class="title class_">ActiveXObject</span>(<span class="string">&quot;Microsoft.XMLHTTP&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> xhr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>说明：对weindow.XMLHttpRequest的调用会返回一个对象或null，if语句会把调用返回的结果看作是true或false<font color=blue>（如果返回对象则为true，返回null则为false）。如果XMLHttpRequest对象存在，则把xhr的值设为对象的新实例。如果不存在，就去驾车ActiveObject的实例是否存在，如果答案是肯定的，则把微软XMLHTTP的新实例付给xhr</p>
+<h2 id="XMLHttpRequest的方法"><a href="#XMLHttpRequest的方法" class="headerlink" title="XMLHttpRequest的方法"></a>XMLHttpRequest的方法</h2><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>abort()</td>
+<td>停止当前请求</td>
+</tr>
+<tr>
+<td>getAllResponseHeaders()</td>
+<td>把HTTP请求的所有响应首部作为键&#x2F;值对返回</td>
+</tr>
+<tr>
+<td>getResponseHeader(“header”)</td>
+<td>返回指定首部的串值</td>
+</tr>
+<tr>
+<td>open(“method”,”url”)</td>
+<td>建立对服务器的调用，Method参数可以是GET、POST或PUT、url参数额可以是相对URL或绝对URL</td>
+</tr>
+<tr>
+<td>send(content)</td>
+<td>向服务器发送请求</td>
+</tr>
+<tr>
+<td>setRequestHeader(“header”,”value”)</td>
+<td>把指定首部设置为所提供的值。在设置任何首部之前必须先调用open（）</td>
+</tr>
+</tbody></table>
+<h2 id="XMLHttpRequest的属性"><a href="#XMLHttpRequest的属性" class="headerlink" title="XMLHttpRequest的属性"></a>XMLHttpRequest的属性</h2><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>onreadystatechange</td>
+<td>每个状态改变是都会触发这个事件处理器，通常会调用一个javaScript函数</td>
+</tr>
+<tr>
+<td>readyState</td>
+<td>请求的状态，由5个可取值，0：未初始化、1：正在加载、2：已经加载、3：交互中、4：完成</td>
+</tr>
+<tr>
+<td>responseText</td>
+<td>服务器的响应，表示为一个串</td>
+</tr>
+<tr>
+<td>responseXML</td>
+<td>服务器的响应，表示为XML，这个对象可以解析为DOM对象</td>
+</tr>
+<tr>
+<td>status</td>
+<td>服务器的HTTP状态码（200对应OK，404对应NotFound、等）</td>
+</tr>
+<tr>
+<td>statusText</td>
+<td>HTTP状态码的相应文本（OK或NotFound等）</td>
+</tr>
+</tbody></table>
+<h2 id="发送请求"><a href="#发送请求" class="headerlink" title="发送请求"></a>发送请求</h2><ol>
+<li><p>利用XMLHttpRequest实例与服务器进行通信包含以下3个关键部分：</p>
+<ul>
+<li>onreadystatechange事件处理函数</li>
+<li>open方法</li>
+<li>send方法</li>
+</ul>
+</li>
+<li><p>oreadystatechange：</p>
+<ul>
+<li>该事件处理函数由服务器触发，而不是用户</li>
+<li>在Ajax执行过程中，服务器会通知客户端当前的同学的状态，这依靠跟新XMLHttpRequest对象的readyState来实现。改变readyState属性是服务器对客户端连接操作的一种方式。每次readyState属性的改变都会触发readystatechange事件</li>
+</ul>
+</li>
+<li><p>open（method，url，asynch）</p>
+<ul>
+<li>XMLHttpRequest对象的open方法<font color=blue>允许程序员用一个Ajax调用向服务器发送请求。</font></li>
+<li>method：请求类型，类似“GET”或“POST”的字符串。若只想从服务器检索一个文件，而不需要发送任何数据，使用GET（可以在GET请求里通过附加在URL上的擦汗寻字符串来发送数据，不过数据大小限制为2000个字符）。若需要向服务器发送数据，用POST。</li>
+<li>在某些情况下，有些浏览器会把多个XMLHttpRequest请求的结果缓存在同一个URL。如果对每个请求的响应不同，就会带来不好的结果。<font color=blue>在此将时间戳追加到URL的最后，就能确保URL的唯一性，从而避免浏览器缓存结果。</font></li>
+<li>url：路径字符串，指向你所请求的服务器上的那个文件，可以是绝对路径或相对路径。</li>
+<li>asynch：表示请求是否要异步传输，默认值为true，指定true，在读取后面的脚本之前，不需要等服务器的的响应。指定false当脚本处理过程经过这点时，会停下来，一直等到Ajax请求执行完毕后再继续执行。<br> <img src="https://img-blog.csdnimg.cn/20190701155453329.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkwNzMzMg==,size_16,color_FFFFFF,t_70" srcset="undefined" alt="&lt;/font&gt;"></li>
+</ul>
+</li>
+<li><p>send（data）</p>
+<ul>
+<li>open方法定义了Ajax请求的一些细节，<font color=blue>send方法可为已经待命的请求发送指令</font></li>
+<li>data：将要传送给服务器的字符串；</li>
+<li><font color=blue>若选用的时GET请求，则不会发送任何数据，给send方法传递努力了即可：request.send(null);</font></li>
+<li>当向send（）方法提供参数时，要确保open（）中指定的方法时POST，如果没有数据作为请求体的一部分发送，则使用null</li>
+<li>完整的Ajax的GET请求示例：</li>
+</ul>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> request = <span class="title function_">getHttpObject</span>();</span><br><span class="line"><span class="keyword">if</span>(request)&#123;</span><br><span class="line">    request.<span class="property">onreadystatechange</span> = doSomeThing;</span><br><span class="line">    request.<span class="title function_">open</span>(<span class="string">&quot;GET&quot;</span>,<span class="string">&quot;file.text&quot;</span>,<span class="literal">true</span>);</span><br><span class="line">    request.<span class="title function_">send</span>(<span class="literal">null</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>setRequestHeader(header,value)</p>
+<ul>
+<li>当浏览器向服务器请求页面时，它会伴随这个请求发送一组首部信息。这些首部信息是一系列描述请求的元数据（metadata）。首部信息用来声明一个请求时GET还是POST。</li>
+<li>Ajax请求中，发送首部信息的工作可以由setRequestHeader该完成</li>
+<li>参数header：首部的名字；参数value；首部的值</li>
+<li>如果用POST请求向服务器发送数据，需要将“Content-type”的首部设置为“application&#x2F;x-www-form-urlencoded”.他会告知服务器正在发送数据，并且数据已经符合URL编码了。</li>
+<li>该方法必须再open（）之后才能调用</li>
+<li>完整的Ajax的POST请求示例：</li>
+</ul>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> url = <span class="string">&quot;../jsp/forumServlet&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> nameValue = <span class="title function_">trim</span>(<span class="variable language_">document</span>.<span class="property">forumAddForm</span>.<span class="property">name</span>.<span class="property">value</span>);</span><br><span class="line">xhr.<span class="title function_">open</span>(<span class="string">&quot;POST&quot;</span>,url);</span><br><span class="line">xhr.<span class="title function_">setRequestHeader</span>(<span class="string">&#x27;Content-Type&#x27;</span>,<span class="string">&#x27;application/x-www-form-urlencoded&#x27;</span>);</span><br><span class="line">xhr.<span class="title function_">send</span>(<span class="string">&quot;method-name_isExist&quot;</span>+<span class="string">&quot;&amp;name&quot;</span>+nameValue);</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="接受响应"><a href="#接受响应" class="headerlink" title="接受响应"></a>接受响应</h2><ol>
+<li><p>用XMLHttpRequest的方法可向服务器发送请求。再Ajax处理过程中，XMLHttpRequest的如下属性可被服务器更改：</p>
+<ul>
+<li>readState</li>
+<li>status</li>
+<li>responseText</li>
+<li>responseXML</li>
+</ul>
+</li>
+<li><p>readyState</p>
+<ul>
+<li>readyState属性表示Ajax请求的当前状。它的值用数字代表。<ul>
+<li>0代表未初始化，还没有调用open方法</li>
+<li>1代表正在加载。open方法已被调用，但send方法还没有被调用</li>
+<li>2代表已加载完毕。send已被调用。请求已经开始</li>
+<li>3代表交互中。服务器正在发送响应</li>
+<li>4代表完成。响应发送完毕</li>
+</ul>
+</li>
+<li>每次readyState值的改变，都会触发readystatechange事件。如果把onreadysataechange事件处理函数赋给一个函数，那么每次readyState值的改变都会引发该函数的执行。</li>
+<li>readyState值的变化会因浏览器的不同而有所差异。但是当请求结束的时候，每个浏览器都会把readyState的值统一设为4.</li>
+</ul>
+</li>
+<li><p>status</p>
+<ul>
+<li>服务器发送给的每一个响应也都带有首部信息。三位数的状态码是服务器发送的响应中最重要的首部信息，并且属于超文本传输协议中的一部分。</li>
+<li>常用状态码及其含义：<ul>
+<li>404没找到页面（not found）</li>
+<li>403禁止访问（forbidden）</li>
+<li>500内部服务器出错（internal service error）</li>
+<li>200一切正常（ok）</li>
+<li>304没有被修改（not modifiled）</li>
+</ul>
+</li>
+<li>再XMLHttpRequest对象中，服务器发送的状态码都保存再status属性里。通过把这个值和200或304比较，可以确保服务器是否已发送一个成功的响应</li>
+</ul>
+</li>
+<li><p>responseText</p>
+<ul>
+<li>XMLHttpRequest的responseText属性包含了从服务器发送的数据。它是一个HTML，XML或普通文本，这取决于服务器发送的内容。</li>
+<li>当readyState属性值变成4时，responseText属性才可用，表名Ajax请求已经结束</li>
+</ul>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">doSomeThing</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">if</span>(request.<span class="property">readyState</span> == <span class="number">4</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(request.<span class="property">status</span> == <span class="number">200</span> || request.<span class="property">status</span> == <span class="number">304</span>)&#123;</span><br><span class="line">            <span class="title function_">alert</span>(request.<span class="property">responseText</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>responseXML</p>
+<ul>
+<li>如果服务器返回的是XML，那么数据将储存再responseXML属性中。</li>
+<li>只用服务器发送了带有正确首部信息数据时，responseXML属性才是可用的。MIME类型必须为text&#x2F;xml</li>
+</ul>
+</li>
+</ol>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="GET请求"><a href="#GET请求" class="headerlink" title="GET请求"></a>GET请求</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">&quot;java&quot;</span> contentType=<span class="string">&quot;text/html; charset=UTF-8&quot;</span></span><br><span class="line">    pageEncoding=<span class="string">&quot;UTF-8&quot;</span>%&gt;</span><br><span class="line">&lt;%</span><br><span class="line"><span class="title class_">String</span> path = request.<span class="title function_">getContextPath</span>();</span><br><span class="line"><span class="title class_">String</span> basePath = request.<span class="title function_">getScheme</span>()+<span class="string">&quot;://&quot;</span>+request.<span class="title function_">getServerName</span>()+<span class="string">&quot;:&quot;</span>+request.<span class="title function_">getServerPort</span>()+path+<span class="string">&quot;/&quot;</span>;</span><br><span class="line">%&gt;</span><br><span class="line">&lt;!<span class="variable constant_">DOCTYPE</span> html <span class="variable constant_">PUBLIC</span> <span class="string">&quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;</span> <span class="string">&quot;http://www.w3.org/TR/html4/loose.dtd&quot;</span>&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;base href=&quot;&lt;%=basePath%&gt;&quot;&gt;</span><br><span class="line">&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;</span><br><span class="line">&lt;title&gt;Insert title here&lt;/title&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    window.onload = function () &#123;</span><br><span class="line">        //1.获取a节点，并为onclick响应函数</span><br><span class="line">        document.getElementsByTagName(&quot;a&quot;)[0].onclick = function() &#123;</span><br><span class="line">            //3. 创建一个XMLHttpRequest对象</span><br><span class="line">            var request = new XMLHttpRequest();</span><br><span class="line">            //4.准备发送请求的数据：url</span><br><span class="line">            var url = this.href + &quot;?time= &quot; + new Date();</span><br><span class="line">            var method = &quot;GET&quot;;</span><br><span class="line">            //5.调用XMLHttoRequest对象的open方法</span><br><span class="line">            request.open(method,url);</span><br><span class="line">            //6.调用XMLHttpRequest对象的send方法</span><br><span class="line">            request.send(null);</span><br><span class="line">            //7.为XMLHttpRequest对象添加onreadstatechange响应函数</span><br><span class="line">            request.onreadystatechange = function() &#123;</span><br><span class="line">                //8.判断响应式否完成：XMLHttpRequest对象的readyState属性值为4的时候</span><br><span class="line">                if(request.readyState == 4)&#123;</span><br><span class="line">                    //9.判断响应是否可用：XMLHttpRequest对象status属性值为200</span><br><span class="line">                    if(request.status == 200 || request.status == 304)&#123;</span><br><span class="line">                        //10.打印响应结果：responseText</span><br><span class="line">                        alert(request.responseText);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            //2. 取消a节点的默认行为</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;a href=&quot;helloAjax.txt&quot;&gt;HelloAjax&lt;/a&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="POST请求"><a href="#POST请求" class="headerlink" title="POST请求"></a>POST请求</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">&quot;java&quot;</span> contentType=<span class="string">&quot;text/html; charset=UTF-8&quot;</span></span><br><span class="line">    pageEncoding=<span class="string">&quot;UTF-8&quot;</span>%&gt;</span><br><span class="line">&lt;%</span><br><span class="line"><span class="title class_">String</span> path = request.<span class="title function_">getContextPath</span>();</span><br><span class="line"><span class="title class_">String</span> basePath = request.<span class="title function_">getScheme</span>()+<span class="string">&quot;://&quot;</span>+request.<span class="title function_">getServerName</span>()+<span class="string">&quot;:&quot;</span>+request.<span class="title function_">getServerPort</span>()+path+<span class="string">&quot;/&quot;</span>;</span><br><span class="line">%&gt;</span><br><span class="line">&lt;!<span class="variable constant_">DOCTYPE</span> html <span class="variable constant_">PUBLIC</span> <span class="string">&quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;</span> <span class="string">&quot;http://www.w3.org/TR/html4/loose.dtd&quot;</span>&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;base href=&quot;&lt;%=basePath%&gt;&quot;&gt;</span><br><span class="line">&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;</span><br><span class="line">&lt;title&gt;Insert title here&lt;/title&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    window.onload = function () &#123;</span><br><span class="line">        //1.获取a节点，并为onclick响应函数</span><br><span class="line">        document.getElementsByTagName(&quot;a&quot;)[0].onclick = function() &#123;</span><br><span class="line">            //3. 创建一个XMLHttpRequest对象</span><br><span class="line">            var request = new XMLHttpRequest();</span><br><span class="line">            //4.准备发送请求的数据：url</span><br><span class="line">            var url = this.href + &quot;?time= &quot; + new Date();</span><br><span class="line">            var method = &quot;POST&quot;;</span><br><span class="line">            //5.调用XMLHttoRequest对象的open方法</span><br><span class="line">            request.open(method,url);</span><br><span class="line">            request.setRequestHeader(&quot;ContentType&quot;,&quot;application/x-www-form-urlencoded&quot;);</span><br><span class="line">            //6.调用XMLHttpRequest对象的send方法</span><br><span class="line">            request.send(&quot;name = &#x27;matthew&#x27; &quot;);</span><br><span class="line">            //7.为XMLHttpRequest对象添加onreadstatechange响应函数</span><br><span class="line">            request.onreadystatechange = function() &#123;</span><br><span class="line">                //8.判断响应式否完成：XMLHttpRequest对象的readyState属性值为4的时候</span><br><span class="line">                if(request.readyState == 4)&#123;</span><br><span class="line">                    //9.判断响应是否可用：XMLHttpRequest对象status属性值为200</span><br><span class="line">                    if(request.status == 200 || request.status == 304)&#123;</span><br><span class="line">                        //10.打印响应结果：responseText</span><br><span class="line">                        alert(request.responseText);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            //2. 取消a节点的默认行为</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;a href=&quot;helloAjax.txt&quot;&gt;HelloAjax&lt;/a&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello Ajax(*^_^*)</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20190701162821788.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkwNzMzMg==,size_16,color_FFFFFF,t_70" srcset="undefined" alt="在这里插入图片描述"></p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/Ajax">Ajax</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/Ajax">Ajax</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "使用XMLHttpRequest实现Ajax&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "left",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

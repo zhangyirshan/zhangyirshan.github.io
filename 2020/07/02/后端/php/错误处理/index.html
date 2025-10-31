@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="仅限学习参考，有兴趣可以互相交流">
+  <meta name="author" content="张议">
+  <meta name="keywords" content="张议,Java,java,spring,SpringBoot,zhangyi">
+  <title>错误处理 ~ 人生展馆</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>人生展馆</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">资料</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/index.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期四, 七月 2日 2020, 8:53 晚上
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    1.3k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      5 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h2><blockquote>
+<p>指的是系统（或者用户）在对某些代码进行执行的时候，发现有错误，就会通过错误处理的形式告知程序员</p>
+</blockquote>
+<h2 id="错误分类"><a href="#错误分类" class="headerlink" title="错误分类"></a>错误分类</h2><ol>
+<li>语法错误：用户书写的代码不符合PHP的语法规范，语法错误会导致代码在编译过程中不通过，所以代码不会执行（Parse error）</li>
+<li>运行时错误：代码编译通过，但是代码在执行的过程中会出现一些条件不满足导致的错误（runtime error）</li>
+<li>逻辑错误：程序员在写代码的时候不够规范，出现了一些逻辑性错误，导致代码正常执行，但是得不到想要的结果</li>
+</ol>
+<h2 id="错误代号"><a href="#错误代号" class="headerlink" title="错误代号"></a>错误代号</h2><p>所有看到的错误代码在PHP中都被定义成了系统常量（可以直接使用）</p>
+<ol>
+<li>系统错误：<br> E_PARSE: 编译错误，代码不会执行<br> E_ERROR: fatal error,致命错误，会导致代码不能正确继续执行（出错的位置断掉）<br> E_WARING: warning,警告错误，不会影响代码执行，但是可能得到意想不到的结果<br> E_NOTICE: 通知错误，不会影响代码执行</li>
+<li>用户错误: E_USER_ERROR、E_USER_WARNING、E_USER_NOTCE<br> 用户在使用自定义错误出发的时候，会使用到的错误代号（系统不会用到）</li>
+<li>其他: E_ALL代表所有错误（通常在进行错误控制的时候使用比较多），建议在开发过程中使用</li>
+</ol>
+<p>所有已E开头的错误常量（代号）起始都是由一个字节存储，然后每一种错误占据一个对应的位，如果想进行一些错误的控制，可以使用位运算进行操作。</p>
+<p>排除通知级别notice: E_ALL &amp; ~E_NOTICE<br>只要警告和通知：E_WARNING | E_NOTICE</p>
+<h2 id="错误触发"><a href="#错误触发" class="headerlink" title="错误触发"></a>错误触发</h2><p>程序运行时触发：胸痛自动根据错误发生后，对比对应的错误信息，输出给用户：主要针对代码的语法错误和运行时错误<br>人为触发：指导某些逻辑可能会出错，从而使用对应的判断代码来触发相应的错误提示</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// PHP错误处理</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 处理脚本让浏览器按照指定字符集解析的方法</span></span><br><span class="line"><span class="title function_ invoke__">header</span>(<span class="string">&#x27;Content-type:text/html;charset=utf-8&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable">$a</span>  = <span class="number">100</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$a</span>;</span><br><span class="line"><span class="keyword">if</span> (<span class="variable">$a</span> != <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="comment">// 人为触发错误</span></span><br><span class="line">    <span class="title function_ invoke__">trigger_error</span>(<span class="string">&#x27;除数不能为0&#x27;</span>);</span><br><span class="line">    <span class="title function_ invoke__">trigger_error</span>(<span class="string">&#x27;除数不能为0&#x27;</span>, E_USER_ERROR);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&#x27;hello&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>trigger_error可以通过第二个参数来进行严格性控制</p>
+<h2 id="错误显示设置"><a href="#错误显示设置" class="headerlink" title="错误显示设置"></a>错误显示设置</h2><p>错误显示设置：那些错误该显示，以及该如何显示</p>
+<p>在PHP中，其实又两种方式来设置当前脚本的错误处理</p>
+<ol>
+<li>PHP的配置文件：全局配置：php.ini文件<br> Display_errors: 是否显示错误<br> Error_reporting: 显示什么级别的错误</li>
+<li>可以在运行的PHP脚本中去设置: 在脚本中定义的配置级别比配置文件高<br> Error_reporting（）：设置对应的错误显示级别<br> Ini_set(‘配置文件中的配置项’，配置值)<br> Ini_set(‘error_reporting’,E_ALL)<br> Ini_set(‘display_errors’,1)</li>
+</ol>
+<h2 id="错误日志设置"><a href="#错误日志设置" class="headerlink" title="错误日志设置"></a>错误日志设置</h2><p>在实际生产环境中，不糊i直接让错误展示给用户</p>
+<ol>
+<li>不友好</li>
+<li>不安全：错误会暴漏网站很多信息（路径、文件名）</li>
+</ol>
+<p>所以正在生产环境中，一般不显示错误，但是不可能避免会出现错误，这个时候不希望看到，但是又下往捕捉到可以让后台程序员去修改：需要保存到日志文件，需要在PHP配置文件中或者代码中（ini_set）设置对应error_log配置项</p>
+<ol>
+<li>开启日志功能<br> log_errors &#x3D; On</li>
+<li>指定路径<br> error_log &#x3D; ‘E:&#x2F;…&#x2F;php_error.log’</li>
+</ol>
+<h2 id="自定义错误处理"><a href="#自定义错误处理" class="headerlink" title="自定义错误处理"></a>自定义错误处理</h2><p>最简单的错误处理：trigger_errors()函数，但是该函数不会阻止系统报错<br>PHP系统提供了一种用户处理错误的机制：用户自定义错误处理函数，然后将该函数增加到操作系统错误处理的句柄中，然后系统会在碰到错误之后，使用用户定义的错误函数。</p>
+<ol>
+<li>如何将用户自定义的函数放到系统中？set_error_handler()</li>
+<li>自定义错误处理函数，系统有要求</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">// 自定义错误处理机制</span></span><br><span class="line"><span class="title function_ invoke__">header</span>(<span class="string">&#x27;Content-type:text/html;charset=utf-8&#x27;</span>);</span><br><span class="line"><span class="comment">// 自定义函数</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> $err</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> $errstr</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> $errdile</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> $errline</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">my_error</span>(<span class="params"><span class="variable">$errno</span>, <span class="variable">$errstr</span>, <span class="variable">$errfile</span>, <span class="variable">$errline</span></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 判断：当前会碰到的错误有哪些</span></span><br><span class="line">    <span class="keyword">if</span> (!(<span class="title function_ invoke__">error_reporting</span>() &amp; <span class="variable">$errno</span>)) &#123; <span class="comment">// error_reporting没有参数代表获取当前系统错误处理对应的级别</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="comment">// error_reporting没有参数代表获取当前系统错误处理对应的界别</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 开始判断错误类型</span></span><br><span class="line">    <span class="keyword">switch</span> (<span class="variable">$errno</span>) &#123;</span><br><span class="line">        <span class="keyword">case</span> E_ERROR:</span><br><span class="line">        <span class="keyword">case</span> E_USER_ERROR:</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;fatal error in file <span class="subst">$errfile</span> on line <span class="subst">$errline</span> &lt;br/&gt;&quot;</span>;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;error info : <span class="subst">$errstr</span>&quot;</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> E_WARNING:</span><br><span class="line">        <span class="keyword">case</span> E_USER_WARNING:</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;Warning error in file <span class="subst">$errfile</span> on line <span class="subst">$errline</span> &lt;br/&gt;&quot;</span>;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;Warning info : <span class="subst">$errstr</span>&quot;</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> E_NOTICE:</span><br><span class="line">        <span class="keyword">case</span> E_USER_NOTICE:</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;Notice error in file <span class="subst">$errfile</span> on line <span class="subst">$errline</span> &lt;br/&gt;&quot;</span>;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;Notice info : <span class="subst">$errstr</span>&quot;</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 报错</span></span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$a</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改错误机制</span></span><br><span class="line"><span class="title function_ invoke__">set_error_handler</span>(<span class="string">&#x27;my_error&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$a</span>;</span><br></pre></td></tr></table></figure>
+
+<p>当前属于简单自定义模式，如果要复杂，可以在某些影响代码功能的错误发生后，让用户跳转到某个指定界面。</p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/php">php</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/php">php</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "错误处理&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "left",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>
